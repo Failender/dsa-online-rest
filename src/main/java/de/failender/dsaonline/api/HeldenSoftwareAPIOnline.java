@@ -6,6 +6,7 @@ import de.failender.heldensoftware.Helper;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import de.failender.heldensoftware.xml.heldenliste.Helden;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.List;
@@ -66,6 +68,14 @@ public class HeldenSoftwareAPIOnline implements HeldenSoftwareAPI {
 		}
 	}
 
+	@Override
+	public String getHeldXml(BigInteger heldenid) {
+		try {
+			return IOUtils.toString(HeldenSoftwareAPIOffline.class.getClassLoader().getResourceAsStream("api/offline/helden/"+heldenid.toString()+".xml"));
+		} catch (IOException e) {
+			throw new ExchangeException(e);
+		}
+	}
 
 
 	public static void main(String[] args) throws Exception {
