@@ -4,6 +4,7 @@ import de.failender.dsaonline.api.HeldenSoftwareAPI;
 import de.failender.dsaonline.api.HeldenSoftwareAPIOffline;
 import de.failender.dsaonline.api.HeldenSoftwareAPIOnline;
 import de.failender.dsaonline.data.entity.UserEntity;
+import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,8 +22,10 @@ public class ApiService {
 	private boolean online;
 
 	private HeldenSoftwareAPI getApi() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		SecurityUtils.checkLogin();
 		if(online) {
-			UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			UserEntity user = (UserEntity) principal;
 			return new HeldenSoftwareAPIOnline(user.getToken());
 		} else {
 			return new HeldenSoftwareAPIOffline();

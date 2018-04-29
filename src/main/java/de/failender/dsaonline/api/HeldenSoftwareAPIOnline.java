@@ -7,9 +7,7 @@ import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import de.failender.heldensoftware.xml.heldenliste.Helden;
 import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.stereotype.Service;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -20,12 +18,12 @@ import java.math.BigInteger;
 import java.util.List;
 
 
-@Service
+
 @ConditionalOnProperty("dsa.heldensoftware.online")
 public class HeldenSoftwareAPIOnline implements HeldenSoftwareAPI {
 
 	private String token;
-	public HeldenSoftwareAPIOnline(@Value("${dsa.heldensoftware.token}") String token){
+	public HeldenSoftwareAPIOnline(String token){
 		this.token = token;
 
 	}
@@ -75,15 +73,5 @@ public class HeldenSoftwareAPIOnline implements HeldenSoftwareAPI {
 		} catch (IOException e) {
 			throw new ExchangeException(e);
 		}
-	}
-
-
-	public static void main(String[] args) throws Exception {
-
-		HeldenSoftwareAPIOnline api  =new HeldenSoftwareAPIOnline("cead7ff39138dfb94171f19d8b46a487a4f1f53ad120ce819d6c0d86787b8c65");
-		api.getAllHelden().forEach(held -> {
-			api.getHeldenDaten(held.getHeldenid());
-		});
-
 	}
 }

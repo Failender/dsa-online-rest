@@ -2,18 +2,20 @@ package de.failender.dsaonline.rest.user;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.failender.dsaonline.data.entity.GruppeEntity;
-import de.failender.dsaonline.data.entity.UserEntity;
-import de.failender.dsaonline.data.repository.GruppeRepository;
-import de.failender.dsaonline.data.repository.UserRepository;
+import de.failender.dsaonline.data.repository.HeldRepository;
+import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.ApiService;
-import de.failender.dsaonline.service.UserHeldenService;
+import de.failender.dsaonline.service.UserService;
 import de.failender.heldensoftware.xml.heldenliste.Held;
+import de.failender.heldensoftware.xml.heldenliste.Helden;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import java.io.StringReader;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -22,20 +24,17 @@ import java.util.List;
 public class UserController {
 
 	@Autowired
-	private UserRepository userRepository;
-
-	@Autowired
 	private ApiService apiService;
 
-	@Autowired
-	private UserHeldenService userHeldenService;
 
 	@Autowired
-	private GruppeRepository gruppeRepository;
+	private HeldRepository heldRepository;
 
+	@Autowired
+	private UserService userService;
 
 	@GetMapping("helden")
-	public List<Held> getAllHelden() {
+	public List<Held> getHelden() {
 		return apiService.getAllHelden();
 	}
 
@@ -46,30 +45,36 @@ public class UserController {
 		return om.writeValueAsString(apiService.getHeldenDaten(id));
 	}
 
+	@GetMapping("helden/all")
+	public List<Held> getAllHelden() {
+
+		String xml = "<helden>" + heldRepository.findAll()
+				.stream()
+				.map(held -> held.getXml())
+				.reduce((a,b) -> a+b)
+				+ "</helden>";
+
+		try {
+			JAXBContext jaxbContext = JAXBContext.newInstance(Helden.class);
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			Helden daten = (Helden) jaxbUnmarshaller.unmarshal(new StringReader(xml));
+			return daten.getHeld();
+		} catch (JAXBException e) {
+			throw new RuntimeException(e);
+		}
+
+
+	}
+
 	@PostMapping("register")
 	public ResponseEntity<?> registerUser(@RequestBody UserRegistration userRegistration) {
-		if(userRegistration.getName() == null || userRegistration.getToken() == null || userRegistration.getGruppe() == null) {
-			return ResponseEntity.badRequest().build();
-		}
-		if(this.userRepository.existsByName(userRegistration.getName())) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).build();
-		}
-		GruppeEntity gruppeEntity = gruppeRepository.findByName(userRegistration.getGruppe());
-		if(gruppeEntity == null) {
-			return ResponseEntity.notFound().build();
-		}
-		UserEntity userEntity = new UserEntity();
-		userEntity.setGruppe(gruppeEntity);
-		userEntity.setName(userRegistration.getName());
-		userEntity.setToken(userRegistration.getToken());
-		if(userRegistration.getPassword() != null &&!userRegistration.getPassword().isEmpty()) {
-			userEntity.setPassword(userRegistration.getPassword());
-		}
-		this.userRepository.save(userEntity);
-		userHeldenService.updateHeldenForUser(userEntity);
+		userService.registerUser(userRegistration);
 		return ResponseEntity.ok().build();
+	}
 
-
+	@GetMapping("login")
+	public List<String> login() {
+		return SecurityUtils.getAuthorities();
 	}
 
 

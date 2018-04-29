@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Table(name="USERS")
 @Getter
 @Setter
-public class UserEntity extends BaseEntity{
+public class UserEntity extends AuditingEntity{
 	private String name;
 	private String password;
 	private String token;

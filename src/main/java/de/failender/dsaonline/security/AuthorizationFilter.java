@@ -4,6 +4,7 @@ import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
@@ -12,7 +13,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AuthorizationFilter extends BasicAuthenticationFilter {
 
@@ -41,8 +43,14 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 			return;
 		}
 		SecurityContextHolder.getContext().setAuthentication(
-				new UsernamePasswordAuthenticationToken(user, null, Collections.EMPTY_LIST)
+				new UsernamePasswordAuthenticationToken(user, null, loadUserRights(user.getId()))
 		);
 		chain.doFilter(request, response);
+
+
+	}
+
+	private List<SimpleGrantedAuthority> loadUserRights(int userId) {
+		return userRepository.getUserRights(userId).stream().map(right -> new SimpleGrantedAuthority(right)).collect(Collectors.toList());
 	}
 }
