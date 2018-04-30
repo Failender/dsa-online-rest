@@ -1,5 +1,6 @@
 package de.failender.dsaonline.security;
 
+import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.exceptions.NotAuthenticatedException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,6 +15,7 @@ public class SecurityUtils {
 
 
 	public static final String CREATE_USER = "CREATE_USER";
+	public static final String VIEW_ALL = "VIEW_ALL";
 
 	public static void checkRight(String right) {
 
@@ -37,6 +39,15 @@ public class SecurityUtils {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if(principal instanceof String){
 			throw new NotAuthenticatedException();
+		}
+	}
+
+	public static UserEntity getCurrentUser() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(principal instanceof String){
+			throw new NotAuthenticatedException();
+		} else {
+			return (UserEntity) principal;
 		}
 	}
 }

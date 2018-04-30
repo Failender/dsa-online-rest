@@ -50,6 +50,5 @@ public class UserService {
 		userHeldenService.updateHeldenForUser(userEntity);
 		return userEntity;
 
-
 	}
 }

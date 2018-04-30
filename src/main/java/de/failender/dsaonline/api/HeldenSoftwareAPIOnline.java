@@ -29,13 +29,11 @@ public class HeldenSoftwareAPIOnline implements HeldenSoftwareAPI {
 	}
 
 	public List<Held> getAllHelden() {
-
 		try {
 			InputStreamReader is = Helper.postrequeststream("action", "listhelden",
 					"token", token);
 			JAXBContext jaxbContext = JAXBContext
 					.newInstance(Helden.class);
-
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			Helden helden = (Helden) jaxbUnmarshaller.unmarshal(is);
 			return helden.getHeld();

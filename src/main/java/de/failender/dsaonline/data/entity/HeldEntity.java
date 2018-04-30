@@ -22,7 +22,7 @@ public class HeldEntity {
 	@ManyToOne
 	private GruppeEntity gruppe;
 
-	private int version;
+	private Integer version;
 
 	private boolean active;
 	private String xml;

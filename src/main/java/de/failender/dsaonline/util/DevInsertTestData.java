@@ -2,8 +2,8 @@ package de.failender.dsaonline.util;
 
 import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.UserRepository;
-import de.failender.dsaonline.rest.user.UserRegistration;
 import de.failender.dsaonline.security.SecurityUtils;
+import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.dsaonline.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,6 +31,9 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private UserHeldenService userHeldenService;
+
 	@Value("${dsa.heldensoftware.tokens}")
 	private List<String> tokens;
 
@@ -41,11 +44,8 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 		SecurityContextHolder.getContext().setAuthentication(
 				new UsernamePasswordAuthenticationToken(userRepository.findById(1).get(), null, fakeRights));
 		tokens.forEach(token -> {
-			UserRegistration userRegistration = new UserRegistration();
-			userRegistration.setToken(token);
-			userRegistration.setGruppe("TestGruppe");
-			userRegistration.setName(randomName());
-			UserEntity user = userService.registerUser(userRegistration);
+			UserEntity user = this.userRepository.findByName("Failender");
+			userHeldenService.updateHeldenForUser(user);
 
 
 		});

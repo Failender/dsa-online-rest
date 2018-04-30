@@ -7,5 +7,5 @@ import java.math.BigInteger;
 import java.util.List;
 
 public interface HeldRepository extends JpaRepository<HeldEntity, BigInteger> {
-	List<HeldEntity> findByUserId(Integer userId);
+	List<HeldEntity> findByUserIdAndActive(Integer userId, boolean active);
 }

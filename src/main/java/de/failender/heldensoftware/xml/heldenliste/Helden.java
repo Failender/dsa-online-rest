@@ -8,14 +8,12 @@
 
 package de.failender.heldensoftware.xml.heldenliste;
 
-import de.failender.heldensoftware.xml.heldenliste.Held;
-
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -28,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}held" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}xmlHeld" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -39,7 +37,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "held"
+		"held"
 })
 @XmlRootElement(name = "helden")
 public class Helden {
@@ -47,13 +45,13 @@ public class Helden {
     protected List<Held> held;
 
     /**
-     * Gets the value of the held property.
+     * Gets the value of the xmlHeld property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the held property.
+     * This is why there is not a <CODE>set</CODE> method for the xmlHeld property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
@@ -70,7 +68,7 @@ public class Helden {
      */
     public List<Held> getHeld() {
         if (held == null) {
-            held = new ArrayList<Held>();
+            held = new ArrayList<>();
         }
         return this.held;
     }
