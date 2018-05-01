@@ -8,12 +8,8 @@
 
 package de.failender.heldensoftware.xml.datenxml;
 
+import javax.xml.bind.annotation.*;
 import java.math.BigInteger;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -39,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}lernkomplexität"/>
  *         &lt;element ref="{}hauszauber"/>
  *         &lt;element ref="{}hauszauberformatiert"/>
- *         &lt;element ref="{}repräsentation"/>
+ *         &lt;element ref="{}repraesentation"/>
  *         &lt;element ref="{}merkmale"/>
  *         &lt;element ref="{}zauberdauer"/>
  *         &lt;element ref="{}kosten"/>
@@ -72,7 +68,7 @@ import javax.xml.bind.annotation.XmlType;
     "lernkomplexit\u00e4t",
     "hauszauber",
     "hauszauberformatiert",
-    "repr\u00e4sentation",
+    "repraesentation",
     "merkmale",
     "zauberdauer",
     "kosten",
@@ -111,8 +107,8 @@ public class Zauber {
     protected boolean hauszauber;
     @XmlElement(required = true)
     protected String hauszauberformatiert;
-    @XmlElement(required = true)
-    protected String repräsentation;
+    @XmlElement(required = true, name = "repräsentation")
+    protected String repraesentation;
     @XmlElement(required = true)
     protected String merkmale;
     @XmlElement(required = true)
@@ -437,27 +433,27 @@ public class Zauber {
     }
 
     /**
-     * Gets the value of the repräsentation property.
+     * Gets the value of the repraesentation property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getRepräsentation() {
-        return repräsentation;
+    public String getRepraesentation() {
+        return repraesentation;
     }
 
     /**
-     * Sets the value of the repräsentation property.
+     * Sets the value of the repraesentation property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setRepräsentation(String value) {
-        this.repräsentation = value;
+    public void setRepraesentation(String value) {
+        this.repraesentation = value;
     }
 
     /**
