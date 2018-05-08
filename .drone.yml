@@ -3,6 +3,6 @@ pipeline:
     image: plugins/docker  
     repo: failender/dsa-online-rest
     tags: latest
-    dockerfile:Dockerfile
+    dockerfile: Dockerfile
     secrets: [ docker_username, docker_password ]
  
