@@ -80,7 +80,6 @@ public class Ereignis {
 	private static final DateFormat format = new SimpleDateFormat("dd.MM.yyyy kk:mm");
 
 	public Long getDate() {
-		System.out.println(date);
 		try {
 			return format.parse(date).getTime();
 		} catch (ParseException e) {
