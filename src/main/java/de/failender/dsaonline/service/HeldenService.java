@@ -45,7 +45,7 @@ public class HeldenService {
 		if(heldEntityOptional.get().getUserId() != user.getId()) {
 			SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);
 		}
-		return apiService.getHeldenDaten(heldEntityOptional.get().getId());
+		return apiService.getHeldenDaten(id);
 
 	}
 }

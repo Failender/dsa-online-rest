@@ -8,11 +8,7 @@
 
 package de.failender.heldensoftware.xml.datenxml;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
@@ -58,7 +54,8 @@ import javax.xml.bind.annotation.XmlType;
     "zauberliste",
     "gegenstaende",
     "verbindungen",
-    "kampfsets"
+    "kampfsets",
+        "ereignisse"
 })
 @XmlRootElement(name = "daten")
 public class Daten {
@@ -87,6 +84,9 @@ public class Daten {
     protected Verbindungen verbindungen;
     @XmlElement(required = true)
     protected Kampfsets kampfsets;
+    @XmlElement(required= true)
+    protected Ereignisse ereignisse;
+
 
     /**
      * Gets the value of the config property.
@@ -354,11 +354,11 @@ public class Daten {
 
     /**
      * Gets the value of the kampfsets property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Kampfsets }
-     *     
+     *
      */
     public Kampfsets getKampfsets() {
         return kampfsets;
@@ -366,14 +366,38 @@ public class Daten {
 
     /**
      * Sets the value of the kampfsets property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Kampfsets }
-     *     
+     *
      */
     public void setKampfsets(Kampfsets value) {
         this.kampfsets = value;
+    }
+
+    /**
+     * Gets the value of the kampfsets property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Kampfsets }
+     *
+     */
+    public Ereignisse getEreignisse() {
+        return ereignisse;
+    }
+
+    /**
+     * Sets the value of the kampfsets property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Kampfsets }
+     *
+     */
+    public void setEreignisse(Ereignisse value) {
+        this.ereignisse= value;
     }
 
 }

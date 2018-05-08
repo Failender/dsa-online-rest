@@ -6,7 +6,6 @@ import de.failender.heldensoftware.Helper;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import de.failender.heldensoftware.xml.heldenliste.Helden;
-import org.apache.commons.io.IOUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 import javax.xml.bind.JAXBContext;
@@ -50,6 +49,7 @@ public class HeldenSoftwareAPIOnline implements HeldenSoftwareAPI {
 		try {
 			InputStreamReader stringheld = Helper.postrequeststream("action", "returnheld",
 					"format", "datenxml",
+					"opt","ereignisse",
 					"heldenid", heldenid.toString(),
 					"token", token);
 			JAXBContext jaxbContext = JAXBContext.newInstance(Daten.class);
@@ -67,8 +67,15 @@ public class HeldenSoftwareAPIOnline implements HeldenSoftwareAPI {
 	@Override
 	public String getHeldXml(BigInteger heldenid) {
 		try {
-			return IOUtils.toString(HeldenSoftwareAPIOffline.class.getClassLoader().getResourceAsStream("api/offline/helden/"+heldenid.toString()+".xml"));
+			return Helper.postrequest("action", "returnheld",
+					"format", "datenxml",
+					"heldenid", heldenid.toString(),
+					"opt","ereignisse",
+					"token", token);
 		} catch (IOException e) {
+			throw new ExchangeException(e);
+		} catch (Exception e) {
+			e.printStackTrace();
 			throw new ExchangeException(e);
 		}
 	}

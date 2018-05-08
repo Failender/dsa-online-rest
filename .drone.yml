@@ -1,0 +1,8 @@
+pipeline:
+  backend:
+    image: plugins/docker  
+    repo: failender/dsa-online-rest
+    tags: latest
+    dockerfile:Dockerfile
+    secrets: [ docker_username, docker_password ]
+ 
