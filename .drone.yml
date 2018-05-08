@@ -1,8 +1,7 @@
 pipeline:
-  backend:
+  frontend:
     image: plugins/docker
-    repo: failender/dsa-online-rest
+    repo: failender/dsa-online-frontend
     tags: latest
     dockerfile: Dockerfile
     secrets: [ docker_username, docker_password ]
-    debug: true
