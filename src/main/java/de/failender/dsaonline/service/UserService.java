@@ -51,4 +51,9 @@ public class UserService {
 		return userEntity;
 
 	}
+
+	public void addUserRole(UserEntity user, String role) {
+		Integer roleId = this.userRepository.getRoleId(role);
+		this.userRepository.addUserRole(roleId, user.getId());
+	}
 }

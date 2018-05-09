@@ -58,7 +58,6 @@ public class CachingService {
 		if(file.exists()) {
 
 			long age = System.currentTimeMillis() - file.lastModified();
-			System.out.println(age);
 			if(age > cacheDuration){
 				return null;
 			}
