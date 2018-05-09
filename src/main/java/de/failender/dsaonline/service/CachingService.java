@@ -6,6 +6,7 @@ import de.failender.dsaonline.util.JaxbUtil;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import de.failender.heldensoftware.xml.heldenliste.Helden;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 @Service
+@Slf4j
 public class CachingService {
 
 	@Value("${dsa.online.cache.directory}")
@@ -54,7 +56,9 @@ public class CachingService {
 	public List<Held> getAllHeldenCache(String token) {
 		File file = getAllHeldenCacheFile(token);
 		if(file.exists()) {
+
 			long age = System.currentTimeMillis() - file.lastModified();
+			System.out.println(age);
 			if(age > cacheDuration){
 				return null;
 			}
@@ -64,15 +68,17 @@ public class CachingService {
 	}
 
 	public void setAllHeldenCache(String token, List<Held> helden) {
-		this.userHeldenService.updateHeldenForUser(SecurityUtils.getCurrentUser());
+
 		Helden xmlHelden = new Helden();
 		xmlHelden.setHeld(helden);
 		Marshaller marshaller = JaxbUtil.getMarshaller(Helden.class);
 		try {
+			File out = getAllHeldenCacheFile(token);
 			marshaller.marshal(xmlHelden, getAllHeldenCacheFile(token));
 		} catch (JAXBException e) {
 			throw new CorruptXmlException(e);
 		}
+		this.userHeldenService.updateHeldenForUser(SecurityUtils.getCurrentUser());
 	}
 
 	public void setHeldenDatenCache(BigInteger heldid, int version, Daten daten){
