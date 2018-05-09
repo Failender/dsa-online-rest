@@ -3,6 +3,7 @@ package de.failender.dsaonline.util;
 import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.security.SecurityUtils;
+import de.failender.dsaonline.service.ApiService;
 import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.dsaonline.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,6 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 		tokens.forEach(token -> {
 			UserEntity user = this.userRepository.findByName("Failender");
 			userHeldenService.updateHeldenForUser(user);
-
 
 		});
 

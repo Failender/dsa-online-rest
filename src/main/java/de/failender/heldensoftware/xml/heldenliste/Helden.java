@@ -73,4 +73,7 @@ public class Helden {
         return this.held;
     }
 
+    public void setHeld(List<Held> held) {
+        this.held = held;
+    }
 }

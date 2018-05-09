@@ -7,7 +7,9 @@ import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.heldenliste.Held;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -21,26 +23,51 @@ public class ApiService {
 	@Value("${dsa.heldensoftware.online}")
 	private boolean online;
 
-	private HeldenSoftwareAPI getApi() {
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		SecurityUtils.checkLogin();
+
+	@Autowired
+	private Environment environment;
+
+	@Autowired
+	private CachingService cachingService;
+
+	private HeldenSoftwareAPI getApi(String token) {
+
 		if(online) {
-			UserEntity user = (UserEntity) principal;
-			return new HeldenSoftwareAPIOnline(user.getToken());
+			return new HeldenSoftwareAPIOnline(token, environment);
 		} else {
-			return new HeldenSoftwareAPIOffline();
+			return new HeldenSoftwareAPIOffline(token);
 		}
 	}
 
+	private String getToken() {
+		SecurityUtils.checkLogin();
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserEntity user = (UserEntity) principal;
+		return user.getToken();
+	}
+
 	public List<Held> getAllHelden() {
-		return getApi().getAllHelden();
+		String token = getToken();
+		return this.getAllHelden(token);
 	}
 
-	public Daten getHeldenDaten(BigInteger heldenid) {
-		return getApi().getHeldenDaten(heldenid);
+	public Daten getHeldenDaten(BigInteger heldenid, int version) {
+		Daten cache = cachingService.getHeldenDatenCache(heldenid, version);
+		if(cache != null) {
+			return cache;
+		}
+		cache = getApi(getToken()).getHeldenDaten(heldenid);
+		cachingService.setHeldenDatenCache(heldenid, version, cache);
+		return cache;
 	}
 
-	public String getHeldXml(BigInteger heldenid) {
-		return getApi().getHeldXml(heldenid);
+	public List<Held> getAllHelden(String token) {
+		List<Held> cache = cachingService.getAllHeldenCache(token);
+		if(cache != null) {
+			return cache;
+		}
+		cache = getApi(getToken()).getAllHelden();
+		cachingService.setAllHeldenCache(token, cache);
+		return cache;
 	}
 }

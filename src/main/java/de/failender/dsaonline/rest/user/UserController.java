@@ -2,7 +2,11 @@ package de.failender.dsaonline.rest.user;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.failender.dsaonline.data.entity.HeldEntity;
+import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.HeldRepository;
+import de.failender.dsaonline.data.repository.UserRepository;
+import de.failender.dsaonline.exceptions.HeldNotFoundException;
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.ApiService;
 import de.failender.dsaonline.service.UserService;
@@ -17,7 +21,10 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.StringReader;
 import java.math.BigInteger;
+import java.security.Security;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/user")
@@ -31,6 +38,9 @@ public class UserController {
 	private HeldRepository heldRepository;
 
 	@Autowired
+	private UserRepository userRepository;
+
+	@Autowired
 	private UserService userService;
 
 	@GetMapping("helden")
@@ -41,27 +51,27 @@ public class UserController {
 	@GetMapping("held/{id}")
 	public String getHeld(@PathVariable("id")BigInteger id) throws JsonProcessingException {
 		ObjectMapper om = new ObjectMapper();
-
-		return om.writeValueAsString(apiService.getHeldenDaten(id));
+		SecurityUtils.checkLogin();
+		UserEntity user = SecurityUtils.getCurrentUser();
+		Optional<HeldEntity> heldEntityOptional = this.heldRepository.findFirstByIdOrderByVersion(id);
+		if(!heldEntityOptional.isPresent()) {
+			throw new HeldNotFoundException();
+		}
+		HeldEntity held = heldEntityOptional.get();
+		if(held.getUserId() != user.getId()) {
+			SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);
+		}
+		return om.writeValueAsString(apiService.getHeldenDaten(id, held.getVersion()));
 	}
 
 	@GetMapping("helden/all")
 	public List<Held> getAllHelden() {
-
-		String xml = "<helden>" + heldRepository.findAll()
+		SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);
+		return this.userRepository.findAll()
 				.stream()
-				.map(held -> held.getXml())
-				.reduce((a,b) -> a+b)
-				+ "</helden>";
-
-		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(Helden.class);
-			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			Helden daten = (Helden) jaxbUnmarshaller.unmarshal(new StringReader(xml));
-			return daten.getHeld();
-		} catch (JAXBException e) {
-			throw new RuntimeException(e);
-		}
+				.map(user -> this.apiService.getAllHelden(user.getToken()))
+				.flatMap(e-> e.stream())
+				.collect(Collectors.toList());
 
 
 	}

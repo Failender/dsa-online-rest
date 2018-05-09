@@ -1,4 +1,4 @@
-package de.failender.dsaonline.heldensoftware.exception;
+package de.failender.dsaonline.exceptions;
 
 public class ExchangeException extends RuntimeException{
 

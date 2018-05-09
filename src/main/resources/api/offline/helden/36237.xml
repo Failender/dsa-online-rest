@@ -2,8 +2,8 @@
 <?xml-stylesheet type="text/xsl" ?><daten>
 <config>
 <rsmodell>zone</rsmodell>
-<datum>28.04.2018</datum>
-<uhrzeit>13:23</uhrzeit>
+<datum>08.05.2018</datum>
+<uhrzeit>22:56</uhrzeit>
 <geldkreise>false</geldkreise>
 <metatalente>false</metatalente>
 <zauberquellen>true</zauberquellen>
@@ -83,7 +83,7 @@
 <kultur>Thorwal</kultur>
 <aspregeneration>1W6+1</aspregeneration>
 <leregeneration>1W6</leregeneration>
-<heldenversion>050503</heldenversion>
+<heldenversion>050504</heldenversion>
 <wundschwelle>6</wundschwelle>
 </angaben>
 <eigenschaften>
@@ -2541,6 +2541,2052 @@
 </gegenstand>
 </gegenstaende>
 <verbindungen/>
+<ereignisse>
+<ereignis>
+<aktion>EINSTELLUNG</aktion>
+<alterzustand/>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand/>
+<object>max GP für Helden: 110</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>EINSTELLUNG</aktion>
+<alterzustand/>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand/>
+<object>max Eigenschafts-GP für Helden: 100</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>EINSTELLUNG</aktion>
+<alterzustand/>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand/>
+<object>max Eigenschafts-Wert für Helden: 14</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>RKP</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>5 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Rasse: Thorwaler</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>RKP</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>4 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Kultur: Thorwal</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>RKP</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>29 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Profession: Halle des Windes zu Olport</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>EIGENSCHAFTEN</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>12 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>13</neuerzustand>
+<object>Mut: 13</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>EIGENSCHAFTEN</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>14 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>14</neuerzustand>
+<object>Klugheit: 14</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>EIGENSCHAFTEN</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>14 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>14</neuerzustand>
+<object>Intuition: 14</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>EIGENSCHAFTEN</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>12 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>12</neuerzustand>
+<object>Charisma: 12</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>EIGENSCHAFTEN</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>11 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>11</neuerzustand>
+<object>Fingerfertigkeit: 11</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>EIGENSCHAFTEN</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>14 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>14</neuerzustand>
+<object>Gewandtheit: 14</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>EIGENSCHAFTEN</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>11 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>12</neuerzustand>
+<object>Konstitution: 12</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>EIGENSCHAFTEN</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>12 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>13</neuerzustand>
+<object>Körperkraft: 13</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>EIGENSCHAFTEN</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>0 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Sozialstatus: 5</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>TALENT</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>17 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Hiebwaffen: 4</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>TALENT</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>22 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Hiebwaffen: 5</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>TALENT</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>27 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>6</neuerzustand>
+<object>Hiebwaffen: 6</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>TALENT</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>21 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Ritualkenntnis: Gildenmagie: 4</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>TALENT</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>28 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Ritualkenntnis: Gildenmagie: 5</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>12 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>3</neuerzustand>
+<object>Fortifex arkane Wand [Magier]: 3</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>17 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Fortifex arkane Wand [Magier]: 4</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>2 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Aeolitus Windgebraus [Magier]: 4</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>4 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Aeolitus Windgebraus [Magier]: 5</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>5 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>6</neuerzustand>
+<object>Aeolitus Windgebraus [Magier]: 6</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>4 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Flim Flam Funkel [Magier]: 5</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>5 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>6</neuerzustand>
+<object>Flim Flam Funkel [Magier]: 6</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>5 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>6</neuerzustand>
+<object>Silentium [Magier] (HZ): 6</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>6 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>7</neuerzustand>
+<object>Silentium [Magier] (HZ): 7</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>5 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>6</neuerzustand>
+<object>Windstille [Magier] (HZ): 6</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>6 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>7</neuerzustand>
+<object>Windstille [Magier] (HZ): 7</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>8 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>8</neuerzustand>
+<object>Windstille [Magier] (HZ): 8</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>9 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>9</neuerzustand>
+<object>Windstille [Magier] (HZ): 9</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>11 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>10</neuerzustand>
+<object>Windstille [Magier] (HZ): 10</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>7 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>6</neuerzustand>
+<object>Solidirid Weg aus Licht [Magier] (HZ): 6</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>8 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>7</neuerzustand>
+<object>Solidirid Weg aus Licht [Magier] (HZ): 7</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>8 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Adlerauge Luchsenohr [Magier]: 4</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>11 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Adlerauge Luchsenohr [Magier]: 5</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>1 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Orcanofaxius Luftstrahl [Magier]: 0</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>1 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>1</neuerzustand>
+<object>Orcanofaxius Luftstrahl [Magier]: 1</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>2 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>2</neuerzustand>
+<object>Orcanofaxius Luftstrahl [Magier]: 2</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>3 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>3</neuerzustand>
+<object>Orcanofaxius Luftstrahl [Magier]: 3</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>8 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Orcanofaxius Luftstrahl [Magier]: 4</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>11 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Orcanofaxius Luftstrahl [Magier]: 5</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>14 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>6</neuerzustand>
+<object>Orcanofaxius Luftstrahl [Magier]: 6</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>2 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Pfeil der Luft [Magier]: 0</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>8 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Wellenlauf [Druide]: 0</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>6 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>1</neuerzustand>
+<object>Wellenlauf [Druide]: 1</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>14 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>2</neuerzustand>
+<object>Wellenlauf [Druide]: 2</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>22 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>3</neuerzustand>
+<object>Wellenlauf [Druide]: 3</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>2 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Mahlstrom [Magier]: 0</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>2 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>1</neuerzustand>
+<object>Mahlstrom [Magier]: 1</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>4 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>2</neuerzustand>
+<object>Mahlstrom [Magier]: 2</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>9 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>3</neuerzustand>
+<object>Mahlstrom [Magier]: 3</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>13 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Mahlstrom [Magier]: 4</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>17 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Mahlstrom [Magier]: 5</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>21 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>6</neuerzustand>
+<object>Mahlstrom [Magier]: 6</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>25 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>7</neuerzustand>
+<object>Mahlstrom [Magier]: 7</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>3 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Hartes schmelze! [Magier]: 0</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>2 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>1</neuerzustand>
+<object>Hartes schmelze! [Magier]: 1</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>6 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>2</neuerzustand>
+<object>Hartes schmelze! [Magier]: 2</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>9 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>3</neuerzustand>
+<object>Hartes schmelze! [Magier]: 3</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>ZAUBER</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>13 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Hartes schmelze! [Magier]: 4</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>SF</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>6 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Linkhand</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>SF</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>38 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Regeneration I</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>SF</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>56 AP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Stabzauber: Fackel</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>VORTEILE</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>0 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Aberglaube: 5</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>VORTEILE</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>0 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Akademische Ausbildung (Magier)</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>VORTEILE</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>-5 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Arroganz: 5</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>VORTEILE</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>-7 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Artefaktgebunden</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>VORTEILE</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>-4 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Autoritätsgläubig: 8</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>VORTEILE</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>-7 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Hitzeempfindlichkeit</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>VORTEILE</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>-5 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Impulsiv</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>VORTEILE</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>0 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Jähzorn: 6</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>VORTEILE</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>0 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Neugier: 7</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>VORTEILE</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>0 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Randgruppe</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>VORTEILE</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>-6 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Sucht: Alkohol (6)</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>VORTEILE</aktion>
+<alterzustand>0</alterzustand>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar>0 GP</kommentar>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Vollzauberer</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>Ereignis eingeben</aktion>
+<alterzustand/>
+<ap>1500</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:40</date>
+<kp>0</kp>
+<kommentar> Gesamt AP: 1500 Verfügbare AP: 1500</kommentar>
+<lep>0</lep>
+<neuerzustand/>
+<object>Abenteuerpunkte (Hinzugewinn)</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>Eigenschaft steigern</aktion>
+<alterzustand>14</alterzustand>
+<ap>-410</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:41</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>15</neuerzustand>
+<object>Gewandtheit</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>Sonderfertigkeit hinzugefügt</aktion>
+<alterzustand/>
+<ap>-100</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:41</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand/>
+<object>Beidhändiger Kampf I</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>Sonderfertigkeit hinzugefügt</aktion>
+<alterzustand/>
+<ap>-400</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:41</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand/>
+<object>Beidhändiger Kampf II</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>Sonderfertigkeit hinzugefügt</aktion>
+<alterzustand/>
+<ap>-200</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:47</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand/>
+<object>Wuchtschlag</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>Nahkampftalent steigern</aktion>
+<alterzustand>6;5;1</alterzustand>
+<ap>-41</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.07.2017 23:57</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>7;5;1</neuerzustand>
+<object>Hiebwaffen</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>Sonderfertigkeit hinzugefügt</aktion>
+<alterzustand/>
+<ap>-160</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.07.2017 23:57</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand/>
+<object>Talentspezialisierung Hiebwaffen (Skraja)</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>Nahkampftalent steigern</aktion>
+<alterzustand>7;5;1</alterzustand>
+<ap>-48</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.07.2017 23:58</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>8;5;1</neuerzustand>
+<object>Hiebwaffen</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>Nahkampftalent steigern</aktion>
+<alterzustand>8;5;1</alterzustand>
+<ap>-55</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.07.2017 23:58</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>9;5;1</neuerzustand>
+<object>Hiebwaffen</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>4</alterzustand>
+<ap>-17</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.07.2017 23:58</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Boote fahren</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>5</alterzustand>
+<ap>-21</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.07.2017 23:58</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>6</neuerzustand>
+<object>Boote fahren</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>6</alterzustand>
+<ap>-25</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.07.2017 23:58</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>7</neuerzustand>
+<object>Boote fahren</object>
+<version>HS 5.5.2</version>
+</ereignis>
+<ereignis>
+<aktion>Ereignis eingeben</aktion>
+<alterzustand/>
+<ap>250</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>06.08.2017 22:01</date>
+<kp>0</kp>
+<kommentar>Zweihörnigen Kopfschwänzler gefangen Gesamt AP: 250 Verfügbare AP: 250</kommentar>
+<lep>0</lep>
+<neuerzustand/>
+<object>Abenteuerpunkte (Hinzugewinn)</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>7</alterzustand>
+<ap>-19</ap>
+<asp>0</asp>
+<bemerkung>SE, Selbststudium</bemerkung>
+<date>06.08.2017 22:02</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>8</neuerzustand>
+<object>Boote fahren</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber aktivieren</aktion>
+<alterzustand/>
+<ap>-20</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>06.08.2017 22:02</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>0</neuerzustand>
+<object>Caldofrigo heiß und kalt [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>0</alterzustand>
+<ap>-4</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>06.08.2017 22:02</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>1</neuerzustand>
+<object>Caldofrigo heiß und kalt [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>1</alterzustand>
+<ap>-9</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>06.08.2017 22:02</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>2</neuerzustand>
+<object>Caldofrigo heiß und kalt [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>2</alterzustand>
+<ap>-15</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>06.08.2017 22:02</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>3</neuerzustand>
+<object>Caldofrigo heiß und kalt [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>3</alterzustand>
+<ap>-21</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>06.08.2017 22:02</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Caldofrigo heiß und kalt [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>4</alterzustand>
+<ap>-4</ap>
+<asp>0</asp>
+<bemerkung>SE, Gegenseitiges Lehren</bemerkung>
+<date>06.08.2017 22:02</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Odem Arcanum [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>7</alterzustand>
+<ap>-10</ap>
+<asp>0</asp>
+<bemerkung>SE, Selbststudium</bemerkung>
+<date>06.08.2017 22:02</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>8</neuerzustand>
+<object>Solidirid Weg aus Licht [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>1</alterzustand>
+<ap>-2</ap>
+<asp>0</asp>
+<bemerkung>SE, Gegenseitiges Lehren</bemerkung>
+<date>06.08.2017 22:03</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>2</neuerzustand>
+<object>Tierkunde</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>10</alterzustand>
+<ap>-28</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>06.08.2017 22:03</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>11</neuerzustand>
+<object>Windstille [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>1</alterzustand>
+<ap>-9</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>06.08.2017 22:04</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>2</neuerzustand>
+<object>Klettern</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>2</alterzustand>
+<ap>-15</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>06.08.2017 22:04</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>3</neuerzustand>
+<object>Athletik</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>3</alterzustand>
+<ap>-21</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>06.08.2017 22:04</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Athletik</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>2</alterzustand>
+<ap>-6</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>06.08.2017 22:05</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>3</neuerzustand>
+<object>Windhose [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>3</alterzustand>
+<ap>-8</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>06.08.2017 22:05</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Windhose [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>4</alterzustand>
+<ap>-28</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>06.08.2017 22:05</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Fortifex arkane Wand [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>2</alterzustand>
+<ap>-12</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>06.08.2017 22:05</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>3</neuerzustand>
+<object>Armatrutz [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>8</alterzustand>
+<ap>-22</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>06.08.2017 22:06</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>9</neuerzustand>
+<object>Solidirid Weg aus Licht [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Ereignis eingeben</aktion>
+<alterzustand/>
+<ap>400</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>03.09.2017 21:18</date>
+<kp>0</kp>
+<kommentar>Der Turm der perversen ASP Gesamt AP: 400 Verfügbare AP: 400</kommentar>
+<lep>0</lep>
+<neuerzustand/>
+<object>Abenteuerpunkte (Hinzugewinn)</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>4</alterzustand>
+<ap>-28</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.09.2017 21:18</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Caldofrigo heiß und kalt [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>0</alterzustand>
+<ap>-2</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.09.2017 21:18</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>1</neuerzustand>
+<object>Pfeil der Luft [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>1</alterzustand>
+<ap>-6</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.09.2017 21:18</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>2</neuerzustand>
+<object>Pfeil der Luft [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>5</alterzustand>
+<ap>-14</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.09.2017 21:18</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>6</neuerzustand>
+<object>Odem Arcanum [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>4</alterzustand>
+<ap>-11</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.09.2017 21:18</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Windhose [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>1</alterzustand>
+<ap>-6</ap>
+<asp>0</asp>
+<bemerkung>SE, Gegenseitiges Lehren</bemerkung>
+<date>03.09.2017 21:19</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>2</neuerzustand>
+<object>Singen</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>4</alterzustand>
+<ap>-17</ap>
+<asp>0</asp>
+<bemerkung>SE, Gegenseitiges Lehren</bemerkung>
+<date>03.09.2017 21:19</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Athletik</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>5</alterzustand>
+<ap>-34</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.09.2017 21:19</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>6</neuerzustand>
+<object>Athletik</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>2</alterzustand>
+<ap>-15</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.09.2017 21:19</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>3</neuerzustand>
+<object>Klettern</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Nahkampftalent steigern</aktion>
+<alterzustand>9;7;2</alterzustand>
+<ap>-65</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.09.2017 21:20</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>10;7;2</neuerzustand>
+<object>Hiebwaffen</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>3</alterzustand>
+<ap>-21</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.09.2017 21:20</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Selbstbeherrschung</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>4</alterzustand>
+<ap>-28</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.09.2017 21:20</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Sinnenschärfe</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>3</alterzustand>
+<ap>-21</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.09.2017 21:21</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Klettern</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>2</alterzustand>
+<ap>-9</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.09.2017 21:21</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>3</neuerzustand>
+<object>Attributo [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>5</alterzustand>
+<ap>-14</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.09.2017 21:21</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>6</neuerzustand>
+<object>Windhose [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>4</alterzustand>
+<ap>-17</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.09.2017 21:22</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Wettermeisterschaft [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>11</alterzustand>
+<ap>-32</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>03.09.2017 21:23</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>12</neuerzustand>
+<object>Windstille [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>3</alterzustand>
+<ap>-13</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>08.09.2017 16:32</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Lehren</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>8</alterzustand>
+<ap>-34</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>08.09.2017 16:36</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>9</neuerzustand>
+<object>Boote fahren</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Ereignis eingeben</aktion>
+<alterzustand/>
+<ap>200</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>07.10.2017 15:05</date>
+<kp>0</kp>
+<kommentar>Phileasson - ausgepeitscht worden Gesamt AP: 200 Verfügbare AP: 200</kommentar>
+<lep>0</lep>
+<neuerzustand/>
+<object>Abenteuerpunkte (Hinzugewinn)</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>6</alterzustand>
+<ap>-8</ap>
+<asp>0</asp>
+<bemerkung>SE, Gegenseitiges Lehren</bemerkung>
+<date>07.10.2017 15:05</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>7</neuerzustand>
+<object>Orientierung</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>4</alterzustand>
+<ap>-6</ap>
+<asp>0</asp>
+<bemerkung>SE, Gegenseitiges Lehren</bemerkung>
+<date>07.10.2017 15:05</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>5</neuerzustand>
+<object>Magiekunde</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>0</alterzustand>
+<ap>-1</ap>
+<asp>0</asp>
+<bemerkung>SE, Gegenseitiges Lehren</bemerkung>
+<date>07.10.2017 15:05</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>1</neuerzustand>
+<object>Wildnisleben</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>5</alterzustand>
+<ap>-21</ap>
+<asp>0</asp>
+<bemerkung>SE, Gegenseitiges Lehren</bemerkung>
+<date>07.10.2017 15:06</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>6</neuerzustand>
+<object>Zechen</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>2</alterzustand>
+<ap>-9</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>07.10.2017 15:07</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>3</neuerzustand>
+<object>Geografie</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>1</alterzustand>
+<ap>-6</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>07.10.2017 15:07</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>2</neuerzustand>
+<object>Überreden</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>2</alterzustand>
+<ap>-9</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>07.10.2017 15:07</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>3</neuerzustand>
+<object>Überreden</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>3</alterzustand>
+<ap>-13</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>07.10.2017 15:07</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Überreden</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>5</alterzustand>
+<ap>-34</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>07.10.2017 15:07</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>6</neuerzustand>
+<object>Caldofrigo heiß und kalt [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>6</alterzustand>
+<ap>-41</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>07.10.2017 15:07</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>7</neuerzustand>
+<object>Caldofrigo heiß und kalt [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>2</alterzustand>
+<ap>-9</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>07.10.2017 15:07</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>3</neuerzustand>
+<object>Heilkunde: Krankheiten</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Talent steigern</aktion>
+<alterzustand>3</alterzustand>
+<ap>-13</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>07.10.2017 15:08</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>4</neuerzustand>
+<object>Heilkunde: Krankheiten</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>5</alterzustand>
+<ap>-21</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>07.10.2017 15:08</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>6</neuerzustand>
+<object>Wettermeisterschaft [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>6</alterzustand>
+<ap>-25</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>07.10.2017 15:08</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>7</neuerzustand>
+<object>Wettermeisterschaft [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Zauber steigern</aktion>
+<alterzustand>6</alterzustand>
+<ap>-17</ap>
+<asp>0</asp>
+<bemerkung>Selbststudium</bemerkung>
+<date>07.10.2017 15:08</date>
+<kp>0</kp>
+<kommentar/>
+<lep>0</lep>
+<neuerzustand>7</neuerzustand>
+<object>Windhose [Magier]</object>
+<version>HS 5.5.3</version>
+</ereignis>
+<ereignis>
+<aktion>Änderungskontrolle</aktion>
+<alterzustand/>
+<ap>0</ap>
+<asp>0</asp>
+<bemerkung/>
+<date>08.05.2018 22:56</date>
+<kp>0</kp>
+<kommentar>[ALLESHELDENSOFTWARE]</kommentar>
+<lep>0</lep>
+<neuerzustand/>
+<object>Kontrollsignatur fehlt. Änderungskontrolle wieder aktiviert.</object>
+<version>HS 5.5.4</version>
+</ereignis>
+</ereignisse>
 <kampfsets>
 <kampfset defaultrsmodel="true" inbenutzung="true" nr="1" tzm="true">
 <raufen>

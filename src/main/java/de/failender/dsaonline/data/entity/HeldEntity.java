@@ -25,7 +25,6 @@ public class HeldEntity {
 	private Integer version;
 
 	private boolean active;
-	private String xml;
 
 	@CreatedDate
 	@Temporal(TemporalType.TIMESTAMP)
