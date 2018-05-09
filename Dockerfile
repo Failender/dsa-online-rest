@@ -2,7 +2,7 @@ FROM maven:3.5.0-jdk-8-alpine
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY . /usr/src/app
-RUN mvn install -B
+RUN mvn install -B -DskipTests
 
 
 FROM java:8
