@@ -16,6 +16,7 @@ public class SecurityUtils {
 
 	public static final String CREATE_USER = "CREATE_USER";
 	public static final String VIEW_ALL = "VIEW_ALL";
+	public static final String EDIT_ALL ="EDIT_ALL";
 
 	public static void checkRight(String right) {
 
