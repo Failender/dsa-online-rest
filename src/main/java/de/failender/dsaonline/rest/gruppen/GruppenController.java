@@ -1,21 +1,26 @@
 package de.failender.dsaonline.rest.gruppen;
 
+import de.failender.dsaonline.data.entity.GruppeEntity;
 import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.GruppeRepository;
 import de.failender.dsaonline.data.repository.HeldRepository;
+import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.security.SecurityUtils;
+import de.failender.dsaonline.service.ApiService;
+import de.failender.dsaonline.service.HeldenService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 import java.math.BigInteger;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/gruppen")
+@Slf4j
 public class GruppenController {
 
 
@@ -24,6 +29,15 @@ public class GruppenController {
 
 	@Autowired
 	private HeldRepository heldRepository;
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Autowired
+	private ApiService apiService;
+
+	@Autowired
+	private HeldenService heldenService;
 
 	@GetMapping
 	public List<DropdownData> getAllGruppen() {
@@ -45,5 +59,35 @@ public class GruppenController {
 			SecurityUtils.checkRight(SecurityUtils.EDIT_ALL);
 		}
 		this.heldRepository.updateHeldenGruppe(gruppeid,heldid);
+	}
+
+	@GetMapping("includeHelden")
+	public Collection<GruppeIncludingHelden> getGruppenIncludingHelden() {
+		SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);
+		this.heldRepository.findAll()
+				.forEach(System.out::println);
+		System.out.println(this.heldRepository.findAll().size());
+
+
+		List<GruppeEntity> gruppen = gruppeRepository.findAll();
+		Map<String, GruppeIncludingHelden> value = gruppen
+				.stream()
+				.collect(Collectors.toMap(gruppe -> gruppe.getName(), gruppe -> new GruppeIncludingHelden(gruppe.getName(), gruppe.getId(), new ArrayList<>())));
+		userRepository.findAll()
+				.parallelStream()
+				.filter(user -> user.getToken() != null)
+				.map(user -> apiService.getAllHelden(user.getToken()))
+				.flatMap(List::stream)
+				.forEach(held -> {
+					Optional<HeldEntity> heldEntityOptional = this.heldRepository.findById(held.getHeldenid());
+					if(heldEntityOptional.isPresent()) {
+						value.get(heldEntityOptional.get().getGruppe().getName()).getHelden().add(heldenService.mapToHeldenInfo(heldEntityOptional.get()));
+					} else {
+						log.error("The held {} with the id {} is not loaded in the database" ,  held.getName(), held.getHeldenid());
+					}
+				});
+
+
+		return value.values();
 	}
 }

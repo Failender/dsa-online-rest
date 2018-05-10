@@ -30,9 +30,13 @@ public class HeldenService {
 		UserEntity user = SecurityUtils.getCurrentUser();
 		List<HeldEntity> heldEntities = heldRepository.findByUserIdAndActive(user.getId(), true);
 		return heldEntities.stream()
-				.map(heldEntity -> new HeldenInfo(heldEntity.getName(), heldEntity.getCreatedDate(), heldEntity.getVersion(), heldEntity.getGruppe().getName(), heldEntity.getId()))
+				.map(this::mapToHeldenInfo)
 				.collect(Collectors.toList());
 
+	}
+
+	public HeldenInfo mapToHeldenInfo(HeldEntity heldEntity) {
+		return new HeldenInfo(heldEntity.getName(), heldEntity.getCreatedDate(), heldEntity.getVersion(), heldEntity.getGruppe().getName(), heldEntity.getId());
 	}
 
 	public Daten getHeldenDaten(BigInteger id) {

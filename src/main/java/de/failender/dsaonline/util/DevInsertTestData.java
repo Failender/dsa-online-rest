@@ -67,7 +67,6 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 						userData.roles.forEach(role -> {
 							this.userService.addUserRole(userEntity, role);
 						});
-						userHeldenService.updateHeldenForUser(userEntity);
 					}
 			);
 		} catch (IOException e) {

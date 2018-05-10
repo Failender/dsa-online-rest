@@ -2,28 +2,20 @@ package de.failender.dsaonline.rest.user;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.failender.dsaonline.data.entity.HeldEntity;
-import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
-import de.failender.dsaonline.exceptions.HeldNotFoundException;
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.ApiService;
+import de.failender.dsaonline.service.HeldenService;
 import de.failender.dsaonline.service.UserService;
+import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.heldenliste.Held;
-import de.failender.heldensoftware.xml.heldenliste.Helden;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import java.io.StringReader;
 import java.math.BigInteger;
-import java.security.Security;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -41,6 +33,9 @@ public class UserController {
 	private UserRepository userRepository;
 
 	@Autowired
+	private HeldenService heldenService;
+
+	@Autowired
 	private UserService userService;
 
 	@GetMapping("helden")
@@ -51,17 +46,9 @@ public class UserController {
 	@GetMapping("held/{id}")
 	public String getHeld(@PathVariable("id")BigInteger id) throws JsonProcessingException {
 		ObjectMapper om = new ObjectMapper();
-		SecurityUtils.checkLogin();
-		UserEntity user = SecurityUtils.getCurrentUser();
-		Optional<HeldEntity> heldEntityOptional = this.heldRepository.findFirstByIdOrderByVersion(id);
-		if(!heldEntityOptional.isPresent()) {
-			throw new HeldNotFoundException();
-		}
-		HeldEntity held = heldEntityOptional.get();
-		if(held.getUserId() != user.getId()) {
-			SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);
-		}
-		return om.writeValueAsString(apiService.getHeldenDaten(id, held.getVersion()));
+		Daten daten = heldenService.getHeldenDaten(id);
+
+		return om.writeValueAsString(daten);
 	}
 
 	@GetMapping("helden/all")

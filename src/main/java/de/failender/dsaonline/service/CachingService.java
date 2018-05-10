@@ -48,6 +48,7 @@ public class CachingService {
 			if(age > cacheDuration){
 				return null;
 			}
+			log.info("Found cache for heldendaten {}", heldid);
 			return JaxbUtil.datenFromFile(file);
 		}
 		return null;
@@ -61,6 +62,7 @@ public class CachingService {
 			if(age > cacheDuration){
 				return null;
 			}
+			log.info("Found cache for allhelden with token {}", token);
 			return JaxbUtil.heldenFromFile(file);
 		}
 		return null;
