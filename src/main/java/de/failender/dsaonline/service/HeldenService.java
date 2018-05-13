@@ -3,6 +3,7 @@ package de.failender.dsaonline.service;
 import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.HeldRepository;
+import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.exceptions.HeldNotFoundException;
 import de.failender.dsaonline.rest.helden.HeldenInfo;
 import de.failender.dsaonline.security.SecurityUtils;
@@ -26,6 +27,9 @@ public class HeldenService {
 	@Autowired
 	private ApiService apiService;
 
+	@Autowired
+	private UserRepository userRepository;
+
 	public List<HeldenInfo> getAllHeldenForCurrentUser() {
 		UserEntity user = SecurityUtils.getCurrentUser();
 		List<HeldEntity> heldEntities = heldRepository.findByUserIdAndActive(user.getId(), true);
@@ -48,8 +52,12 @@ public class HeldenService {
 		UserEntity user = SecurityUtils.getCurrentUser();
 		if(heldEntityOptional.get().getUserId() != user.getId()) {
 			SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);
+			UserEntity owningUser = this.userRepository.findById(heldEntityOptional.get().getUserId()).get();
+			return apiService.getHeldenDaten(id, heldEntityOptional.get().getVersion(), owningUser.getToken());
+		} else {
+			return apiService.getHeldenDaten(id, heldEntityOptional.get().getVersion());
 		}
-		return apiService.getHeldenDaten(id, heldEntityOptional.get().getVersion());
+
 
 	}
 }

@@ -56,6 +56,9 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 			List<UserData> data = om.readValue(is, new TypeReference<List<UserData>>(){});
 			data.forEach(
 					userData -> {
+						if(userData.getToken() == null) {
+							System.out.println("Token is null. WTF");
+						}
 						String gruppe = null;
 						if(userData.getGruppe() != null) {
 							gruppe = userData.getGruppe();
