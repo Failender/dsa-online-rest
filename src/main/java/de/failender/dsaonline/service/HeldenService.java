@@ -36,11 +36,11 @@ public class HeldenService {
 	}
 
 	public HeldenInfo mapToHeldenInfo(HeldEntity heldEntity) {
-		return new HeldenInfo(heldEntity.getName(), heldEntity.getCreatedDate(), heldEntity.getVersion(), heldEntity.getGruppe().getName(), heldEntity.getId());
+		return new HeldenInfo(heldEntity.getName(), heldEntity.getId().getCreatedDate(), heldEntity.getVersion(), heldEntity.getGruppe().getName(), heldEntity.getId().getId());
 	}
 
 	public Daten getHeldenDaten(BigInteger id) {
-		Optional<HeldEntity> heldEntityOptional = this.heldRepository.findById(id);
+		Optional<HeldEntity> heldEntityOptional = this.heldRepository.findByIdId(id);
 		if(!heldEntityOptional.isPresent()) {
 			log.error("Held with id " + id + " could not be found");
 			throw new HeldNotFoundException();

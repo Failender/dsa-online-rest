@@ -1,9 +1,9 @@
 package de.failender.dsaonline.data.entity;
 
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 
@@ -12,8 +12,8 @@ import java.util.Date;
 @Data
 public class HeldEntity {
 
-	@Id
-	private BigInteger id;
+	@EmbeddedId
+	private HeldEntityId id;
 
 	private Integer userId;
 	private String name;
@@ -26,7 +26,10 @@ public class HeldEntity {
 
 	private boolean active;
 
-	@CreatedDate
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createdDate;
+	@Embeddable
+	@Data
+	public static class HeldEntityId implements Serializable {
+		private BigInteger id;
+		private Date createdDate;
+	}
 }

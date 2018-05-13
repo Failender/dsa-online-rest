@@ -16,6 +16,7 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,7 +31,7 @@ public abstract class DsaOnlineTest {
 
 	@Before
 	public void setup() {
-		UserEntity user = this.userRepository.findByName("Failender");
+		UserEntity user = this.userRepository.findByName("Admin");
 		SecurityContextHolder.getContext().setAuthentication(
 				new UsernamePasswordAuthenticationToken(user, null, loadUserRights(user.getId()))
 		);
@@ -38,6 +39,10 @@ public abstract class DsaOnlineTest {
 
 	private List<SimpleGrantedAuthority> loadUserRights(int userId) {
 		return userRepository.getUserRights(userId).stream().map(right -> new SimpleGrantedAuthority(right)).collect(Collectors.toList());
+	}
+
+	protected InputStream getResource(String path) {
+		return DsaOnlineTest.class.getClassLoader().getResourceAsStream(path);
 	}
 
 

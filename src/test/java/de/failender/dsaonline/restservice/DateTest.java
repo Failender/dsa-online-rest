@@ -6,7 +6,7 @@ import org.flywaydb.test.annotation.FlywayTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class DemoTest extends DsaOnlineTest {
+public class DateTest extends DsaOnlineTest {
 
 	@Autowired
 	private ApiService apiService;

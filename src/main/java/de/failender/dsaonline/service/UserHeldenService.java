@@ -1,12 +1,12 @@
 package de.failender.dsaonline.service;
 
+import de.failender.dsaonline.data.entity.GruppeEntity;
 import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.util.DateUtil;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -17,12 +17,14 @@ import java.util.Optional;
 @Slf4j
 public class UserHeldenService {
 
+	private final HeldRepository heldRepository;
 
-	@Autowired
-	private HeldRepository heldRepository;
+	private final ApiService apiService;
 
-	@Autowired
-	private ApiService apiService;
+	public UserHeldenService(HeldRepository heldRepository, ApiService apiService) {
+		this.heldRepository = heldRepository;
+		this.apiService = apiService;
+	}
 
 
 	public void updateHeldenForUser(UserEntity userEntity, List<Held> helden) {
@@ -41,7 +43,7 @@ public class UserHeldenService {
 					//We got a new version of this xmlHeld
 					heldEntity.setActive(false);
 					this.heldRepository.save(heldEntity);
-					this.persistHeld(heldOptional.get(), userEntity, heldEntity.getVersion()+1);
+					this.persistHeld(heldOptional.get(), userEntity, heldEntity.getVersion()+1, heldEntity.getGruppe());
 				} else {
 					log.info("Held with name {} is already on latest version", heldEntity.getName());
 				}
@@ -53,8 +55,9 @@ public class UserHeldenService {
 			heldEntity.setGruppe(userEntity.getGruppe());
 			heldEntity.setName(held.getName());
 			heldEntity.setVersion(1);
-			heldEntity.setCreatedDate(new Date());
-			heldEntity.setId(held.getHeldenid());
+			heldEntity.setId(new HeldEntity.HeldEntityId());
+			heldEntity.getId().setCreatedDate(DateUtil.convert(held.getHeldlastchange()));
+			heldEntity.getId().setId(held.getHeldenid());
 			heldEntity.setUserId(userEntity.getId());
 			log.info("Saving new held {} for user {}", heldEntity.getName(), userEntity.getName());
 			heldRepository.save(heldEntity);
@@ -70,15 +73,22 @@ public class UserHeldenService {
 
 	private boolean isOnlineVersionOlder(Held xmlHeld, HeldEntity heldEntity) {
 		Date lastEditedDate = DateUtil.convert(xmlHeld.getHeldlastchange());
-		return lastEditedDate.after(heldEntity.getCreatedDate());
+		System.out.println("DATES");
+		System.out.println(lastEditedDate.getTime());
+		System.out.println(heldEntity.getId().getCreatedDate().getTime());
+		System.out.println(lastEditedDate.after(heldEntity.getId().getCreatedDate()));
+		return lastEditedDate.after(heldEntity.getId().getCreatedDate());
 	}
 
-	private void persistHeld(Held xmlHeld, UserEntity user, int version) {
+	private void persistHeld(Held xmlHeld, UserEntity user, int version, GruppeEntity gruppeEntity) {
 		HeldEntity heldEntity = new HeldEntity();
-		heldEntity.setCreatedDate(DateUtil.convert(xmlHeld.getHeldlastchange()));
+		heldEntity.setId(new HeldEntity.HeldEntityId());
+		heldEntity.getId().setCreatedDate(DateUtil.convert(xmlHeld.getHeldlastchange()));
 		heldEntity.setUserId(user.getId());
 		heldEntity.setName(xmlHeld.getName());
 		heldEntity.setVersion(version);
+		heldEntity.getId().setId(xmlHeld.getHeldenid());
+		heldEntity.setGruppe(gruppeEntity);
 		this.heldRepository.save(heldEntity);
 	}
 }

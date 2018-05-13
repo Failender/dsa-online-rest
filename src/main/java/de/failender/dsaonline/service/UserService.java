@@ -8,7 +8,6 @@ import de.failender.dsaonline.exceptions.GroupNotFoundException;
 import de.failender.dsaonline.exceptions.UserAlreadyExistsException;
 import de.failender.dsaonline.rest.user.UserRegistration;
 import de.failender.dsaonline.security.SecurityUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.validation.ValidationException;
@@ -16,14 +15,15 @@ import javax.validation.ValidationException;
 @Service
 public class UserService {
 
-	@Autowired
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
+	private final GruppeRepository gruppeRepository;
+	private final UserHeldenService userHeldenService;
 
-	@Autowired
-	private GruppeRepository gruppeRepository;
-
-	@Autowired
-	private UserHeldenService userHeldenService;
+	public UserService(UserRepository userRepository, GruppeRepository gruppeRepository, UserHeldenService userHeldenService) {
+		this.userRepository = userRepository;
+		this.gruppeRepository = gruppeRepository;
+		this.userHeldenService = userHeldenService;
+	}
 
 	public UserEntity registerUser(UserRegistration userRegistration) {
 		SecurityUtils.checkRight(SecurityUtils.CREATE_USER);

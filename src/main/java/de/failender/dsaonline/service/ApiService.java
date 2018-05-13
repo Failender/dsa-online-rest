@@ -69,6 +69,9 @@ public class ApiService {
 	}
 
 	public List<Held> getAllHelden(String token) {
+		if(token == null) {
+			log.error("token for fetching all helden is null!");
+		}
 		List<Held> cache = cachingService.getAllHeldenCache(token);
 		if(cache != null) {
 			return cache;

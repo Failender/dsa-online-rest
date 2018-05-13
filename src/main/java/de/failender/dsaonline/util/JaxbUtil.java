@@ -1,7 +1,7 @@
 package de.failender.dsaonline.util;
 
-import de.failender.dsaonline.api.HeldenSoftwareAPIOffline;
 import de.failender.dsaonline.exceptions.CorruptXmlException;
+import de.failender.dsaonline.exceptions.ExchangeException;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import de.failender.heldensoftware.xml.heldenliste.Helden;
@@ -60,5 +60,33 @@ public class JaxbUtil {
 		} catch (JAXBException e) {
 			throw new CorruptXmlException(e);
 		}
+	}
+
+	public static Daten datenFromStream(InputStream is) {
+		try {
+			JAXBContext jaxbContext = JAXBContext.newInstance(Daten.class);
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			Daten daten = (Daten) jaxbUnmarshaller.unmarshal(is);
+			return daten;
+		} catch (JAXBException e) {
+			throw new CorruptXmlException(e);
+		} catch (Exception e) {
+			throw new ExchangeException(e);
+		}
+
+	}
+
+	public static List<Held> heldenFromStream(InputStream is) {
+		try {
+			JAXBContext jaxbContext = JAXBContext.newInstance(Helden.class);
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			Helden helden = (Helden) jaxbUnmarshaller.unmarshal(is);
+			return helden.getHeld();
+		} catch (JAXBException e) {
+			throw new CorruptXmlException(e);
+		} catch (Exception e) {
+			throw new ExchangeException(e);
+		}
+
 	}
 }

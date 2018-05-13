@@ -13,7 +13,8 @@ import java.util.Optional;
 public interface HeldRepository extends JpaRepository<HeldEntity, BigInteger> {
 	List<HeldEntity> findByUserIdAndActive(Integer userId, boolean active);
 
-	Optional<HeldEntity> findFirstByIdOrderByVersion(BigInteger id);
+	Optional<HeldEntity> findFirstByIdIdOrderByVersionDesc(BigInteger id);
+	Optional<HeldEntity> findByIdId(BigInteger id);
 
 	@Transactional
 	@Modifying
