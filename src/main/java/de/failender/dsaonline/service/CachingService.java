@@ -48,7 +48,7 @@ public class CachingService {
 			if(age > cacheDuration){
 				return null;
 			}
-			log.info("Found cache for heldendaten {}", heldid);
+			log.info("Found cache for heldendaten {}.{}", version, heldid);
 			return JaxbUtil.datenFromFile(file);
 		}
 		return null;

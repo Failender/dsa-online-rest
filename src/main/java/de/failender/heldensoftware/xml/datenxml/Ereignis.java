@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Objects;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "ereignis")
@@ -137,5 +138,30 @@ public class Ereignis {
 
 	public void setVersion(String version) {
 		this.version = version;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Ereignis)) return false;
+		Ereignis ereignis = (Ereignis) o;
+		return ap == ereignis.ap &&
+				asp == ereignis.asp &&
+				kp == ereignis.kp &&
+				lep == ereignis.lep &&
+				Objects.equals(aktion, ereignis.aktion) &&
+				Objects.equals(alterzustand, ereignis.alterzustand) &&
+				Objects.equals(bemerkung, ereignis.bemerkung) &&
+				Objects.equals(date, ereignis.date) &&
+				Objects.equals(kommentar, ereignis.kommentar) &&
+				Objects.equals(neuerzustand, ereignis.neuerzustand) &&
+				Objects.equals(object, ereignis.object) &&
+				Objects.equals(version, ereignis.version);
+	}
+
+	@Override
+	public int hashCode() {
+
+		return Objects.hash(aktion, alterzustand, ap, asp, bemerkung, date, kp, kommentar, lep, neuerzustand, object, version);
 	}
 }

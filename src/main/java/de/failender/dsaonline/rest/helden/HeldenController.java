@@ -23,8 +23,14 @@ public class HeldenController {
 		return heldenService.getAllHeldenForCurrentUser();
 	}
 
-	@GetMapping("held/{id}")
-	public Daten getHeldenDaten(@PathVariable BigInteger id) {
-		return heldenService.getHeldenDaten(id);
+	@GetMapping("held/{id}/{version}")
+	public Daten getHeldenDaten(@PathVariable BigInteger id, @PathVariable int version) {
+		return heldenService.getHeldenDaten(id, version);
 	}
+
+	@GetMapping("held/unterschied/{heldenid}/{from}/{to}")
+	public HeldenUnterschied calculateUnterschied(@PathVariable BigInteger heldenid, @PathVariable int from,@PathVariable int to) {
+		return this.heldenService.calculateUnterschied(heldenid, from, to);
+	}
+
 }

@@ -43,7 +43,7 @@ public class VersionTest extends DsaOnlineTest {
 		Mockito.when(apiService.getAllHelden(FAKE_TOKEN)).thenReturn(
 				JaxbUtil.heldenFromStream(getResource("helden/all.xml")),
 				JaxbUtil.heldenFromStream(getResource("helden/all2.xml")));
-		UserHeldenService userHeldenService = new UserHeldenService(heldRepository, apiService);
+		UserHeldenService userHeldenService = new UserHeldenService(heldRepository, userRepository, apiService);
 		UserService userService = new UserService(userRepository, gruppeRepository, userHeldenService);
 		UserEntity userEntity = userService.registerUser(new UserRegistration("TEST", null, FAKE_TOKEN, TEST_GRUPPE));
 
@@ -52,6 +52,6 @@ public class VersionTest extends DsaOnlineTest {
 		heldRepository.findAll().forEach(System.out::println);
 		Assertions.assertThat(heldRepository.findAll().size()).isEqualTo(2);
 
-		Assertions.assertThat(heldRepository.findFirstByIdIdOrderByVersionDesc(TORI_ID).get().getVersion()).isEqualTo(2);
+		Assertions.assertThat(heldRepository.findFirstByIdIdOrderByIdVersionDesc(TORI_ID).get().getVersion()).isEqualTo(2);
 	}
 }

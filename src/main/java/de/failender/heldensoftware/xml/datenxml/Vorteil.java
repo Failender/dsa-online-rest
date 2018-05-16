@@ -8,14 +8,12 @@
 
 package de.failender.heldensoftware.xml.datenxml;
 
+import de.failender.dsaonline.rest.helden.Unterscheidbar;
+
+import javax.xml.bind.annotation.*;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -72,7 +70,7 @@ import javax.xml.bind.annotation.XmlType;
     "auswahlen"
 })
 @XmlRootElement(name = "vorteil")
-public class Vorteil {
+public class Vorteil implements Unterscheidbar {
 
     @XmlElement(required = true)
     protected String bezeichner;

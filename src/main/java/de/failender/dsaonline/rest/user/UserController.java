@@ -43,14 +43,6 @@ public class UserController {
 		return apiService.getAllHelden();
 	}
 
-	@GetMapping("held/{id}")
-	public String getHeld(@PathVariable("id")BigInteger id) throws JsonProcessingException {
-		ObjectMapper om = new ObjectMapper();
-		Daten daten = heldenService.getHeldenDaten(id);
-
-		return om.writeValueAsString(daten);
-	}
-
 	@GetMapping("helden/all")
 	public List<Held> getAllHelden() {
 		SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);

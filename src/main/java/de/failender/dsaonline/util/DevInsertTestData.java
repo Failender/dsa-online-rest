@@ -2,13 +2,19 @@ package de.failender.dsaonline.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.GruppeRepository;
+import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.rest.user.UserRegistration;
 import de.failender.dsaonline.security.SecurityUtils;
+import de.failender.dsaonline.service.ApiService;
+import de.failender.dsaonline.service.CachingService;
 import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.dsaonline.service.UserService;
+import de.failender.heldensoftware.xml.datenxml.Daten;
+import de.failender.heldensoftware.xml.datenxml.Ereignis;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -22,10 +28,9 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.Charset;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @Service
 @Profile("dev")
@@ -41,7 +46,16 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	private UserHeldenService userHeldenService;
 
 	@Autowired
+	private HeldRepository heldRepository;
+
+	@Autowired
 	private GruppeRepository gruppeRepository;
+
+	@Autowired
+	private ApiService apiService;
+
+	@Autowired
+	private CachingService cachingService;
 
 
 	@Override
@@ -75,18 +89,29 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+		fakeNextVersion(heldRepository.findFirstByIdIdOrderByIdVersionDesc(BigInteger.valueOf(36222L)).get());
 
 
 
 		SecurityContextHolder.getContext().setAuthentication(null);
 	}
 
+	private void fakeNextVersion(HeldEntity heldEntity) {
 
-	private String randomName() {
-		byte[] array = new byte[7]; // length is bounded by 7
-		new Random().nextBytes(array);
-		String generatedString = new String(array, Charset.forName("UTF-8"));
-		return generatedString;
+
+		UserEntity userEntity = this.userRepository.findById(heldEntity.getUserId()).get();
+		Daten daten = this.apiService.getHeldenDaten(heldEntity.getId().getId(), heldEntity.getVersion(), userEntity.getToken());
+		heldEntity.setActive(false);
+		this.heldRepository.save(heldEntity);
+		heldEntity = heldEntity.clone();
+		heldEntity.setVersion(heldEntity.getVersion() + 1);
+		heldEntity.setActive(true);
+		this.heldRepository.save(heldEntity);
+		Ereignis fakeEreignis = new Ereignis();
+		fakeEreignis.setBemerkung("New Version");
+		fakeEreignis.setDate("22.11.2015 14:00");
+		daten.getEreignisse().getEreignis().add(fakeEreignis);
+		cachingService.setHeldenDatenCache(heldEntity.getId().getId(), heldEntity.getVersion(), daten);
 	}
 
 	@Data

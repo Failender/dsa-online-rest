@@ -14,7 +14,7 @@ public class DateTest extends DsaOnlineTest {
 	@Test
 	@FlywayTest
 	public void test() {
-		Assertions.assertThat(apiService.getAllHelden().size()).isEqualTo(3);
+		Assertions.assertThat(apiService.getAllHelden().size()).isEqualTo(0);
 
 	}
 }

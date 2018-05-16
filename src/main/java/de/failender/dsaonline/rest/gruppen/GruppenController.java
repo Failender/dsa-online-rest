@@ -79,7 +79,7 @@ public class GruppenController {
 				.map(user -> apiService.getAllHelden(user.getToken()))
 				.flatMap(List::stream)
 				.forEach(held -> {
-					Optional<HeldEntity> heldEntityOptional = this.heldRepository.findById(held.getHeldenid());
+					Optional<HeldEntity> heldEntityOptional = this.heldRepository.findFirstByIdIdOrderByIdVersionDesc(held.getHeldenid());
 					if(heldEntityOptional.isPresent()) {
 						value.get(heldEntityOptional.get().getGruppe().getName()).getHelden().add(heldenService.mapToHeldenInfo(heldEntityOptional.get()));
 					} else {

@@ -8,6 +8,8 @@
 
 package de.failender.heldensoftware.xml.datenxml;
 
+import de.failender.dsaonline.rest.helden.Unterscheidbar;
+
 import javax.xml.bind.annotation.*;
 import java.math.BigInteger;
 
@@ -80,7 +82,7 @@ import java.math.BigInteger;
     "mr"
 })
 @XmlRootElement(name = "zauber")
-public class Zauber {
+public class Zauber implements Unterscheidbar {
 
     @XmlElement(required = true)
     protected String name;
