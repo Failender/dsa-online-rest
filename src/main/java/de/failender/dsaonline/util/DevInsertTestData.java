@@ -14,7 +14,6 @@ import de.failender.dsaonline.service.CachingService;
 import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.dsaonline.service.UserService;
 import de.failender.heldensoftware.xml.datenxml.Daten;
-import de.failender.heldensoftware.xml.datenxml.Ereignis;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -26,11 +25,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Profile("dev")
@@ -81,37 +83,68 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 						}
 						UserRegistration userRegistration = new UserRegistration(userData.getName(), null, userData.getToken(), gruppe);
 						UserEntity userEntity = this.userService.registerUser(userRegistration);
-						userData.roles.forEach(role -> {
-							this.userService.addUserRole(userEntity, role);
-						});
+						userData.roles.forEach(role -> this.userService.addUserRole(userEntity, role));
 					}
 			);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
-		fakeNextVersion(heldRepository.findFirstByIdIdOrderByIdVersionDesc(BigInteger.valueOf(36222L)).get());
-
+		fakeVersions();
 
 
 		SecurityContextHolder.getContext().setAuthentication(null);
 	}
 
-	private void fakeNextVersion(HeldEntity heldEntity) {
+	//Only works in non jar'ed
+	private void fakeVersions() {
+
+		File dir = new File("src/main/resources/api/offline/versionfakes");
+		Map<BigInteger, List<File>> mapping = new HashMap<>();
+		for(File file: dir.listFiles()) {
+			BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);
+			mapping.computeIfAbsent(heldid, k -> new ArrayList<>()).add(file);
+
+		}
+		mapping.values().forEach(list -> list.sort((one,two) -> {
+			Integer firstVersion = Integer.valueOf(one.getName().split("\\.")[0]);
+			Integer secondVersion = Integer.valueOf(two.getName().split("\\.")[0]);
+			return firstVersion-secondVersion;
+		}));
+		mapping.entrySet().forEach(entry -> entry.getValue().forEach(this::fakeVersion));
+
+	}
+
+	private void fakeVersion(File file) {
+		//TODO: This wont work right now, because the default helden-xml format is different then the one the api serves
+//		int version = Integer.valueOf(file.getName().split("\\.")[0]);
+//		BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);
+//		Unmarshaller unmarshaller = JaxbUtil.getUnmarshaller(Daten.class);
+//		try {
+//			System.out.println(file.getAbsoluteFile());
+//			Daten daten = (Daten) unmarshaller.unmarshal(file);
+//			this.fakeVersion(daten, heldid, version);
+//		} catch (JAXBException e) {
+//			throw new RuntimeException(e);
+//		}
+	}
+
+	private void fakeVersion(Daten daten, BigInteger heldid, int version ) {
 
 
-		UserEntity userEntity = this.userRepository.findById(heldEntity.getUserId()).get();
-		Daten daten = this.apiService.getHeldenDaten(heldEntity.getId().getId(), heldEntity.getVersion(), userEntity.getToken());
-		heldEntity.setActive(false);
-		this.heldRepository.save(heldEntity);
-		heldEntity = heldEntity.clone();
-		heldEntity.setVersion(heldEntity.getVersion() + 1);
-		heldEntity.setActive(true);
-		this.heldRepository.save(heldEntity);
-		Ereignis fakeEreignis = new Ereignis();
-		fakeEreignis.setBemerkung("New Version");
-		fakeEreignis.setDate("22.11.2015 14:00");
-		daten.getEreignisse().getEreignis().add(fakeEreignis);
-		cachingService.setHeldenDatenCache(heldEntity.getId().getId(), heldEntity.getVersion(), daten);
+		if(version!= 1) {
+			HeldEntity heldEntity = this.heldRepository.findByIdIdAndIdVersion(heldid, version).get();
+
+			cachingService.setHeldenDatenCache(heldEntity.getId().getId(), heldEntity.getVersion(), daten);
+		} else {
+			HeldEntity heldEntity = this.heldRepository.findByIdIdAndIdVersion(heldid, version -1).get();
+			heldEntity.setActive(false);
+			this.heldRepository.save(heldEntity);
+			heldEntity = heldEntity.clone();
+			heldEntity.setVersion(version);
+			heldEntity.setActive(true);
+			this.heldRepository.save(heldEntity);
+			cachingService.setHeldenDatenCache(heldEntity.getId().getId(), heldEntity.getVersion(), daten);
+		}
 	}
 
 	@Data

@@ -24,6 +24,10 @@ import java.net.URLEncoder;
 
 public class Helper {
 
+	static {
+		disableSSLCheck();
+	}
+
 	static public String postrequest(String ...strings) throws Exception {
 		Writer swriter = new StringWriter();
 		char[] buffer = new char[1024];
@@ -44,6 +48,9 @@ public class Helper {
 		for (int i = 0; i < strings.length; i = i + 2) {
 			if (!body.isEmpty()) {
 				body += "&";
+			}
+			if(i+1 == strings.length || strings[i+1] == null) {
+				System.err.println("Fatal error in building post for param " + strings[i]);
 			}
 			body += URLEncoder.encode(strings[i], "UTF-8");
 			body += "=";
