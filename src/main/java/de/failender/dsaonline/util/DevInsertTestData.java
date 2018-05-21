@@ -9,10 +9,7 @@ import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.rest.user.UserRegistration;
 import de.failender.dsaonline.security.SecurityUtils;
-import de.failender.dsaonline.service.ApiService;
-import de.failender.dsaonline.service.CachingService;
-import de.failender.dsaonline.service.UserHeldenService;
-import de.failender.dsaonline.service.UserService;
+import de.failender.dsaonline.service.*;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -61,9 +58,14 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	@Autowired
 	private CachingService cachingService;
 
+	@Autowired
+	private ConvertingService convertingService;
 
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
+		cachingService.dropCache();
+		Thread converterThread = new Thread(new FileConvertingRunnable(convertingService));
+		converterThread.run();
 		log.info("Starting to insert dev data");
 		List<GrantedAuthority> fakeRights = new ArrayList<>();
 		fakeRights.add(new SimpleGrantedAuthority(SecurityUtils.CREATE_USER));
@@ -92,10 +94,14 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+		SecurityContextHolder.getContext().setAuthentication(null);
+		try {
+			converterThread.join();
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
 		fakeVersions();
 
-
-		SecurityContextHolder.getContext().setAuthentication(null);
 		log.info("Done inserting dev data");
 	}
 

@@ -1,7 +1,6 @@
 package de.failender.dsaonline.service;
 
 import de.failender.dsaonline.api.HeldenSoftwareAPI;
-import de.failender.dsaonline.api.HeldenSoftwareAPIOffline;
 import de.failender.dsaonline.api.HeldenSoftwareAPIOnline;
 import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.security.SecurityUtils;
@@ -39,7 +38,8 @@ public class ApiService {
 		if(online) {
 			return new HeldenSoftwareAPIOnline(token, environment);
 		} else {
-			return new HeldenSoftwareAPIOffline(token);
+			throw new UnsupportedOperationException("Offline api is not supported, use caching instead");
+//			return new HeldenSoftwareAPIOffline(token);
 		}
 	}
 

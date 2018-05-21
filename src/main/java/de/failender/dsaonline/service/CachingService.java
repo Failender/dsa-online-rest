@@ -7,6 +7,7 @@ import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import de.failender.heldensoftware.xml.heldenliste.Helden;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.File;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -91,6 +93,15 @@ public class CachingService {
 			marshaller.marshal(daten, getHeldenDatenCacheFile(heldid, version));
 		} catch(JAXBException e) {
 			throw new CorruptXmlException(e);
+		}
+	}
+
+	public void dropCache() {
+		log.warn("DROPPING CACHE!");
+		try {
+			FileUtils.cleanDirectory(cacheDirectory);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
 	}
 
