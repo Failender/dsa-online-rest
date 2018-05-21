@@ -132,7 +132,6 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 		BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);
 		Unmarshaller unmarshaller = JaxbUtil.getUnmarshaller(Daten.class);
 		try {
-			System.out.println(file.getAbsoluteFile());
 			Daten daten = (Daten) unmarshaller.unmarshal(file);
 			this.fakeVersion(daten, heldid, version);
 		} catch (JAXBException e) {

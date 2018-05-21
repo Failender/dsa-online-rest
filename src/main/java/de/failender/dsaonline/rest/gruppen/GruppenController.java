@@ -64,11 +64,6 @@ public class GruppenController {
 	@GetMapping("includeHelden")
 	public Collection<GruppeIncludingHelden> getGruppenIncludingHelden() {
 		SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);
-		this.heldRepository.findAll()
-				.forEach(System.out::println);
-		System.out.println(this.heldRepository.findAll().size());
-
-
 		List<GruppeEntity> gruppen = gruppeRepository.findAll();
 		Map<String, GruppeIncludingHelden> value = gruppen
 				.stream()

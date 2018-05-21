@@ -44,7 +44,6 @@ public class HeldenService {
 	}
 
 	public Daten getHeldenDaten(BigInteger id, int version) {
-		this.heldRepository.findAll().forEach(e-> System.out.println(e.getId().getId()+ " "  + e.getVersion()));
 		Optional<HeldEntity> heldEntityOptional = this.heldRepository.findByIdIdAndIdVersion(id, version);
 		if(!heldEntityOptional.isPresent()) {
 			log.error("Held with id {} and version {} could not be found", id, version);
