@@ -15,6 +15,7 @@ import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.dsaonline.service.UserService;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
@@ -36,6 +37,7 @@ import java.util.Map;
 
 @Service
 @Profile("dev")
+@Slf4j
 public class DevInsertTestData implements ApplicationListener<ApplicationReadyEvent> {
 
 	@Autowired
@@ -62,6 +64,7 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
+		log.info("Starting to insert dev data");
 		List<GrantedAuthority> fakeRights = new ArrayList<>();
 		fakeRights.add(new SimpleGrantedAuthority(SecurityUtils.CREATE_USER));
 		SecurityContextHolder.getContext().setAuthentication(
@@ -93,6 +96,7 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 
 
 		SecurityContextHolder.getContext().setAuthentication(null);
+		log.info("Done inserting dev data");
 	}
 
 	//Only works in non jar'ed
@@ -115,6 +119,7 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	}
 
 	private void fakeVersion(File file) {
+
 		//TODO: This wont work right now, because the default helden-xml format is different then the one the api serves
 //		int version = Integer.valueOf(file.getName().split("\\.")[0]);
 //		BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);

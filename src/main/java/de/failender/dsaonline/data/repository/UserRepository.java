@@ -16,6 +16,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 			"INNER JOIN ROLES_TO_RIGHTS RTR ON RTR.ROLE_ID = RTU.ROLE_ID INNER JOIN RIGHTS RIGHTS ON RIGHTS.ID = RTR.RIGHT_ID WHERE U.ID = ?1")
 	List<String> getUserRights(int userid);
 
+	UserEntity findByToken(String token);
+
 	@Transactional
 	@Modifying
 	@Query(nativeQuery =true, value="INSERT INTO ROLES_TO_USER VALUES (?1, ?2)")

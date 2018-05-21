@@ -6,6 +6,6 @@ import java.util.Date;
 public class DateUtil {
 
 	public static Date convert(BigInteger timestamp) {
-		return new Date(timestamp.divide(BigInteger.valueOf(10L)).intValue());
+		return new Date(timestamp.longValue());
 	}
 }

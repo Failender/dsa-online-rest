@@ -28,11 +28,16 @@ public class Helper {
 		disableSSLCheck();
 	}
 
-	static public String postrequest(String ...strings) throws Exception {
+	public static String postrequest(String ...strings) throws Exception {
+		return postrequesturl("https://online.helden-software.de", strings);
+
+	}
+
+	public static String postrequesturl(String url, String ...strings) throws Exception {
 		Writer swriter = new StringWriter();
 		char[] buffer = new char[1024];
 		Reader reader =
-				new BufferedReader(postrequeststream(strings));
+				new BufferedReader(postrequeststreamurl(url, strings));
 		int count;
 		while ((count = reader.read(buffer)) != -1) {
 			swriter.write(buffer, 0, count);
@@ -43,7 +48,11 @@ public class Helper {
 	}
 
 
-	static public InputStreamReader postrequeststream(String ...strings) throws Exception {
+	 public static InputStreamReader postrequeststream(String ...strings) throws Exception {
+		return postrequeststreamurl("https://online.helden-software.de", strings);
+	}
+
+	public static InputStreamReader postrequeststreamurl(String adress, String ... strings) throws Exception {
 		String body = "";
 		for (int i = 0; i < strings.length; i = i + 2) {
 			if (!body.isEmpty()) {
@@ -56,7 +65,7 @@ public class Helper {
 			body += "=";
 			body += URLEncoder.encode(strings[i + 1], "UTF-8");
 		}
-		URL url = new URL("https://online.helden-software.de");
+		URL url = new URL(adress);
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.setRequestMethod("POST");
 		connection.setDoInput(true);

@@ -70,7 +70,10 @@ public class UserHeldenService {
 	}
 
 	public void updateHeldenForUser(UserEntity userEntity) {
-
+		if(userEntity.getToken() == null) {
+			log.error("User with name {} has null token ", userEntity.getName());
+			return;
+		}
 		List<Held> helden =  apiService.getAllHelden(userEntity.getToken());
 		this.updateHeldenForUser(userEntity, helden);
 

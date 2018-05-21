@@ -1,7 +1,7 @@
 package de.failender.dsaonline.service;
 
+import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.exceptions.CorruptXmlException;
-import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.util.JaxbUtil;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.heldenliste.Held;
@@ -27,6 +27,9 @@ public class CachingService {
 
 	@Value("${dsa.online.cache.duration}")
 	private int cacheDuration;
+
+	@Autowired
+	private UserRepository userRepository;
 
 	private File cacheDirectory;
 
@@ -79,7 +82,7 @@ public class CachingService {
 		} catch (JAXBException e) {
 			throw new CorruptXmlException(e);
 		}
-		this.userHeldenService.updateHeldenForUser(SecurityUtils.getCurrentUser());
+		this.userHeldenService.updateHeldenForUser(this.userRepository.findByToken(token));
 	}
 
 	public void setHeldenDatenCache(BigInteger heldid, int version, Daten daten){
