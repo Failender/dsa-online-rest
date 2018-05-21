@@ -23,6 +23,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -126,23 +128,22 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 
 	private void fakeVersion(File file) {
 
-		//TODO: This wont work right now, because the default helden-xml format is different then the one the api serves
-//		int version = Integer.valueOf(file.getName().split("\\.")[0]);
-//		BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);
-//		Unmarshaller unmarshaller = JaxbUtil.getUnmarshaller(Daten.class);
-//		try {
-//			System.out.println(file.getAbsoluteFile());
-//			Daten daten = (Daten) unmarshaller.unmarshal(file);
-//			this.fakeVersion(daten, heldid, version);
-//		} catch (JAXBException e) {
-//			throw new RuntimeException(e);
-//		}
+		int version = Integer.valueOf(file.getName().split("\\.")[0]);
+		BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);
+		Unmarshaller unmarshaller = JaxbUtil.getUnmarshaller(Daten.class);
+		try {
+			System.out.println(file.getAbsoluteFile());
+			Daten daten = (Daten) unmarshaller.unmarshal(file);
+			this.fakeVersion(daten, heldid, version);
+		} catch (JAXBException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	private void fakeVersion(Daten daten, BigInteger heldid, int version ) {
 
 
-		if(version!= 1) {
+		if(version== 1) {
 			HeldEntity heldEntity = this.heldRepository.findByIdIdAndIdVersion(heldid, version).get();
 
 			cachingService.setHeldenDatenCache(heldEntity.getId().getId(), heldEntity.getVersion(), daten);
