@@ -4,7 +4,7 @@
     <config>
         <rsmodell>zone</rsmodell>
         <datum>21.05.2018</datum>
-        <uhrzeit>23:19</uhrzeit>
+        <uhrzeit>23:13</uhrzeit>
         <geldkreise>false</geldkreise>
         <metatalente>false</metatalente>
         <zauberquellen>true</zauberquellen>
@@ -59,18 +59,18 @@
             <tarnidentitaet/>
         </profession>
         <ap>
-            <gesamt>3920</gesamt>
-            <frei>0</frei>
-            <genutzt>3920</genutzt>
+            <gesamt>3520</gesamt>
+            <frei>149</frei>
+            <genutzt>3371</genutzt>
         </ap>
         <gp>
             <start>110</start>
             <rest>0</rest>
         </gp>
         <stufe40>
-            <akt>9</akt>
-            <max>9</max>
-            <lang>9 [9]</lang>
+            <akt>8</akt>
+            <max>8</max>
+            <lang>8 [8]</lang>
         </stufe40>
         <stufe41>
             <akt>3</akt>
@@ -103,7 +103,7 @@
             <bereich>guteeigenschaft</bereich>
         </mut>
         <klugheit>
-            <akt>15</akt>
+            <akt>14</akt>
             <start>14</start>
             <modi>0</modi>
             <name>Klugheit</name>
@@ -1093,7 +1093,7 @@
             <nameausfuehrlich>Sinnenschärfe  (B)</nameausfuehrlich>
             <wert>7</wert>
             <probe>KL/IN/IN</probe>
-            <probenwerte>15/14/14</probenwerte>
+            <probenwerte>14/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Sinnenschärfe  (B)(KL/IN/IN)</nameausfuehrlichmitprobe>
             <behinderung>0-&gt;BE</behinderung>
             <mirakelplus>false</mirakelplus>
@@ -1150,7 +1150,7 @@
             <nameausfuehrlich>Etikette</nameausfuehrlich>
             <wert>7</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>15/14/13</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Etikette (KL/IN/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1169,7 +1169,7 @@
             <nameausfuehrlich>Gassenwissen</nameausfuehrlich>
             <wert>1</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>15/14/13</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Gassenwissen (KL/IN/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1188,7 +1188,7 @@
             <nameausfuehrlich>Lehren</nameausfuehrlich>
             <wert>7</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>15/14/13</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Lehren (KL/IN/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1207,7 +1207,7 @@
             <nameausfuehrlich>Menschenkenntnis  (B)</nameausfuehrlich>
             <wert>7</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>15/14/13</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Menschenkenntnis  (B)(KL/IN/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1245,7 +1245,7 @@
             <nameausfuehrlich>Überzeugen</nameausfuehrlich>
             <wert>5</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>15/14/13</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Überzeugen (KL/IN/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1283,7 +1283,7 @@
             <nameausfuehrlich>Fährtensuchen  (B)</nameausfuehrlich>
             <wert>0</wert>
             <probe>KL/IN/KO</probe>
-            <probenwerte>15/14/15</probenwerte>
+            <probenwerte>14/14/15</probenwerte>
             <nameausfuehrlichmitprobe>Fährtensuchen  (B)(KL/IN/KO)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1378,7 +1378,7 @@
             <nameausfuehrlich>Orientierung  (B)</nameausfuehrlich>
             <wert>6</wert>
             <probe>KL/IN/IN</probe>
-            <probenwerte>15/14/14</probenwerte>
+            <probenwerte>14/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Orientierung  (B)(KL/IN/IN)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1435,7 +1435,7 @@
             <nameausfuehrlich>Geografie</nameausfuehrlich>
             <wert>4</wert>
             <probe>KL/KL/IN</probe>
-            <probenwerte>15/15/14</probenwerte>
+            <probenwerte>14/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Geografie (KL/KL/IN)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1454,7 +1454,7 @@
             <nameausfuehrlich>Geschichtswissen</nameausfuehrlich>
             <wert>5</wert>
             <probe>KL/KL/IN</probe>
-            <probenwerte>15/15/14</probenwerte>
+            <probenwerte>14/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Geschichtswissen (KL/KL/IN)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1473,7 +1473,7 @@
             <nameausfuehrlich>Götter und Kulte  (B)</nameausfuehrlich>
             <wert>8</wert>
             <probe>KL/KL/IN</probe>
-            <probenwerte>15/15/14</probenwerte>
+            <probenwerte>14/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Götter und Kulte  (B)(KL/KL/IN)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1492,7 +1492,7 @@
             <nameausfuehrlich>Heraldik</nameausfuehrlich>
             <wert>3</wert>
             <probe>KL/KL/FF</probe>
-            <probenwerte>15/15/11</probenwerte>
+            <probenwerte>14/14/11</probenwerte>
             <nameausfuehrlichmitprobe>Heraldik (KL/KL/FF)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1511,7 +1511,7 @@
             <nameausfuehrlich>Kriegskunst</nameausfuehrlich>
             <wert>4</wert>
             <probe>MU/KL/CH</probe>
-            <probenwerte>12/15/13</probenwerte>
+            <probenwerte>12/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Kriegskunst (MU/KL/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1530,7 +1530,7 @@
             <nameausfuehrlich>Magiekunde</nameausfuehrlich>
             <wert>7</wert>
             <probe>KL/KL/IN</probe>
-            <probenwerte>15/15/14</probenwerte>
+            <probenwerte>14/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Magiekunde (KL/KL/IN)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1549,7 +1549,7 @@
             <nameausfuehrlich>Mechanik</nameausfuehrlich>
             <wert>2</wert>
             <probe>KL/KL/FF</probe>
-            <probenwerte>15/15/11</probenwerte>
+            <probenwerte>14/14/11</probenwerte>
             <nameausfuehrlichmitprobe>Mechanik (KL/KL/FF)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1568,7 +1568,7 @@
             <nameausfuehrlich>Pflanzenkunde</nameausfuehrlich>
             <wert>2</wert>
             <probe>KL/IN/FF</probe>
-            <probenwerte>15/14/11</probenwerte>
+            <probenwerte>14/14/11</probenwerte>
             <nameausfuehrlichmitprobe>Pflanzenkunde (KL/IN/FF)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1587,7 +1587,7 @@
             <nameausfuehrlich>Rechnen  (B)</nameausfuehrlich>
             <wert>7</wert>
             <probe>KL/KL/IN</probe>
-            <probenwerte>15/15/14</probenwerte>
+            <probenwerte>14/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Rechnen  (B)(KL/KL/IN)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1606,7 +1606,7 @@
             <nameausfuehrlich>Rechtskunde</nameausfuehrlich>
             <wert>7</wert>
             <probe>KL/KL/IN</probe>
-            <probenwerte>15/15/14</probenwerte>
+            <probenwerte>14/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Rechtskunde (KL/KL/IN)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1625,7 +1625,7 @@
             <nameausfuehrlich>Sagen und Legenden  (B)</nameausfuehrlich>
             <wert>6</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>15/14/13</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Sagen und Legenden  (B)(KL/IN/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1644,7 +1644,7 @@
             <nameausfuehrlich>Staatskunst</nameausfuehrlich>
             <wert>3</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>15/14/13</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Staatskunst (KL/IN/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1663,7 +1663,7 @@
             <nameausfuehrlich>Sternkunde</nameausfuehrlich>
             <wert>2</wert>
             <probe>KL/KL/IN</probe>
-            <probenwerte>15/15/14</probenwerte>
+            <probenwerte>14/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Sternkunde (KL/KL/IN)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1682,7 +1682,7 @@
             <nameausfuehrlich>Tierkunde</nameausfuehrlich>
             <wert>1</wert>
             <probe>MU/KL/IN</probe>
-            <probenwerte>12/15/14</probenwerte>
+            <probenwerte>12/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Tierkunde (MU/KL/IN)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1701,7 +1701,7 @@
             <nameausfuehrlich>Bosparano</nameausfuehrlich>
             <wert>10</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>15/14/13</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Bosparano (KL/IN/CH)</nameausfuehrlichmitprobe>
             <sprachkomplexität>21</sprachkomplexität>
             <zweitlehrsprache>true</zweitlehrsprache>
@@ -1722,7 +1722,7 @@
             <nameausfuehrlich>Garethi</nameausfuehrlich>
             <wert>12</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>15/14/13</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Garethi (KL/IN/CH)</nameausfuehrlichmitprobe>
             <sprachkomplexität>18</sprachkomplexität>
             <muttersprache>true</muttersprache>
@@ -1741,9 +1741,9 @@
             <leittalent>false</leittalent>
             <basis>false</basis>
             <nameausfuehrlich>Isdira</nameausfuehrlich>
-            <wert>4</wert>
+            <wert>1</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>15/14/13</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Isdira (KL/IN/CH)</nameausfuehrlichmitprobe>
             <sprachkomplexität>21</sprachkomplexität>
             <behinderung/>
@@ -1763,7 +1763,7 @@
             <nameausfuehrlich>Thorwalsch</nameausfuehrlich>
             <wert>3</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>15/14/13</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Thorwalsch (KL/IN/CH)</nameausfuehrlichmitprobe>
             <sprachkomplexität>18</sprachkomplexität>
             <behinderung/>
@@ -1783,7 +1783,7 @@
             <nameausfuehrlich>Tulamidya</nameausfuehrlich>
             <wert>6</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>15/14/13</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Tulamidya (KL/IN/CH)</nameausfuehrlichmitprobe>
             <sprachkomplexität>18</sprachkomplexität>
             <behinderung/>
@@ -1803,7 +1803,7 @@
             <nameausfuehrlich>L/S Kusliker Zeichen</nameausfuehrlich>
             <wert>7</wert>
             <probe>KL/KL/FF</probe>
-            <probenwerte>15/15/11</probenwerte>
+            <probenwerte>14/14/11</probenwerte>
             <nameausfuehrlichmitprobe>L/S Kusliker Zeichen (KL/KL/FF)</nameausfuehrlichmitprobe>
             <sprachkomplexität>10</sprachkomplexität>
             <schriftmuttersprache>true</schriftmuttersprache>
@@ -1824,7 +1824,7 @@
             <nameausfuehrlich>Alchimie</nameausfuehrlich>
             <wert>4</wert>
             <probe>MU/KL/FF</probe>
-            <probenwerte>12/15/11</probenwerte>
+            <probenwerte>12/14/11</probenwerte>
             <nameausfuehrlichmitprobe>Alchimie (MU/KL/FF)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1881,7 +1881,7 @@
             <nameausfuehrlich>Heilkunde: Gift</nameausfuehrlich>
             <wert>2</wert>
             <probe>MU/KL/IN</probe>
-            <probenwerte>12/15/14</probenwerte>
+            <probenwerte>12/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Heilkunde: Gift (MU/KL/IN)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1900,7 +1900,7 @@
             <nameausfuehrlich>Heilkunde: Wunden  (B)</nameausfuehrlich>
             <wert>4</wert>
             <probe>KL/CH/FF</probe>
-            <probenwerte>15/13/11</probenwerte>
+            <probenwerte>14/13/11</probenwerte>
             <nameausfuehrlichmitprobe>Heilkunde: Wunden  (B)(KL/CH/FF)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1919,7 +1919,7 @@
             <nameausfuehrlich>Holzbearbeitung  (B)</nameausfuehrlich>
             <wert>0</wert>
             <probe>KL/FF/KK</probe>
-            <probenwerte>15/11/11</probenwerte>
+            <probenwerte>14/11/11</probenwerte>
             <nameausfuehrlichmitprobe>Holzbearbeitung  (B)(KL/FF/KK)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1938,7 +1938,7 @@
             <nameausfuehrlich>Kochen  (B)</nameausfuehrlich>
             <wert>0</wert>
             <probe>KL/IN/FF</probe>
-            <probenwerte>15/14/11</probenwerte>
+            <probenwerte>14/14/11</probenwerte>
             <nameausfuehrlichmitprobe>Kochen  (B)(KL/IN/FF)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1957,7 +1957,7 @@
             <nameausfuehrlich>Lederarbeiten  (B)</nameausfuehrlich>
             <wert>2</wert>
             <probe>KL/FF/FF</probe>
-            <probenwerte>15/11/11</probenwerte>
+            <probenwerte>14/11/11</probenwerte>
             <nameausfuehrlichmitprobe>Lederarbeiten  (B)(KL/FF/FF)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1976,7 +1976,7 @@
             <nameausfuehrlich>Malen/Zeichnen  (B)</nameausfuehrlich>
             <wert>4</wert>
             <probe>KL/IN/FF</probe>
-            <probenwerte>15/14/11</probenwerte>
+            <probenwerte>14/14/11</probenwerte>
             <nameausfuehrlichmitprobe>Malen/Zeichnen  (B)(KL/IN/FF)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1995,7 +1995,7 @@
             <nameausfuehrlich>Schneidern  (B)</nameausfuehrlich>
             <wert>0</wert>
             <probe>KL/FF/FF</probe>
-            <probenwerte>15/11/11</probenwerte>
+            <probenwerte>14/11/11</probenwerte>
             <nameausfuehrlichmitprobe>Schneidern  (B)(KL/FF/FF)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -2054,7 +2054,7 @@
             <wert>3</wert>
             <spezialisierungen/>
             <probe>KL/FF/KO</probe>
-            <probenwerte>15/11/15</probenwerte>
+            <probenwerte>14/11/15</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
             <lernkomplexität>C</lernkomplexität>
@@ -2080,7 +2080,7 @@
             <wert>5</wert>
             <spezialisierungen/>
             <probe>KL/IN/FF</probe>
-            <probenwerte>15/14/11</probenwerte>
+            <probenwerte>14/14/11</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>B</komplexität>
             <lernkomplexität>A</lernkomplexität>
@@ -2103,7 +2103,7 @@
             <variante/>
             <namemitvariante>Ängste lindern</namemitvariante>
             <nameausfuehrlich>Ängste lindern</nameausfuehrlich>
-            <wert>6</wert>
+            <wert>4</wert>
             <spezialisierungen/>
             <probe>MU/IN/CH</probe>
             <probenwerte>12/14/13</probenwerte>
@@ -2158,7 +2158,7 @@
             <wert>14</wert>
             <spezialisierungen/>
             <probe>KL/CH/**</probe>
-            <probenwerte>15/13/0</probenwerte>
+            <probenwerte>14/13/0</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>B</komplexität>
             <lernkomplexität>B</lernkomplexität>
@@ -2184,7 +2184,7 @@
             <wert>9</wert>
             <spezialisierungen/>
             <probe>KL/IN/CH</probe>
-            <probenwerte>15/14/13</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
             <lernkomplexität>D</lernkomplexität>
@@ -2210,7 +2210,7 @@
             <wert>15</wert>
             <spezialisierungen/>
             <probe>KL/IN/GE</probe>
-            <probenwerte>15/14/12</probenwerte>
+            <probenwerte>14/14/12</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>B</komplexität>
             <lernkomplexität>A+</lernkomplexität>
@@ -2262,7 +2262,7 @@
             <wert>2</wert>
             <spezialisierungen/>
             <probe>KL/FF/FF</probe>
-            <probenwerte>15/11/11</probenwerte>
+            <probenwerte>14/11/11</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
             <lernkomplexität>D</lernkomplexität>
@@ -2288,7 +2288,7 @@
             <wert>4</wert>
             <spezialisierungen/>
             <probe>KL/KO/KK</probe>
-            <probenwerte>15/15/11</probenwerte>
+            <probenwerte>14/15/11</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>D</komplexität>
             <lernkomplexität>C</lernkomplexität>
@@ -2314,7 +2314,7 @@
             <wert>5</wert>
             <spezialisierungen/>
             <probe>KL/CH/GE</probe>
-            <probenwerte>15/13/12</probenwerte>
+            <probenwerte>14/13/12</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
             <lernkomplexität>D</lernkomplexität>
@@ -2340,7 +2340,7 @@
             <wert>3</wert>
             <spezialisierungen/>
             <probe>KL/KL/FF</probe>
-            <probenwerte>15/15/11</probenwerte>
+            <probenwerte>14/14/11</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>A</komplexität>
             <lernkomplexität>B</lernkomplexität>
@@ -2356,32 +2356,6 @@
             <quelle buch="LCD" seite="87">LCD: 87</quelle>
             <kontrollwert/>
             <mr/>
-            <leittalent>false</leittalent>
-        </zauber>
-        <zauber>
-            <name>Foramen Foraminor</name>
-            <variante/>
-            <namemitvariante>Foramen Foraminor</namemitvariante>
-            <nameausfuehrlich>Foramen Foraminor</nameausfuehrlich>
-            <wert>6</wert>
-            <spezialisierungen/>
-            <probe>KL/KL/FF</probe>
-            <probenwerte>15/15/11</probenwerte>
-            <bereich>Zauber</bereich>
-            <komplexität>C</komplexität>
-            <lernkomplexität>D</lernkomplexität>
-            <hauszauber>false</hauszauber>
-            <hauszauberformatiert> </hauszauberformatiert>
-            <repräsentation>Scharlatan</repräsentation>
-            <merkmale>Hell, Tele</merkmale>
-            <zauberdauer/>
-            <kosten/>
-            <reichweite/>
-            <wirkungsdauer/>
-            <anmerkung/>
-            <quelle buch="LCD" seite="89">LCD: 89</quelle>
-            <kontrollwert/>
-            <mr>+Mod</mr>
             <leittalent>false</leittalent>
         </zauber>
         <zauber>
@@ -2444,7 +2418,7 @@
             <wert>5</wert>
             <spezialisierungen/>
             <probe>KL/IN/KO</probe>
-            <probenwerte>15/14/15</probenwerte>
+            <probenwerte>14/14/15</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>D</komplexität>
             <lernkomplexität>E</lernkomplexität>
@@ -2470,7 +2444,7 @@
             <wert>8</wert>
             <spezialisierungen/>
             <probe>KL/FF/KO</probe>
-            <probenwerte>15/11/15</probenwerte>
+            <probenwerte>14/11/15</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
             <lernkomplexität>B</lernkomplexität>
@@ -2548,7 +2522,7 @@
             <wert>2</wert>
             <spezialisierungen/>
             <probe>KL/IN/IN</probe>
-            <probenwerte>15/14/14</probenwerte>
+            <probenwerte>14/14/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>A</komplexität>
             <lernkomplexität>B</lernkomplexität>
@@ -2626,7 +2600,7 @@
             <wert>5</wert>
             <spezialisierungen/>
             <probe>MU/KL/KO</probe>
-            <probenwerte>12/15/15</probenwerte>
+            <probenwerte>12/14/15</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
             <lernkomplexität>C</lernkomplexität>
@@ -2678,7 +2652,7 @@
             <wert>5</wert>
             <spezialisierungen/>
             <probe>KL/CH/FF</probe>
-            <probenwerte>15/13/11</probenwerte>
+            <probenwerte>14/13/11</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
             <lernkomplexität>D</lernkomplexität>
@@ -5431,216 +5405,6 @@
             <neuerzustand>4</neuerzustand>
             <object>Ängste lindern [Magier]</object>
             <version>HS 5.5.2</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Zauber aktivieren</aktion>
-            <alterzustand/>
-            <ap>-20</ap>
-            <asp>0</asp>
-            <bemerkung/>
-            <date>09.09.2017 14:06</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>0</neuerzustand>
-            <object>Foramen Foraminor [Scharlatan]</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Zauber steigern</aktion>
-            <alterzustand>0</alterzustand>
-            <ap>-2</ap>
-            <asp>0</asp>
-            <bemerkung>Lehrmeister</bemerkung>
-            <date>09.09.2017 14:06</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>1</neuerzustand>
-            <object>Foramen Foraminor [Scharlatan]</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Zauber steigern</aktion>
-            <alterzustand>1</alterzustand>
-            <ap>-6</ap>
-            <asp>0</asp>
-            <bemerkung>Lehrmeister</bemerkung>
-            <date>09.09.2017 14:06</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>2</neuerzustand>
-            <object>Foramen Foraminor [Scharlatan]</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Zauber steigern</aktion>
-            <alterzustand>2</alterzustand>
-            <ap>-9</ap>
-            <asp>0</asp>
-            <bemerkung>Lehrmeister</bemerkung>
-            <date>09.09.2017 14:06</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>3</neuerzustand>
-            <object>Foramen Foraminor [Scharlatan]</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Zauber steigern</aktion>
-            <alterzustand>3</alterzustand>
-            <ap>-13</ap>
-            <asp>0</asp>
-            <bemerkung>Lehrmeister</bemerkung>
-            <date>09.09.2017 14:06</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>4</neuerzustand>
-            <object>Foramen Foraminor [Scharlatan]</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Zauber steigern</aktion>
-            <alterzustand>4</alterzustand>
-            <ap>-17</ap>
-            <asp>0</asp>
-            <bemerkung>Lehrmeister</bemerkung>
-            <date>09.09.2017 14:06</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>5</neuerzustand>
-            <object>Foramen Foraminor [Scharlatan]</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Zauber steigern</aktion>
-            <alterzustand>5</alterzustand>
-            <ap>-21</ap>
-            <asp>0</asp>
-            <bemerkung>Lehrmeister</bemerkung>
-            <date>09.09.2017 14:07</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>6</neuerzustand>
-            <object>Foramen Foraminor [Scharlatan]</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Zauber steigern</aktion>
-            <alterzustand>4</alterzustand>
-            <ap>-17</ap>
-            <asp>0</asp>
-            <bemerkung>Gegenseitiges Lehren</bemerkung>
-            <date>09.09.2017 14:07</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>5</neuerzustand>
-            <object>Ängste lindern [Magier]</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Zauber steigern</aktion>
-            <alterzustand>5</alterzustand>
-            <ap>-21</ap>
-            <asp>0</asp>
-            <bemerkung>Gegenseitiges Lehren</bemerkung>
-            <date>09.09.2017 14:07</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>6</neuerzustand>
-            <object>Ängste lindern [Magier]</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Talent steigern</aktion>
-            <alterzustand>1</alterzustand>
-            <ap>-2</ap>
-            <asp>0</asp>
-            <bemerkung>SE, Gegenseitiges Lehren</bemerkung>
-            <date>19.09.2017 12:40</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>2</neuerzustand>
-            <object>Sprachen kennen Isdira</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Talent steigern</aktion>
-            <alterzustand>2</alterzustand>
-            <ap>-3</ap>
-            <asp>0</asp>
-            <bemerkung>SE, Gegenseitiges Lehren</bemerkung>
-            <date>19.09.2017 12:40</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>3</neuerzustand>
-            <object>Sprachen kennen Isdira</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Talent steigern</aktion>
-            <alterzustand>3</alterzustand>
-            <ap>-8</ap>
-            <asp>0</asp>
-            <bemerkung>Gegenseitiges Lehren</bemerkung>
-            <date>19.09.2017 12:40</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>4</neuerzustand>
-            <object>Sprachen kennen Isdira</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Ereignis eingeben</aktion>
-            <alterzustand/>
-            <ap>400</ap>
-            <asp>0</asp>
-            <bemerkung/>
-            <date>08.11.2017 20:45</date>
-            <kp>0</kp>
-            <kommentar>Sturmgeboren Gesamt AP: 400 Verfügbare AP: 400</kommentar>
-            <lep>0</lep>
-            <neuerzustand/>
-            <object>Abenteuerpunkte (Hinzugewinn)</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Eigenschaft steigern</aktion>
-            <alterzustand>14</alterzustand>
-            <ap>-410</ap>
-            <asp>0</asp>
-            <bemerkung/>
-            <date>08.11.2017 20:45</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>15</neuerzustand>
-            <object>Klugheit</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Änderungskontrolle</aktion>
-            <alterzustand/>
-            <ap>0</ap>
-            <asp>0</asp>
-            <bemerkung/>
-            <date>21.05.2018 23:19</date>
-            <kp>0</kp>
-            <kommentar>[EDITOREINGEGEBEN, ALLESHELDENSOFTWARE]</kommentar>
-            <lep>0</lep>
-            <neuerzustand/>
-            <object>Kontrollsignatur fehlt. Änderungskontrolle wieder aktiviert.</object>
-            <version>HS 5.5.4</version>
         </ereignis>
     </ereignisse>
     <kampfsets>

@@ -11,8 +11,11 @@ import de.failender.heldensoftware.xml.datenxml.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.math.BigInteger;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -154,6 +157,41 @@ public class HeldenService {
 		);
 		toList.forEach(toTalent -> unterschiede.addNeu(toTalent));
 		return unterschiede;
+	}
+
+	public List<HeldVersion> loadHeldenVersionen(@PathVariable BigInteger heldenid) {
+		List<HeldEntity> helden = this.heldRepository.findByIdId(heldenid);
+		if(helden.size() > 0 ) {
+			UserEntity user = this.userRepository.findById(helden.get(0).getUserId()).get();
+			return this.heldRepository.findByIdId(heldenid)
+					.parallelStream()
+					.map(held -> {
+						Daten daten = this.apiService.getHeldenDaten(held.getId().getId(), held.getVersion(), user.getToken());
+						Ereignis lastEreignis = findLastEreignis(daten.getEreignisse().getEreignis());
+						String lastEreignisString = null;
+						Date lastEreignisDatum = null;
+						if(lastEreignis != null) {
+							lastEreignisString = lastEreignis.getKommentar().substring(0, lastEreignis.getKommentar().indexOf(" Verfügbare"));
+
+							lastEreignisDatum = new Date(lastEreignis.getDate());
+						}
+
+						return new HeldVersion(lastEreignisString, lastEreignisDatum, held.getVersion());
+					})
+					.collect(Collectors.toList());
+		} else {
+			return Collections.EMPTY_LIST;
+		}
+
+	}
+
+	private Ereignis findLastEreignis(List<Ereignis> ereignisse) {
+		for(int i= ereignisse.size() -1 ; i>= 0 ; i--) {
+			if(ereignisse.get(i).getAp() > 0) {
+				return ereignisse.get(i);
+			}
+		}
+		return null;
 	}
 
 

@@ -4492,20 +4492,6 @@
 <object>Respondami [Magier] [Magier]</object>
 <version>HS 5.5.1</version>
 </ereignis>
-<ereignis>
-<aktion>Änderungskontrolle</aktion>
-<alterzustand/>
-<ap>0</ap>
-<asp>0</asp>
-<bemerkung/>
-<date>21.05.2018 23:09</date>
-<kp>0</kp>
-<kommentar>[ALLESHELDENSOFTWARE]</kommentar>
-<lep>0</lep>
-<neuerzustand/>
-<object>Kontrollsignatur fehlt. Änderungskontrolle wieder aktiviert.</object>
-<version>HS 5.5.4</version>
-</ereignis>
 </ereignisse>
 <kampfsets>
 <kampfset defaultrsmodel="true" inbenutzung="true" nr="1" tzm="true">

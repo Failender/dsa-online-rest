@@ -21,8 +21,8 @@ public class FileConvertingRunnable implements Runnable {
 	@Override
 	public void run() {
 		log.info("Starting FileConvertingRunnable");
-		final File outDir = new File("src/main/resources/api/offline/versionfakes");
-		final File dir = new File("src/main/resources/api/offline/versionfakes_helden");
+		final File outDir = new File("fakes/versionfakes");
+		final File dir = new File("fakes/versionfakes_helden");
 
 		Arrays.stream(dir.listFiles()).parallel()
 				.forEach(file -> {

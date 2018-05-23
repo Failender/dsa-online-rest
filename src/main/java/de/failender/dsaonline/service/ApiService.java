@@ -84,15 +84,23 @@ public class ApiService {
 	}
 
 	public List<Held> getAllHelden(String token) {
+		return getAllHelden(token, true);
+	}
+
+	public List<Held> getAllHelden(String token, boolean useCache) {
 		if(token == null) {
 			log.error("token for fetching all helden is null!");
 		}
-		List<Held> cache = cachingService.getAllHeldenCache(token);
+		List<Held> cache = useCache? cachingService.getAllHeldenCache(token): null;
 		if(cache != null) {
 			return cache;
 		}
 		cache = getApi(token).getAllHelden();
 		cachingService.setAllHeldenCache(token, cache);
 		return cache;
+	}
+
+	public void purgeAllHeldenCache(String token) {
+		this.cachingService.purgeAllHeldenCache(token);
 	}
 }

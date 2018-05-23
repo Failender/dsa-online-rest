@@ -9,6 +9,7 @@ import de.failender.dsaonline.service.ApiService;
 import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.dsaonline.service.UserService;
 import de.failender.dsaonline.util.JaxbUtil;
+import de.failender.dsaonline.util.VersionFakeService;
 import org.assertj.core.api.Assertions;
 import org.flywaydb.test.annotation.FlywayTest;
 import org.junit.Test;
@@ -32,6 +33,9 @@ public class VersionTest extends DsaOnlineTest {
 	@Autowired
 	private GruppeRepository gruppeRepository;
 
+	@Autowired
+	private VersionFakeService versionFakeService;
+
 
 	private static final String FAKE_TOKEN ="token";
 	private static final String TEST_GRUPPE = "Der Runde Tisch";
@@ -43,7 +47,7 @@ public class VersionTest extends DsaOnlineTest {
 		Mockito.when(apiService.getAllHelden(FAKE_TOKEN)).thenReturn(
 				JaxbUtil.heldenFromStream(getResource("helden/all.xml")),
 				JaxbUtil.heldenFromStream(getResource("helden/all2.xml")));
-		UserHeldenService userHeldenService = new UserHeldenService(heldRepository, userRepository, apiService);
+		UserHeldenService userHeldenService = new UserHeldenService(heldRepository, userRepository, apiService, versionFakeService);
 		UserService userService = new UserService(userRepository, gruppeRepository, userHeldenService);
 		UserEntity userEntity = userService.registerUser(new UserRegistration("TEST", null, FAKE_TOKEN, TEST_GRUPPE));
 

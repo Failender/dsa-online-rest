@@ -1,5 +1,7 @@
 package de.failender.heldensoftware.xml.datenxml;
 
+import lombok.ToString;
+
 import javax.xml.bind.annotation.*;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -11,6 +13,7 @@ import java.util.Objects;
 @XmlType(name = "", propOrder = {
 		"aktion", "alterzustand", "ap", "asp", "bemerkung", "date", "kp", "kommentar", "lep", "neuerzustand", "object", "version"
 })
+@ToString
 public class Ereignis {
 
 	@XmlElement(required = true)

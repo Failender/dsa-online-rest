@@ -127,10 +127,7 @@ public class Helper {
 			NodeList nodes = (NodeList) result;
 			return nodes;
 		} catch (Exception ex) {
-			System.out.println("Fehlerhafter xpath-Ausdruck: " + search);
-			System.out.println(ex.getMessage());
 			ex.printStackTrace();
-			System.out.println("====");
 			return null;
 			//return getDatenAsString(search);
 		}
@@ -165,8 +162,6 @@ public class Helper {
 			Object result = expr.evaluate(doc, XPathConstants.STRING);
 			return (String) result;
 		} catch (Exception ex) {
-			System.out.println("Fehlerhafter xpath-Ausdruck: " + search);
-			System.out.println(ex.getMessage());
 			ex.printStackTrace();
 			return null;
 		}
@@ -181,8 +176,6 @@ public class Helper {
 			Object result = expr.evaluate(doc, XPathConstants.NUMBER);
 			return Math.round((Double) result);
 		} catch (Exception ex) {
-			System.out.println("Fehlerhafter xpath-Ausdruck: " + search);
-			System.out.println(ex.getMessage());
 			ex.printStackTrace();
 			return null;
 		}

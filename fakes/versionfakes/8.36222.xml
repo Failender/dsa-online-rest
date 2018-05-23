@@ -4,7 +4,7 @@
     <config>
         <rsmodell>zone</rsmodell>
         <datum>21.05.2018</datum>
-        <uhrzeit>23:17</uhrzeit>
+        <uhrzeit>23:18</uhrzeit>
         <geldkreise>false</geldkreise>
         <metatalente>false</metatalente>
         <zauberquellen>true</zauberquellen>
@@ -20,7 +20,7 @@
         <haarfarbe>hellblond</haarfarbe>
         <stand/>
         <titel/>
-        <name>Torimalvo Novritalkos</name>
+        <name>Torimalvo Novritalkos - Meister des Feuers, Erlöser der Perlentaucher, Vollstrecker der Druiden</name>
         <bildPfad/>
         <aussehen>
             <a0/>
@@ -59,23 +59,23 @@
             <tarnidentitaet/>
         </profession>
         <ap>
-            <gesamt>1085</gesamt>
-            <frei>0</frei>
-            <genutzt>1085</genutzt>
+            <gesamt>2615</gesamt>
+            <frei>199</frei>
+            <genutzt>2416</genutzt>
         </ap>
         <gp>
             <start>110</start>
             <rest>0</rest>
         </gp>
         <stufe40>
-            <akt>5</akt>
-            <max>5</max>
-            <lang>5 [5]</lang>
+            <akt>7</akt>
+            <max>7</max>
+            <lang>7 [7]</lang>
         </stufe40>
         <stufe41>
-            <akt>1</akt>
-            <max>1</max>
-            <lang>1 [1]</lang>
+            <akt>2</akt>
+            <max>2</max>
+            <lang>2 [2]</lang>
         </stufe41>
         <gilde>weiß</gilde>
         <magisch>true</magisch>
@@ -117,7 +117,7 @@
             <bereich>guteeigenschaft</bereich>
         </intuition>
         <charisma>
-            <akt>12</akt>
+            <akt>13</akt>
             <start>12</start>
             <modi>0</modi>
             <name>Charisma</name>
@@ -159,20 +159,20 @@
             <bereich>guteeigenschaft</bereich>
         </sozialstatus>
         <astralenergie>
-            <akt>47</akt>
+            <akt>48</akt>
             <start>19</start>
             <modi>25</modi>
             <name>Astralenergie</name>
             <bereich>sonst</bereich>
-            <kaufbar>9</kaufbar>
+            <kaufbar>10</kaufbar>
             <gekauft>3</gekauft>
             <ausvornachteile>7</ausvornachteile>
-            <muinch2>19</muinch2>
+            <muinch2>20</muinch2>
             <aussonderfertigkeiten>0</aussonderfertigkeiten>
             <professionmod>18</professionmod>
             <grossemeditation>0</grossemeditation>
             <pasprueckkaufbar>0</pasprueckkaufbar>
-            <aktinklrueckkaufbarepasp>47</aktinklrueckkaufbarepasp>
+            <aktinklrueckkaufbarepasp>48</aktinklrueckkaufbarepasp>
         </astralenergie>
         <attacke>
             <akt>7</akt>
@@ -217,15 +217,15 @@
             <gekauft>0</gekauft>
         </karmaenergie>
         <lebensenergie>
-            <akt>28</akt>
+            <akt>29</akt>
             <start>20</start>
             <modi>8</modi>
             <name>Lebensenergie</name>
             <bereich>sonst</bereich>
-            <kaufbar>7</kaufbar>
-            <gekauft>0</gekauft>
-            <akt50>14</akt50>
-            <akt33>9</akt33>
+            <kaufbar>6</kaufbar>
+            <gekauft>1</gekauft>
+            <akt50>15</akt50>
+            <akt33>10</akt33>
             <akt25>7</akt25>
         </lebensenergie>
         <magieresistenz>
@@ -606,6 +606,46 @@
             <bereich>Magisch</bereich>
             <bereich>Ritual</bereich>
         </sonderfertigkeit>
+        <sonderfertigkeit>
+            <nameausfuehrlich>Stabzauber: Kraftfokus</nameausfuehrlich>
+            <name>Stabzauber: Kraftfokus</name>
+            <bezeichner>Stabzauber: Kraftfokus</bezeichner>
+            <wirkung/>
+            <dauer/>
+            <kosten/>
+            <probe/>
+            <kommentar/>
+            <namemitkommentar>Stabzauber: Kraftfokus</namemitkommentar>
+            <bereich>Magisch</bereich>
+            <bereich>Ritual</bereich>
+        </sonderfertigkeit>
+        <sonderfertigkeit>
+            <nameausfuehrlich>Stabzauber: Zauberspeicher</nameausfuehrlich>
+            <name>Stabzauber: Zauberspeicher</name>
+            <bezeichner>Stabzauber: Zauberspeicher</bezeichner>
+            <wirkung/>
+            <dauer/>
+            <kosten/>
+            <probe/>
+            <kommentar/>
+            <namemitkommentar>Stabzauber: Zauberspeicher</namemitkommentar>
+            <bereich>Magisch</bereich>
+            <bereich>Ritual</bereich>
+        </sonderfertigkeit>
+        <sonderfertigkeit>
+            <nameausfuehrlich>Zauberspezialisierung Ignisphaero Feuerball [Magier] (Zauberdauer)</nameausfuehrlich>
+            <name>Zauberspezialisierung Ignisphaero Feuerball [Magier] (Zauberdauer)</name>
+            <bezeichner>Zauberspezialisierung Ignisphaero Feuerball [Magier] (Zauberdauer)</bezeichner>
+            <wirkung/>
+            <dauer/>
+            <kosten/>
+            <probe/>
+            <kommentar/>
+            <namemitkommentar>Zauberspezialisierung Ignisphaero Feuerball [Magier] (Zauberdauer)</namemitkommentar>
+            <bereich>Talentspezialisierung</bereich>
+            <bereich>Magisch</bereich>
+            <bereich>SonstMagisch</bereich>
+        </sonderfertigkeit>
     </sonderfertigkeiten>
     <verbilligtesonderfertigkeiten>
         <verbilligtesonderfertigkeit>
@@ -790,7 +830,7 @@
             <metatalent>false</metatalent>
             <bereich>Kampf</bereich>
             <komplexität>E</komplexität>
-            <lernkomplexität>E</lernkomplexität>
+            <lernkomplexität>F</lernkomplexität>
             <spezialisierungen/>
         </talent>
         <talent>
@@ -811,7 +851,7 @@
             <metatalent>false</metatalent>
             <bereich>Kampf</bereich>
             <komplexität>D</komplexität>
-            <lernkomplexität>D</lernkomplexität>
+            <lernkomplexität>E</lernkomplexität>
             <spezialisierungen/>
         </talent>
         <talent>
@@ -879,7 +919,7 @@
             <leittalent>false</leittalent>
             <basis>true</basis>
             <nameausfuehrlich>Körperbeherrschung  (B)</nameausfuehrlich>
-            <wert>6</wert>
+            <wert>7</wert>
             <probe>MU/IN/GE</probe>
             <probenwerte>12/14/12</probenwerte>
             <nameausfuehrlichmitprobe>Körperbeherrschung  (B)(MU/IN/GE)</nameausfuehrlichmitprobe>
@@ -900,7 +940,7 @@
             <nameausfuehrlich>Reiten</nameausfuehrlich>
             <wert>2</wert>
             <probe>CH/GE/KK</probe>
-            <probenwerte>12/12/11</probenwerte>
+            <probenwerte>13/12/11</probenwerte>
             <nameausfuehrlichmitprobe>Reiten (CH/GE/KK)</nameausfuehrlichmitprobe>
             <behinderung>BE-2</behinderung>
             <mirakelplus>false</mirakelplus>
@@ -993,9 +1033,9 @@
             <leittalent>false</leittalent>
             <basis>true</basis>
             <nameausfuehrlich>Singen  (B)</nameausfuehrlich>
-            <wert>1</wert>
+            <wert>4</wert>
             <probe>IN/CH/CH</probe>
-            <probenwerte>14/12/12</probenwerte>
+            <probenwerte>14/13/13</probenwerte>
             <nameausfuehrlichmitprobe>Singen  (B)(IN/CH/CH)</nameausfuehrlichmitprobe>
             <behinderung>BE-3</behinderung>
             <mirakelplus>false</mirakelplus>
@@ -1012,7 +1052,7 @@
             <leittalent>false</leittalent>
             <basis>true</basis>
             <nameausfuehrlich>Sinnenschärfe  (B)</nameausfuehrlich>
-            <wert>6</wert>
+            <wert>7</wert>
             <probe>KL/IN/IN</probe>
             <probenwerte>14/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Sinnenschärfe  (B)(KL/IN/IN)</nameausfuehrlichmitprobe>
@@ -1022,7 +1062,7 @@
             <metatalent>false</metatalent>
             <bereich>Körperlich</bereich>
             <komplexität>D</komplexität>
-            <lernkomplexität>D</lernkomplexität>
+            <lernkomplexität>E</lernkomplexität>
             <spezialisierungen/>
         </talent>
         <talent>
@@ -1031,9 +1071,9 @@
             <leittalent>false</leittalent>
             <basis>true</basis>
             <nameausfuehrlich>Tanzen  (B)</nameausfuehrlich>
-            <wert>1</wert>
+            <wert>3</wert>
             <probe>CH/GE/GE</probe>
-            <probenwerte>12/12/12</probenwerte>
+            <probenwerte>13/12/12</probenwerte>
             <nameausfuehrlichmitprobe>Tanzen  (B)(CH/GE/GE)</nameausfuehrlichmitprobe>
             <behinderung>BEx2</behinderung>
             <mirakelplus>false</mirakelplus>
@@ -1069,9 +1109,9 @@
             <leittalent>false</leittalent>
             <basis>false</basis>
             <nameausfuehrlich>Etikette</nameausfuehrlich>
-            <wert>4</wert>
+            <wert>6</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>14/14/12</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Etikette (KL/IN/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1090,7 +1130,7 @@
             <nameausfuehrlich>Gassenwissen</nameausfuehrlich>
             <wert>1</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>14/14/12</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Gassenwissen (KL/IN/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1107,9 +1147,9 @@
             <leittalent>false</leittalent>
             <basis>false</basis>
             <nameausfuehrlich>Lehren</nameausfuehrlich>
-            <wert>3</wert>
+            <wert>7</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>14/14/12</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Lehren (KL/IN/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1126,9 +1166,9 @@
             <leittalent>false</leittalent>
             <basis>true</basis>
             <nameausfuehrlich>Menschenkenntnis  (B)</nameausfuehrlich>
-            <wert>6</wert>
+            <wert>7</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>14/14/12</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Menschenkenntnis  (B)(KL/IN/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1136,7 +1176,7 @@
             <metatalent>false</metatalent>
             <bereich>Gesellschaft</bereich>
             <komplexität>B</komplexität>
-            <lernkomplexität>B</lernkomplexität>
+            <lernkomplexität>C</lernkomplexität>
             <spezialisierungen/>
         </talent>
         <talent>
@@ -1145,9 +1185,9 @@
             <leittalent>false</leittalent>
             <basis>true</basis>
             <nameausfuehrlich>Überreden  (B)</nameausfuehrlich>
-            <wert>3</wert>
+            <wert>5</wert>
             <probe>MU/IN/CH</probe>
-            <probenwerte>12/14/12</probenwerte>
+            <probenwerte>12/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Überreden  (B)(MU/IN/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1164,9 +1204,9 @@
             <leittalent>false</leittalent>
             <basis>false</basis>
             <nameausfuehrlich>Überzeugen</nameausfuehrlich>
-            <wert>1</wert>
+            <wert>5</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>14/14/12</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Überzeugen (KL/IN/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1297,7 +1337,7 @@
             <leittalent>false</leittalent>
             <basis>true</basis>
             <nameausfuehrlich>Orientierung  (B)</nameausfuehrlich>
-            <wert>2</wert>
+            <wert>5</wert>
             <probe>KL/IN/IN</probe>
             <probenwerte>14/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Orientierung  (B)(KL/IN/IN)</nameausfuehrlichmitprobe>
@@ -1307,7 +1347,7 @@
             <metatalent>false</metatalent>
             <bereich>Natur</bereich>
             <komplexität>B</komplexität>
-            <lernkomplexität>B</lernkomplexität>
+            <lernkomplexität>C</lernkomplexität>
             <spezialisierungen/>
         </talent>
         <talent>
@@ -1392,7 +1432,7 @@
             <leittalent>false</leittalent>
             <basis>true</basis>
             <nameausfuehrlich>Götter und Kulte  (B)</nameausfuehrlich>
-            <wert>7</wert>
+            <wert>8</wert>
             <probe>KL/KL/IN</probe>
             <probenwerte>14/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Götter und Kulte  (B)(KL/KL/IN)</nameausfuehrlichmitprobe>
@@ -1402,7 +1442,7 @@
             <metatalent>false</metatalent>
             <bereich>Wissen</bereich>
             <komplexität>B</komplexität>
-            <lernkomplexität>B</lernkomplexität>
+            <lernkomplexität>C</lernkomplexität>
             <spezialisierungen/>
         </talent>
         <talent>
@@ -1432,7 +1472,7 @@
             <nameausfuehrlich>Kriegskunst</nameausfuehrlich>
             <wert>4</wert>
             <probe>MU/KL/CH</probe>
-            <probenwerte>12/14/12</probenwerte>
+            <probenwerte>12/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Kriegskunst (MU/KL/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1546,7 +1586,7 @@
             <nameausfuehrlich>Sagen und Legenden  (B)</nameausfuehrlich>
             <wert>6</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>14/14/12</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Sagen und Legenden  (B)(KL/IN/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1565,7 +1605,7 @@
             <nameausfuehrlich>Staatskunst</nameausfuehrlich>
             <wert>2</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>14/14/12</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Staatskunst (KL/IN/CH)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1622,7 +1662,7 @@
             <nameausfuehrlich>Bosparano</nameausfuehrlich>
             <wert>10</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>14/14/12</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Bosparano (KL/IN/CH)</nameausfuehrlichmitprobe>
             <sprachkomplexität>21</sprachkomplexität>
             <zweitlehrsprache>true</zweitlehrsprache>
@@ -1643,7 +1683,7 @@
             <nameausfuehrlich>Garethi</nameausfuehrlich>
             <wert>12</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>14/14/12</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Garethi (KL/IN/CH)</nameausfuehrlichmitprobe>
             <sprachkomplexität>18</sprachkomplexität>
             <muttersprache>true</muttersprache>
@@ -1664,7 +1704,7 @@
             <nameausfuehrlich>Thorwalsch</nameausfuehrlich>
             <wert>3</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>14/14/12</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Thorwalsch (KL/IN/CH)</nameausfuehrlichmitprobe>
             <sprachkomplexität>18</sprachkomplexität>
             <behinderung/>
@@ -1684,7 +1724,7 @@
             <nameausfuehrlich>Tulamidya</nameausfuehrlich>
             <wert>6</wert>
             <probe>KL/IN/CH</probe>
-            <probenwerte>14/14/12</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Tulamidya (KL/IN/CH)</nameausfuehrlichmitprobe>
             <sprachkomplexität>18</sprachkomplexität>
             <behinderung/>
@@ -1763,7 +1803,7 @@
             <nameausfuehrlich>Hauswirtschaft</nameausfuehrlich>
             <wert>1</wert>
             <probe>IN/CH/FF</probe>
-            <probenwerte>14/12/11</probenwerte>
+            <probenwerte>14/13/11</probenwerte>
             <nameausfuehrlichmitprobe>Hauswirtschaft (IN/CH/FF)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1801,7 +1841,7 @@
             <nameausfuehrlich>Heilkunde: Wunden  (B)</nameausfuehrlich>
             <wert>4</wert>
             <probe>KL/CH/FF</probe>
-            <probenwerte>14/12/11</probenwerte>
+            <probenwerte>14/13/11</probenwerte>
             <nameausfuehrlichmitprobe>Heilkunde: Wunden  (B)(KL/CH/FF)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1932,7 +1972,7 @@
             <leittalent>false</leittalent>
             <basis>false</basis>
             <nameausfuehrlich>Gildenmagie</nameausfuehrlich>
-            <wert>10</wert>
+            <wert>12</wert>
             <probe>--/--/--</probe>
             <probenwerte>1000/1000/1000</probenwerte>
             <nameausfuehrlichmitprobe>Gildenmagie (--/--/--)</nameausfuehrlichmitprobe>
@@ -1952,7 +1992,7 @@
             <variante/>
             <namemitvariante>Adamantium Erzstruktur</namemitvariante>
             <nameausfuehrlich>Adamantium Erzstruktur</nameausfuehrlich>
-            <wert>2</wert>
+            <wert>3</wert>
             <spezialisierungen/>
             <probe>KL/FF/KO</probe>
             <probenwerte>14/11/14</probenwerte>
@@ -1984,7 +2024,7 @@
             <probenwerte>14/14/11</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>B</komplexität>
-            <lernkomplexität>A</lernkomplexität>
+            <lernkomplexität>B</lernkomplexität>
             <hauszauber>true</hauszauber>
             <hauszauberformatiert>X</hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2004,13 +2044,13 @@
             <variante/>
             <namemitvariante>Armatrutz</namemitvariante>
             <nameausfuehrlich>Armatrutz</nameausfuehrlich>
-            <wert>7</wert>
+            <wert>10</wert>
             <spezialisierungen/>
             <probe>IN/GE/KO</probe>
             <probenwerte>14/12/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>B</komplexität>
-            <lernkomplexität>A</lernkomplexität>
+            <lernkomplexität>C</lernkomplexität>
             <hauszauber>true</hauszauber>
             <hauszauberformatiert>X</hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2033,10 +2073,10 @@
             <wert>5</wert>
             <spezialisierungen/>
             <probe>KL/CH/**</probe>
-            <probenwerte>14/12/0</probenwerte>
+            <probenwerte>14/13/0</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>B</komplexität>
-            <lernkomplexität>A</lernkomplexität>
+            <lernkomplexität>B</lernkomplexität>
             <hauszauber>true</hauszauber>
             <hauszauberformatiert>X</hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2059,10 +2099,10 @@
             <wert>9</wert>
             <spezialisierungen/>
             <probe>KL/IN/CH</probe>
-            <probenwerte>14/14/12</probenwerte>
+            <probenwerte>14/14/13</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
-            <lernkomplexität>C</lernkomplexität>
+            <lernkomplexität>D</lernkomplexität>
             <hauszauber>false</hauszauber>
             <hauszauberformatiert> </hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2111,10 +2151,10 @@
             <wert>5</wert>
             <spezialisierungen/>
             <probe>CH/GE/KO</probe>
-            <probenwerte>12/12/14</probenwerte>
+            <probenwerte>13/12/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
-            <lernkomplexität>B</lernkomplexität>
+            <lernkomplexität>C</lernkomplexität>
             <hauszauber>true</hauszauber>
             <hauszauberformatiert>X</hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2140,7 +2180,7 @@
             <probenwerte>14/11/11</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
-            <lernkomplexität>C</lernkomplexität>
+            <lernkomplexität>D</lernkomplexität>
             <hauszauber>false</hauszauber>
             <hauszauberformatiert> </hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2160,13 +2200,13 @@
             <variante/>
             <namemitvariante>Eisenrost und Patina</namemitvariante>
             <nameausfuehrlich>Eisenrost und Patina</nameausfuehrlich>
-            <wert>3</wert>
+            <wert>5</wert>
             <spezialisierungen/>
             <probe>KL/CH/GE</probe>
-            <probenwerte>14/12/12</probenwerte>
+            <probenwerte>14/13/12</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
-            <lernkomplexität>C</lernkomplexität>
+            <lernkomplexität>D</lernkomplexität>
             <hauszauber>false</hauszauber>
             <hauszauberformatiert> </hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2192,7 +2232,7 @@
             <probenwerte>14/14/11</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>A</komplexität>
-            <lernkomplexität>A</lernkomplexität>
+            <lernkomplexität>B</lernkomplexität>
             <hauszauber>false</hauszauber>
             <hauszauberformatiert> </hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2218,7 +2258,7 @@
             <probenwerte>14/14/11</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>D</komplexität>
-            <lernkomplexität>D</lernkomplexität>
+            <lernkomplexität>E</lernkomplexität>
             <hauszauber>false</hauszauber>
             <hauszauberformatiert> </hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2244,7 +2284,7 @@
             <probenwerte>14/12/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
-            <lernkomplexität>A</lernkomplexität>
+            <lernkomplexität>B</lernkomplexität>
             <hauszauber>true</hauszauber>
             <hauszauberformatiert>X</hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2270,7 +2310,7 @@
             <probenwerte>14/14/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>D</komplexität>
-            <lernkomplexität>D</lernkomplexität>
+            <lernkomplexität>E</lernkomplexität>
             <hauszauber>false</hauszauber>
             <hauszauberformatiert> </hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2290,13 +2330,13 @@
             <variante/>
             <namemitvariante>Ignifaxius Flammenstrahl</namemitvariante>
             <nameausfuehrlich>Ignifaxius Flammenstrahl</nameausfuehrlich>
-            <wert>7</wert>
+            <wert>8</wert>
             <spezialisierungen/>
             <probe>KL/FF/KO</probe>
             <probenwerte>14/11/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
-            <lernkomplexität>A</lernkomplexität>
+            <lernkomplexität>B</lernkomplexität>
             <hauszauber>true</hauszauber>
             <hauszauberformatiert>X</hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2315,9 +2355,9 @@
             <name>Ignisphaero Feuerball</name>
             <variante/>
             <namemitvariante>Ignisphaero Feuerball</namemitvariante>
-            <nameausfuehrlich>Ignisphaero Feuerball</nameausfuehrlich>
+            <nameausfuehrlich>Ignisphaero Feuerball  (Zauberdauer)</nameausfuehrlich>
             <wert>8</wert>
-            <spezialisierungen/>
+            <spezialisierungen>Zauberdauer</spezialisierungen>
             <probe>MU/IN/KO</probe>
             <probenwerte>12/14/14</probenwerte>
             <bereich>Zauber</bereich>
@@ -2348,7 +2388,7 @@
             <probenwerte>12/14/11</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>F</komplexität>
-            <lernkomplexität>F</lernkomplexität>
+            <lernkomplexität>G</lernkomplexität>
             <hauszauber>false</hauszauber>
             <hauszauberformatiert> </hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2374,7 +2414,7 @@
             <probenwerte>14/14/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>A</komplexität>
-            <lernkomplexität>A</lernkomplexität>
+            <lernkomplexität>B</lernkomplexität>
             <hauszauber>false</hauszauber>
             <hauszauberformatiert> </hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2394,13 +2434,13 @@
             <variante/>
             <namemitvariante>Paralysis starr wie Stein</namemitvariante>
             <nameausfuehrlich>Paralysis starr wie Stein</nameausfuehrlich>
-            <wert>3</wert>
+            <wert>5</wert>
             <spezialisierungen/>
             <probe>IN/CH/KK</probe>
-            <probenwerte>14/12/11</probenwerte>
+            <probenwerte>14/13/11</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
-            <lernkomplexität>C</lernkomplexität>
+            <lernkomplexität>D</lernkomplexität>
             <hauszauber>false</hauszauber>
             <hauszauberformatiert> </hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2423,10 +2463,10 @@
             <wert>5</wert>
             <spezialisierungen/>
             <probe>CH/GE/KK</probe>
-            <probenwerte>12/12/11</probenwerte>
+            <probenwerte>13/12/11</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>B</komplexität>
-            <lernkomplexität>B</lernkomplexität>
+            <lernkomplexität>C</lernkomplexität>
             <hauszauber>false</hauszauber>
             <hauszauberformatiert> </hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2452,7 +2492,7 @@
             <probenwerte>12/14/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
-            <lernkomplexität>C</lernkomplexität>
+            <lernkomplexität>D</lernkomplexität>
             <hauszauber>false</hauszauber>
             <hauszauberformatiert> </hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2472,10 +2512,10 @@
             <variante/>
             <namemitvariante>Respondami</namemitvariante>
             <nameausfuehrlich>Respondami</nameausfuehrlich>
-            <wert>3</wert>
+            <wert>6</wert>
             <spezialisierungen/>
             <probe>MU/IN/CH</probe>
-            <probenwerte>12/14/12</probenwerte>
+            <probenwerte>12/14/13</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>B</komplexität>
             <lernkomplexität>B</lernkomplexität>
@@ -2491,6 +2531,58 @@
             <quelle buch="LCD" seite="218">LCD: 218</quelle>
             <kontrollwert/>
             <mr>+MR</mr>
+            <leittalent>false</leittalent>
+        </zauber>
+        <zauber>
+            <name>Sapefacta Zauberschwamm</name>
+            <variante/>
+            <namemitvariante>Sapefacta Zauberschwamm</namemitvariante>
+            <nameausfuehrlich>Sapefacta Zauberschwamm</nameausfuehrlich>
+            <wert>5</wert>
+            <spezialisierungen/>
+            <probe>KL/CH/FF</probe>
+            <probenwerte>14/13/11</probenwerte>
+            <bereich>Zauber</bereich>
+            <komplexität>C</komplexität>
+            <lernkomplexität>D</lernkomplexität>
+            <hauszauber>false</hauszauber>
+            <hauszauberformatiert> </hauszauberformatiert>
+            <repräsentation>Magier</repräsentation>
+            <merkmale>Elem (Luf), Elem (Was), Tele</merkmale>
+            <zauberdauer/>
+            <kosten/>
+            <reichweite/>
+            <wirkungsdauer/>
+            <anmerkung/>
+            <quelle buch="LCD" seite="223">LCD: 223</quelle>
+            <kontrollwert/>
+            <mr/>
+            <leittalent>false</leittalent>
+        </zauber>
+        <zauber>
+            <name>Unitatio Geistesbund</name>
+            <variante/>
+            <namemitvariante>Unitatio Geistesbund</namemitvariante>
+            <nameausfuehrlich>Unitatio Geistesbund</nameausfuehrlich>
+            <wert>2</wert>
+            <spezialisierungen/>
+            <probe>IN/CH/KO</probe>
+            <probenwerte>14/13/14</probenwerte>
+            <bereich>Zauber</bereich>
+            <komplexität>B</komplexität>
+            <lernkomplexität>C</lernkomplexität>
+            <hauszauber>false</hauszauber>
+            <hauszauberformatiert> </hauszauberformatiert>
+            <repräsentation>Magier</repräsentation>
+            <merkmale>Krft, Vers</merkmale>
+            <zauberdauer/>
+            <kosten/>
+            <reichweite/>
+            <wirkungsdauer/>
+            <anmerkung/>
+            <quelle buch="LCD" seite="265">LCD: 265</quelle>
+            <kontrollwert/>
+            <mr/>
             <leittalent>false</leittalent>
         </zauber>
     </zauberliste>
@@ -3686,18 +3778,830 @@
             <version>HS 5.5.1</version>
         </ereignis>
         <ereignis>
-            <aktion>Änderungskontrolle</aktion>
+            <aktion>Ereignis eingeben</aktion>
             <alterzustand/>
-            <ap>0</ap>
+            <ap>470</ap>
             <asp>0</asp>
             <bemerkung/>
-            <date>21.05.2018 23:17</date>
+            <date>25.07.2016 17:00</date>
             <kp>0</kp>
-            <kommentar>[ALLESHELDENSOFTWARE]</kommentar>
+            <kommentar>Und so werden die Toten die Toten zu Grabe tragen Gesamt AP: 470 Verfügbare AP: 470</kommentar>
             <lep>0</lep>
             <neuerzustand/>
-            <object>Kontrollsignatur fehlt. Änderungskontrolle wieder aktiviert.</object>
-            <version>HS 5.5.4</version>
+            <object>Abenteuerpunkte (Hinzugewinn)</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>10</alterzustand>
+            <ap>-55</ap>
+            <asp>0</asp>
+            <bemerkung>Lehrmeister</bemerkung>
+            <date>25.07.2016 17:00</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>11</neuerzustand>
+            <object>Ritualkenntnis: Gildenmagie</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>11</alterzustand>
+            <ap>-65</ap>
+            <asp>0</asp>
+            <bemerkung>Lehrmeister</bemerkung>
+            <date>25.07.2016 17:00</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>12</neuerzustand>
+            <object>Ritualkenntnis: Gildenmagie</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Sonderfertigkeit hinzugefügt</aktion>
+            <alterzustand/>
+            <ap>-57</ap>
+            <asp>0</asp>
+            <bemerkung/>
+            <date>25.07.2016 17:01</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand/>
+            <object>Stabzauber: Kraftfokus</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Sonderfertigkeit hinzugefügt</aktion>
+            <alterzustand/>
+            <ap>-150</ap>
+            <asp>0</asp>
+            <bemerkung/>
+            <date>25.07.2016 17:01</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand/>
+            <object>Stabzauber: Zauberspeicher</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>3</alterzustand>
+            <ap>-17</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>25.07.2016 17:02</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>4</neuerzustand>
+            <object>Eisenrost und Patina [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>4</alterzustand>
+            <ap>-22</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>25.07.2016 17:02</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>5</neuerzustand>
+            <object>Eisenrost und Patina [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>3</alterzustand>
+            <ap>-17</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>25.07.2016 17:05</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>4</neuerzustand>
+            <object>Paralysis starr wie Stein [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>4</alterzustand>
+            <ap>-22</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>25.07.2016 17:05</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>5</neuerzustand>
+            <object>Paralysis starr wie Stein [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>7</alterzustand>
+            <ap>-19</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>25.07.2016 17:08</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>8</neuerzustand>
+            <object>Armatrutz [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>8</alterzustand>
+            <ap>-22</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>25.07.2016 17:08</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>9</neuerzustand>
+            <object>Armatrutz [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>7</alterzustand>
+            <ap>-19</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>25.07.2016 17:09</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>8</neuerzustand>
+            <object>Ignifaxius Flammenstrahl [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Abenteuerpunkte</aktion>
+            <alterzustand>1555</alterzustand>
+            <ap>1</ap>
+            <asp>0</asp>
+            <bemerkung/>
+            <date>09.09.2016 17:12</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>1556</neuerzustand>
+            <object/>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Abenteuerpunkte</aktion>
+            <alterzustand>1556</alterzustand>
+            <ap>-1</ap>
+            <asp>0</asp>
+            <bemerkung/>
+            <date>09.09.2016 17:12</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>1555</neuerzustand>
+            <object/>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Ereignis eingeben</aktion>
+            <alterzustand/>
+            <ap>300</ap>
+            <asp>0</asp>
+            <bemerkung/>
+            <date>10.09.2016 00:31</date>
+            <kp>0</kp>
+            <kommentar>Mit krassem Zwerg Hexen getötet Gesamt AP: 300 Verfügbare AP: 300</kommentar>
+            <lep>0</lep>
+            <neuerzustand/>
+            <object>Abenteuerpunkte (Hinzugewinn)</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber aktivieren</aktion>
+            <alterzustand/>
+            <ap>-10</ap>
+            <asp>0</asp>
+            <bemerkung/>
+            <date>10.09.2016 00:32</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>0</neuerzustand>
+            <object>Unitatio Geistesbund [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber aktivieren</aktion>
+            <alterzustand/>
+            <ap>-15</ap>
+            <asp>0</asp>
+            <bemerkung/>
+            <date>10.09.2016 00:33</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>0</neuerzustand>
+            <object>Sapefacta Zauberschwamm [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>0</alterzustand>
+            <ap>-1</ap>
+            <asp>0</asp>
+            <bemerkung>Lehrmeister</bemerkung>
+            <date>10.09.2016 00:33</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>1</neuerzustand>
+            <object>Unitatio Geistesbund [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>1</alterzustand>
+            <ap>-2</ap>
+            <asp>0</asp>
+            <bemerkung>Lehrmeister</bemerkung>
+            <date>10.09.2016 00:33</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>2</neuerzustand>
+            <object>Unitatio Geistesbund [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>0</alterzustand>
+            <ap>-2</ap>
+            <asp>0</asp>
+            <bemerkung>Lehrmeister</bemerkung>
+            <date>10.09.2016 00:33</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>1</neuerzustand>
+            <object>Sapefacta Zauberschwamm [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>1</alterzustand>
+            <ap>-4</ap>
+            <asp>0</asp>
+            <bemerkung>Lehrmeister</bemerkung>
+            <date>10.09.2016 00:33</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>2</neuerzustand>
+            <object>Sapefacta Zauberschwamm [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Sonderfertigkeit hinzugefügt</aktion>
+            <alterzustand/>
+            <ap>-30</ap>
+            <asp>0</asp>
+            <bemerkung/>
+            <date>10.09.2016 00:34</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand/>
+            <object>Zauberspezialisierung Ignisphaero Feuerball [Magier] [Magier] (Zauberdauer)</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>3</alterzustand>
+            <ap>-4</ap>
+            <asp>0</asp>
+            <bemerkung>SE, Gegenseitiges Lehren</bemerkung>
+            <date>10.09.2016 00:35</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>4</neuerzustand>
+            <object>Lehren</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>6</alterzustand>
+            <ap>-33</ap>
+            <asp>0</asp>
+            <bemerkung>SE, Selbststudium</bemerkung>
+            <date>10.09.2016 00:36</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>7</neuerzustand>
+            <object>Sinnenschärfe</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>2</alterzustand>
+            <ap>-3</ap>
+            <asp>0</asp>
+            <bemerkung>SE, Gegenseitiges Lehren</bemerkung>
+            <date>10.09.2016 00:36</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>3</neuerzustand>
+            <object>Orientierung</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>3</alterzustand>
+            <ap>-13</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>10.09.2016 00:36</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>4</neuerzustand>
+            <object>Orientierung</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>4</alterzustand>
+            <ap>-17</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>10.09.2016 00:36</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>5</neuerzustand>
+            <object>Orientierung</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>4</alterzustand>
+            <ap>-17</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>10.09.2016 00:36</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>5</neuerzustand>
+            <object>Lehren</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>5</alterzustand>
+            <ap>-21</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>10.09.2016 00:36</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>6</neuerzustand>
+            <object>Lehren</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Eigenschaft steigern</aktion>
+            <alterzustand>0</alterzustand>
+            <ap>-16</ap>
+            <asp>0</asp>
+            <bemerkung/>
+            <date>10.09.2016 00:36</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>1</neuerzustand>
+            <object>Lebensenergie</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>9</alterzustand>
+            <ap>-25</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>10.09.2016 00:37</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>10</neuerzustand>
+            <object>Armatrutz [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>6</alterzustand>
+            <ap>-25</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>10.09.2016 00:37</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>7</neuerzustand>
+            <object>Menschenkenntnis</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>2</alterzustand>
+            <ap>-12</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>10.09.2016 00:38</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>3</neuerzustand>
+            <object>Sapefacta Zauberschwamm [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>3</alterzustand>
+            <ap>-17</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>10.09.2016 00:38</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>4</neuerzustand>
+            <object>Sapefacta Zauberschwamm [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>4</alterzustand>
+            <ap>-22</ap>
+            <asp>0</asp>
+            <bemerkung>Selbststudium</bemerkung>
+            <date>10.09.2016 00:38</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>5</neuerzustand>
+            <object>Sapefacta Zauberschwamm [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Ereignis eingeben</aktion>
+            <alterzustand/>
+            <ap>550</ap>
+            <asp>0</asp>
+            <bemerkung/>
+            <date>06.01.2017 10:39</date>
+            <kp>0</kp>
+            <kommentar>Sturmgeboren Akt I und II Gesamt AP: 550 Verfügbare AP: 550</kommentar>
+            <lep>0</lep>
+            <neuerzustand/>
+            <object>Abenteuerpunkte (Hinzugewinn)</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Ereignis eingeben</aktion>
+            <alterzustand/>
+            <ap>10</ap>
+            <asp>0</asp>
+            <bemerkung/>
+            <date>06.01.2017 10:40</date>
+            <kp>0</kp>
+            <kommentar>Erlösung des Perlentauchers Gesamt AP: 10 Verfügbare AP: 10</kommentar>
+            <lep>0</lep>
+            <neuerzustand/>
+            <object>Abenteuerpunkte (Hinzugewinn)</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Eigenschaft steigern</aktion>
+            <alterzustand>12</alterzustand>
+            <ap>-350</ap>
+            <asp>0</asp>
+            <bemerkung/>
+            <date>06.01.2017 10:40</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>13</neuerzustand>
+            <object>Charisma</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>6</alterzustand>
+            <ap>-17</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>06.01.2017 10:40</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>7</neuerzustand>
+            <object>Lehren</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>3</alterzustand>
+            <ap>-8</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>06.01.2017 10:40</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>4</neuerzustand>
+            <object>Respondami [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>4</alterzustand>
+            <ap>-11</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>06.01.2017 10:40</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>5</neuerzustand>
+            <object>Respondami [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>5</alterzustand>
+            <ap>-14</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>06.01.2017 10:40</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>6</neuerzustand>
+            <object>Respondami [Magier] [Magier]</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>3</alterzustand>
+            <ap>-8</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>06.01.2017 10:41</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>4</neuerzustand>
+            <object>Überreden</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>4</alterzustand>
+            <ap>-11</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>06.01.2017 10:41</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>5</neuerzustand>
+            <object>Überreden</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>1</alterzustand>
+            <ap>-4</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>06.01.2017 10:41</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>2</neuerzustand>
+            <object>Überzeugen</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>2</alterzustand>
+            <ap>-6</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>06.01.2017 10:41</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>3</neuerzustand>
+            <object>Überzeugen</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>3</alterzustand>
+            <ap>-8</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>06.01.2017 10:41</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>4</neuerzustand>
+            <object>Überzeugen</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>4</alterzustand>
+            <ap>-11</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>06.01.2017 10:41</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>5</neuerzustand>
+            <object>Überzeugen</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>1</alterzustand>
+            <ap>-6</ap>
+            <asp>0</asp>
+            <bemerkung>SE, Gegenseitiges Lehren</bemerkung>
+            <date>06.01.2017 10:41</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>2</neuerzustand>
+            <object>Singen</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>2</alterzustand>
+            <ap>-12</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>06.01.2017 10:41</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>3</neuerzustand>
+            <object>Singen</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>3</alterzustand>
+            <ap>-17</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>06.01.2017 10:42</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>4</neuerzustand>
+            <object>Singen</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>1</alterzustand>
+            <ap>-7</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>06.01.2017 10:42</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>2</neuerzustand>
+            <object>Tanzen</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>2</alterzustand>
+            <ap>-12</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>06.01.2017 10:42</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>3</neuerzustand>
+            <object>Tanzen</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>4</alterzustand>
+            <ap>-11</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>03.02.2017 18:23</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>5</neuerzustand>
+            <object>Etikette</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>5</alterzustand>
+            <ap>-14</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>03.02.2017 18:23</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>6</neuerzustand>
+            <object>Etikette</object>
+            <version>HS 5.5.1</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Ereignis eingeben</aktion>
+            <alterzustand/>
+            <ap>200</ap>
+            <asp>0</asp>
+            <bemerkung/>
+            <date>11.03.2017 02:43</date>
+            <kp>0</kp>
+            <kommentar>Der Fall des falschen Praios-Priesters Gesamt AP: 200 Verfügbare AP: 200</kommentar>
+            <lep>0</lep>
+            <neuerzustand/>
+            <object>Abenteuerpunkte (Hinzugewinn)</object>
+            <version>HS 5.5.2</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>7</alterzustand>
+            <ap>-19</ap>
+            <asp>0</asp>
+            <bemerkung>SE, Selbststudium</bemerkung>
+            <date>11.03.2017 02:43</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>8</neuerzustand>
+            <object>Götter und Kulte</object>
+            <version>HS 5.5.2</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>6</alterzustand>
+            <ap>-25</ap>
+            <asp>0</asp>
+            <bemerkung>SE, Gegenseitiges Lehren</bemerkung>
+            <date>11.03.2017 02:43</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>7</neuerzustand>
+            <object>Körperbeherrschung</object>
+            <version>HS 5.5.2</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>2</alterzustand>
+            <ap>-6</ap>
+            <asp>0</asp>
+            <bemerkung>SE, Gegenseitiges Lehren</bemerkung>
+            <date>11.03.2017 02:43</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>3</neuerzustand>
+            <object>Adamantium Erzstruktur [Magier]</object>
+            <version>HS 5.5.2</version>
         </ereignis>
     </ereignisse>
     <kampfsets>

@@ -6,6 +6,7 @@ import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.util.DateUtil;
+import de.failender.dsaonline.util.VersionFakeService;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -21,11 +23,13 @@ public class UserHeldenService {
 	private final HeldRepository heldRepository;
 	private final UserRepository userRepository;
 	private final ApiService apiService;
+	private final VersionFakeService versionFakeService;
 
-	public UserHeldenService(HeldRepository heldRepository, UserRepository userRepository, ApiService apiService) {
+	public UserHeldenService(HeldRepository heldRepository, UserRepository userRepository, ApiService apiService, VersionFakeService versionFakeService) {
 		this.heldRepository = heldRepository;
 		this.userRepository = userRepository;
 		this.apiService = apiService;
+		this.versionFakeService = versionFakeService;
 	}
 
 
@@ -46,6 +50,7 @@ public class UserHeldenService {
 					heldEntity.setActive(false);
 					this.heldRepository.save(heldEntity);
 					this.persistHeld(heldOptional.get(), userEntity, heldEntity.getVersion()+1, heldEntity.getGruppe());
+					this.forceCacheBuildFor(userEntity, heldEntity, heldEntity.getVersion()+1);
 
 				} else {
 					log.info("Held with name {} is already on latest version", heldEntity.getName());
@@ -68,18 +73,37 @@ public class UserHeldenService {
 			forceCacheBuildFor(userEntity, heldEntity, 1);
 		});
 	}
+	public void updateHeldenForUserNoCache(UserEntity userEntity) {
+		this.apiService.purgeAllHeldenCache(userEntity.getToken());
+		this.updateHeldenForUser(userEntity);
+	}
 
 	public void updateHeldenForUser(UserEntity userEntity) {
 		if(userEntity.getToken() == null) {
 			log.error("User with name {} has null token ", userEntity.getName());
 			return;
 		}
+		System.out.println(userEntity.getToken());
 		List<Held> helden =  apiService.getAllHelden(userEntity.getToken());
 		this.updateHeldenForUser(userEntity, helden);
 
 	}
 
+	public void fakeHeldenForUser(UserEntity userEntity) {
+		if(userEntity.getToken() == null) {
+			log.error("User with name {} has null token ", userEntity.getName());
+			return;
+		}
+		List<Held> helden =  apiService.getAllHelden(userEntity.getToken());
+		log.info("Faking versions for user " +userEntity.getName());
+		this.versionFakeService.fakeVersions(helden.stream().map(held -> held.getHeldenid()).collect(Collectors.toList()));
+	}
+
 	private boolean isOnlineVersionOlder(Held xmlHeld, HeldEntity heldEntity) {
+		if(heldEntity.getId().getId().intValue() == 36222) {
+			System.out.println(xmlHeld.getHeldlastchange());
+			System.out.println(heldEntity.getCreatedDate().getTime());
+		}
 		Date lastEditedDate = DateUtil.convert(xmlHeld.getHeldlastchange());
 		if(lastEditedDate.getTime() == heldEntity.getCreatedDate().getTime()) {
 			return false;
@@ -94,6 +118,7 @@ public class UserHeldenService {
 		heldEntity.setUserId(user.getId());
 		heldEntity.setName(xmlHeld.getName());
 		heldEntity.setVersion(version);
+		heldEntity.setActive(true);
 		heldEntity.getId().setId(xmlHeld.getHeldenid());
 		heldEntity.setGruppe(gruppeEntity);
 		this.heldRepository.save(heldEntity);

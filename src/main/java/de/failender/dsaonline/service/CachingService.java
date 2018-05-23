@@ -93,6 +93,15 @@ public class CachingService {
 		this.userHeldenService.updateHeldenForUser(this.userRepository.findByToken(token));
 	}
 
+	public void purgeAllHeldenCache(String token) {
+		File file = getAllHeldenCacheFile(token);
+		if(file.exists()) {
+			if(!file.delete()) {
+				log.error("Failed to purgeAllHeldenCache for token " + token);
+			}
+		}
+	}
+
 	public void setHeldenCache(BigInteger heldid, int version, Daten daten, String xml) {
 		setHeldenDatenCache(heldid, version, daten);
 		setHeldenXmlCache(heldid, version, xml);

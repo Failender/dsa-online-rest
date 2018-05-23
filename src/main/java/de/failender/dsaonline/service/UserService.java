@@ -27,8 +27,6 @@ public class UserService {
 
 	public UserEntity registerUser(UserRegistration userRegistration) {
 		SecurityUtils.checkRight(SecurityUtils.CREATE_USER);
-
-
 		if(userRegistration.getName() == null || userRegistration.getToken() == null || userRegistration.getGruppe() == null) {
 			throw new ValidationException();
 		}
@@ -49,8 +47,7 @@ public class UserService {
 		userEntity = this.userRepository.save(userEntity);
 
 		userHeldenService.updateHeldenForUser(userEntity);
-
-
+		userHeldenService.fakeHeldenForUser(userEntity);
 		return userEntity;
 
 	}

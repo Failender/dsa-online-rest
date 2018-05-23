@@ -1,20 +1,16 @@
 package de.failender.dsaonline.rest.user;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.ApiService;
 import de.failender.dsaonline.service.HeldenService;
 import de.failender.dsaonline.service.UserService;
-import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigInteger;
 import java.util.List;
 import java.util.stream.Collectors;
 

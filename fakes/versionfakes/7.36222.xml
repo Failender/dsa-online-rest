@@ -4,7 +4,7 @@
     <config>
         <rsmodell>zone</rsmodell>
         <datum>21.05.2018</datum>
-        <uhrzeit>23:13</uhrzeit>
+        <uhrzeit>23:11</uhrzeit>
         <geldkreise>false</geldkreise>
         <metatalente>false</metatalente>
         <zauberquellen>true</zauberquellen>
@@ -59,9 +59,9 @@
             <tarnidentitaet/>
         </profession>
         <ap>
-            <gesamt>3520</gesamt>
-            <frei>149</frei>
-            <genutzt>3371</genutzt>
+            <gesamt>3120</gesamt>
+            <frei>5</frei>
+            <genutzt>3115</genutzt>
         </ap>
         <gp>
             <start>110</start>
@@ -85,7 +85,7 @@
         <aspregeneration>1W6+3</aspregeneration>
         <leregeneration>1W6</leregeneration>
         <heldenversion>050504</heldenversion>
-        <wundschwelle>8</wundschwelle>
+        <wundschwelle>7</wundschwelle>
     </angaben>
     <eigenschaften>
         <geschwindigkeit>
@@ -138,7 +138,7 @@
             <bereich>guteeigenschaft</bereich>
         </gewandtheit>
         <konstitution>
-            <akt>15</akt>
+            <akt>14</akt>
             <start>14</start>
             <modi>0</modi>
             <name>Konstitution</name>
@@ -182,16 +182,16 @@
             <bereich>sonst</bereich>
         </attacke>
         <ausdauer>
-            <akt>30</akt>
+            <akt>29</akt>
             <start>19</start>
             <modi>10</modi>
             <name>Ausdauer</name>
             <bereich>sonst</bereich>
-            <kaufbar>15</kaufbar>
+            <kaufbar>14</kaufbar>
             <gekauft>0</gekauft>
             <akt50>15</akt50>
             <akt33>10</akt33>
-            <akt25>8</akt25>
+            <akt25>7</akt25>
         </ausdauer>
         <fernkampf-basis>
             <akt>7</akt>
@@ -217,16 +217,16 @@
             <gekauft>0</gekauft>
         </karmaenergie>
         <lebensenergie>
-            <akt>30</akt>
+            <akt>29</akt>
             <start>20</start>
             <modi>8</modi>
             <name>Lebensenergie</name>
             <bereich>sonst</bereich>
-            <kaufbar>7</kaufbar>
+            <kaufbar>6</kaufbar>
             <gekauft>1</gekauft>
             <akt50>15</akt50>
             <akt33>10</akt33>
-            <akt25>8</akt25>
+            <akt25>7</akt25>
         </lebensenergie>
         <magieresistenz>
             <akt>6</akt>
@@ -922,7 +922,7 @@
             <nameausfuehrlich>Athletik  (B)</nameausfuehrlich>
             <wert>3</wert>
             <probe>GE/KO/KK</probe>
-            <probenwerte>12/15/11</probenwerte>
+            <probenwerte>12/14/11</probenwerte>
             <nameausfuehrlichmitprobe>Athletik  (B)(GE/KO/KK)</nameausfuehrlichmitprobe>
             <behinderung>BEx2</behinderung>
             <mirakelplus>false</mirakelplus>
@@ -1017,7 +1017,7 @@
             <nameausfuehrlich>Schwimmen  (B)</nameausfuehrlich>
             <wert>1</wert>
             <probe>GE/KO/KK</probe>
-            <probenwerte>12/15/11</probenwerte>
+            <probenwerte>12/14/11</probenwerte>
             <nameausfuehrlichmitprobe>Schwimmen  (B)(GE/KO/KK)</nameausfuehrlichmitprobe>
             <behinderung>BEx2</behinderung>
             <mirakelplus>false</mirakelplus>
@@ -1036,7 +1036,7 @@
             <nameausfuehrlich>Selbstbeherrschung  (B)</nameausfuehrlich>
             <wert>4</wert>
             <probe>MU/KO/KK</probe>
-            <probenwerte>12/15/11</probenwerte>
+            <probenwerte>12/14/11</probenwerte>
             <nameausfuehrlichmitprobe>Selbstbeherrschung  (B)(MU/KO/KK)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1131,7 +1131,7 @@
             <nameausfuehrlich>Zechen  (B)</nameausfuehrlich>
             <wert>0</wert>
             <probe>IN/KO/KK</probe>
-            <probenwerte>14/15/11</probenwerte>
+            <probenwerte>14/14/11</probenwerte>
             <nameausfuehrlichmitprobe>Zechen  (B)(IN/KO/KK)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1283,7 +1283,7 @@
             <nameausfuehrlich>Fährtensuchen  (B)</nameausfuehrlich>
             <wert>0</wert>
             <probe>KL/IN/KO</probe>
-            <probenwerte>14/14/15</probenwerte>
+            <probenwerte>14/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Fährtensuchen  (B)(KL/IN/KO)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1376,7 +1376,7 @@
             <leittalent>false</leittalent>
             <basis>true</basis>
             <nameausfuehrlich>Orientierung  (B)</nameausfuehrlich>
-            <wert>6</wert>
+            <wert>5</wert>
             <probe>KL/IN/IN</probe>
             <probenwerte>14/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Orientierung  (B)(KL/IN/IN)</nameausfuehrlichmitprobe>
@@ -1386,7 +1386,7 @@
             <metatalent>false</metatalent>
             <bereich>Natur</bereich>
             <komplexität>B</komplexität>
-            <lernkomplexität>B</lernkomplexität>
+            <lernkomplexität>C</lernkomplexität>
             <spezialisierungen/>
         </talent>
         <talent>
@@ -1416,7 +1416,7 @@
             <nameausfuehrlich>Wildnisleben  (B)</nameausfuehrlich>
             <wert>1</wert>
             <probe>IN/GE/KO</probe>
-            <probenwerte>14/12/15</probenwerte>
+            <probenwerte>14/12/14</probenwerte>
             <nameausfuehrlichmitprobe>Wildnisleben  (B)(IN/GE/KO)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -1452,7 +1452,7 @@
             <leittalent>false</leittalent>
             <basis>false</basis>
             <nameausfuehrlich>Geschichtswissen</nameausfuehrlich>
-            <wert>5</wert>
+            <wert>4</wert>
             <probe>KL/KL/IN</probe>
             <probenwerte>14/14/14</probenwerte>
             <nameausfuehrlichmitprobe>Geschichtswissen (KL/KL/IN)</nameausfuehrlichmitprobe>
@@ -1642,7 +1642,7 @@
             <leittalent>false</leittalent>
             <basis>false</basis>
             <nameausfuehrlich>Staatskunst</nameausfuehrlich>
-            <wert>3</wert>
+            <wert>2</wert>
             <probe>KL/IN/CH</probe>
             <probenwerte>14/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Staatskunst (KL/IN/CH)</nameausfuehrlichmitprobe>
@@ -1843,7 +1843,7 @@
             <nameausfuehrlich>Boote fahren</nameausfuehrlich>
             <wert>1</wert>
             <probe>GE/KO/KK</probe>
-            <probenwerte>12/15/11</probenwerte>
+            <probenwerte>12/14/11</probenwerte>
             <nameausfuehrlichmitprobe>Boote fahren (GE/KO/KK)</nameausfuehrlichmitprobe>
             <behinderung/>
             <mirakelplus>false</mirakelplus>
@@ -2054,7 +2054,7 @@
             <wert>3</wert>
             <spezialisierungen/>
             <probe>KL/FF/KO</probe>
-            <probenwerte>14/11/15</probenwerte>
+            <probenwerte>14/11/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
             <lernkomplexität>C</lernkomplexität>
@@ -2103,7 +2103,7 @@
             <variante/>
             <namemitvariante>Ängste lindern</namemitvariante>
             <nameausfuehrlich>Ängste lindern</nameausfuehrlich>
-            <wert>4</wert>
+            <wert>0</wert>
             <spezialisierungen/>
             <probe>MU/IN/CH</probe>
             <probenwerte>12/14/13</probenwerte>
@@ -2132,10 +2132,10 @@
             <wert>10</wert>
             <spezialisierungen/>
             <probe>IN/GE/KO</probe>
-            <probenwerte>14/12/15</probenwerte>
+            <probenwerte>14/12/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>B</komplexität>
-            <lernkomplexität>B</lernkomplexität>
+            <lernkomplexität>A+</lernkomplexität>
             <hauszauber>true</hauszauber>
             <hauszauberformatiert>X</hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2236,7 +2236,7 @@
             <wert>7</wert>
             <spezialisierungen/>
             <probe>CH/GE/KO</probe>
-            <probenwerte>13/12/15</probenwerte>
+            <probenwerte>13/12/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
             <lernkomplexität>A</lernkomplexität>
@@ -2288,7 +2288,7 @@
             <wert>4</wert>
             <spezialisierungen/>
             <probe>KL/KO/KK</probe>
-            <probenwerte>14/15/11</probenwerte>
+            <probenwerte>14/14/11</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>D</komplexität>
             <lernkomplexität>C</lernkomplexität>
@@ -2366,7 +2366,7 @@
             <wert>4</wert>
             <spezialisierungen/>
             <probe>IN/KO/KK</probe>
-            <probenwerte>14/15/11</probenwerte>
+            <probenwerte>14/14/11</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>D</komplexität>
             <lernkomplexität>E</lernkomplexität>
@@ -2392,7 +2392,7 @@
             <wert>7</wert>
             <spezialisierungen/>
             <probe>IN/GE/KO</probe>
-            <probenwerte>14/12/15</probenwerte>
+            <probenwerte>14/12/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
             <lernkomplexität>B</lernkomplexität>
@@ -2418,7 +2418,7 @@
             <wert>5</wert>
             <spezialisierungen/>
             <probe>KL/IN/KO</probe>
-            <probenwerte>14/14/15</probenwerte>
+            <probenwerte>14/14/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>D</komplexität>
             <lernkomplexität>E</lernkomplexität>
@@ -2444,7 +2444,7 @@
             <wert>8</wert>
             <spezialisierungen/>
             <probe>KL/FF/KO</probe>
-            <probenwerte>14/11/15</probenwerte>
+            <probenwerte>14/11/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
             <lernkomplexität>B</lernkomplexität>
@@ -2470,7 +2470,7 @@
             <wert>8</wert>
             <spezialisierungen>Zauberdauer</spezialisierungen>
             <probe>MU/IN/KO</probe>
-            <probenwerte>12/14/15</probenwerte>
+            <probenwerte>12/14/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>D</komplexität>
             <lernkomplexität>D</lernkomplexität>
@@ -2600,7 +2600,7 @@
             <wert>5</wert>
             <spezialisierungen/>
             <probe>MU/KL/KO</probe>
-            <probenwerte>12/14/15</probenwerte>
+            <probenwerte>12/14/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
             <lernkomplexität>C</lernkomplexität>
@@ -2678,7 +2678,7 @@
             <wert>3</wert>
             <spezialisierungen/>
             <probe>IN/CH/KO</probe>
-            <probenwerte>14/13/15</probenwerte>
+            <probenwerte>14/13/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>B</komplexität>
             <lernkomplexität>B</lernkomplexität>
@@ -2699,34 +2699,79 @@
     </zauberliste>
     <gegenstaende>
         <gegenstand>
-            <name>(Lang-)Schwert</name>
+            <name>Dolch</name>
             <anzahl>1</anzahl>
-            <grundlage>(Lang-)Schwert</grundlage>
-            <gewicht>80.0</gewicht>
-            <gesamtgewicht>80.0</gesamtgewicht>
-            <angelegt>true</angelegt>
+            <grundlage>Dolch</grundlage>
+            <gewicht>20.0</gewicht>
+            <gesamtgewicht>20.0</gesamtgewicht>
+            <angelegt>false</angelegt>
             <angelegt1>false</angelegt1>
             <angelegt2>false</angelegt2>
-            <einzelpreis>18000</einzelpreis>
-            <gesamtpreis>18000</gesamtpreis>
-            <quelle buch="AA" seite="27">AA: 27</quelle>
+            <einzelpreis>2000</einzelpreis>
+            <gesamtpreis>2000</gesamtpreis>
+            <quelle buch="AA" seite="12">AA: 12</quelle>
             <details/>
-            <arten>Nahkampfwaffe</arten>
+            <arten>Nahkampfwaffe, Fernkampfwaffe</arten>
         </gegenstand>
         <gegenstand>
-            <name>Gambeson</name>
+            <name>Geldbeutel, Leder</name>
             <anzahl>1</anzahl>
-            <grundlage>Gambeson</grundlage>
-            <gewicht>120.0</gewicht>
-            <gesamtgewicht>120.0</gesamtgewicht>
-            <angelegt>true</angelegt>
+            <grundlage>Geldbeutel, Leder</grundlage>
+            <gewicht>1.0</gewicht>
+            <gesamtgewicht>1.0</gesamtgewicht>
+            <angelegt>false</angelegt>
             <angelegt1>false</angelegt1>
             <angelegt2>false</angelegt2>
-            <einzelpreis>4000</einzelpreis>
-            <gesamtpreis>4000</gesamtpreis>
-            <quelle buch="AA" seite="101">AA: 101</quelle>
+            <einzelpreis>10</einzelpreis>
+            <gesamtpreis>10</gesamtpreis>
+            <quelle buch="MSB" seite="28">MSB: 28</quelle>
+            <details/>
+            <arten>sonst</arten>
+        </gegenstand>
+        <gegenstand>
+            <name>Hohe Stiefel</name>
+            <anzahl>1</anzahl>
+            <grundlage>Hohe Stiefel</grundlage>
+            <gewicht>80.0</gewicht>
+            <gesamtgewicht>80.0</gesamtgewicht>
+            <angelegt>false</angelegt>
+            <angelegt1>false</angelegt1>
+            <angelegt2>false</angelegt2>
+            <einzelpreis>0</einzelpreis>
+            <gesamtpreis>0</gesamtpreis>
+            <quelle buch="AA" seite="100">AA: 100</quelle>
             <details/>
             <arten>Rüstung</arten>
+        </gegenstand>
+        <gegenstand>
+            <name>Kohlestift</name>
+            <anzahl>5</anzahl>
+            <grundlage>Kohlestift</grundlage>
+            <gewicht>4.0</gewicht>
+            <gesamtgewicht>20.0</gesamtgewicht>
+            <angelegt>false</angelegt>
+            <angelegt1>false</angelegt1>
+            <angelegt2>false</angelegt2>
+            <einzelpreis>10</einzelpreis>
+            <gesamtpreis>50</gesamtpreis>
+            <quelle buch="MSB" seite="30">MSB: 30</quelle>
+            <details/>
+            <arten>sonst</arten>
+        </gegenstand>
+        <gegenstand>
+            <name>Magierrobe, Taft</name>
+            <anzahl>1</anzahl>
+            <grundlage>Magierrobe, Taft</grundlage>
+            <gewicht>120.0</gewicht>
+            <gesamtgewicht>120.0</gesamtgewicht>
+            <angelegt>false</angelegt>
+            <angelegt1>false</angelegt1>
+            <angelegt2>false</angelegt2>
+            <einzelpreis>6000</einzelpreis>
+            <gesamtpreis>6000</gesamtpreis>
+            <quelle buch="MSB" seite="29">MSB: 29</quelle>
+            <details/>
+            <arten>sonst</arten>
         </gegenstand>
         <gegenstand>
             <name>Magierstab als Stab</name>
@@ -2734,7 +2779,7 @@
             <grundlage>Magierstab als Stab</grundlage>
             <gewicht>90.0</gewicht>
             <gesamtgewicht>90.0</gesamtgewicht>
-            <angelegt>true</angelegt>
+            <angelegt>false</angelegt>
             <angelegt1>false</angelegt1>
             <angelegt2>false</angelegt2>
             <einzelpreis>0</einzelpreis>
@@ -2742,6 +2787,81 @@
             <quelle buch="AA" seite="56">AA: 56</quelle>
             <details/>
             <arten>Nahkampfwaffe</arten>
+        </gegenstand>
+        <gegenstand>
+            <name>Ring</name>
+            <anzahl>1</anzahl>
+            <grundlage>Ring</grundlage>
+            <gewicht>1.0</gewicht>
+            <gesamtgewicht>1.0</gesamtgewicht>
+            <angelegt>false</angelegt>
+            <angelegt1>false</angelegt1>
+            <angelegt2>false</angelegt2>
+            <einzelpreis>300</einzelpreis>
+            <gesamtpreis>300</gesamtpreis>
+            <quelle buch="MSB" seite="30">MSB: 30</quelle>
+            <details/>
+            <arten>sonst</arten>
+        </gegenstand>
+        <gegenstand>
+            <name>Tagebuch, Papier</name>
+            <anzahl>1</anzahl>
+            <grundlage>Tagebuch, Papier</grundlage>
+            <gewicht>20.0</gewicht>
+            <gesamtgewicht>20.0</gesamtgewicht>
+            <angelegt>false</angelegt>
+            <angelegt1>false</angelegt1>
+            <angelegt2>false</angelegt2>
+            <einzelpreis>3500</einzelpreis>
+            <gesamtpreis>3500</gesamtpreis>
+            <quelle buch="MSB" seite="30">MSB: 30</quelle>
+            <details/>
+            <arten>sonst</arten>
+        </gegenstand>
+        <gegenstand>
+            <name>Tinte</name>
+            <anzahl>1</anzahl>
+            <grundlage>Tinte</grundlage>
+            <gewicht>4.0</gewicht>
+            <gesamtgewicht>4.0</gesamtgewicht>
+            <angelegt>false</angelegt>
+            <angelegt1>false</angelegt1>
+            <angelegt2>false</angelegt2>
+            <einzelpreis>200</einzelpreis>
+            <gesamtpreis>200</gesamtpreis>
+            <quelle buch="MSB" seite="30">MSB: 30</quelle>
+            <details/>
+            <arten>sonst</arten>
+        </gegenstand>
+        <gegenstand>
+            <name>Unterkleid, Leinen</name>
+            <anzahl>1</anzahl>
+            <grundlage>Unterkleid, Leinen</grundlage>
+            <gewicht>20.0</gewicht>
+            <gesamtgewicht>20.0</gesamtgewicht>
+            <angelegt>false</angelegt>
+            <angelegt1>false</angelegt1>
+            <angelegt2>false</angelegt2>
+            <einzelpreis>100</einzelpreis>
+            <gesamtpreis>100</gesamtpreis>
+            <quelle buch="MSB" seite="29">MSB: 29</quelle>
+            <details/>
+            <arten>sonst</arten>
+        </gegenstand>
+        <gegenstand>
+            <name>Wirselkraut (W)</name>
+            <anzahl>1</anzahl>
+            <grundlage>Wirselkraut (W)</grundlage>
+            <gewicht>100.0</gewicht>
+            <gesamtgewicht>100.0</gesamtgewicht>
+            <angelegt>false</angelegt>
+            <angelegt1>false</angelegt1>
+            <angelegt2>false</angelegt2>
+            <einzelpreis>5000</einzelpreis>
+            <gesamtpreis>5000</gesamtpreis>
+            <quelle buch="MSB" seite="31">MSB: 31</quelle>
+            <details/>
+            <arten>sonst</arten>
         </gegenstand>
     </gegenstaende>
     <verbindungen/>
@@ -5280,333 +5400,69 @@
             <object>Etikette</object>
             <version>HS 5.5.2</version>
         </ereignis>
-        <ereignis>
-            <aktion>Ereignis eingeben</aktion>
-            <alterzustand/>
-            <ap>400</ap>
-            <asp>0</asp>
-            <bemerkung/>
-            <date>09.09.2017 01:56</date>
-            <kp>0</kp>
-            <kommentar>Die Bergung des Drachenhorns Gesamt AP: 400 Verfügbare AP: 400</kommentar>
-            <lep>0</lep>
-            <neuerzustand/>
-            <object>Abenteuerpunkte (Hinzugewinn)</object>
-            <version>HS 5.5.2</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Talent steigern</aktion>
-            <alterzustand>2</alterzustand>
-            <ap>-3</ap>
-            <asp>0</asp>
-            <bemerkung>SE, Gegenseitiges Lehren</bemerkung>
-            <date>09.09.2017 01:56</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>3</neuerzustand>
-            <object>Staatskunst</object>
-            <version>HS 5.5.2</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Talent steigern</aktion>
-            <alterzustand>5</alterzustand>
-            <ap>-7</ap>
-            <asp>0</asp>
-            <bemerkung>SE, Gegenseitiges Lehren</bemerkung>
-            <date>09.09.2017 01:57</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>6</neuerzustand>
-            <object>Orientierung</object>
-            <version>HS 5.5.2</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Eigenschaft steigern</aktion>
-            <alterzustand>14</alterzustand>
-            <ap>-210</ap>
-            <asp>0</asp>
-            <bemerkung>SE</bemerkung>
-            <date>09.09.2017 01:57</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>15</neuerzustand>
-            <object>Konstitution</object>
-            <version>HS 5.5.2</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Talent steigern</aktion>
-            <alterzustand>4</alterzustand>
-            <ap>-6</ap>
-            <asp>0</asp>
-            <bemerkung>SE, Gegenseitiges Lehren</bemerkung>
-            <date>09.09.2017 02:00</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>5</neuerzustand>
-            <object>Geschichtswissen</object>
-            <version>HS 5.5.2</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Zauber steigern</aktion>
-            <alterzustand>0</alterzustand>
-            <ap>-2</ap>
-            <asp>0</asp>
-            <bemerkung>Gegenseitiges Lehren</bemerkung>
-            <date>09.09.2017 02:01</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>1</neuerzustand>
-            <object>Ängste lindern [Magier]</object>
-            <version>HS 5.5.2</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Zauber steigern</aktion>
-            <alterzustand>1</alterzustand>
-            <ap>-6</ap>
-            <asp>0</asp>
-            <bemerkung>Gegenseitiges Lehren</bemerkung>
-            <date>09.09.2017 02:01</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>2</neuerzustand>
-            <object>Ängste lindern [Magier]</object>
-            <version>HS 5.5.2</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Zauber steigern</aktion>
-            <alterzustand>2</alterzustand>
-            <ap>-9</ap>
-            <asp>0</asp>
-            <bemerkung>Gegenseitiges Lehren</bemerkung>
-            <date>09.09.2017 02:01</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>3</neuerzustand>
-            <object>Ängste lindern [Magier]</object>
-            <version>HS 5.5.2</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Zauber steigern</aktion>
-            <alterzustand>3</alterzustand>
-            <ap>-13</ap>
-            <asp>0</asp>
-            <bemerkung>Gegenseitiges Lehren</bemerkung>
-            <date>09.09.2017 02:01</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>4</neuerzustand>
-            <object>Ängste lindern [Magier]</object>
-            <version>HS 5.5.2</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Änderungskontrolle</aktion>
-            <alterzustand/>
-            <ap>0</ap>
-            <asp>0</asp>
-            <bemerkung/>
-            <date>21.05.2018 23:13</date>
-            <kp>0</kp>
-            <kommentar>[EDITOREINGEGEBEN, ALLESHELDENSOFTWARE]</kommentar>
-            <lep>0</lep>
-            <neuerzustand/>
-            <object>Kontrollsignatur fehlt. Änderungskontrolle wieder aktiviert.</object>
-            <version>HS 5.5.4</version>
-        </ereignis>
     </ereignisse>
     <kampfsets>
-        <kampfset defaultrsmodel="true" inbenutzung="true" nr="1" tzm="true">
+        <kampfset defaultrsmodel="true" inbenutzung="false" nr="1" tzm="true">
             <raufen>
                 <at>7</at>
-                <pa>9</pa>
+                <pa>10</pa>
                 <tp>1W+0</tp>
             </raufen>
             <ringen>
                 <at>7</at>
-                <pa>8</pa>
+                <pa>9</pa>
                 <tp>1W+0</tp>
             </ringen>
-            <ausweichen>6</ausweichen>
+            <ausweichen>7</ausweichen>
             <ausweichenausweichenmod>0</ausweichenausweichenmod>
             <ausweichenakrobatikmod>0</ausweichenakrobatikmod>
             <ausweichenmod>0</ausweichenmod>
-            <geschwindigkeitinklbe>7</geschwindigkeitinklbe>
+            <geschwindigkeitinklbe>8</geschwindigkeitinklbe>
             <ini>10</ini>
             <ruestungzonen>
                 <kopf>0</kopf>
-                <brust>2</brust>
-                <ruecken>2</ruecken>
-                <gesamt>2</gesamt>
-                <bauch>2</bauch>
-                <linkerarm>1</linkerarm>
-                <rechterarm>1</rechterarm>
-                <linkesbein>1</linkesbein>
-                <rechtesbein>1</rechtesbein>
-                <gesamtschutz>2</gesamtschutz>
-                <gesamtzonenschutz>2</gesamtzonenschutz>
-                <behinderung>1</behinderung>
+                <brust>0</brust>
+                <ruecken>0</ruecken>
+                <gesamt>0</gesamt>
+                <bauch>0</bauch>
+                <linkerarm>0</linkerarm>
+                <rechterarm>0</rechterarm>
+                <linkesbein>0</linkesbein>
+                <rechtesbein>0</rechtesbein>
+                <gesamtschutz>0</gesamtschutz>
+                <gesamtzonenschutz>0</gesamtzonenschutz>
+                <behinderung>0</behinderung>
             </ruestungzonen>
-            <nahkampfwaffen inbenutzung="true">
-                <nahkampfwaffe>
-                    <nummer>1</nummer>
-                    <möglich>true</möglich>
-                    <bh>false</bh>
-                    <name>(Lang-)Schwert</name>
-                    <spalte2>Sc/BE-2</spalte2>
-                    <dk>N </dk>
-                    <tp>1W+4</tp>
-                    <tpkk schrittweite="4" schwelle="11">11 / 4</tpkk>
-                    <ini>0</ini>
-                    <wm>0 / 0</wm>
-                    <at>10</at>
-                    <pa>11</pa>
-                    <tpinkl>1W+4</tpinkl>
-                    <bereich>nahkampf</bereich>
-                    <bfmin>1</bfmin>
-                    <bfakt>1</bfakt>
-                    <waffentalentkurz>Sc</waffentalentkurz>
-                    <waffentalent>Schwerter</waffentalent>
-                    <be>BE-2</be>
-                </nahkampfwaffe>
-                <nahkampfwaffe>
-                    <nummer>2</nummer>
-                    <möglich>true</möglich>
-                    <bh>false</bh>
-                    <name>Magierstab als Stab</name>
-                    <spalte2>St/BE-2</spalte2>
-                    <dk>N S </dk>
-                    <tp>1W+1</tp>
-                    <tpkk schrittweite="5" schwelle="11">11 / 5</tpkk>
-                    <ini>0</ini>
-                    <wm>-1/-1</wm>
-                    <at>11</at>
-                    <pa>9</pa>
-                    <tpinkl>1W+1</tpinkl>
-                    <bereich>nahkampf</bereich>
-                    <bfmin>-9</bfmin>
-                    <bfakt>-9</bfakt>
-                    <waffentalentkurz>St</waffentalentkurz>
-                    <waffentalent>Stäbe</waffentalent>
-                    <be>BE-2</be>
-                </nahkampfwaffe>
-            </nahkampfwaffen>
+            <nahkampfwaffen inbenutzung="false"/>
             <fernkampfwaffen inbenutzung="false"/>
             <schilder inbenutzung="false"/>
-            <ruestungen inbenutzung="true">
-                <ruestung>
-                    <nummer>1</nummer>
-                    <name>Gambeson</name>
-                    <grundlage>Gambeson</grundlage>
-                    <be>2</be>
-                    <rs>2</rs>
-                    <kopf>0</kopf>
-                    <brust>2</brust>
-                    <ruecken>2</ruecken>
-                    <bauch>2</bauch>
-                    <linkerarm>1</linkerarm>
-                    <rechterarm>1</rechterarm>
-                    <linkesbein>1</linkesbein>
-                    <rechtesbein>1</rechtesbein>
-                    <gesamt>2</gesamt>
-                    <gesamtzonenschutz>2</gesamtzonenschutz>
-                    <behinderung>2</behinderung>
-                </ruestung>
-            </ruestungen>
+            <ruestungen inbenutzung="false"/>
         </kampfset>
-        <kampfset defaultrsmodel="false" inbenutzung="true" nr="1" tzm="false">
+        <kampfset defaultrsmodel="false" inbenutzung="false" nr="1" tzm="false">
             <raufen>
                 <at>7</at>
-                <pa>9</pa>
+                <pa>10</pa>
                 <tp>1W+0</tp>
             </raufen>
             <ringen>
                 <at>7</at>
-                <pa>8</pa>
+                <pa>9</pa>
                 <tp>1W+0</tp>
             </ringen>
-            <ausweichen>6</ausweichen>
+            <ausweichen>7</ausweichen>
             <ausweichenausweichenmod>0</ausweichenausweichenmod>
             <ausweichenakrobatikmod>0</ausweichenakrobatikmod>
             <ausweichenmod>0</ausweichenmod>
-            <geschwindigkeitinklbe>7</geschwindigkeitinklbe>
+            <geschwindigkeitinklbe>8</geschwindigkeitinklbe>
             <ini>10</ini>
             <ruestungeinfach>
-                <gesamt>2</gesamt>
-                <behinderung>1</behinderung>
+                <gesamt>0</gesamt>
+                <behinderung>0</behinderung>
             </ruestungeinfach>
-            <nahkampfwaffen inbenutzung="true">
-                <nahkampfwaffe>
-                    <nummer>1</nummer>
-                    <möglich>true</möglich>
-                    <bh>false</bh>
-                    <name>(Lang-)Schwert</name>
-                    <spalte2>Sc/BE-2</spalte2>
-                    <dk>N </dk>
-                    <tp>1W+4</tp>
-                    <tpkk schrittweite="4" schwelle="11">11 / 4</tpkk>
-                    <ini>0</ini>
-                    <wm>0 / 0</wm>
-                    <at>10</at>
-                    <pa>11</pa>
-                    <tpinkl>1W+4</tpinkl>
-                    <bereich>nahkampf</bereich>
-                    <bfmin>1</bfmin>
-                    <bfakt>1</bfakt>
-                    <waffentalentkurz>Sc</waffentalentkurz>
-                    <waffentalent>Schwerter</waffentalent>
-                    <be>BE-2</be>
-                </nahkampfwaffe>
-                <nahkampfwaffe>
-                    <nummer>2</nummer>
-                    <möglich>true</möglich>
-                    <bh>false</bh>
-                    <name>Magierstab als Stab</name>
-                    <spalte2>St/BE-2</spalte2>
-                    <dk>N S </dk>
-                    <tp>1W+1</tp>
-                    <tpkk schrittweite="5" schwelle="11">11 / 5</tpkk>
-                    <ini>0</ini>
-                    <wm>-1/-1</wm>
-                    <at>11</at>
-                    <pa>9</pa>
-                    <tpinkl>1W+1</tpinkl>
-                    <bereich>nahkampf</bereich>
-                    <bfmin>-9</bfmin>
-                    <bfakt>-9</bfakt>
-                    <waffentalentkurz>St</waffentalentkurz>
-                    <waffentalent>Stäbe</waffentalent>
-                    <be>BE-2</be>
-                </nahkampfwaffe>
-            </nahkampfwaffen>
+            <nahkampfwaffen inbenutzung="false"/>
             <fernkampfwaffen inbenutzung="false"/>
             <schilder inbenutzung="false"/>
-            <ruestungen inbenutzung="true">
-                <ruestung>
-                    <nummer>1</nummer>
-                    <name>Gambeson</name>
-                    <grundlage>Gambeson</grundlage>
-                    <be>2</be>
-                    <rs>2</rs>
-                    <kopf>0</kopf>
-                    <brust>2</brust>
-                    <ruecken>2</ruecken>
-                    <bauch>2</bauch>
-                    <linkerarm>1</linkerarm>
-                    <rechterarm>1</rechterarm>
-                    <linkesbein>1</linkesbein>
-                    <rechtesbein>1</rechtesbein>
-                    <gesamt>2</gesamt>
-                    <gesamtzonenschutz>2</gesamtzonenschutz>
-                    <behinderung>2</behinderung>
-                </ruestung>
-            </ruestungen>
+            <ruestungen inbenutzung="false"/>
         </kampfset>
         <kampfset defaultrsmodel="true" inbenutzung="false" nr="2" tzm="true">
             <raufen>

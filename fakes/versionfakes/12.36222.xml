@@ -4,7 +4,7 @@
     <config>
         <rsmodell>zone</rsmodell>
         <datum>21.05.2018</datum>
-        <uhrzeit>23:12</uhrzeit>
+        <uhrzeit>23:13</uhrzeit>
         <geldkreise>false</geldkreise>
         <metatalente>false</metatalente>
         <zauberquellen>true</zauberquellen>
@@ -59,9 +59,9 @@
             <tarnidentitaet/>
         </profession>
         <ap>
-            <gesamt>4060</gesamt>
-            <frei>14</frei>
-            <genutzt>4046</genutzt>
+            <gesamt>4010</gesamt>
+            <frei>18</frei>
+            <genutzt>3992</genutzt>
         </ap>
         <gp>
             <start>110</start>
@@ -73,9 +73,9 @@
             <lang>9 [9]</lang>
         </stufe40>
         <stufe41>
-            <akt>4</akt>
+            <akt>3</akt>
             <max>4</max>
-            <lang>4 [4]</lang>
+            <lang>3 [4]</lang>
         </stufe41>
         <gilde>weiß</gilde>
         <magisch>true</magisch>
@@ -1637,7 +1637,7 @@
             <leittalent>false</leittalent>
             <basis>true</basis>
             <nameausfuehrlich>Sagen und Legenden  (B)</nameausfuehrlich>
-            <wert>7</wert>
+            <wert>6</wert>
             <probe>KL/IN/CH</probe>
             <probenwerte>15/14/13</probenwerte>
             <nameausfuehrlichmitprobe>Sagen und Legenden  (B)(KL/IN/CH)</nameausfuehrlichmitprobe>
@@ -2455,13 +2455,13 @@
             <variante/>
             <namemitvariante>Gardianum Zauberschild</namemitvariante>
             <nameausfuehrlich>Gardianum Zauberschild</nameausfuehrlich>
-            <wert>7</wert>
+            <wert>5</wert>
             <spezialisierungen/>
             <probe>KL/IN/KO</probe>
             <probenwerte>15/14/15</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>D</komplexität>
-            <lernkomplexität>C</lernkomplexität>
+            <lernkomplexität>E</lernkomplexität>
             <hauszauber>false</hauszauber>
             <hauszauberformatiert> </hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -5711,76 +5711,6 @@
             <neuerzustand>7</neuerzustand>
             <object>Ängste lindern [Magier]</object>
             <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Ereignis eingeben</aktion>
-            <alterzustand/>
-            <ap>50</ap>
-            <asp>0</asp>
-            <bemerkung/>
-            <date>02.12.2017 14:53</date>
-            <kp>0</kp>
-            <kommentar>TimeTravelStuff Gesamt AP: 50 Verfügbare AP: 50</kommentar>
-            <lep>0</lep>
-            <neuerzustand/>
-            <object>Abenteuerpunkte (Hinzugewinn)</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Talent steigern</aktion>
-            <alterzustand>6</alterzustand>
-            <ap>-8</ap>
-            <asp>0</asp>
-            <bemerkung>SE, Gegenseitiges Lehren</bemerkung>
-            <date>02.12.2017 14:54</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>7</neuerzustand>
-            <object>Sagen und Legenden</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Zauber steigern</aktion>
-            <alterzustand>5</alterzustand>
-            <ap>-21</ap>
-            <asp>0</asp>
-            <bemerkung>Lehrmeister</bemerkung>
-            <date>02.12.2017 14:54</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>6</neuerzustand>
-            <object>Gardianum Zauberschild [Magier]</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Zauber steigern</aktion>
-            <alterzustand>6</alterzustand>
-            <ap>-25</ap>
-            <asp>0</asp>
-            <bemerkung>Lehrmeister</bemerkung>
-            <date>02.12.2017 14:54</date>
-            <kp>0</kp>
-            <kommentar/>
-            <lep>0</lep>
-            <neuerzustand>7</neuerzustand>
-            <object>Gardianum Zauberschild [Magier]</object>
-            <version>HS 5.5.3</version>
-        </ereignis>
-        <ereignis>
-            <aktion>Änderungskontrolle</aktion>
-            <alterzustand/>
-            <ap>0</ap>
-            <asp>0</asp>
-            <bemerkung/>
-            <date>21.05.2018 23:12</date>
-            <kp>0</kp>
-            <kommentar>[EDITOREINGEGEBEN, ALLESHELDENSOFTWARE]</kommentar>
-            <lep>0</lep>
-            <neuerzustand/>
-            <object>Kontrollsignatur fehlt. Änderungskontrolle wieder aktiviert.</object>
-            <version>HS 5.5.4</version>
         </ereignis>
     </ereignisse>
     <kampfsets>

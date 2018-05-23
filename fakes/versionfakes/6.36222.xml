@@ -4,7 +4,7 @@
     <config>
         <rsmodell>zone</rsmodell>
         <datum>21.05.2018</datum>
-        <uhrzeit>23:18</uhrzeit>
+        <uhrzeit>23:10</uhrzeit>
         <geldkreise>false</geldkreise>
         <metatalente>false</metatalente>
         <zauberquellen>true</zauberquellen>
@@ -59,9 +59,9 @@
             <tarnidentitaet/>
         </profession>
         <ap>
-            <gesamt>2615</gesamt>
-            <frei>199</frei>
-            <genutzt>2416</genutzt>
+            <gesamt>2765</gesamt>
+            <frei>295</frei>
+            <genutzt>2470</genutzt>
         </ap>
         <gp>
             <start>110</start>
@@ -900,7 +900,7 @@
             <leittalent>false</leittalent>
             <basis>true</basis>
             <nameausfuehrlich>Klettern  (B)</nameausfuehrlich>
-            <wert>2</wert>
+            <wert>3</wert>
             <probe>MU/GE/KK</probe>
             <probenwerte>12/12/11</probenwerte>
             <nameausfuehrlichmitprobe>Klettern  (B)(MU/GE/KK)</nameausfuehrlichmitprobe>
@@ -1697,6 +1697,26 @@
             <spezialisierungen/>
         </talent>
         <talent>
+            <name>Isdira</name>
+            <meisterhandwerk>false</meisterhandwerk>
+            <leittalent>false</leittalent>
+            <basis>false</basis>
+            <nameausfuehrlich>Isdira</nameausfuehrlich>
+            <wert>1</wert>
+            <probe>KL/IN/CH</probe>
+            <probenwerte>14/14/13</probenwerte>
+            <nameausfuehrlichmitprobe>Isdira (KL/IN/CH)</nameausfuehrlichmitprobe>
+            <sprachkomplexität>21</sprachkomplexität>
+            <behinderung/>
+            <mirakelplus>false</mirakelplus>
+            <mirakelminus>false</mirakelminus>
+            <metatalent>false</metatalent>
+            <bereich>Sprachen</bereich>
+            <komplexität>A</komplexität>
+            <lernkomplexität>B</lernkomplexität>
+            <spezialisierungen/>
+        </talent>
+        <talent>
             <name>Thorwalsch</name>
             <meisterhandwerk>false</meisterhandwerk>
             <leittalent>false</leittalent>
@@ -1742,7 +1762,7 @@
             <leittalent>false</leittalent>
             <basis>false</basis>
             <nameausfuehrlich>L/S Kusliker Zeichen</nameausfuehrlich>
-            <wert>5</wert>
+            <wert>7</wert>
             <probe>KL/KL/FF</probe>
             <probenwerte>14/14/11</probenwerte>
             <nameausfuehrlichmitprobe>L/S Kusliker Zeichen (KL/KL/FF)</nameausfuehrlichmitprobe>
@@ -2070,13 +2090,13 @@
             <variante/>
             <namemitvariante>Attributo</namemitvariante>
             <nameausfuehrlich>Attributo</nameausfuehrlich>
-            <wert>5</wert>
+            <wert>7</wert>
             <spezialisierungen/>
             <probe>KL/CH/**</probe>
             <probenwerte>14/13/0</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>B</komplexität>
-            <lernkomplexität>B</lernkomplexität>
+            <lernkomplexität>A</lernkomplexität>
             <hauszauber>true</hauszauber>
             <hauszauberformatiert>X</hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2154,7 +2174,7 @@
             <probenwerte>13/12/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>C</komplexität>
-            <lernkomplexität>C</lernkomplexität>
+            <lernkomplexität>B</lernkomplexität>
             <hauszauber>true</hauszauber>
             <hauszauberformatiert>X</hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -2564,13 +2584,13 @@
             <variante/>
             <namemitvariante>Unitatio Geistesbund</namemitvariante>
             <nameausfuehrlich>Unitatio Geistesbund</nameausfuehrlich>
-            <wert>2</wert>
+            <wert>3</wert>
             <spezialisierungen/>
             <probe>IN/CH/KO</probe>
             <probenwerte>14/13/14</probenwerte>
             <bereich>Zauber</bereich>
             <komplexität>B</komplexität>
-            <lernkomplexität>C</lernkomplexität>
+            <lernkomplexität>B</lernkomplexität>
             <hauszauber>false</hauszauber>
             <hauszauberformatiert> </hauszauberformatiert>
             <repräsentation>Magier</repräsentation>
@@ -4604,18 +4624,130 @@
             <version>HS 5.5.2</version>
         </ereignis>
         <ereignis>
-            <aktion>Änderungskontrolle</aktion>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>5</alterzustand>
+            <ap>-7</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>23.03.2017 23:20</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>6</neuerzustand>
+            <object>Lesen/Schreiben Kusliker Zeichen</object>
+            <version>HS 5.5.2</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>6</alterzustand>
+            <ap>-8</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>23.03.2017 23:20</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>7</neuerzustand>
+            <object>Lesen/Schreiben Kusliker Zeichen</object>
+            <version>HS 5.5.2</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent aktivieren</aktion>
             <alterzustand/>
-            <ap>0</ap>
+            <ap>-10</ap>
             <asp>0</asp>
             <bemerkung/>
-            <date>21.05.2018 23:18</date>
+            <date>23.03.2017 23:20</date>
             <kp>0</kp>
-            <kommentar>[ALLESHELDENSOFTWARE]</kommentar>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>0</neuerzustand>
+            <object>Sprachen kennen Isdira</object>
+            <version>HS 5.5.2</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>0</alterzustand>
+            <ap>-2</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>23.03.2017 23:20</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>1</neuerzustand>
+            <object>Sprachen kennen Isdira</object>
+            <version>HS 5.5.2</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Ereignis eingeben</aktion>
+            <alterzustand/>
+            <ap>150</ap>
+            <asp>0</asp>
+            <bemerkung/>
+            <date>24.04.2017 13:56</date>
+            <kp>0</kp>
+            <kommentar>Und die Moral von der Geschicht: Vor einem gehörnten Dämon LÄUFT MAN Gesamt AP: 150 Verfügbare AP: 150</kommentar>
             <lep>0</lep>
             <neuerzustand/>
-            <object>Kontrollsignatur fehlt. Änderungskontrolle wieder aktiviert.</object>
-            <version>HS 5.5.4</version>
+            <object>Abenteuerpunkte (Hinzugewinn)</object>
+            <version>HS 5.5.2</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>5</alterzustand>
+            <ap>-7</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>24.04.2017 13:56</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>6</neuerzustand>
+            <object>Attributo [Magier]</object>
+            <version>HS 5.5.2</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>6</alterzustand>
+            <ap>-8</ap>
+            <asp>0</asp>
+            <bemerkung>Gegenseitiges Lehren</bemerkung>
+            <date>24.04.2017 13:56</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>7</neuerzustand>
+            <object>Attributo [Magier]</object>
+            <version>HS 5.5.2</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Zauber steigern</aktion>
+            <alterzustand>2</alterzustand>
+            <ap>-3</ap>
+            <asp>0</asp>
+            <bemerkung>SE, Gegenseitiges Lehren</bemerkung>
+            <date>24.04.2017 14:07</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>3</neuerzustand>
+            <object>Unitatio Geistesbund [Magier]</object>
+            <version>HS 5.5.2</version>
+        </ereignis>
+        <ereignis>
+            <aktion>Talent steigern</aktion>
+            <alterzustand>2</alterzustand>
+            <ap>-9</ap>
+            <asp>0</asp>
+            <bemerkung>SE, Gegenseitiges Lehren</bemerkung>
+            <date>24.04.2017 14:08</date>
+            <kp>0</kp>
+            <kommentar/>
+            <lep>0</lep>
+            <neuerzustand>3</neuerzustand>
+            <object>Klettern</object>
+            <version>HS 5.5.2</version>
         </ereignis>
     </ereignisse>
     <kampfsets>

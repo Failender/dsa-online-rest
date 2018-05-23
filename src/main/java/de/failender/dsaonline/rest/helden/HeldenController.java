@@ -33,4 +33,10 @@ public class HeldenController {
 		return this.heldenService.calculateUnterschied(heldenid, from, to);
 	}
 
+	@GetMapping("held/versionen/{heldenid}")
+	public List<HeldVersion> loadHeldenVersionen(@PathVariable BigInteger heldenid) {
+		return heldenService.loadHeldenVersionen(heldenid);
+	}
+
+
 }
