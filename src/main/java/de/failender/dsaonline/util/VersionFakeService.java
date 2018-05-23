@@ -32,6 +32,10 @@ public class VersionFakeService {
 	public void fakeVersions(List<BigInteger> heldenIds) {
 		File dir = new File("fakes/versionfakes");
 		Map<BigInteger, List<File>> mapping = new HashMap<>();
+		if(!dir.exists()) {
+			log.error("Cant fake versions because directory {} does not exist", dir.getAbsoluteFile());
+			return;
+		}
 		for(File file: dir.listFiles()) {
 			BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);
 			mapping.computeIfAbsent(heldid, k -> new ArrayList<>()).add(file);
