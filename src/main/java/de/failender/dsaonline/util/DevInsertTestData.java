@@ -94,7 +94,7 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 					}
 			);
 		} catch (IOException e) {
-			throw new RuntimeException(e);
+			log.error("Error while inserting user data", e);
 		}
 		SecurityContextHolder.getContext().setAuthentication(null);
 		try {
