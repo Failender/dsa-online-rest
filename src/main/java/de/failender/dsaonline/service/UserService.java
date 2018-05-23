@@ -47,7 +47,10 @@ public class UserService {
 			userEntity.setPassword(userRegistration.getPassword());
 		}
 		userEntity = this.userRepository.save(userEntity);
+
 		userHeldenService.updateHeldenForUser(userEntity);
+
+
 		return userEntity;
 
 	}

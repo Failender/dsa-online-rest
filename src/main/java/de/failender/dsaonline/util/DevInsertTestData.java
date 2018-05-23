@@ -13,7 +13,9 @@ import de.failender.dsaonline.service.*;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Profile;
@@ -29,10 +31,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @Profile("dev")
@@ -63,9 +62,15 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	@Autowired
 	private ConvertingService convertingService;
 
+	@Value("${dsa.online.cache.droponstart}")
+	private boolean dropCacheOnStart;
+
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-		cachingService.dropCache();
+		if(dropCacheOnStart) {
+			cachingService.dropCache();
+		}
+
 		Thread converterThread = new Thread(new FileConvertingRunnable(convertingService));
 		converterThread.run();
 		log.info("Starting to insert dev data");
@@ -103,6 +108,7 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 			throw new RuntimeException(e);
 		}
 		fakeVersions();
+		userRepository.findAll().forEach(userHeldenService::updateHeldenForUser);
 
 		log.info("Done inserting dev data");
 	}
@@ -127,25 +133,40 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	}
 
 	private void fakeVersion(File file) {
-
+		File xmlFile = new File(file.getParentFile().getParentFile() + "/versionfakes_helden", file.getName());
+		if(!xmlFile.exists()) {
+			log.error("Cant fake version {} because no corresponding xml file found", file.getName());
+			return;
+		}
+		String xml;
+		try {
+			xml = FileUtils.readFileToString(xmlFile, "UTF-8");
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 		int version = Integer.valueOf(file.getName().split("\\.")[0]);
 		BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);
+
 		Unmarshaller unmarshaller = JaxbUtil.getUnmarshaller(Daten.class);
 		try {
 			Daten daten = (Daten) unmarshaller.unmarshal(file);
-			this.fakeVersion(daten, heldid, version);
+			this.fakeVersion(daten, heldid, version, xml);
 		} catch (JAXBException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	private void fakeVersion(Daten daten, BigInteger heldid, int version ) {
+	private void fakeVersion(Daten daten, BigInteger heldid, int version, String xml ) {
 
-
+		log.info("Faking version {} for held {}", version, heldid);
 		if(version== 1) {
-			HeldEntity heldEntity = this.heldRepository.findByIdIdAndIdVersion(heldid, version).get();
-
-			cachingService.setHeldenDatenCache(heldEntity.getId().getId(), heldEntity.getVersion(), daten);
+			Optional<HeldEntity> heldEntityOptional = this.heldRepository.findByIdIdAndIdVersion(heldid, version);
+			if(!heldEntityOptional.isPresent()) {
+				log.error("Held {} mit version {} konnte nicht gefunden werden");
+				return;
+			}
+			HeldEntity heldEntity = heldEntityOptional.get();
+			cachingService.setHeldenCache(heldEntity.getId().getId(), heldEntity.getVersion(), daten, xml);
 		} else {
 			HeldEntity heldEntity = this.heldRepository.findByIdIdAndIdVersion(heldid, version -1).get();
 			heldEntity.setActive(false);
@@ -154,7 +175,7 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 			heldEntity.setVersion(version);
 			heldEntity.setActive(true);
 			this.heldRepository.save(heldEntity);
-			cachingService.setHeldenDatenCache(heldEntity.getId().getId(), heldEntity.getVersion(), daten);
+			cachingService.setHeldenCache(heldEntity.getId().getId(), heldEntity.getVersion(), daten, xml);
 		}
 	}
 

@@ -68,9 +68,10 @@ public class ApiService {
 		if(cache != null) {
 			return cache;
 		}
-		cache = getApi(token).getHeldenDaten(heldenid);
+		HeldenSoftwareAPI api = getApi(token);
+		cache = api.getHeldenDaten(heldenid);
 		fixDaten(cache);
-		cachingService.setHeldenDatenCache(heldenid, version, cache);
+		cachingService.setHeldenCache(heldenid, version, cache, api.getHeldXml(heldenid));
 		return cache;
 	}
 

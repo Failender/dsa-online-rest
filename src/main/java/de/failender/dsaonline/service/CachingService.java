@@ -33,16 +33,22 @@ public class CachingService {
 	@Autowired
 	private UserRepository userRepository;
 
-	private File cacheDirectory;
+	private File xmlCacheDirectory;
+	private File datenCacheDirectory;
 
 	@Autowired
 	private UserHeldenService userHeldenService;
 
 	@PostConstruct
 	public void init() {
-		cacheDirectory = new File(cacheDirectoryString);
-		if(!cacheDirectory.exists()) {
-			cacheDirectory.mkdirs();
+
+		xmlCacheDirectory = new File(cacheDirectoryString + "/xml");
+		if(!xmlCacheDirectory.exists()) {
+			xmlCacheDirectory.mkdirs();
+		}
+		datenCacheDirectory= new File(cacheDirectoryString + "/daten");
+		if(!datenCacheDirectory.exists()) {
+			datenCacheDirectory.mkdirs();
 		}
 	}
 
@@ -87,7 +93,12 @@ public class CachingService {
 		this.userHeldenService.updateHeldenForUser(this.userRepository.findByToken(token));
 	}
 
-	public void setHeldenDatenCache(BigInteger heldid, int version, Daten daten){
+	public void setHeldenCache(BigInteger heldid, int version, Daten daten, String xml) {
+		setHeldenDatenCache(heldid, version, daten);
+		setHeldenXmlCache(heldid, version, xml);
+	}
+
+	private void setHeldenDatenCache(BigInteger heldid, int version, Daten daten){
 		Marshaller marshaller = JaxbUtil.getMarshaller(Daten.class);
 		try {
 			marshaller.marshal(daten, getHeldenDatenCacheFile(heldid, version));
@@ -96,20 +107,33 @@ public class CachingService {
 		}
 	}
 
+	private void setHeldenXmlCache(BigInteger heldid, int version, String xml) {
+		try {
+			FileUtils.writeStringToFile(getHeldenXmlCacheFile(heldid, version), xml, "UTF-8");
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 	public void dropCache() {
 		log.warn("DROPPING CACHE!");
 		try {
-			FileUtils.cleanDirectory(cacheDirectory);
+			FileUtils.cleanDirectory(xmlCacheDirectory);
+			FileUtils.cleanDirectory(datenCacheDirectory);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
 	private File getAllHeldenCacheFile(String token) {
-		return new File(cacheDirectory, token+".xml");
+		return new File(datenCacheDirectory, token+".xml");
 	}
 	private File getHeldenDatenCacheFile(BigInteger id, int version) {
-		return new File(cacheDirectory, version + "." + id+".xml");
+		return new File(datenCacheDirectory, version + "." + id+".xml");
+	}
+
+	private File getHeldenXmlCacheFile(BigInteger id, int version) {
+		return new File(xmlCacheDirectory, version + "." + id+".xml");
 	}
 
 

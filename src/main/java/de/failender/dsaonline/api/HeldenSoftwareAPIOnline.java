@@ -78,7 +78,7 @@ public class HeldenSoftwareAPIOnline implements HeldenSoftwareAPI {
 	public String getHeldXml(BigInteger heldenid) {
 		try {
 			return Helper.postrequest("action", "returnheld",
-					"format", "datenxml",
+					"format", "heldenxml",
 					"heldenid", heldenid.toString(),
 					"opt","ereignisse",
 					"token", token);

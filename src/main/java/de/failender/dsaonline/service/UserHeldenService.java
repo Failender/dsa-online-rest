@@ -81,6 +81,9 @@ public class UserHeldenService {
 
 	private boolean isOnlineVersionOlder(Held xmlHeld, HeldEntity heldEntity) {
 		Date lastEditedDate = DateUtil.convert(xmlHeld.getHeldlastchange());
+		if(lastEditedDate.getTime() == heldEntity.getCreatedDate().getTime()) {
+			return false;
+		}
 		return lastEditedDate.after(heldEntity.getCreatedDate());
 	}
 
