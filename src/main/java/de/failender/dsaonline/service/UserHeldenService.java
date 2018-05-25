@@ -85,7 +85,6 @@ public class UserHeldenService {
 			log.error("User with name {} has null token ", userEntity.getName());
 			return;
 		}
-		System.out.println(userEntity.getToken());
 		List<Held> helden =  apiService.getAllHelden(userEntity.getToken());
 		this.updateHeldenForUser(userEntity, helden);
 
