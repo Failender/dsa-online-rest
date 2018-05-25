@@ -10,9 +10,16 @@ import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.heldensoftware.xml.datenxml.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.math.BigInteger;
 import java.util.Collections;
 import java.util.Date;
@@ -33,6 +40,9 @@ public class HeldenService {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private CachingService cachingService;
+
 	public List<HeldenInfo> getAllHeldenForCurrentUser() {
 		UserEntity user = SecurityUtils.getCurrentUser();
 		List<HeldEntity> heldEntities = heldRepository.findByUserIdAndActive(user.getId(), true);
@@ -50,7 +60,7 @@ public class HeldenService {
 		Optional<HeldEntity> heldEntityOptional = this.heldRepository.findByIdIdAndIdVersion(id, version);
 		if(!heldEntityOptional.isPresent()) {
 			log.error("Held with id {} and version {} could not be found", id, version);
-			throw new HeldNotFoundException();
+			throw new HeldNotFoundException(id, version);
 		}
 		UserEntity user = SecurityUtils.getCurrentUser();
 		if(heldEntityOptional.get().getUserId() != user.getId()) {
@@ -73,11 +83,11 @@ public class HeldenService {
 		}
 		Optional<HeldEntity> fromHeldOptional = this.heldRepository.findByIdIdAndIdVersion(heldenid, from);
 		if(!fromHeldOptional.isPresent()) {
-			throw new HeldNotFoundException();
+			throw new HeldNotFoundException(heldenid, from);
 		}
 		Optional<HeldEntity> toHeldOptional = this.heldRepository.findByIdIdAndIdVersion(heldenid, to);
 		if(!toHeldOptional.isPresent()) {
-			throw new HeldNotFoundException();
+			throw new HeldNotFoundException(heldenid, to);
 		}
 		return this.calculateUnterschied(fromHeldOptional.get(), toHeldOptional.get());
 
@@ -194,5 +204,24 @@ public class HeldenService {
 		return null;
 	}
 
+	public ResponseEntity<InputStreamResource> providePdfDownload(BigInteger id,int version) throws FileNotFoundException {
+		Optional<HeldEntity> heldEntityOptional = heldRepository.findByIdIdAndIdVersion(id, version);
+		if(!heldEntityOptional.isPresent()) {
+			throw new HeldNotFoundException(id, version);
+		}
+		HeldEntity heldEntity = heldEntityOptional.get();
+		SecurityUtils.canCurrentUserViewHeld(heldEntity);
+ 		MediaType mediaType = MediaType.APPLICATION_PDF;
+		File file = cachingService.getPdfCache(id, version);
+		InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+		return ResponseEntity.ok()
+				// Content-Disposition
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + file.getName())
+				// Content-Type
+				.contentType(mediaType)
+				// Contet-Length
+				.contentLength(file.length()) //
+				.body(resource);
+	}
 
 }

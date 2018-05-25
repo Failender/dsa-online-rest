@@ -1,5 +1,6 @@
 package de.failender.dsaonline.security;
 
+import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.exceptions.NotAuthenticatedException;
 import org.springframework.security.access.AccessDeniedException;
@@ -49,6 +50,13 @@ public class SecurityUtils {
 			throw new NotAuthenticatedException();
 		} else {
 			return (UserEntity) principal;
+		}
+	}
+
+	public static void canCurrentUserViewHeld(HeldEntity held) {
+		UserEntity user = getCurrentUser();
+		if(user.getId() != held.getUserId()) {
+			checkRight(SecurityUtils.VIEW_ALL);
 		}
 	}
 }

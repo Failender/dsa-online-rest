@@ -1,5 +1,6 @@
 package de.failender.dsaonline.service;
 
+import com.fasterxml.jackson.databind.node.BigIntegerNode;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.exceptions.CorruptXmlException;
 import de.failender.dsaonline.util.JaxbUtil;
@@ -11,15 +12,15 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -143,6 +144,10 @@ public class CachingService {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public File getPdfCache(BigInteger heldid, int version) {
+		return getHeldenPdfCacheFile(heldid, version);
 	}
 
 	private void setHeldenXmlCache(BigInteger heldid, int version, String xml) {
