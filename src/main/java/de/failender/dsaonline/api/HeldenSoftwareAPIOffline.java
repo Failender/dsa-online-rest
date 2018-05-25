@@ -6,12 +6,14 @@ import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import de.failender.heldensoftware.xml.heldenliste.Helden;
 import org.apache.commons.io.IOUtils;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -41,6 +43,11 @@ public class HeldenSoftwareAPIOffline implements HeldenSoftwareAPI {
 		} catch (Exception e) {
 			throw new ExchangeException(e);
 		}
+	}
+
+	@Override
+	public InputStream getPdf(BigInteger heldenid) {
+		throw new NotImplementedException();
 	}
 
 	public Daten getHeldenDaten(BigInteger heldenid) {

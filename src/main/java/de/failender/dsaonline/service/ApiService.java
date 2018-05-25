@@ -1,5 +1,6 @@
 package de.failender.dsaonline.service;
 
+import com.fasterxml.jackson.databind.node.BigIntegerNode;
 import de.failender.dsaonline.api.HeldenSoftwareAPI;
 import de.failender.dsaonline.api.HeldenSoftwareAPIOnline;
 import de.failender.dsaonline.data.entity.UserEntity;
@@ -14,6 +15,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.Collections;
 import java.util.List;
@@ -102,5 +105,9 @@ public class ApiService {
 
 	public void purgeAllHeldenCache(String token) {
 		this.cachingService.purgeAllHeldenCache(token);
+	}
+
+	public InputStream getPdf(String token, BigInteger heldid) {
+		return getApi(token).getPdf(heldid);
 	}
 }

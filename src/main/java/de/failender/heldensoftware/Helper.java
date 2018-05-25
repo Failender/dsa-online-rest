@@ -53,18 +53,15 @@ public class Helper {
 	}
 
 	public static InputStreamReader postrequeststreamurl(String adress, String ... strings) throws Exception {
-		String body = "";
-		for (int i = 0; i < strings.length; i = i + 2) {
-			if (!body.isEmpty()) {
-				body += "&";
-			}
-			if(i+1 == strings.length || strings[i+1] == null) {
-				System.err.println("Fatal error in building post for param " + strings[i]);
-			}
-			body += URLEncoder.encode(strings[i], "UTF-8");
-			body += "=";
-			body += URLEncoder.encode(strings[i + 1], "UTF-8");
-		}
+		return new InputStreamReader(postrequeststreamurlnoreaderurl(adress, strings), "UTF-8");
+	}
+
+	public static InputStream postrequeststreamurlnoreader(String ... strings) throws Exception {
+		return postrequeststreamurlnoreaderurl("https://online.helden-software.de", strings);
+	}
+
+	public static InputStream postrequeststreamurlnoreaderurl(String adress, String ... strings) throws Exception {
+		String body = buildBody(strings);
 		URL url = new URL(adress);
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.setRequestMethod("POST");
@@ -79,7 +76,23 @@ public class Helper {
 		writer.write(body);
 		writer.close();
 
-		return new InputStreamReader(connection.getInputStream(), "UTF-8");
+		return connection.getInputStream();
+	}
+
+	private static String buildBody(String... strings) throws Exception {
+		String body = "";
+		for (int i = 0; i < strings.length; i = i + 2) {
+			if (!body.isEmpty()) {
+				body += "&";
+			}
+			if(i+1 == strings.length || strings[i+1] == null) {
+				System.err.println("Fatal error in building post for param " + strings[i]);
+			}
+			body += URLEncoder.encode(strings[i], "UTF-8");
+			body += "=";
+			body += URLEncoder.encode(strings[i + 1], "UTF-8");
+		}
+		return body;
 	}
 
 

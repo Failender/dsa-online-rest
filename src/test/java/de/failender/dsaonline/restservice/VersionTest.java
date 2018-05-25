@@ -6,6 +6,7 @@ import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.rest.user.UserRegistration;
 import de.failender.dsaonline.service.ApiService;
+import de.failender.dsaonline.service.CachingService;
 import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.dsaonline.service.UserService;
 import de.failender.dsaonline.util.JaxbUtil;
@@ -36,6 +37,9 @@ public class VersionTest extends DsaOnlineTest {
 	@Autowired
 	private VersionFakeService versionFakeService;
 
+	@Autowired
+	private CachingService cachingService;
+
 
 	private static final String FAKE_TOKEN ="token";
 	private static final String TEST_GRUPPE = "Der Runde Tisch";
@@ -47,7 +51,7 @@ public class VersionTest extends DsaOnlineTest {
 		Mockito.when(apiService.getAllHelden(FAKE_TOKEN)).thenReturn(
 				JaxbUtil.heldenFromStream(getResource("helden/all.xml")),
 				JaxbUtil.heldenFromStream(getResource("helden/all2.xml")));
-		UserHeldenService userHeldenService = new UserHeldenService(heldRepository, userRepository, apiService, versionFakeService);
+		UserHeldenService userHeldenService = new UserHeldenService(heldRepository, userRepository, apiService, versionFakeService, cachingService);
 		UserService userService = new UserService(userRepository, gruppeRepository, userHeldenService);
 		UserEntity userEntity = userService.registerUser(new UserRegistration("TEST", null, FAKE_TOKEN, TEST_GRUPPE));
 

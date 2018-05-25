@@ -19,6 +19,7 @@ public class HeldEntity {
 	private Integer userId;
 	private String name;
 	private Date createdDate;
+	private boolean pdfCached;
 
 	@JoinColumn(name="gruppeId")
 	@ManyToOne

@@ -73,7 +73,6 @@ public class VersionFakeService {
 	private void fakeVersion(File file) {
 		File xmlFile = new File(file.getParentFile().getParentFile() + "/versionfakes_helden", file.getName());
 		if(!xmlFile.exists()) {
-			System.out.println(xmlFile.getAbsoluteFile());
 			log.error("Cant fake version {} because no corresponding xml file found", file.getName());
 			return;
 		}
@@ -107,6 +106,8 @@ public class VersionFakeService {
 			HeldEntity heldEntity = heldEntityOptional.get();
 			List<Ereignis> ereignis = daten.getEreignisse().getEreignis();
 			heldEntity.setCreatedDate(new Date(ereignis.get(ereignis.size()-1).getDate()));
+			heldEntity.setPdfCached(false);
+			cachingService.purgePdfCacheFor(heldEntity.getId().getId(), heldEntity.getVersion());
 			this.heldRepository.save(heldEntity);
 			cachingService.setHeldenCache(heldEntity.getId().getId(), heldEntity.getVersion(), daten, xml);
 		} else {

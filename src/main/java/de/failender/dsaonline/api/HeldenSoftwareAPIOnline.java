@@ -13,6 +13,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.List;
@@ -81,6 +82,21 @@ public class HeldenSoftwareAPIOnline implements HeldenSoftwareAPI {
 					"format", "heldenxml",
 					"heldenid", heldenid.toString(),
 					"opt","ereignisse",
+					"token", token);
+		} catch (IOException e) {
+			throw new ExchangeException(e);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ExchangeException(e);
+		}
+	}
+
+	@Override
+	public InputStream getPdf(BigInteger heldenid) {
+		try {
+			return Helper.postrequeststreamurlnoreader("action", "returnheld",
+					"format", "pdfintern",
+					"heldenid", heldenid.toString(),
 					"token", token);
 		} catch (IOException e) {
 			throw new ExchangeException(e);

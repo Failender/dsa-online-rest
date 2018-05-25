@@ -8,6 +8,7 @@ import de.failender.heldensoftware.xml.heldenliste.Held;
 import de.failender.heldensoftware.xml.heldenliste.Helden;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -35,6 +38,7 @@ public class CachingService {
 
 	private File xmlCacheDirectory;
 	private File datenCacheDirectory;
+	private File pdfCacheDirectory;
 
 	@Autowired
 	private UserHeldenService userHeldenService;
@@ -49,6 +53,11 @@ public class CachingService {
 		datenCacheDirectory= new File(cacheDirectoryString + "/daten");
 		if(!datenCacheDirectory.exists()) {
 			datenCacheDirectory.mkdirs();
+		}
+
+		pdfCacheDirectory= new File(cacheDirectoryString + "/pdf");
+		if(!pdfCacheDirectory.exists()) {
+			pdfCacheDirectory.mkdirs();
 		}
 	}
 
@@ -102,6 +111,13 @@ public class CachingService {
 		}
 	}
 
+	public void purgePdfCacheFor(BigInteger id, int version) {
+		File file = getHeldenPdfCacheFile(id, version);
+		if(file.exists()) {
+			file.delete();
+		}
+	}
+
 	public void setHeldenCache(BigInteger heldid, int version, Daten daten, String xml) {
 		setHeldenDatenCache(heldid, version, daten);
 		setHeldenXmlCache(heldid, version, xml);
@@ -113,6 +129,19 @@ public class CachingService {
 			marshaller.marshal(daten, getHeldenDatenCacheFile(heldid, version));
 		} catch(JAXBException e) {
 			throw new CorruptXmlException(e);
+		}
+	}
+
+	public boolean hasPdfCache(BigInteger heldid, int version) {
+		return getHeldenPdfCacheFile(heldid, version).exists();
+	}
+
+	public void setHeldenPdfCache(BigInteger heldid, int version, InputStream inputStreamReader) {
+		File out = getHeldenPdfCacheFile(heldid, version);
+		try {
+			FileUtils.copyInputStreamToFile(inputStreamReader, out);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -129,6 +158,7 @@ public class CachingService {
 		try {
 			FileUtils.cleanDirectory(xmlCacheDirectory);
 			FileUtils.cleanDirectory(datenCacheDirectory);
+			FileUtils.cleanDirectory(pdfCacheDirectory);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -144,6 +174,12 @@ public class CachingService {
 	private File getHeldenXmlCacheFile(BigInteger id, int version) {
 		return new File(xmlCacheDirectory, version + "." + id+".xml");
 	}
+
+	private File getHeldenPdfCacheFile(BigInteger id, int version) {
+		return new File(pdfCacheDirectory, version + "." + id+".pdf");
+	}
+
+
 
 
 }

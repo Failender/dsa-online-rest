@@ -24,12 +24,14 @@ public class UserHeldenService {
 	private final UserRepository userRepository;
 	private final ApiService apiService;
 	private final VersionFakeService versionFakeService;
+	private final CachingService cachingService;
 
-	public UserHeldenService(HeldRepository heldRepository, UserRepository userRepository, ApiService apiService, VersionFakeService versionFakeService) {
+	public UserHeldenService(HeldRepository heldRepository, UserRepository userRepository, ApiService apiService, VersionFakeService versionFakeService, CachingService cachingService) {
 		this.heldRepository = heldRepository;
 		this.userRepository = userRepository;
 		this.apiService = apiService;
 		this.versionFakeService = versionFakeService;
+		this.cachingService = cachingService;
 	}
 
 
@@ -100,10 +102,6 @@ public class UserHeldenService {
 	}
 
 	private boolean isOnlineVersionOlder(Held xmlHeld, HeldEntity heldEntity) {
-		if(heldEntity.getId().getId().intValue() == 36222) {
-			System.out.println(xmlHeld.getHeldlastchange());
-			System.out.println(heldEntity.getCreatedDate().getTime());
-		}
 		Date lastEditedDate = DateUtil.convert(xmlHeld.getHeldlastchange());
 		if(lastEditedDate.getTime() == heldEntity.getCreatedDate().getTime()) {
 			return false;
@@ -114,6 +112,7 @@ public class UserHeldenService {
 	private void persistHeld(Held xmlHeld, UserEntity user, int version, GruppeEntity gruppeEntity) {
 		HeldEntity heldEntity = new HeldEntity();
 		heldEntity.setId(new HeldEntity.HeldEntityId());
+		heldEntity.setPdfCached(true);
 		heldEntity.setCreatedDate(DateUtil.convert(xmlHeld.getHeldlastchange()));
 		heldEntity.setUserId(user.getId());
 		heldEntity.setName(xmlHeld.getName());
@@ -129,6 +128,11 @@ public class UserHeldenService {
 		new Thread(() -> {
 
 			apiService.getHeldenDaten(heldEntity.getId().getId(), version, userEntity.getToken());
+			if(!cachingService.hasPdfCache(heldEntity.getId().getId(), version)) {
+				log.info("Fetching pdf cache for {} version {}", heldEntity.getId().getId(), version);
+				cachingService.setHeldenPdfCache(heldEntity.getId().getId(), version, apiService.getPdf(userEntity.getToken(), heldEntity.getId().getId()));
+			}
+
 		}).run();
 
 	}
