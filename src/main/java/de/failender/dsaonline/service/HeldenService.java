@@ -180,13 +180,13 @@ public class HeldenService {
 						Ereignis lastEreignis = findLastEreignis(daten.getEreignisse().getEreignis());
 						String lastEreignisString = null;
 						Date lastEreignisDatum = null;
-						if(lastEreignis != null) {
+						if(lastEreignis != null && !lastEreignis.getKommentar().isEmpty()) {
 							lastEreignisString = lastEreignis.getKommentar().substring(0, lastEreignis.getKommentar().indexOf(" Verfügbare"));
 
 							lastEreignisDatum = new Date(lastEreignis.getDate());
 						}
 
-						return new HeldVersion(lastEreignisString, lastEreignisDatum, held.getVersion());
+						return new HeldVersion(lastEreignisString, lastEreignisDatum, held.getVersion(), held.isPdfCached());
 					})
 					.collect(Collectors.toList());
 		} else {
