@@ -208,10 +208,12 @@ public class HeldenService {
 	public ResponseEntity<InputStreamResource> providePdfDownload(BigInteger id,int version) throws FileNotFoundException {
 		Optional<HeldEntity> heldEntityOptional = heldRepository.findByIdIdAndIdVersion(id, version);
 		if(!heldEntityOptional.isPresent()) {
+			log.info("Held with id {} and version {} could not be found while fetching pdf", id, version);
 			throw new HeldNotFoundException(id, version);
 		}
 		HeldEntity heldEntity = heldEntityOptional.get();
 		if(!heldEntity.isPdfCached()) {
+			log.info("Held with id {} and version {} has no pdf", id, version);
 			throw new PdfNotCachedException(id, version);
 		}
 		SecurityUtils.canCurrentUserViewHeld(heldEntity);
