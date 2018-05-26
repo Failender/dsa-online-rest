@@ -65,7 +65,7 @@ public class UserHeldenService {
 			heldEntity.setActive(true);
 			heldEntity.setGruppe(userEntity.getGruppe());
 			heldEntity.setName(held.getName());
-
+			heldEntity.setPdfCached(true);
 			heldEntity.setId(new HeldEntity.HeldEntityId());
 			heldEntity.setVersion(1);
 			heldEntity.setCreatedDate(DateUtil.convert(held.getHeldlastchange()));
