@@ -16,12 +16,16 @@ public class HeldEntity {
 	@EmbeddedId
 	private HeldEntityId id;
 
+	@Column(name = "USER_ID")
 	private Integer userId;
+	@Column(name = "NAME")
 	private String name;
+	@Column(name = "CREATED_DATE")
 	private Date createdDate;
+	@Column(name = "PDF_CACHED")
 	private boolean pdfCached;
 
-	@JoinColumn(name="gruppeId")
+	@JoinColumn(name="GRUPPE_ID")
 	@ManyToOne
 	private GruppeEntity gruppe;
 

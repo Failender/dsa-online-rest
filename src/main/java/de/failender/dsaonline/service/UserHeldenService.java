@@ -47,6 +47,7 @@ public class UserHeldenService {
 			} else {
 				helden.remove(heldOptional.get());
 				if(isOnlineVersionOlder(heldOptional.get(), heldEntity)) {
+					System.out.println(heldOptional.get().getHeldlastchange() + " " + heldEntity.getCreatedDate().getTime());
 					log.info("Got a new version for held with name {}", heldEntity.getName());
 					//We got a new version of this xmlHeld
 					heldEntity.setActive(false);
@@ -75,10 +76,6 @@ public class UserHeldenService {
 			forceCacheBuildFor(userEntity, heldEntity, 1);
 		});
 	}
-	public void updateHeldenForUserNoCache(UserEntity userEntity) {
-		this.apiService.purgeAllHeldenCache(userEntity.getToken());
-		this.updateHeldenForUser(userEntity);
-	}
 
 	public void updateHeldenForUser(UserEntity userEntity) {
 		if(userEntity.getToken() == null) {
@@ -101,7 +98,9 @@ public class UserHeldenService {
 	}
 
 	private boolean isOnlineVersionOlder(Held xmlHeld, HeldEntity heldEntity) {
-		Date lastEditedDate = DateUtil.convert(xmlHeld.getHeldlastchange());
+
+
+		Date lastEditedDate = new Date((xmlHeld.getHeldlastchange().longValue() / 1000L) * 1000L);
 		if(lastEditedDate.getTime() == heldEntity.getCreatedDate().getTime()) {
 			return false;
 		}
@@ -133,6 +132,14 @@ public class UserHeldenService {
 			}
 
 		}).run();
+
+	}
+
+	public void forceUpdateHeldenForUser(UserEntity userEntity) {
+		if(userEntity.getToken() != null) {
+			this.apiService.purgeAllHeldenCache(userEntity.getToken());
+			this.updateHeldenForUser(userEntity);
+		}
 
 	}
 }

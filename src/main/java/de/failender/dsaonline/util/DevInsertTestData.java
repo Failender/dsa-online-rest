@@ -56,10 +56,6 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	@Autowired
 	private ConvertingService convertingService;
 
-	@Autowired
-	private VersionFakeService versionFakeService;
-
-
 	@Value("${dsa.online.cache.droponstart}")
 	private boolean dropCacheOnStart;
 
@@ -82,6 +78,10 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 			List<UserData> data = om.readValue(is, new TypeReference<List<UserData>>(){});
 			data.forEach(
 					userData -> {
+						if(userRepository.existsByName(userData.getName())) {
+							log.info("User with name {} already exists in database", userData.getName());
+							return;
+						}
 						String gruppe = null;
 						if(userData.getGruppe() != null) {
 							gruppe = userData.getGruppe();

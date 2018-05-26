@@ -1,6 +1,5 @@
 package de.failender.dsaonline.service;
 
-import com.fasterxml.jackson.databind.node.BigIntegerNode;
 import de.failender.dsaonline.api.HeldenSoftwareAPI;
 import de.failender.dsaonline.api.HeldenSoftwareAPIOnline;
 import de.failender.dsaonline.data.entity.UserEntity;
@@ -16,7 +15,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.Collections;
 import java.util.List;
@@ -37,7 +35,6 @@ public class ApiService {
 	private CachingService cachingService;
 
 	private HeldenSoftwareAPI getApi(String token) {
-		log.info("Fetching api for token {}", token);
 		if(online) {
 			return new HeldenSoftwareAPIOnline(token, environment);
 		} else {

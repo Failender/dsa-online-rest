@@ -1,6 +1,8 @@
 package de.failender.dsaonline.rest.helden;
 
+import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.HeldenService;
+import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -20,6 +22,8 @@ public class HeldenController {
 
 	@Autowired
 	private HeldenService heldenService;
+	@Autowired
+	private UserHeldenService userHeldenService;
 
 	@GetMapping
 	public List<HeldenInfo> getAllHeldenForCurrentUser() {
@@ -44,6 +48,12 @@ public class HeldenController {
 	@GetMapping("held/pdf/{id}/{version}")
 	public ResponseEntity<InputStreamResource> providePdfDownload(@PathVariable BigInteger id, @PathVariable int version) throws FileNotFoundException {
 		return heldenService.providePdfDownload(id, version);
+	}
+
+	@GetMapping("reload")
+	public List<HeldenInfo> reloadHelden() {
+		userHeldenService.forceUpdateHeldenForUser(SecurityUtils.getCurrentUser());
+		return heldenService.getAllHeldenForCurrentUser();
 	}
 
 

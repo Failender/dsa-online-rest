@@ -4,10 +4,9 @@ import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.util.Date;
 
 @MappedSuperclass
@@ -16,6 +15,6 @@ import java.util.Date;
 public abstract class AuditingEntity extends BaseEntity{
 
 	@CreatedDate
-	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "CREATED_DATE")
 	private Date createdDate;
 }
