@@ -18,6 +18,6 @@ public interface HeldRepository extends JpaRepository<HeldEntity, BigInteger> {
 
 	@Transactional
 	@Modifying
-	@Query("UPDATE HeldEntity h SET h.gruppe.id = ?1 WHERE h.id = ?2")
+	@Query("UPDATE HeldEntity h SET h.gruppe.id = ?1 WHERE h.id.id = ?2")
 	void updateHeldenGruppe(Integer gruppeid, BigInteger heldid);
 }

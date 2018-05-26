@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityNotFoundException;
 import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -50,12 +49,13 @@ public class GruppenController {
 	@PostMapping("{heldid}/{gruppeid}")
 	public void editHeldenGruppe(@PathVariable BigInteger heldid, @PathVariable Integer gruppeid) {
 		SecurityUtils.checkLogin();
-		Optional<HeldEntity> heldEntityOptional = this.heldRepository.findById(heldid);
-		if(!heldEntityOptional.isPresent()) {
-			throw new EntityNotFoundException();
+		List<HeldEntity> heldEntities = this.heldRepository.findByIdId(heldid);
+		if(heldEntities.size() == 0) {
+			return;
 		}
+		
 		UserEntity userEntity = SecurityUtils.getCurrentUser();
-		if(heldEntityOptional.get().getUserId() != userEntity.getId()) {
+		if(heldEntities.get(0).getUserId() != userEntity.getId()) {
 			SecurityUtils.checkRight(SecurityUtils.EDIT_ALL);
 		}
 		this.heldRepository.updateHeldenGruppe(gruppeid,heldid);
