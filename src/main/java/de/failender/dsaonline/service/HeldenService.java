@@ -5,6 +5,7 @@ import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.exceptions.HeldNotFoundException;
+import de.failender.dsaonline.exceptions.PdfNotCachedException;
 import de.failender.dsaonline.rest.helden.*;
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.heldensoftware.xml.datenxml.*;
@@ -210,6 +211,9 @@ public class HeldenService {
 			throw new HeldNotFoundException(id, version);
 		}
 		HeldEntity heldEntity = heldEntityOptional.get();
+		if(!heldEntity.isPdfCached()) {
+			throw new PdfNotCachedException(id, version);
+		}
 		SecurityUtils.canCurrentUserViewHeld(heldEntity);
  		MediaType mediaType = MediaType.APPLICATION_PDF;
 		File file = cachingService.getPdfCache(id, version);
