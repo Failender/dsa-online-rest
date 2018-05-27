@@ -119,7 +119,6 @@ public class VersionFakeService {
 			heldEntity.setActive(true);
 			List<Ereignis> ereignis = daten.getEreignisse().getEreignis();
 			heldEntity.setCreatedDate(new Date(ereignis.get(ereignis.size()-1).getDate()));
-			System.out.println(version + ":   " + heldEntity.getCreatedDate().getTime());
 			this.heldRepository.save(heldEntity);
 			cachingService.setHeldenCache(heldEntity.getId().getId(), heldEntity.getVersion(), daten, xml);
 		}
