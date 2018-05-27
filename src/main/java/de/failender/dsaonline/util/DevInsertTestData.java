@@ -2,11 +2,9 @@ package de.failender.dsaonline.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.GruppeRepository;
 import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
-import de.failender.dsaonline.rest.user.UserRegistration;
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.*;
 import lombok.Data;
@@ -76,23 +74,7 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 		ObjectMapper om = new ObjectMapper();
 		try {
 			List<UserData> data = om.readValue(is, new TypeReference<List<UserData>>(){});
-			data.forEach(
-					userData -> {
-						if(userRepository.existsByName(userData.getName())) {
-							log.info("User with name {} already exists in database", userData.getName());
-							return;
-						}
-						String gruppe = null;
-						if(userData.getGruppe() != null) {
-							gruppe = userData.getGruppe();
-						} else {
-							gruppe = this.gruppeRepository.findAll().get(0).getName();
-						}
-						UserRegistration userRegistration = new UserRegistration(userData.getName(), null, userData.getToken(), gruppe);
-						UserEntity userEntity = this.userService.registerUser(userRegistration);
-						userData.roles.forEach(role -> this.userService.addUserRole(userEntity, role));
-					}
-			);
+			userService.createUsers(data);
 		} catch (IOException e) {
 			log.error("Error while inserting user data", e);
 		}
@@ -112,9 +94,9 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 
 	@Data
 	public static class UserData {
-		private String name;
-		private String token;
-		private List<String> roles;
-		private String gruppe;
+		public String name;
+		public String token;
+		public List<String> roles;
+		public String gruppe;
 	}
 }

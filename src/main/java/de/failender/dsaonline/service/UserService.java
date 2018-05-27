@@ -8,11 +8,15 @@ import de.failender.dsaonline.exceptions.GroupNotFoundException;
 import de.failender.dsaonline.exceptions.UserAlreadyExistsException;
 import de.failender.dsaonline.rest.user.UserRegistration;
 import de.failender.dsaonline.security.SecurityUtils;
+import de.failender.dsaonline.util.DevInsertTestData;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.validation.ValidationException;
+import java.util.List;
 
 @Service
+@Slf4j
 public class UserService {
 
 	private final UserRepository userRepository;
@@ -55,5 +59,25 @@ public class UserService {
 	public void addUserRole(UserEntity user, String role) {
 		Integer roleId = this.userRepository.getRoleId(role);
 		this.userRepository.addUserRole(roleId, user.getId());
+	}
+
+	public void createUsers(List<DevInsertTestData.UserData> data) {
+		data.forEach(
+				userData -> {
+					if(userRepository.existsByName(userData.getName())) {
+						log.info("User with name {} already exists in database", userData.getName());
+						return;
+					}
+					String gruppe = null;
+					if(userData.getGruppe() != null) {
+						gruppe = userData.getGruppe();
+					} else {
+						gruppe = this.gruppeRepository.findAll().get(0).getName();
+					}
+					UserRegistration userRegistration = new UserRegistration(userData.getName(), null, userData.getToken(), gruppe);
+					UserEntity userEntity = registerUser(userRegistration);
+					userData.roles.forEach(role -> addUserRole(userEntity, role));
+				}
+		);
 	}
 }

@@ -6,8 +6,10 @@ import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.ApiService;
 import de.failender.dsaonline.service.HeldenService;
 import de.failender.dsaonline.service.UserService;
+import de.failender.dsaonline.util.DevInsertTestData;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,6 +57,11 @@ public class UserController {
 	public ResponseEntity<?> registerUser(@RequestBody UserRegistration userRegistration) {
 		userService.registerUser(userRegistration);
 		return ResponseEntity.ok().build();
+	}
+
+	@PostMapping(value = "create", consumes = {MediaType.TEXT_PLAIN_VALUE, MediaType.APPLICATION_JSON_VALUE})
+	public void registerUsers(@RequestBody List<DevInsertTestData.UserData> data) {
+		userService.createUsers(data);
 	}
 
 	@GetMapping("login")
