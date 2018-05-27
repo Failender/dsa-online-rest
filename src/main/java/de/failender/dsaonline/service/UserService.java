@@ -52,6 +52,7 @@ public class UserService {
 
 		userHeldenService.updateHeldenForUser(userEntity);
 		userHeldenService.fakeHeldenForUser(userEntity);
+		userHeldenService.updateHeldenForUser(userEntity);
 		return userEntity;
 
 	}
