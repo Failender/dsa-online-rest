@@ -46,16 +46,25 @@ public class CachingService {
 
 		xmlCacheDirectory = new File(cacheDirectoryString + "/xml");
 		if(!xmlCacheDirectory.exists()) {
+			log.info("Creating caching-directory for xml");
 			xmlCacheDirectory.mkdirs();
+		} else {
+			log.info("caching-directory for xml already exists");
 		}
 		datenCacheDirectory= new File(cacheDirectoryString + "/daten");
 		if(!datenCacheDirectory.exists()) {
+			log.info("Creating caching-directory for daten");
 			datenCacheDirectory.mkdirs();
+		} else {
+			log.info("caching-directory for daten already exists");
 		}
 
 		pdfCacheDirectory= new File(cacheDirectoryString + "/pdf");
 		if(!pdfCacheDirectory.exists()) {
+			log.info("Creating caching-directory for pdf");
 			pdfCacheDirectory.mkdirs();
+		} else {
+			log.info("caching-directory for pdf already exists");
 		}
 	}
 
