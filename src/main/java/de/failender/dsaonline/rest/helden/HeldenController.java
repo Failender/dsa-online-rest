@@ -6,10 +6,7 @@ import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileNotFoundException;
@@ -57,10 +54,10 @@ public class HeldenController {
 		return heldenService.getAllHeldenForCurrentUser();
 	}
 
-//	@PostMapping("public/{heldid}/{public}")
-//	public void editHeldenGruppe(@PathVariable BigInteger heldid, @PathVariable boolean isPublic) {
-//		heldenService.editHeldenGruppe(heldid, isPublic);
-//	}
+	@PostMapping("public/{heldid}/{public}")
+	public void editHeldenGruppe(@PathVariable BigInteger heldid, @PathVariable boolean isPublic) {
+		heldenService.updateHeldenPublic(isPublic, heldid);
+	}
 
 
 }

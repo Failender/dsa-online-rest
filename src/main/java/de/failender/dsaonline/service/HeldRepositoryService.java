@@ -84,4 +84,8 @@ public class HeldRepositoryService {
 	public void saveHeld(HeldEntity heldEntity) {
 		heldRepository.save(heldEntity);
 	}
+
+	public void updateHeldenPublic(boolean isPublic, BigInteger heldid) {
+		heldRepository.updateHeldenPublic(isPublic, heldid);
+	}
 }

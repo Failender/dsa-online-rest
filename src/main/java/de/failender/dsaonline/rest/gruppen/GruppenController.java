@@ -81,4 +81,33 @@ public class GruppenController {
 
 		return value.values();
 	}
+
+	@GetMapping("includeHelden/public")
+	public Collection<GruppeIncludingHelden> getGruppenIncludingHeldenPublic() {
+		List<GruppeEntity> gruppen = gruppeRepository.findAll();
+		Map<String, GruppeIncludingHelden> value = gruppen
+				.stream()
+				.collect(Collectors.toMap(gruppe -> gruppe.getName(), gruppe -> new GruppeIncludingHelden(gruppe.getName(), gruppe.getId(), new ArrayList<>())));
+		userRepository.findAll()
+				.parallelStream()
+				.filter(user -> user.getToken() != null)
+				.map(user -> apiService.getAllHelden(user.getToken()))
+				.flatMap(List::stream)
+				.forEach(held -> {
+					try {
+						HeldWithVersion heldWithVersion = this.heldRepositoryService.findHeldWithLatestVersion(held.getHeldenid());
+						if (heldWithVersion.getHeld().isPublic()) {
+							value.get(heldWithVersion.getHeld().getGruppe().getName()).getHelden().add(heldenService.mapToHeldenInfo(heldWithVersion));
+						}
+
+					} catch (HeldNotFoundException e) {
+						;
+					}
+				});
+
+
+		return value.values();
+	}
+
+
 }

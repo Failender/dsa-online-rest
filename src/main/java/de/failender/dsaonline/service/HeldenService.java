@@ -174,15 +174,6 @@ public class HeldenService {
 				.collect(Collectors.toList());
 	}
 
-	private Ereignis findLastEreignis(List<Ereignis> ereignisse) {
-		for (int i = ereignisse.size() - 1; i >= 0; i--) {
-			if (ereignisse.get(i).getAp() > 0) {
-				return ereignisse.get(i);
-			}
-		}
-		return null;
-	}
-
 	public void providePdfDownload(BigInteger id, int version, HttpServletResponse response) throws FileNotFoundException {
 		HeldEntity held = heldRepositoryService.findHeld(id);
 		SecurityUtils.canCurrentUserViewHeld(held);
@@ -193,6 +184,10 @@ public class HeldenService {
 		}
 
 		cachingService.provideDownload(id, version, response, CachingService.CacheType.pdf);
+	}
+
+	public void updateHeldenPublic(boolean isPublic, BigInteger heldid) {
+		heldRepositoryService.updateHeldenPublic(isPublic, heldid);
 	}
 
 
