@@ -8,16 +8,18 @@ import de.failender.heldensoftware.xml.heldenliste.Held;
 import de.failender.heldensoftware.xml.heldenliste.Helden;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -189,6 +191,31 @@ public class CachingService {
 
 	private File getHeldenPdfCacheFile(BigInteger id, int version) {
 		return new File(pdfCacheDirectory, version + "." + id+".pdf");
+	}
+
+	private File getCacheFile(BigInteger id, int version, CacheType type) {
+		switch (type) {
+			case pdf:
+				return getHeldenPdfCacheFile(id, version);
+			case daten:
+				return getHeldenPdfCacheFile(id, version);
+			case xml:
+				return getHeldenPdfCacheFile(id, version);
+			default: throw new IllegalArgumentException("Type " + type + " not found");
+		}
+	}
+
+	public enum CacheType {
+		daten, xml, pdf
+	}
+
+	public void provideDownload(@PathVariable BigInteger heldid, @PathVariable int version, HttpServletResponse response, CacheType type) {
+		response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
+		try {
+			IOUtils.copy(new FileInputStream(getCacheFile(heldid, version, type)), response.getOutputStream());
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 
