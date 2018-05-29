@@ -1,5 +1,6 @@
 package de.failender.dsaonline.jobs;
 
+import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.service.UserHeldenService;
 import lombok.extern.slf4j.Slf4j;
@@ -35,16 +36,16 @@ public class RefreshHeldenJob {
 		}
 		runCount++;
 		log.info("RefreshHeldenJob starting");
-//		for (UserEntity userEntity : userRepository.findAll()) {
-//			if (userEntity.getToken() != null) {
-//				userHeldenService.forceUpdateHeldenForUser(userEntity);
-//				try {
-//					Thread.sleep(breakTime);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//
-//		}
+		for (UserEntity userEntity : userRepository.findAll()) {
+			if (userEntity.getToken() != null) {
+				userHeldenService.forceUpdateHeldenForUser(userEntity);
+				try {
+					Thread.sleep(breakTime);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}
 	}
 }

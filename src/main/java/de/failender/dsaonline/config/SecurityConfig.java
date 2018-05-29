@@ -1,7 +1,7 @@
 package de.failender.dsaonline.config;
 
-import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.security.AuthorizationFilter;
+import de.failender.dsaonline.security.AuthorizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,8 +20,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	public static final String LOGIN_URL = "/api/login";
+
 	@Autowired
-	private UserRepository userRepository;
+	private AuthorizationService authorizationService;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -31,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, LOGIN_URL).permitAll()
 				.anyRequest().permitAll()
 				.and()
-				.addFilterBefore(new AuthorizationFilter(authenticationManager(), userRepository), UsernamePasswordAuthenticationFilter.class)
+				.addFilterBefore(new AuthorizationFilter(authenticationManager(), authorizationService), UsernamePasswordAuthenticationFilter.class)
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 
