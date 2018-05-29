@@ -1,6 +1,5 @@
 package de.failender.dsaonline.service;
 
-import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.exceptions.CorruptXmlException;
 import de.failender.dsaonline.util.JaxbUtil;
 import de.failender.heldensoftware.xml.datenxml.Daten;
@@ -9,7 +8,6 @@ import de.failender.heldensoftware.xml.heldenliste.Helden;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -19,7 +17,10 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -32,37 +33,31 @@ public class CachingService {
 
 	@Value("${dsa.online.cache.duration}")
 	private int cacheDuration;
-
-	@Autowired
-	private UserRepository userRepository;
-
+	
 	private File xmlCacheDirectory;
 	private File datenCacheDirectory;
 	private File pdfCacheDirectory;
-
-	@Autowired
-	private UserHeldenService userHeldenService;
 
 	@PostConstruct
 	public void init() {
 
 		xmlCacheDirectory = new File(cacheDirectoryString + "/xml");
-		if(!xmlCacheDirectory.exists()) {
+		if (!xmlCacheDirectory.exists()) {
 			log.info("Creating caching-directory for xml");
 			xmlCacheDirectory.mkdirs();
 		} else {
 			log.info("caching-directory for xml already exists");
 		}
-		datenCacheDirectory= new File(cacheDirectoryString + "/daten");
-		if(!datenCacheDirectory.exists()) {
+		datenCacheDirectory = new File(cacheDirectoryString + "/daten");
+		if (!datenCacheDirectory.exists()) {
 			log.info("Creating caching-directory for daten");
 			datenCacheDirectory.mkdirs();
 		} else {
 			log.info("caching-directory for daten already exists");
 		}
 
-		pdfCacheDirectory= new File(cacheDirectoryString + "/pdf");
-		if(!pdfCacheDirectory.exists()) {
+		pdfCacheDirectory = new File(cacheDirectoryString + "/pdf");
+		if (!pdfCacheDirectory.exists()) {
 			log.info("Creating caching-directory for pdf");
 			pdfCacheDirectory.mkdirs();
 		} else {
@@ -72,9 +67,9 @@ public class CachingService {
 
 	public Daten getHeldenDatenCache(BigInteger heldid, int version) {
 		File file = getHeldenDatenCacheFile(heldid, version);
-		if(file.exists()) {
+		if (file.exists()) {
 			long age = System.currentTimeMillis() - file.lastModified();
-			if(age > cacheDuration){
+			if (age > cacheDuration) {
 				return null;
 			}
 			log.info("Found cache for heldendaten {}.{}", version, heldid);
@@ -85,10 +80,10 @@ public class CachingService {
 
 	public List<Held> getAllHeldenCache(String token) {
 		File file = getAllHeldenCacheFile(token);
-		if(file.exists()) {
+		if (file.exists()) {
 
 			long age = System.currentTimeMillis() - file.lastModified();
-			if(age > cacheDuration){
+			if (age > cacheDuration) {
 				return null;
 			}
 			log.info("Found cache for allhelden with token {}", token);
@@ -103,18 +98,17 @@ public class CachingService {
 		xmlHelden.setHeld(helden);
 		Marshaller marshaller = JaxbUtil.getMarshaller(Helden.class);
 		try {
-			File out = getAllHeldenCacheFile(token);
 			marshaller.marshal(xmlHelden, getAllHeldenCacheFile(token));
 		} catch (JAXBException e) {
 			throw new CorruptXmlException(e);
 		}
-		this.userHeldenService.updateHeldenForUser(this.userRepository.findByToken(token));
+
 	}
 
 	public void purgeAllHeldenCache(String token) {
 		File file = getAllHeldenCacheFile(token);
-		if(file.exists()) {
-			if(!file.delete()) {
+		if (file.exists()) {
+			if (!file.delete()) {
 				log.error("Failed to purgeAllHeldenCache for token " + token);
 			}
 		}
@@ -122,7 +116,7 @@ public class CachingService {
 
 	public void purgePdfCacheFor(BigInteger id, int version) {
 		File file = getHeldenPdfCacheFile(id, version);
-		if(file.exists()) {
+		if (file.exists()) {
 			file.delete();
 		}
 	}
@@ -132,11 +126,11 @@ public class CachingService {
 		setHeldenXmlCache(heldid, version, xml);
 	}
 
-	private void setHeldenDatenCache(BigInteger heldid, int version, Daten daten){
+	private void setHeldenDatenCache(BigInteger heldid, int version, Daten daten) {
 		Marshaller marshaller = JaxbUtil.getMarshaller(Daten.class);
 		try {
 			marshaller.marshal(daten, getHeldenDatenCacheFile(heldid, version));
-		} catch(JAXBException e) {
+		} catch (JAXBException e) {
 			throw new CorruptXmlException(e);
 		}
 	}
@@ -179,18 +173,19 @@ public class CachingService {
 	}
 
 	private File getAllHeldenCacheFile(String token) {
-		return new File(datenCacheDirectory, token+".xml");
+		return new File(datenCacheDirectory, token + ".xml");
 	}
+
 	private File getHeldenDatenCacheFile(BigInteger id, int version) {
-		return new File(datenCacheDirectory, version + "." + id+".xml");
+		return new File(datenCacheDirectory, version + "." + id + ".xml");
 	}
 
 	private File getHeldenXmlCacheFile(BigInteger id, int version) {
-		return new File(xmlCacheDirectory, version + "." + id+".xml");
+		return new File(xmlCacheDirectory, version + "." + id + ".xml");
 	}
 
 	private File getHeldenPdfCacheFile(BigInteger id, int version) {
-		return new File(pdfCacheDirectory, version + "." + id+".pdf");
+		return new File(pdfCacheDirectory, version + "." + id + ".pdf");
 	}
 
 	private File getCacheFile(BigInteger id, int version, CacheType type) {
@@ -201,7 +196,8 @@ public class CachingService {
 				return getHeldenPdfCacheFile(id, version);
 			case xml:
 				return getHeldenPdfCacheFile(id, version);
-			default: throw new IllegalArgumentException("Type " + type + " not found");
+			default:
+				throw new IllegalArgumentException("Type " + type + " not found");
 		}
 	}
 
@@ -217,8 +213,6 @@ public class CachingService {
 			throw new RuntimeException(e);
 		}
 	}
-
-
 
 
 }

@@ -15,7 +15,6 @@ import org.assertj.core.api.Assertions;
 import org.flywaydb.test.annotation.FlywayTest;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -44,9 +43,10 @@ public class VersionTest extends DsaOnlineTest {
 	private CachingService cachingService;
 
 
-	private static final String FAKE_TOKEN ="token";
+	private static final String FAKE_TOKEN = "token";
 	private static final String TEST_GRUPPE = "Der Runde Tisch";
 	private static final BigInteger TORI_ID = BigInteger.valueOf(36222L);
+
 	@FlywayTest
 	@Test
 	public void testVersioning() {
@@ -61,7 +61,8 @@ public class VersionTest extends DsaOnlineTest {
 				return -1;
 			}
 		});
-		UserHeldenService userHeldenService = new UserHeldenService(heldRepository, userRepository, apiService, versionFakeService, cachingService);
+		UserHeldenService userHeldenService = new UserHeldenService(heldRepository, userRepository, versionFakeService, cachingService);
+		userHeldenService.setApiService(apiService);
 		UserService userService = new UserService(userRepository, gruppeRepository, userHeldenService);
 		UserEntity userEntity = userService.registerUser(new UserRegistration("TEST", null, FAKE_TOKEN, TEST_GRUPPE));
 

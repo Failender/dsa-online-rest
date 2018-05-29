@@ -4,6 +4,7 @@ import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.HeldenService;
 import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.heldensoftware.xml.datenxml.Daten;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/helden")
+@Slf4j
 public class HeldenController {
 
 	@Autowired
@@ -32,11 +34,12 @@ public class HeldenController {
 
 	@GetMapping("held/{id}/{version}")
 	public Daten getHeldenDaten(@PathVariable BigInteger id, @PathVariable int version) {
+
 		return heldenService.getHeldenDaten(id, version);
 	}
 
 	@GetMapping("held/unterschied/{heldenid}/{from}/{to}")
-	public HeldenUnterschied calculateUnterschied(@PathVariable BigInteger heldenid, @PathVariable int from,@PathVariable int to) {
+	public HeldenUnterschied calculateUnterschied(@PathVariable BigInteger heldenid, @PathVariable int from, @PathVariable int to) {
 		return this.heldenService.calculateUnterschied(heldenid, from, to);
 	}
 

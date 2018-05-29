@@ -59,12 +59,13 @@ public class HeldenService {
 
 	public Daten getHeldenDaten(BigInteger id, int version) {
 		Optional<HeldEntity> heldEntityOptional = this.heldRepository.findByIdIdAndIdVersion(id, version);
-		if(!heldEntityOptional.isPresent()) {
+		if (!heldEntityOptional.isPresent()) {
 			log.error("Held with id {} and version {} could not be found", id, version);
 			throw new HeldNotFoundException(id, version);
 		}
 		UserEntity user = SecurityUtils.getCurrentUser();
-		if(heldEntityOptional.get().getUserId() != user.getId()) {
+		log.info("Loading helden {} {} by ", id, version, user.getName());
+		if (heldEntityOptional.get().getUserId() != user.getId()) {
 			SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);
 			UserEntity owningUser = this.userRepository.findById(heldEntityOptional.get().getUserId()).get();
 			return apiService.getHeldenDaten(id, heldEntityOptional.get().getVersion(), owningUser.getToken());
@@ -75,19 +76,19 @@ public class HeldenService {
 
 	}
 
-	public HeldenUnterschied calculateUnterschied(BigInteger heldenid,int from, int to) {
+	public HeldenUnterschied calculateUnterschied(BigInteger heldenid, int from, int to) {
 		//If from is bigger then to flip the values
-		if(from > to) {
+		if (from > to) {
 			int tempFrom = from;
 			from = to;
-			to= tempFrom;
+			to = tempFrom;
 		}
 		Optional<HeldEntity> fromHeldOptional = this.heldRepository.findByIdIdAndIdVersion(heldenid, from);
-		if(!fromHeldOptional.isPresent()) {
+		if (!fromHeldOptional.isPresent()) {
 			throw new HeldNotFoundException(heldenid, from);
 		}
 		Optional<HeldEntity> toHeldOptional = this.heldRepository.findByIdIdAndIdVersion(heldenid, to);
-		if(!toHeldOptional.isPresent()) {
+		if (!toHeldOptional.isPresent()) {
 			throw new HeldNotFoundException(heldenid, to);
 		}
 		return this.calculateUnterschied(fromHeldOptional.get(), toHeldOptional.get());
@@ -95,7 +96,7 @@ public class HeldenService {
 	}
 
 	private HeldenUnterschied calculateUnterschied(HeldEntity from, HeldEntity to) {
-		if(SecurityUtils.getCurrentUser().getId() != from.getUserId()) {
+		if (SecurityUtils.getCurrentUser().getId() != from.getUserId()) {
 			SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);
 			UserEntity userEntity = this.userRepository.findById(from.getUserId()).get();
 			Daten fromDaten = this.apiService.getHeldenDaten(from.getId().getId(), from.getVersion(), userEntity.getToken());
@@ -110,10 +111,10 @@ public class HeldenService {
 
 	private HeldenUnterschied calculateUnterschied(Daten from, Daten to) {
 		HeldenUnterschied heldenUnterschied = new HeldenUnterschied(
-				calculateTalentUnterschied(from,to),
-				calculateZauberUnterschied(from,to),
-				calculateEreignisUnterschied(from,to),
-				calculateVorteilUnterschied(from,to));
+				calculateTalentUnterschied(from, to),
+				calculateZauberUnterschied(from, to),
+				calculateEreignisUnterschied(from, to),
+				calculateVorteilUnterschied(from, to));
 		return heldenUnterschied;
 	}
 
@@ -132,30 +133,30 @@ public class HeldenService {
 	//Calculating ereignis unterschied only supports showing all events after the last one in from
 	private Unterschiede<Ereignis> calculateEreignisUnterschied(Daten from, Daten to) {
 		Unterschiede<Ereignis> ereignisUnterschiede = new Unterschiede<>();
-		if(from.getEreignisse().getEreignis().size() > to.getEreignisse().getEreignis().size()) {
+		if (from.getEreignisse().getEreignis().size() > to.getEreignisse().getEreignis().size()) {
 			log.error("There is a critical error comparing ereignis for {}. from has more events then to.", from.getAngaben().getName());
 			return ereignisUnterschiede;
 
 		}
-		int lastIndex = from.getEreignisse().getEreignis().size() -1;
-		if(from.getEreignisse().getEreignis().get(lastIndex).equals(to.getEreignisse().getEreignis().get(lastIndex))) {
+		int lastIndex = from.getEreignisse().getEreignis().size() - 1;
+		if (from.getEreignisse().getEreignis().get(lastIndex).equals(to.getEreignisse().getEreignis().get(lastIndex))) {
 
 		} else {
 			log.error("here is a critical error comparing ereignis for {}. to has a different item at the last index of from");
 		}
-		for(int i=lastIndex +1 ; i<to.getEreignisse().getEreignis().size(); i++) {
+		for (int i = lastIndex + 1; i < to.getEreignisse().getEreignis().size(); i++) {
 			ereignisUnterschiede.addNeu(to.getEreignisse().getEreignis().get(i));
 		}
 
 		return ereignisUnterschiede;
 	}
 
-	private <T extends Unterscheidbar> Unterschiede<T> calculateUnterschied (List<T> fromList, List<T> toList) {
+	private <T extends Unterscheidbar> Unterschiede<T> calculateUnterschied(List<T> fromList, List<T> toList) {
 		Unterschiede<T> unterschiede = new Unterschiede<>();
 		fromList.forEach(
 				from -> {
 					Optional<T> toOptional = toList.stream().filter(to -> to.getName().equals(from.getName())).findFirst();
-					if(toOptional.isPresent()) {
+					if (toOptional.isPresent()) {
 						T to = toOptional.get();
 						toList.remove(to);
 						unterschiede.addAenderung(new Unterschied(to.getName(), from.getWert().intValue(), to.getWert().intValue()));
@@ -172,7 +173,7 @@ public class HeldenService {
 
 	public List<HeldVersion> loadHeldenVersionen(@PathVariable BigInteger heldenid) {
 		List<HeldEntity> helden = this.heldRepository.findByIdId(heldenid);
-		if(helden.size() > 0 ) {
+		if (helden.size() > 0) {
 			UserEntity user = this.userRepository.findById(helden.get(0).getUserId()).get();
 			return this.heldRepository.findByIdId(heldenid)
 					.parallelStream()
@@ -181,7 +182,7 @@ public class HeldenService {
 						Ereignis lastEreignis = findLastEreignis(daten.getEreignisse().getEreignis());
 						String lastEreignisString = null;
 						Date lastEreignisDatum = null;
-						if(lastEreignis != null && !lastEreignis.getKommentar().isEmpty()) {
+						if (lastEreignis != null && !lastEreignis.getKommentar().isEmpty()) {
 							lastEreignisString = lastEreignis.getKommentar().substring(0, lastEreignis.getKommentar().indexOf(" Verfügbare"));
 
 							lastEreignisDatum = new Date(lastEreignis.getDate());
@@ -197,27 +198,27 @@ public class HeldenService {
 	}
 
 	private Ereignis findLastEreignis(List<Ereignis> ereignisse) {
-		for(int i= ereignisse.size() -1 ; i>= 0 ; i--) {
-			if(ereignisse.get(i).getAp() > 0) {
+		for (int i = ereignisse.size() - 1; i >= 0; i--) {
+			if (ereignisse.get(i).getAp() > 0) {
 				return ereignisse.get(i);
 			}
 		}
 		return null;
 	}
 
-	public ResponseEntity<InputStreamResource> providePdfDownload(BigInteger id,int version) throws FileNotFoundException {
+	public ResponseEntity<InputStreamResource> providePdfDownload(BigInteger id, int version) throws FileNotFoundException {
 		Optional<HeldEntity> heldEntityOptional = heldRepository.findByIdIdAndIdVersion(id, version);
-		if(!heldEntityOptional.isPresent()) {
+		if (!heldEntityOptional.isPresent()) {
 			log.info("Held with id {} and version {} could not be found while fetching pdf", id, version);
 			throw new HeldNotFoundException(id, version);
 		}
 		HeldEntity heldEntity = heldEntityOptional.get();
-		if(!heldEntity.isPdfCached()) {
+		if (!heldEntity.isPdfCached()) {
 			log.info("Held with id {} and version {} has no pdf", id, version);
 			throw new PdfNotCachedException(id, version);
 		}
 		SecurityUtils.canCurrentUserViewHeld(heldEntity);
- 		MediaType mediaType = MediaType.APPLICATION_PDF;
+		MediaType mediaType = MediaType.APPLICATION_PDF;
 		File file = cachingService.getPdfCache(id, version);
 		InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
 		return ResponseEntity.ok()

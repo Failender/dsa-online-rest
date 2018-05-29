@@ -9,6 +9,7 @@ import de.failender.dsaonline.util.DateUtil;
 import de.failender.dsaonline.util.VersionFakeService;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -22,14 +23,13 @@ public class UserHeldenService {
 
 	private final HeldRepository heldRepository;
 	private final UserRepository userRepository;
-	private final ApiService apiService;
+	private ApiService apiService;
 	private final VersionFakeService versionFakeService;
 	private final CachingService cachingService;
 
-	public UserHeldenService(HeldRepository heldRepository, UserRepository userRepository, ApiService apiService, VersionFakeService versionFakeService, CachingService cachingService) {
+	public UserHeldenService(HeldRepository heldRepository, UserRepository userRepository, VersionFakeService versionFakeService, CachingService cachingService) {
 		this.heldRepository = heldRepository;
 		this.userRepository = userRepository;
-		this.apiService = apiService;
 		this.versionFakeService = versionFakeService;
 		this.cachingService = cachingService;
 	}
@@ -40,20 +40,19 @@ public class UserHeldenService {
 		List<HeldEntity> heldEntities = heldRepository.findByUserIdAndActive(userEntity.getId(), true);
 		heldEntities.forEach(heldEntity -> {
 			Optional<Held> heldOptional = helden.stream().filter(_held -> _held.getName().equals(heldEntity.getName())).findFirst();
-			if(!heldOptional.isPresent()) {
+			if (!heldOptional.isPresent()) {
 				log.info("Held with name {} is no longer online, disabling it", heldEntity.getName());
 				heldEntity.setActive(false);
 
 			} else {
 				helden.remove(heldOptional.get());
-				if(isOnlineVersionOlder(heldOptional.get(), heldEntity)) {
-					System.out.println(heldOptional.get().getHeldlastchange() + " " + heldEntity.getCreatedDate().getTime());
+				if (isOnlineVersionOlder(heldOptional.get(), heldEntity)) {
 					log.info("Got a new version for held with name {}", heldEntity.getName());
 					//We got a new version of this xmlHeld
 					heldEntity.setActive(false);
 					this.heldRepository.save(heldEntity);
-					this.persistHeld(heldOptional.get(), userEntity, heldEntity.getVersion()+1, heldEntity.getGruppe());
-					this.forceCacheBuildFor(userEntity, heldEntity, heldEntity.getVersion()+1);
+					this.persistHeld(heldOptional.get(), userEntity, heldEntity.getVersion() + 1, heldEntity.getGruppe());
+					this.forceCacheBuildFor(userEntity, heldEntity, heldEntity.getVersion() + 1);
 
 				} else {
 					log.info("Held with name {} is already on latest version", heldEntity.getName());
@@ -77,23 +76,27 @@ public class UserHeldenService {
 		});
 	}
 
+	public void updateHeldenForToken(String token) {
+		updateHeldenForUser(userRepository.findByToken(token));
+	}
+
 	public void updateHeldenForUser(UserEntity userEntity) {
-		if(userEntity.getToken() == null) {
+		if (userEntity.getToken() == null) {
 			log.error("User with name {} has null token ", userEntity.getName());
 			return;
 		}
-		List<Held> helden =  apiService.getAllHelden(userEntity.getToken());
+		List<Held> helden = apiService.getAllHelden(userEntity.getToken());
 		this.updateHeldenForUser(userEntity, helden);
 
 	}
 
 	public void fakeHeldenForUser(UserEntity userEntity) {
-		if(userEntity.getToken() == null) {
+		if (userEntity.getToken() == null) {
 			log.error("User with name {} has null token ", userEntity.getName());
 			return;
 		}
-		List<Held> helden =  apiService.getAllHelden(userEntity.getToken());
-		log.info("Faking versions for user " +userEntity.getName());
+		List<Held> helden = apiService.getAllHelden(userEntity.getToken());
+		log.info("Faking versions for user " + userEntity.getName());
 		this.versionFakeService.fakeVersions(helden.stream().map(held -> held.getHeldenid()).collect(Collectors.toList()));
 	}
 
@@ -101,7 +104,7 @@ public class UserHeldenService {
 
 
 		Date lastEditedDate = new Date((xmlHeld.getHeldlastchange().longValue() / 1000L) * 1000L);
-		if(lastEditedDate.getTime() == heldEntity.getCreatedDate().getTime()) {
+		if (lastEditedDate.getTime() == heldEntity.getCreatedDate().getTime()) {
 			return false;
 		}
 		return lastEditedDate.after(heldEntity.getCreatedDate());
@@ -126,7 +129,7 @@ public class UserHeldenService {
 		new Thread(() -> {
 
 			apiService.getHeldenDaten(heldEntity.getId().getId(), version, userEntity.getToken());
-			if(!cachingService.hasPdfCache(heldEntity.getId().getId(), version)) {
+			if (!cachingService.hasPdfCache(heldEntity.getId().getId(), version)) {
 				log.info("Fetching pdf cache for {} version {}", heldEntity.getId().getId(), version);
 				cachingService.setHeldenPdfCache(heldEntity.getId().getId(), version, apiService.getPdf(userEntity.getToken(), heldEntity.getId().getId()));
 			}
@@ -136,10 +139,16 @@ public class UserHeldenService {
 	}
 
 	public void forceUpdateHeldenForUser(UserEntity userEntity) {
-		if(userEntity.getToken() != null) {
+		log.info("Refreshing helden for user {}", userEntity.getName());
+		if (userEntity.getToken() != null) {
 			this.apiService.purgeAllHeldenCache(userEntity.getToken());
 			this.updateHeldenForUser(userEntity);
 		}
 
+	}
+
+	@Autowired
+	public void setApiService(ApiService apiService) {
+		this.apiService = apiService;
 	}
 }
