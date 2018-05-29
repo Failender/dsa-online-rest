@@ -1,6 +1,7 @@
 package de.failender.dsaonline.service;
 
 import de.failender.dsaonline.exceptions.CorruptXmlException;
+import de.failender.dsaonline.exceptions.PdfNotCachedException;
 import de.failender.dsaonline.util.JaxbUtil;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.heldenliste.Held;
@@ -206,7 +207,7 @@ public class CachingService {
 		daten(".xml"), xml(".xml"), pdf(".pdf");
 		private String extension;
 
-		private CacheType(String extension) {
+		CacheType(String extension) {
 			this.extension = extension;
 		}
 
@@ -219,7 +220,13 @@ public class CachingService {
 		response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
 		response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + heldid + "." + version + "." + type.getExtension());
 		try {
-			IOUtils.copy(new FileInputStream(getCacheFile(heldid, version, type)), response.getOutputStream());
+			File file = getCacheFile(heldid, version, type);
+			if(file.exists()) {
+				IOUtils.copy(new FileInputStream(getCacheFile(heldid, version, type)), response.getOutputStream());
+			} else {
+				throw new PdfNotCachedException(heldid, version);
+			}
+
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

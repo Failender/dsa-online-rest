@@ -3,6 +3,7 @@ package de.failender.dsaonline.util;
 import de.failender.dsaonline.data.entity.VersionEntity;
 import de.failender.dsaonline.service.CachingService;
 import de.failender.dsaonline.service.HeldRepositoryService;
+import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.datenxml.Ereignis;
 import lombok.extern.slf4j.Slf4j;
@@ -52,23 +53,23 @@ public class VersionFakeService {
 				.forEach(entry -> entry.getValue().forEach(this::fakeVersion));
 	}
 
-	public void fakeVersions() {
-
-		File dir = new File("fakes/versionfakes");
-		Map<BigInteger, List<File>> mapping = new HashMap<>();
-		for (File file : dir.listFiles()) {
-			BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);
-			mapping.computeIfAbsent(heldid, k -> new ArrayList<>()).add(file);
-
-		}
-		mapping.values().forEach(list -> list.sort((one, two) -> {
-			Integer firstVersion = Integer.valueOf(one.getName().split("\\.")[0]);
-			Integer secondVersion = Integer.valueOf(two.getName().split("\\.")[0]);
-			return firstVersion - secondVersion;
-		}));
-		mapping.entrySet().forEach(entry -> entry.getValue().forEach(this::fakeVersion));
-
-	}
+//	public void fakeVersions() {
+//
+//		File dir = new File("fakes/versionfakes");
+//		Map<BigInteger, List<File>> mapping = new HashMap<>();
+//		for (File file : dir.listFiles()) {
+//			BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);
+//			mapping.computeIfAbsent(heldid, k -> new ArrayList<>()).add(file);
+//
+//		}
+//		mapping.values().forEach(list -> list.sort((one, two) -> {
+//			Integer firstVersion = Integer.valueOf(one.getName().split("\\.")[0]);
+//			Integer secondVersion = Integer.valueOf(two.getName().split("\\.")[0]);
+//			return firstVersion - secondVersion;
+//		}));
+//		mapping.entrySet().forEach(entry -> entry.getValue().forEach(this::fakeVersion));
+//
+//	}
 
 	private void fakeVersion(File file) {
 		File xmlFile = new File(file.getParentFile().getParentFile() + "/versionfakes_helden", file.getName());
@@ -104,6 +105,7 @@ public class VersionFakeService {
 			versionEntity.setPdfCached(false);
 			List<Ereignis> ereignis = daten.getEreignisse().getEreignis();
 			versionEntity.setCreatedDate(new Date(ereignis.get(ereignis.size() - 1).getDate()));
+			versionEntity.setLastEvent(UserHeldenService.extractLastEreignis(ereignis));
 			cachingService.purgePdfCacheFor(heldid, version);
 			this.heldRepositoryService.saveVersion(versionEntity);
 			cachingService.setHeldenCache(heldid, version, daten, xml);
@@ -112,6 +114,9 @@ public class VersionFakeService {
 			versionEntity.setId(new VersionEntity.VersionId(heldid, version));
 
 			List<Ereignis> ereignis = daten.getEreignisse().getEreignis();
+
+			versionEntity.setLastEvent(UserHeldenService.extractLastEreignis(ereignis));
+
 			versionEntity.setCreatedDate(new Date(ereignis.get(ereignis.size() - 1).getDate()));
 			this.heldRepositoryService.saveVersion(versionEntity);
 			cachingService.setHeldenCache(heldid, version, daten, xml);
