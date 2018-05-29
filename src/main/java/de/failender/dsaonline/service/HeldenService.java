@@ -2,28 +2,21 @@ package de.failender.dsaonline.service;
 
 import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.entity.UserEntity;
-import de.failender.dsaonline.data.repository.HeldRepository;
+import de.failender.dsaonline.data.entity.VersionEntity;
 import de.failender.dsaonline.data.repository.UserRepository;
-import de.failender.dsaonline.exceptions.HeldNotFoundException;
+import de.failender.dsaonline.data.repository.VersionRepository;
 import de.failender.dsaonline.exceptions.PdfNotCachedException;
 import de.failender.dsaonline.rest.helden.*;
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.heldensoftware.xml.datenxml.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.io.File;
-import java.io.FileInputStream;
+import javax.servlet.http.HttpServletResponse;
 import java.io.FileNotFoundException;
 import java.math.BigInteger;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -33,7 +26,7 @@ import java.util.stream.Collectors;
 public class HeldenService {
 
 	@Autowired
-	private HeldRepository heldRepository;
+	private HeldRepositoryService heldRepositoryService;
 
 	@Autowired
 	private ApiService apiService;
@@ -44,33 +37,38 @@ public class HeldenService {
 	@Autowired
 	private CachingService cachingService;
 
+	@Autowired
+	private VersionRepository versionRepository;
+
 	public List<HeldenInfo> getAllHeldenForCurrentUser() {
 		UserEntity user = SecurityUtils.getCurrentUser();
-		List<HeldEntity> heldEntities = heldRepository.findByUserIdAndActive(user.getId(), true);
-		return heldEntities.stream()
+		return heldRepositoryService.findByUserId(user.getId())
+				.stream()
+				.map(held -> heldRepositoryService.findHeldWithLatestVersion(held))
 				.map(this::mapToHeldenInfo)
 				.collect(Collectors.toList());
-
 	}
 
-	public HeldenInfo mapToHeldenInfo(HeldEntity heldEntity) {
-		return new HeldenInfo(heldEntity.getName(), heldEntity.getCreatedDate(), heldEntity.getVersion(), heldEntity.getGruppe().getName(), heldEntity.getId().getId());
+	public HeldenInfo mapToHeldenInfo(HeldWithVersion heldWithVersion) {
+		return new HeldenInfo(heldWithVersion.getHeld().getName(),
+				heldWithVersion.getHeld().getCreatedDate(),
+				heldWithVersion.getVersion().getId().getVersion(),
+				heldWithVersion.getHeld().getGruppe().getName(),
+				heldWithVersion.getHeld().getId());
 	}
 
 	public Daten getHeldenDaten(BigInteger id, int version) {
-		Optional<HeldEntity> heldEntityOptional = this.heldRepository.findByIdIdAndIdVersion(id, version);
-		if (!heldEntityOptional.isPresent()) {
-			log.error("Held with id {} and version {} could not be found", id, version);
-			throw new HeldNotFoundException(id, version);
-		}
+		HeldEntity held = heldRepositoryService.findHeld(id);
+		//Throw error if version not present
+		heldRepositoryService.findVersion(id, version);
 		UserEntity user = SecurityUtils.getCurrentUser();
 		log.info("Loading helden {} {} by ", id, version, user.getName());
-		if (heldEntityOptional.get().getUserId() != user.getId()) {
+		if (held.getUserId() != user.getId()) {
 			SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);
-			UserEntity owningUser = this.userRepository.findById(heldEntityOptional.get().getUserId()).get();
-			return apiService.getHeldenDaten(id, heldEntityOptional.get().getVersion(), owningUser.getToken());
+			UserEntity owningUser = this.userRepository.findById(held.getUserId()).get();
+			return apiService.getHeldenDaten(id, version, owningUser.getToken());
 		} else {
-			return apiService.getHeldenDaten(id, heldEntityOptional.get().getVersion());
+			return apiService.getHeldenDaten(id, version);
 		}
 
 
@@ -83,30 +81,27 @@ public class HeldenService {
 			from = to;
 			to = tempFrom;
 		}
-		Optional<HeldEntity> fromHeldOptional = this.heldRepository.findByIdIdAndIdVersion(heldenid, from);
-		if (!fromHeldOptional.isPresent()) {
-			throw new HeldNotFoundException(heldenid, from);
-		}
-		Optional<HeldEntity> toHeldOptional = this.heldRepository.findByIdIdAndIdVersion(heldenid, to);
-		if (!toHeldOptional.isPresent()) {
-			throw new HeldNotFoundException(heldenid, to);
-		}
-		return this.calculateUnterschied(fromHeldOptional.get(), toHeldOptional.get());
+		HeldEntity held = heldRepositoryService.findHeld(heldenid);
+		VersionEntity fromVersion = heldRepositoryService.findVersion(heldenid, from);
+		VersionEntity toVersion = heldRepositoryService.findVersion(heldenid, to);
+		return this.calculateUnterschied(held, fromVersion, toVersion);
 
 	}
 
-	private HeldenUnterschied calculateUnterschied(HeldEntity from, HeldEntity to) {
-		if (SecurityUtils.getCurrentUser().getId() != from.getUserId()) {
-			SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);
-			UserEntity userEntity = this.userRepository.findById(from.getUserId()).get();
-			Daten fromDaten = this.apiService.getHeldenDaten(from.getId().getId(), from.getVersion(), userEntity.getToken());
-			Daten toDaten = this.apiService.getHeldenDaten(to.getId().getId(), to.getVersion(), userEntity.getToken());
-			return calculateUnterschied(fromDaten, toDaten);
+	private HeldenUnterschied calculateUnterschied(HeldEntity held, VersionEntity from, VersionEntity to) {
+		String token;
+		UserEntity currentUser = SecurityUtils.getCurrentUser();
+		if (currentUser.getId() != held.getUserId()) {
+			SecurityUtils.canCurrentUserViewHeld(held);
+			UserEntity userEntity = this.userRepository.findById(held.getUserId()).get();
+			token = userEntity.getToken();
+
 		} else {
-			Daten fromDaten = this.apiService.getHeldenDaten(from.getId().getId(), from.getVersion());
-			Daten toDaten = this.apiService.getHeldenDaten(to.getId().getId(), to.getVersion());
-			return calculateUnterschied(fromDaten, toDaten);
+			token = currentUser.getToken();
 		}
+		Daten fromDaten = this.apiService.getHeldenDaten(held.getId(), from.getId().getVersion(), token);
+		Daten toDaten = this.apiService.getHeldenDaten(held.getId(), to.getId().getVersion(), token);
+		return calculateUnterschied(fromDaten, toDaten);
 	}
 
 	private HeldenUnterschied calculateUnterschied(Daten from, Daten to) {
@@ -172,29 +167,11 @@ public class HeldenService {
 	}
 
 	public List<HeldVersion> loadHeldenVersionen(@PathVariable BigInteger heldenid) {
-		List<HeldEntity> helden = this.heldRepository.findByIdId(heldenid);
-		if (helden.size() > 0) {
-			UserEntity user = this.userRepository.findById(helden.get(0).getUserId()).get();
-			return this.heldRepository.findByIdId(heldenid)
-					.parallelStream()
-					.map(held -> {
-						Daten daten = this.apiService.getHeldenDaten(held.getId().getId(), held.getVersion(), user.getToken());
-						Ereignis lastEreignis = findLastEreignis(daten.getEreignisse().getEreignis());
-						String lastEreignisString = null;
-						Date lastEreignisDatum = null;
-						if (lastEreignis != null && !lastEreignis.getKommentar().isEmpty()) {
-							lastEreignisString = lastEreignis.getKommentar().substring(0, lastEreignis.getKommentar().indexOf(" Verfügbare"));
-
-							lastEreignisDatum = new Date(lastEreignis.getDate());
-						}
-
-						return new HeldVersion(lastEreignisString, lastEreignisDatum, held.getVersion(), held.isPdfCached());
-					})
-					.collect(Collectors.toList());
-		} else {
-			return Collections.EMPTY_LIST;
-		}
-
+		List<VersionEntity> versionen = versionRepository.findByIdHeldid(heldenid);
+		return versionen
+				.stream()
+				.map(version -> new HeldVersion(version.getLastEvent(), version.getCreatedDate(), version.getId().getVersion(), version.isPdfCached()))
+				.collect(Collectors.toList());
 	}
 
 	private Ereignis findLastEreignis(List<Ereignis> ereignisse) {
@@ -206,29 +183,17 @@ public class HeldenService {
 		return null;
 	}
 
-	public ResponseEntity<InputStreamResource> providePdfDownload(BigInteger id, int version) throws FileNotFoundException {
-		Optional<HeldEntity> heldEntityOptional = heldRepository.findByIdIdAndIdVersion(id, version);
-		if (!heldEntityOptional.isPresent()) {
-			log.info("Held with id {} and version {} could not be found while fetching pdf", id, version);
-			throw new HeldNotFoundException(id, version);
-		}
-		HeldEntity heldEntity = heldEntityOptional.get();
-		if (!heldEntity.isPdfCached()) {
+	public void providePdfDownload(BigInteger id, int version, HttpServletResponse response) throws FileNotFoundException {
+		HeldEntity held = heldRepositoryService.findHeld(id);
+		SecurityUtils.canCurrentUserViewHeld(held);
+		VersionEntity versionEntity = heldRepositoryService.findVersion(id, version);
+		if (!versionEntity.isPdfCached()) {
 			log.info("Held with id {} and version {} has no pdf", id, version);
 			throw new PdfNotCachedException(id, version);
 		}
-		SecurityUtils.canCurrentUserViewHeld(heldEntity);
-		MediaType mediaType = MediaType.APPLICATION_PDF;
-		File file = cachingService.getPdfCache(id, version);
-		InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
-		return ResponseEntity.ok()
-				// Content-Disposition
-				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + file.getName())
-				// Content-Type
-				.contentType(mediaType)
-				// Contet-Length
-				.contentLength(file.length()) //
-				.body(resource);
+
+		cachingService.provideDownload(id, version, response, CachingService.CacheType.pdf);
 	}
+
 
 }

@@ -3,6 +3,7 @@ package de.failender.dsaonline.service;
 import de.failender.dsaonline.data.entity.GruppeEntity;
 import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.entity.UserEntity;
+import de.failender.dsaonline.data.entity.VersionEntity;
 import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.util.DateUtil;
@@ -21,6 +22,9 @@ import java.util.stream.Collectors;
 @Slf4j
 public class UserHeldenService {
 
+	@Autowired
+	private HeldRepositoryService heldRepositoryService;
+
 	private final HeldRepository heldRepository;
 	private final UserRepository userRepository;
 	private ApiService apiService;
@@ -37,22 +41,22 @@ public class UserHeldenService {
 
 	public void updateHeldenForUser(UserEntity userEntity, List<Held> helden) {
 		log.info("Updating helden for user {}, online found {}", userEntity.getName(), helden.size());
-		List<HeldEntity> heldEntities = heldRepository.findByUserIdAndActive(userEntity.getId(), true);
-		heldEntities.forEach(heldEntity -> {
+
+		heldRepository.findByUserIdAndDeleted(userEntity.getId(), false).forEach(heldEntity -> {
 			Optional<Held> heldOptional = helden.stream().filter(_held -> _held.getName().equals(heldEntity.getName())).findFirst();
 			if (!heldOptional.isPresent()) {
 				log.info("Held with name {} is no longer online, disabling it", heldEntity.getName());
-				heldEntity.setActive(false);
+				heldEntity.setDeleted(true);
 
 			} else {
-				helden.remove(heldOptional.get());
-				if (isOnlineVersionOlder(heldOptional.get(), heldEntity)) {
+				Held xmlHeld = heldOptional.get();
+				helden.remove(xmlHeld);
+				VersionEntity versionEntity = heldRepositoryService.findLatestVersion(heldEntity);
+				if (isOnlineVersionOlder(xmlHeld, versionEntity.getCreatedDate())) {
 					log.info("Got a new version for held with name {}", heldEntity.getName());
 					//We got a new version of this xmlHeld
-					heldEntity.setActive(false);
-					this.heldRepository.save(heldEntity);
-					this.persistHeld(heldOptional.get(), userEntity, heldEntity.getVersion() + 1, heldEntity.getGruppe());
-					this.forceCacheBuildFor(userEntity, heldEntity, heldEntity.getVersion() + 1);
+					this.persistVersion(xmlHeld, userEntity, versionEntity.getId().getVersion() + 1, heldEntity.getGruppe());
+					this.forceCacheBuildFor(userEntity, heldEntity, versionEntity.getId().getVersion() + 1);
 
 				} else {
 					log.info("Held with name {} is already on latest version", heldEntity.getName());
@@ -61,17 +65,19 @@ public class UserHeldenService {
 		});
 		helden.forEach(held -> {
 			HeldEntity heldEntity = new HeldEntity();
-			heldEntity.setActive(true);
 			heldEntity.setGruppe(userEntity.getGruppe());
 			heldEntity.setName(held.getName());
-			heldEntity.setPdfCached(true);
-			heldEntity.setId(new HeldEntity.HeldEntityId());
-			heldEntity.setVersion(1);
-			heldEntity.setCreatedDate(DateUtil.convert(held.getHeldlastchange()));
-			heldEntity.getId().setId(held.getHeldenid());
+			heldEntity.setCreatedDate(new Date());
+			heldEntity.setId(held.getHeldenid());
 			heldEntity.setUserId(userEntity.getId());
-			log.info("Saving new held {} for user {} with version {}", heldEntity.getName(), userEntity.getName(), heldEntity.getVersion());
-			heldRepository.save(heldEntity);
+			heldRepositoryService.saveHeld(heldEntity);
+
+			VersionEntity versionEntity = new VersionEntity();
+			versionEntity.setId(new VersionEntity.VersionId(held.getHeldenid(), 1));
+			versionEntity.setCreatedDate(DateUtil.convert(held.getHeldlastchange()));
+			versionEntity.setPdfCached(true);
+			heldRepositoryService.saveVersion(versionEntity);
+			log.info("Saving new held {} for user {} with version {}", heldEntity.getName(), userEntity.getName(), versionEntity.getId().getVersion());
 			forceCacheBuildFor(userEntity, heldEntity, 1);
 		});
 	}
@@ -100,38 +106,32 @@ public class UserHeldenService {
 		this.versionFakeService.fakeVersions(helden.stream().map(held -> held.getHeldenid()).collect(Collectors.toList()));
 	}
 
-	private boolean isOnlineVersionOlder(Held xmlHeld, HeldEntity heldEntity) {
+	private boolean isOnlineVersionOlder(Held xmlHeld, Date heldCreatedDate) {
 
 
 		Date lastEditedDate = new Date((xmlHeld.getHeldlastchange().longValue() / 1000L) * 1000L);
-		if (lastEditedDate.getTime() == heldEntity.getCreatedDate().getTime()) {
+		if (lastEditedDate.getTime() == heldCreatedDate.getTime()) {
 			return false;
 		}
-		return lastEditedDate.after(heldEntity.getCreatedDate());
+		return lastEditedDate.after(heldCreatedDate);
 	}
 
-	private void persistHeld(Held xmlHeld, UserEntity user, int version, GruppeEntity gruppeEntity) {
-		HeldEntity heldEntity = new HeldEntity();
-		heldEntity.setId(new HeldEntity.HeldEntityId());
-		heldEntity.setPdfCached(true);
-		heldEntity.setCreatedDate(DateUtil.convert(xmlHeld.getHeldlastchange()));
-		heldEntity.setUserId(user.getId());
-		heldEntity.setName(xmlHeld.getName());
-		heldEntity.setVersion(version);
-		heldEntity.setActive(true);
-		heldEntity.getId().setId(xmlHeld.getHeldenid());
-		heldEntity.setGruppe(gruppeEntity);
-		this.heldRepository.save(heldEntity);
+	private void persistVersion(Held xmlHeld, UserEntity user, int version, GruppeEntity gruppeEntity) {
+		VersionEntity versionEntity = new VersionEntity();
+		versionEntity.setId(new VersionEntity.VersionId(xmlHeld.getHeldenid(), version));
+		versionEntity.setPdfCached(true);
+		versionEntity.setCreatedDate(DateUtil.convert(xmlHeld.getHeldlastchange()));
+		this.heldRepositoryService.saveVersion(versionEntity);
 	}
 
 	//Force to fetch the held once, so its cache gets build. this can run in a separate thread to dont block the main flow
 	private void forceCacheBuildFor(UserEntity userEntity, HeldEntity heldEntity, int version) {
 		new Thread(() -> {
 
-			apiService.getHeldenDaten(heldEntity.getId().getId(), version, userEntity.getToken());
-			if (!cachingService.hasPdfCache(heldEntity.getId().getId(), version)) {
-				log.info("Fetching pdf cache for {} version {}", heldEntity.getId().getId(), version);
-				cachingService.setHeldenPdfCache(heldEntity.getId().getId(), version, apiService.getPdf(userEntity.getToken(), heldEntity.getId().getId()));
+			apiService.getHeldenDaten(heldEntity.getId(), version, userEntity.getToken());
+			if (!cachingService.hasPdfCache(heldEntity.getId(), version)) {
+				log.info("Fetching pdf cache for {} version {}", heldEntity.getId(), version);
+				cachingService.setHeldenPdfCache(heldEntity.getId(), version, apiService.getPdf(userEntity.getToken(), heldEntity.getId()));
 			}
 
 		}).run();

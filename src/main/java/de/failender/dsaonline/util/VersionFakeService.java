@@ -1,8 +1,8 @@
 package de.failender.dsaonline.util;
 
-import de.failender.dsaonline.data.entity.HeldEntity;
-import de.failender.dsaonline.data.repository.HeldRepository;
+import de.failender.dsaonline.data.entity.VersionEntity;
 import de.failender.dsaonline.service.CachingService;
+import de.failender.dsaonline.service.HeldRepositoryService;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.datenxml.Ereignis;
 import lombok.extern.slf4j.Slf4j;
@@ -26,25 +26,25 @@ public class VersionFakeService {
 	private CachingService cachingService;
 
 	@Autowired
-	private HeldRepository heldRepository;
+	private HeldRepositoryService heldRepositoryService;
 
 	//Fakes Versions, but only for ids in given list
 	public void fakeVersions(List<BigInteger> heldenIds) {
 		File dir = new File("fakes/versionfakes");
 		Map<BigInteger, List<File>> mapping = new HashMap<>();
-		if(!dir.exists()) {
+		if (!dir.exists()) {
 			log.error("Cant fake versions because directory {} does not exist", dir.getAbsoluteFile());
 			return;
 		}
-		for(File file: dir.listFiles()) {
+		for (File file : dir.listFiles()) {
 			BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);
 			mapping.computeIfAbsent(heldid, k -> new ArrayList<>()).add(file);
 
 		}
-		mapping.values().forEach(list -> list.sort((one,two) -> {
+		mapping.values().forEach(list -> list.sort((one, two) -> {
 			Integer firstVersion = Integer.valueOf(one.getName().split("\\.")[0]);
 			Integer secondVersion = Integer.valueOf(two.getName().split("\\.")[0]);
-			return firstVersion-secondVersion;
+			return firstVersion - secondVersion;
 		}));
 		mapping.entrySet()
 				.stream()
@@ -56,15 +56,15 @@ public class VersionFakeService {
 
 		File dir = new File("fakes/versionfakes");
 		Map<BigInteger, List<File>> mapping = new HashMap<>();
-		for(File file: dir.listFiles()) {
+		for (File file : dir.listFiles()) {
 			BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);
 			mapping.computeIfAbsent(heldid, k -> new ArrayList<>()).add(file);
 
 		}
-		mapping.values().forEach(list -> list.sort((one,two) -> {
+		mapping.values().forEach(list -> list.sort((one, two) -> {
 			Integer firstVersion = Integer.valueOf(one.getName().split("\\.")[0]);
 			Integer secondVersion = Integer.valueOf(two.getName().split("\\.")[0]);
-			return firstVersion-secondVersion;
+			return firstVersion - secondVersion;
 		}));
 		mapping.entrySet().forEach(entry -> entry.getValue().forEach(this::fakeVersion));
 
@@ -72,7 +72,7 @@ public class VersionFakeService {
 
 	private void fakeVersion(File file) {
 		File xmlFile = new File(file.getParentFile().getParentFile() + "/versionfakes_helden", file.getName());
-		if(!xmlFile.exists()) {
+		if (!xmlFile.exists()) {
 			log.error("Cant fake version {} because no corresponding xml file found", file.getName());
 			return;
 		}
@@ -94,33 +94,27 @@ public class VersionFakeService {
 		}
 	}
 
-	private void fakeVersion(Daten daten, BigInteger heldid, int version, String xml ) {
+	private void fakeVersion(Daten daten, BigInteger heldid, int version, String xml) {
 
 		log.info("Faking version {} for held {}", version, heldid);
-		if(version== 1) {
-			Optional<HeldEntity> heldEntityOptional = this.heldRepository.findByIdIdAndIdVersion(heldid, version);
-			if(!heldEntityOptional.isPresent()) {
-				log.error("Held {} mit version {} konnte nicht gefunden werden");
-				return;
-			}
-			HeldEntity heldEntity = heldEntityOptional.get();
+		if (version == 1) {
+			//call this to trigger exception if held not present
+			heldRepositoryService.findHeld(heldid);
+			VersionEntity versionEntity = heldRepositoryService.findVersion(heldid, version);
+			versionEntity.setPdfCached(false);
 			List<Ereignis> ereignis = daten.getEreignisse().getEreignis();
-			heldEntity.setCreatedDate(new Date(ereignis.get(ereignis.size()-1).getDate()));
-			heldEntity.setPdfCached(false);
-			cachingService.purgePdfCacheFor(heldEntity.getId().getId(), heldEntity.getVersion());
-			this.heldRepository.save(heldEntity);
-			cachingService.setHeldenCache(heldEntity.getId().getId(), heldEntity.getVersion(), daten, xml);
+			versionEntity.setCreatedDate(new Date(ereignis.get(ereignis.size() - 1).getDate()));
+			cachingService.purgePdfCacheFor(heldid, version);
+			this.heldRepositoryService.saveVersion(versionEntity);
+			cachingService.setHeldenCache(heldid, version, daten, xml);
 		} else {
-			HeldEntity heldEntity = this.heldRepository.findByIdIdAndIdVersion(heldid, version -1).get();
-			heldEntity.setActive(false);
-			this.heldRepository.save(heldEntity);
-			heldEntity = heldEntity.clone();
-			heldEntity.setVersion(version);
-			heldEntity.setActive(true);
+			VersionEntity versionEntity = new VersionEntity();
+			versionEntity.setId(new VersionEntity.VersionId(heldid, version));
+
 			List<Ereignis> ereignis = daten.getEreignisse().getEreignis();
-			heldEntity.setCreatedDate(new Date(ereignis.get(ereignis.size()-1).getDate()));
-			this.heldRepository.save(heldEntity);
-			cachingService.setHeldenCache(heldEntity.getId().getId(), heldEntity.getVersion(), daten, xml);
+			versionEntity.setCreatedDate(new Date(ereignis.get(ereignis.size() - 1).getDate()));
+			this.heldRepositoryService.saveVersion(versionEntity);
+			cachingService.setHeldenCache(heldid, version, daten, xml);
 		}
 	}
 }

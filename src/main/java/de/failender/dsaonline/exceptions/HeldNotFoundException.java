@@ -6,8 +6,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.math.BigInteger;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class HeldNotFoundException extends RuntimeException{
+public class HeldNotFoundException extends RuntimeException {
 	public HeldNotFoundException(BigInteger heldid, int version) {
-		super("Held mit id " + heldid + " und Version " + version +" konnte nicht gefunden werden");
+		super("Held mit id " + heldid + " und Version " + version + " konnte nicht gefunden werden");
+	}
+
+	public HeldNotFoundException(BigInteger heldid) {
+		super("Held mit id " + heldid + " konnte nicht gefunden werden");
 	}
 }

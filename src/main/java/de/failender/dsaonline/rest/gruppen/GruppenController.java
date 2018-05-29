@@ -2,19 +2,23 @@ package de.failender.dsaonline.rest.gruppen;
 
 import de.failender.dsaonline.data.entity.GruppeEntity;
 import de.failender.dsaonline.data.entity.HeldEntity;
-import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.GruppeRepository;
-import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
+import de.failender.dsaonline.exceptions.HeldNotFoundException;
+import de.failender.dsaonline.rest.helden.HeldWithVersion;
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.ApiService;
+import de.failender.dsaonline.service.HeldRepositoryService;
 import de.failender.dsaonline.service.HeldenService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -27,7 +31,7 @@ public class GruppenController {
 	private GruppeRepository gruppeRepository;
 
 	@Autowired
-	private HeldRepository heldRepository;
+	private HeldRepositoryService heldRepositoryService;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -48,17 +52,9 @@ public class GruppenController {
 
 	@PostMapping("{heldid}/{gruppeid}")
 	public void editHeldenGruppe(@PathVariable BigInteger heldid, @PathVariable Integer gruppeid) {
-		SecurityUtils.checkLogin();
-		List<HeldEntity> heldEntities = this.heldRepository.findByIdId(heldid);
-		if(heldEntities.size() == 0) {
-			return;
-		}
-		
-		UserEntity userEntity = SecurityUtils.getCurrentUser();
-		if(heldEntities.get(0).getUserId() != userEntity.getId()) {
-			SecurityUtils.checkRight(SecurityUtils.EDIT_ALL);
-		}
-		this.heldRepository.updateHeldenGruppe(gruppeid,heldid);
+		HeldEntity heldEntity = this.heldRepositoryService.findHeld(heldid);
+		SecurityUtils.canCurrentUserViewHeld(heldEntity);
+		this.heldRepositoryService.updateHeldenGruppe(gruppeid, heldid);
 	}
 
 	@GetMapping("includeHelden")
@@ -74,11 +70,11 @@ public class GruppenController {
 				.map(user -> apiService.getAllHelden(user.getToken()))
 				.flatMap(List::stream)
 				.forEach(held -> {
-					Optional<HeldEntity> heldEntityOptional = this.heldRepository.findFirstByIdIdOrderByIdVersionDesc(held.getHeldenid());
-					if(heldEntityOptional.isPresent()) {
-						value.get(heldEntityOptional.get().getGruppe().getName()).getHelden().add(heldenService.mapToHeldenInfo(heldEntityOptional.get()));
-					} else {
-						log.error("The held {} with the id {} is not loaded in the database" ,  held.getName(), held.getHeldenid());
+					try {
+						HeldWithVersion heldWithVersion = this.heldRepositoryService.findHeldWithLatestVersion(held.getHeldenid());
+						value.get(heldWithVersion.getHeld().getGruppe().getName()).getHelden().add(heldenService.mapToHeldenInfo(heldWithVersion));
+					} catch (HeldNotFoundException e) {
+						;
 					}
 				});
 

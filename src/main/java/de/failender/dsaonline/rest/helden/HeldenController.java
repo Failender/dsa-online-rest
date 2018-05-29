@@ -6,13 +6,12 @@ import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.FileNotFoundException;
 import java.math.BigInteger;
 import java.util.List;
@@ -34,7 +33,6 @@ public class HeldenController {
 
 	@GetMapping("held/{id}/{version}")
 	public Daten getHeldenDaten(@PathVariable BigInteger id, @PathVariable int version) {
-
 		return heldenService.getHeldenDaten(id, version);
 	}
 
@@ -49,8 +47,8 @@ public class HeldenController {
 	}
 
 	@GetMapping("held/pdf/{id}/{version}")
-	public ResponseEntity<InputStreamResource> providePdfDownload(@PathVariable BigInteger id, @PathVariable int version) throws FileNotFoundException {
-		return heldenService.providePdfDownload(id, version);
+	public void providePdfDownload(@PathVariable BigInteger id, @PathVariable int version, HttpServletResponse response) throws FileNotFoundException {
+		heldenService.providePdfDownload(id, version, response);
 	}
 
 	@GetMapping("reload")
@@ -58,6 +56,11 @@ public class HeldenController {
 		userHeldenService.forceUpdateHeldenForUser(SecurityUtils.getCurrentUser());
 		return heldenService.getAllHeldenForCurrentUser();
 	}
+
+//	@PostMapping("public/{heldid}/{public}")
+//	public void editHeldenGruppe(@PathVariable BigInteger heldid, @PathVariable boolean isPublic) {
+//		heldenService.editHeldenGruppe(heldid, isPublic);
+//	}
 
 
 }

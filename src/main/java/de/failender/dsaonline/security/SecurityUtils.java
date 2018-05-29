@@ -17,15 +17,15 @@ public class SecurityUtils {
 
 	public static final String CREATE_USER = "CREATE_USER";
 	public static final String VIEW_ALL = "VIEW_ALL";
-	public static final String EDIT_ALL ="EDIT_ALL";
+	public static final String EDIT_ALL = "EDIT_ALL";
 
 	public static void checkRight(String right) {
 
 		Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 		Iterator<? extends GrantedAuthority> it = authorities.iterator();
-		while( it.hasNext()) {
+		while (it.hasNext()) {
 			GrantedAuthority grantedAuthority = it.next();
-			if(grantedAuthority.getAuthority().equals(right)) {
+			if (grantedAuthority.getAuthority().equals(right)) {
 				return;
 			}
 		}
@@ -39,14 +39,14 @@ public class SecurityUtils {
 
 	public static void checkLogin() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if(principal instanceof String){
+		if (principal instanceof String) {
 			throw new NotAuthenticatedException();
 		}
 	}
 
 	public static UserEntity getCurrentUser() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if(principal instanceof String){
+		if (principal instanceof String) {
 			throw new NotAuthenticatedException();
 		} else {
 			return (UserEntity) principal;
@@ -54,8 +54,11 @@ public class SecurityUtils {
 	}
 
 	public static void canCurrentUserViewHeld(HeldEntity held) {
+		if (held.isPublic()) {
+			return;
+		}
 		UserEntity user = getCurrentUser();
-		if(user.getId() != held.getUserId()) {
+		if (user.getId() != held.getUserId()) {
 			checkRight(SecurityUtils.VIEW_ALL);
 		}
 	}

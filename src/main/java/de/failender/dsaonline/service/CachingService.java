@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +34,7 @@ public class CachingService {
 
 	@Value("${dsa.online.cache.duration}")
 	private int cacheDuration;
-	
+
 	private File xmlCacheDirectory;
 	private File datenCacheDirectory;
 	private File pdfCacheDirectory;
@@ -202,11 +203,21 @@ public class CachingService {
 	}
 
 	public enum CacheType {
-		daten, xml, pdf
+		daten(".xml"), xml(".xml"), pdf(".pdf");
+		private String extension;
+
+		private CacheType(String extension) {
+			this.extension = extension;
+		}
+
+		public String getExtension() {
+			return extension;
+		}
 	}
 
 	public void provideDownload(@PathVariable BigInteger heldid, @PathVariable int version, HttpServletResponse response, CacheType type) {
 		response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
+		response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + heldid + "." + version + "." + type.getExtension());
 		try {
 			IOUtils.copy(new FileInputStream(getCacheFile(heldid, version, type)), response.getOutputStream());
 		} catch (IOException e) {

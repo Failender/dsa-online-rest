@@ -5,10 +5,7 @@ import de.failender.dsaonline.data.repository.GruppeRepository;
 import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.rest.user.UserRegistration;
-import de.failender.dsaonline.service.ApiService;
-import de.failender.dsaonline.service.CachingService;
-import de.failender.dsaonline.service.UserHeldenService;
-import de.failender.dsaonline.service.UserService;
+import de.failender.dsaonline.service.*;
 import de.failender.dsaonline.util.JaxbUtil;
 import de.failender.dsaonline.util.VersionFakeService;
 import org.assertj.core.api.Assertions;
@@ -26,6 +23,9 @@ public class VersionTest extends DsaOnlineTest {
 
 	@Autowired
 	private HeldRepository heldRepository;
+
+	@Autowired
+	private HeldRepositoryService heldRepositoryService;
 
 	@Autowired
 	private UserService userService;
@@ -71,6 +71,6 @@ public class VersionTest extends DsaOnlineTest {
 		heldRepository.findAll().forEach(System.out::println);
 		Assertions.assertThat(heldRepository.findAll().size()).isEqualTo(14);
 
-		Assertions.assertThat(heldRepository.findFirstByIdIdOrderByIdVersionDesc(TORI_ID).get().getVersion()).isEqualTo(14);
+		Assertions.assertThat(heldRepositoryService.findLatestVersion(TORI_ID).getId().getVersion()).isEqualTo(14);
 	}
 }

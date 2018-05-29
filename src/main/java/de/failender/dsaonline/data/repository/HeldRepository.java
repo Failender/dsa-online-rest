@@ -8,13 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 import javax.transaction.Transactional;
 import java.math.BigInteger;
 import java.util.List;
-import java.util.Optional;
 
 public interface HeldRepository extends JpaRepository<HeldEntity, BigInteger> {
-	List<HeldEntity> findByUserIdAndActive(Integer userId, boolean active);
-	List<HeldEntity> findByIdId(BigInteger id);
-	Optional<HeldEntity> findFirstByIdIdOrderByIdVersionDesc(BigInteger id);
-	Optional<HeldEntity> findByIdIdAndIdVersion(BigInteger id, int version);
+	List<HeldEntity> findByUserIdAndDeleted(Integer userId, boolean deleted);
 
 	@Transactional
 	@Modifying
