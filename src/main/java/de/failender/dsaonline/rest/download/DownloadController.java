@@ -28,6 +28,12 @@ public class DownloadController {
 		cachingService.provideDownload(id, version, response, CachingService.CacheType.pdf);
 	}
 
+	@GetMapping("pdf/{id}/{version}/{page}")
+	public void providePdfPageDownload(@PathVariable BigInteger id, @PathVariable int version, @PathVariable int page, HttpServletResponse response, RestAuthentication authentication) {
+		authorizationService.authenticate(authentication);
+		cachingService.providePdfPageDownload(id, version, page, response);
+	}
+
 	@GetMapping("xml/{id}/{version}")
 	public void provideXmlDownload(@PathVariable BigInteger id, @PathVariable int version, HttpServletResponse response, RestAuthentication authentication) {
 		authorizationService.authenticate(authentication);

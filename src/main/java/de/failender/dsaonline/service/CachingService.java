@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
@@ -221,6 +220,10 @@ public class CachingService {
 		return new File(pdfCacheDirectory, version + "." + id);
 	}
 
+	private File getHeldenPdfPageFile(BigInteger id, int version, int page) {
+		return new File(getHeldenPdfCacheDirectory(id, version), page + ".pdf");
+	}
+
 	private File getCacheFile(BigInteger id, int version, CacheType type) {
 		switch (type) {
 			case pdf:
@@ -247,15 +250,31 @@ public class CachingService {
 		}
 	}
 
-	public void provideDownload(@PathVariable BigInteger heldid, @PathVariable int version, HttpServletResponse response, CacheType type) {
+	public void provideDownload(BigInteger heldid, int version, HttpServletResponse response, CacheType type) {
 		response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
 		response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + heldid + "." + version + "." + type.getExtension());
 		try {
 			File file = getCacheFile(heldid, version, type);
 			if (file.exists()) {
-				IOUtils.copy(new FileInputStream(getCacheFile(heldid, version, type)), response.getOutputStream());
+				IOUtils.copy(new FileInputStream(file), response.getOutputStream());
 			} else {
 				throw new PdfNotCachedException(heldid, version);
+			}
+
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public void providePdfPageDownload(BigInteger heldid, int version, int page, HttpServletResponse response) {
+		response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
+		response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + heldid + "." + version + "." + "." + page + ".pdf");
+		try {
+			File file = getHeldenPdfPageFile(heldid, version, page);
+			if (file.exists()) {
+				IOUtils.copy(new FileInputStream(file), response.getOutputStream());
+			} else {
+				throw new PdfNotCachedException(heldid, version, page);
 			}
 
 		} catch (IOException e) {
