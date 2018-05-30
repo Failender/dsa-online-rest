@@ -8,7 +8,10 @@ import de.failender.heldensoftware.xml.heldenliste.Held;
 import de.failender.heldensoftware.xml.heldenliste.Helden;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.pdfbox.multipdf.Splitter;
+import org.apache.pdfbox.pdmodel.PDDocument;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -121,6 +124,15 @@ public class CachingService {
 		if (file.exists()) {
 			file.delete();
 		}
+		File dir = getHeldenPdfCacheDirectory(id, version);
+		if (dir.exists()) {
+			try {
+				FileUtils.deleteDirectory(dir);
+			} catch (IOException e) {
+				log.error("Error while deleting pdf directory", e);
+			}
+		}
+
 	}
 
 	public void setHeldenCache(BigInteger heldid, int version, Daten daten, String xml) {
@@ -146,6 +158,21 @@ public class CachingService {
 		try {
 			FileUtils.copyInputStreamToFile(inputStreamReader, out);
 			log.info("Wrote pdf cache for held {} version {}", heldid, version);
+
+
+			PDDocument document = PDDocument.load(out);
+			Splitter splitter = new Splitter();
+			List<PDDocument> docs = splitter.split(document);
+			File directory = new File(out.getParentFile(), FilenameUtils.removeExtension(out.getName()));
+			directory.mkdir();
+			for (int i = 0; i < docs.size(); i++) {
+				PDDocument doc = docs.get(i);
+				File file = new File(directory, i + 1 + ".pdf");
+				doc.save(file);
+				doc.close();
+			}
+			document.close();
+
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -190,6 +217,10 @@ public class CachingService {
 		return new File(pdfCacheDirectory, version + "." + id + ".pdf");
 	}
 
+	private File getHeldenPdfCacheDirectory(BigInteger id, int version) {
+		return new File(pdfCacheDirectory, version + "." + id);
+	}
+
 	private File getCacheFile(BigInteger id, int version, CacheType type) {
 		switch (type) {
 			case pdf:
@@ -221,7 +252,7 @@ public class CachingService {
 		response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + heldid + "." + version + "." + type.getExtension());
 		try {
 			File file = getCacheFile(heldid, version, type);
-			if(file.exists()) {
+			if (file.exists()) {
 				IOUtils.copy(new FileInputStream(getCacheFile(heldid, version, type)), response.getOutputStream());
 			} else {
 				throw new PdfNotCachedException(heldid, version);
