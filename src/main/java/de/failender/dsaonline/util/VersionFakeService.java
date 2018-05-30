@@ -30,7 +30,7 @@ public class VersionFakeService {
 	@Autowired
 	private HeldRepositoryService heldRepositoryService;
 
-	@Value("${dsa.online.fakes.directory")
+	@Value("${dsa.online.fakes.directory}")
 	private String fakesDirectory;
 
 	//Fakes Versions, but only for ids in given list
