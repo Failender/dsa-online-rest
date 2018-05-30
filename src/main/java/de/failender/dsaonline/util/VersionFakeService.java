@@ -9,6 +9,7 @@ import de.failender.heldensoftware.xml.datenxml.Ereignis;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.xml.bind.JAXBException;
@@ -29,9 +30,12 @@ public class VersionFakeService {
 	@Autowired
 	private HeldRepositoryService heldRepositoryService;
 
+	@Value("${dsa.online.fakes.directory")
+	private String fakesDirectory;
+
 	//Fakes Versions, but only for ids in given list
 	public void fakeVersions(List<BigInteger> heldenIds) {
-		File dir = new File("fakes/versionfakes");
+		File dir = new File(fakesDirectory + "/versionfakes");
 		Map<BigInteger, List<File>> mapping = new HashMap<>();
 		if (!dir.exists()) {
 			log.error("Cant fake versions because directory {} does not exist", dir.getAbsoluteFile());
@@ -72,7 +76,7 @@ public class VersionFakeService {
 //	}
 
 	private void fakeVersion(File file) {
-		File xmlFile = new File(file.getParentFile().getParentFile() + "/versionfakes_helden", file.getName());
+		File xmlFile = new File(fakesDirectory +"/versionfakes_helden", file.getName());
 		if (!xmlFile.exists()) {
 			log.error("Cant fake version {} because no corresponding xml file found", file.getName());
 			return;

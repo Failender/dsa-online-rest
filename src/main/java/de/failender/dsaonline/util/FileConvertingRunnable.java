@@ -16,16 +16,19 @@ public class FileConvertingRunnable implements Runnable {
 
 
 	private final ConvertingService convertingService;
+	private final String fakesDirectory;
 
-	public FileConvertingRunnable(ConvertingService convertingService) {
+	public FileConvertingRunnable(ConvertingService convertingService, String fakesDirectory) {
 		this.convertingService = convertingService;
+
+		this.fakesDirectory = fakesDirectory;
 	}
 
 	@Override
 	public void run() {
 		log.info("Starting FileConvertingRunnable");
-		final File outDir = new File("fakes/versionfakes");
-		final File dir = new File("fakes/versionfakes_helden");
+		final File outDir = new File(fakesDirectory + "/versionfakes");
+		final File dir = new File(fakesDirectory + "/versionfakes_helden");
 
 		log.info("Starting to convert directories to version id format");
 		Arrays.stream(dir.listFiles(getDirectories()))

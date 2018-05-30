@@ -57,13 +57,16 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	@Value("${dsa.online.cache.droponstart}")
 	private boolean dropCacheOnStart;
 
+	@Value("${dsa.online.fakes.directory}")
+	private String fakesDirectory;
+
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
 		if(dropCacheOnStart) {
 			cachingService.dropCache();
 		}
 
-		Thread converterThread = new Thread(new FileConvertingRunnable(convertingService));
+		Thread converterThread = new Thread(new FileConvertingRunnable(convertingService, fakesDirectory));
 		converterThread.run();
 		log.info("Starting to insert dev data");
 		List<GrantedAuthority> fakeRights = new ArrayList<>();
