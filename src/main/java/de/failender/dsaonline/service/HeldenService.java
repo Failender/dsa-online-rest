@@ -60,17 +60,10 @@ public class HeldenService {
 		HeldEntity held = heldRepositoryService.findHeld(id);
 		//Throw error if version not present
 		heldRepositoryService.findVersion(id, version);
-		UserEntity user = SecurityUtils.getCurrentUser();
-		log.info("Loading helden {} {} by ", id, version, user.getName());
-		if (held.getUserId() != user.getId()) {
-			SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);
-			UserEntity owningUser = this.userRepository.findById(held.getUserId()).get();
-			return apiService.getHeldenDaten(id, version, owningUser.getToken());
-		} else {
-			return apiService.getHeldenDaten(id, version);
-		}
 
-
+		SecurityUtils.canCurrentUserViewHeld(held);
+		UserEntity owningUser = this.userRepository.findById(held.getUserId()).get();
+		return apiService.getHeldenDaten(id, version, owningUser.getToken());
 	}
 
 	public HeldenUnterschied calculateUnterschied(BigInteger heldenid, int from, int to) {
@@ -89,15 +82,9 @@ public class HeldenService {
 
 	private HeldenUnterschied calculateUnterschied(HeldEntity held, VersionEntity from, VersionEntity to) {
 		String token;
-		UserEntity currentUser = SecurityUtils.getCurrentUser();
-		if (currentUser.getId() != held.getUserId()) {
-			SecurityUtils.canCurrentUserViewHeld(held);
-			UserEntity userEntity = this.userRepository.findById(held.getUserId()).get();
-			token = userEntity.getToken();
-
-		} else {
-			token = currentUser.getToken();
-		}
+		SecurityUtils.canCurrentUserViewHeld(held);
+		UserEntity userEntity = this.userRepository.findById(held.getUserId()).get();
+		token = userEntity.getToken();
 		Daten fromDaten = this.apiService.getHeldenDaten(held.getId(), from.getId().getVersion(), token);
 		Daten toDaten = this.apiService.getHeldenDaten(held.getId(), to.getId().getVersion(), token);
 		return calculateUnterschied(fromDaten, toDaten);
