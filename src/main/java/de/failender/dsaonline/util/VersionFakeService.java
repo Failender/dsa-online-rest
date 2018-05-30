@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
@@ -32,6 +33,11 @@ public class VersionFakeService {
 
 	@Value("${dsa.online.fakes.directory}")
 	private String fakesDirectory;
+
+	@PostConstruct
+	public void afterInit() {
+		log.info("Fakes directory is: " + fakesDirectory);
+	}
 
 	//Fakes Versions, but only for ids in given list
 	public void fakeVersions(List<BigInteger> heldenIds) {
