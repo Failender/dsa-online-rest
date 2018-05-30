@@ -1,6 +1,5 @@
 package de.failender.dsaonline.service;
 
-import de.failender.dsaonline.data.entity.GruppeEntity;
 import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.entity.VersionEntity;
@@ -8,6 +7,7 @@ import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.util.DateUtil;
 import de.failender.dsaonline.util.VersionFakeService;
+import de.failender.heldensoftware.xml.datenxml.Ereignis;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +55,7 @@ public class UserHeldenService {
 				if (isOnlineVersionOlder(xmlHeld, versionEntity.getCreatedDate())) {
 					log.info("Got a new version for held with name {}", heldEntity.getName());
 					//We got a new version of this xmlHeld
-					this.persistVersion(xmlHeld, userEntity, versionEntity.getId().getVersion() + 1, heldEntity.getGruppe());
+					this.persistVersion(xmlHeld, userEntity, versionEntity.getId().getVersion() + 1);
 					this.forceCacheBuildFor(userEntity, heldEntity, versionEntity.getId().getVersion() + 1);
 
 				} else {
@@ -116,11 +116,15 @@ public class UserHeldenService {
 		return lastEditedDate.after(heldCreatedDate);
 	}
 
-	private void persistVersion(Held xmlHeld, UserEntity user, int version, GruppeEntity gruppeEntity) {
+	private void persistVersion(Held xmlHeld, UserEntity user, int version) {
+
 		VersionEntity versionEntity = new VersionEntity();
 		versionEntity.setId(new VersionEntity.VersionId(xmlHeld.getHeldenid(), version));
 		versionEntity.setPdfCached(true);
 		versionEntity.setCreatedDate(DateUtil.convert(xmlHeld.getHeldlastchange()));
+
+		versionEntity.setLastEvent(extractLastEreignis(apiService.getHeldenDaten(xmlHeld.getHeldenid(), version, user.getToken()).getEreignisse().getEreignis()));
+
 		this.heldRepositoryService.saveVersion(versionEntity);
 	}
 
@@ -145,6 +149,22 @@ public class UserHeldenService {
 			this.updateHeldenForUser(userEntity);
 		}
 
+	}
+
+	public static String extractLastEreignis(List<Ereignis> ereignisse) {
+		for(int i= ereignisse.size() -1 ; i>= 0 ; i--) {
+			if(ereignisse.get(i).getAp() > 0) {
+				String s  = ereignisse.get(i).getKommentar();
+				int index = s.indexOf("Gesamt AP");
+				if(index == -1) {
+					return s;
+				}
+				s = s.substring(0, index);
+
+				return s;
+			}
+		}
+		return null;
 	}
 
 	@Autowired

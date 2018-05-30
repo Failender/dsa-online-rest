@@ -12,10 +12,8 @@ import de.failender.heldensoftware.xml.datenxml.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileNotFoundException;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
@@ -54,7 +52,8 @@ public class HeldenService {
 				heldWithVersion.getHeld().getCreatedDate(),
 				heldWithVersion.getVersion().getId().getVersion(),
 				heldWithVersion.getHeld().getGruppe().getName(),
-				heldWithVersion.getHeld().getId());
+				heldWithVersion.getHeld().getId(),
+				heldWithVersion.getHeld().isPublic());
 	}
 
 	public Daten getHeldenDaten(BigInteger id, int version) {
@@ -166,7 +165,7 @@ public class HeldenService {
 		return unterschiede;
 	}
 
-	public List<HeldVersion> loadHeldenVersionen(@PathVariable BigInteger heldenid) {
+	public List<HeldVersion> loadHeldenVersionen(BigInteger heldenid) {
 		List<VersionEntity> versionen = versionRepository.findByIdHeldid(heldenid);
 		return versionen
 				.stream()
@@ -174,7 +173,7 @@ public class HeldenService {
 				.collect(Collectors.toList());
 	}
 
-	public void providePdfDownload(BigInteger id, int version, HttpServletResponse response) throws FileNotFoundException {
+	public void providePdfDownload(BigInteger id, int version, HttpServletResponse response) {
 		HeldEntity held = heldRepositoryService.findHeld(id);
 		SecurityUtils.canCurrentUserViewHeld(held);
 		VersionEntity versionEntity = heldRepositoryService.findVersion(id, version);
@@ -187,6 +186,8 @@ public class HeldenService {
 	}
 
 	public void updateHeldenPublic(boolean isPublic, BigInteger heldid) {
+		HeldEntity held = heldRepositoryService.findHeld(heldid);
+		SecurityUtils.canCurrentUserEditHeld(held);
 		heldRepositoryService.updateHeldenPublic(isPublic, heldid);
 	}
 

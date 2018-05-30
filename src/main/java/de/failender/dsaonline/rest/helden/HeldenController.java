@@ -54,8 +54,8 @@ public class HeldenController {
 		return heldenService.getAllHeldenForCurrentUser();
 	}
 
-	@PostMapping("public/{heldid}/{public}")
-	public void editHeldenGruppe(@PathVariable BigInteger heldid, @PathVariable boolean isPublic) {
+	@PostMapping("public/{heldid}/{isPublic}")
+	public void editPublic(@PathVariable BigInteger heldid, @PathVariable boolean isPublic) {
 		heldenService.updateHeldenPublic(isPublic, heldid);
 	}
 

@@ -62,4 +62,11 @@ public class SecurityUtils {
 			checkRight(SecurityUtils.VIEW_ALL);
 		}
 	}
+
+	public static void canCurrentUserEditHeld(HeldEntity held) {
+		UserEntity user = getCurrentUser();
+		if (user.getId() != held.getUserId()) {
+			checkRight(SecurityUtils.EDIT_ALL);
+		}
+	}
 }
