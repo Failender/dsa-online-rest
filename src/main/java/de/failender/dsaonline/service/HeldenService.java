@@ -49,7 +49,7 @@ public class HeldenService {
 
 	public HeldenInfo mapToHeldenInfo(HeldWithVersion heldWithVersion) {
 		return new HeldenInfo(heldWithVersion.getHeld().getName(),
-				heldWithVersion.getHeld().getCreatedDate(),
+				heldWithVersion.getVersion().getCreatedDate(),
 				heldWithVersion.getVersion().getId().getVersion(),
 				heldWithVersion.getHeld().getGruppe().getName(),
 				heldWithVersion.getHeld().getId(),
@@ -194,6 +194,7 @@ public class HeldenService {
 
 	public void updateHeldenPublic(boolean isPublic, BigInteger heldid) {
 		HeldEntity held = heldRepositoryService.findHeld(heldid);
+		log.info("Updating public status for held {}: {}", held.getName(), isPublic);
 		SecurityUtils.canCurrentUserEditHeld(held);
 		heldRepositoryService.updateHeldenPublic(isPublic, heldid);
 	}

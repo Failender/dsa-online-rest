@@ -86,6 +86,12 @@ public class HeldRepositoryService {
 	}
 
 	public void updateHeldenPublic(boolean isPublic, BigInteger heldid) {
+
 		heldRepository.updateHeldenPublic(isPublic, heldid);
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }
