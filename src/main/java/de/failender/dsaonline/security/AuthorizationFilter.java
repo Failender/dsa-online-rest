@@ -32,13 +32,13 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 		String username = request.getHeader(USERNAME);
-		if(username == null) {
+		if (username == null) {
 			chain.doFilter(request, response);
 			return;
 		}
 		String password = request.getHeader(PASSWORD);
 		UserEntity user = this.userRepository.findByName(username);
-		if(user == null || user.getPassword() != null && !user.getPassword().equals(password)) {
+		if (user == null || user.getPassword() == null && !user.getPassword().equals(password)) {
 			chain.doFilter(request, response);
 			return;
 		}
