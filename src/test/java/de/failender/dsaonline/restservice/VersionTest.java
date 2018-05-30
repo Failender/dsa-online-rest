@@ -68,7 +68,6 @@ public class VersionTest extends DsaOnlineTest {
 
 		Assertions.assertThat(heldRepository.findAll().size()).isEqualTo(13);
 		userHeldenService.updateHeldenForUser(userEntity);
-		heldRepository.findAll().forEach(System.out::println);
 		Assertions.assertThat(heldRepository.findAll().size()).isEqualTo(14);
 
 		Assertions.assertThat(heldRepositoryService.findLatestVersion(TORI_ID).getId().getVersion()).isEqualTo(14);

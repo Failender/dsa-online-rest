@@ -56,9 +56,7 @@ public class FileConvertingRunnable implements Runnable {
 		log.info("Starting to convert helden to daten format");
 		Arrays.stream(dir.listFiles(getFiles()))
 				.forEach(file -> {
-					System.out.println(file.getAbsoluteFile());
 					File outFile = new File(outDir, file.getName());
-					System.out.println(outFile.exists());
 					if (!outFile.exists()) {
 						log.info("Converting file: {}", file.getName());
 						String string = convertingService.convert(file);
