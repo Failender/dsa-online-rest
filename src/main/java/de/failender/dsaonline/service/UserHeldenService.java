@@ -167,6 +167,14 @@ public class UserHeldenService {
 		return null;
 	}
 
+	public static void clearEreigniskontrolle(List<Ereignis> ereignisse) {
+
+		Ereignis ereignis = ereignisse.get(ereignisse.size() - 1);
+		if (ereignis.getAktion().equals("Änderungskontrolle")) {
+			ereignisse.remove(ereignisse.size() - 1);
+		}
+	}
+
 	@Autowired
 	public void setApiService(ApiService apiService) {
 		this.apiService = apiService;

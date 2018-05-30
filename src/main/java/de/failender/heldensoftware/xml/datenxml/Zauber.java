@@ -9,6 +9,7 @@
 package de.failender.heldensoftware.xml.datenxml;
 
 import de.failender.dsaonline.rest.helden.Unterscheidbar;
+import lombok.ToString;
 
 import javax.xml.bind.annotation.*;
 import java.math.BigInteger;
@@ -82,6 +83,7 @@ import java.math.BigInteger;
     "mr"
 })
 @XmlRootElement(name = "zauber")
+@ToString
 public class Zauber implements Unterscheidbar {
 
     @XmlElement(required = true)
@@ -93,7 +95,7 @@ public class Zauber implements Unterscheidbar {
     @XmlElement(required = true)
     protected String nameausfuehrlich;
     @XmlElement(required = true)
-    protected BigInteger wert;
+    protected Integer wert;
     @XmlElement(required = true)
     protected String spezialisierungen;
     @XmlElement(required = true)
@@ -234,7 +236,7 @@ public class Zauber implements Unterscheidbar {
      *     {@link BigInteger }
      *     
      */
-    public BigInteger getWert() {
+    public Integer getWert() {
         return wert;
     }
 
@@ -246,7 +248,7 @@ public class Zauber implements Unterscheidbar {
      *     {@link BigInteger }
      *     
      */
-    public void setWert(BigInteger value) {
+    public void setWert(Integer value) {
         this.wert = value;
     }
 

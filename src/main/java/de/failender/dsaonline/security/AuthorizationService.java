@@ -24,7 +24,8 @@ public class AuthorizationService {
 			return;
 		}
 		UserEntity user = this.userRepository.findByName(username);
-		if (user == null || user.getPassword() == null && !user.getPassword().equals(password)) {
+
+		if (user == null || user.getPassword() != null && !user.getPassword().equals(password)) {
 			return;
 		}
 		SecurityContextHolder.getContext().setAuthentication(

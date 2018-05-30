@@ -9,6 +9,7 @@
 package de.failender.heldensoftware.xml.datenxml;
 
 import de.failender.dsaonline.rest.helden.Unterscheidbar;
+import lombok.ToString;
 
 import javax.xml.bind.annotation.*;
 import java.math.BigInteger;
@@ -70,6 +71,7 @@ import java.util.List;
     "auswahlen"
 })
 @XmlRootElement(name = "vorteil")
+@ToString
 public class Vorteil implements Unterscheidbar {
 
     @XmlElement(required = true)
@@ -83,7 +85,7 @@ public class Vorteil implements Unterscheidbar {
     protected boolean istvorteil;
     protected boolean istnachteil;
     protected Boolean istschlechteeigenschaft;
-    protected BigInteger wert;
+    protected Integer wert;
     protected Boolean istgabe;
     protected List<String> bereich;
     protected Vorteil.Auswahlen auswahlen;
@@ -248,7 +250,7 @@ public class Vorteil implements Unterscheidbar {
      *     {@link BigInteger }
      *     
      */
-    public BigInteger getWert() {
+    public Integer getWert() {
         return wert;
     }
 
@@ -260,7 +262,7 @@ public class Vorteil implements Unterscheidbar {
      *     {@link BigInteger }
      *     
      */
-    public void setWert(BigInteger value) {
+    public void setWert(Integer value) {
         this.wert = value;
     }
 

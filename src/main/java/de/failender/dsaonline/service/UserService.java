@@ -49,8 +49,7 @@ public class UserService {
 			userEntity.setPassword(userRegistration.getPassword());
 		}
 		userEntity = this.userRepository.save(userEntity);
-
-		userHeldenService.updateHeldenForUser(userEntity);
+		userHeldenService.forceUpdateHeldenForUser(userEntity);
 		userHeldenService.fakeHeldenForUser(userEntity);
 		userHeldenService.updateHeldenForUser(userEntity);
 		return userEntity;
@@ -75,7 +74,7 @@ public class UserService {
 					} else {
 						gruppe = this.gruppeRepository.findAll().get(0).getName();
 					}
-					UserRegistration userRegistration = new UserRegistration(userData.getName(), null, userData.getToken(), gruppe);
+					UserRegistration userRegistration = new UserRegistration(userData.getName(), userData.getPassword(), userData.getToken(), gruppe);
 					UserEntity userEntity = registerUser(userRegistration);
 					userData.roles.forEach(role -> addUserRole(userEntity, role));
 				}

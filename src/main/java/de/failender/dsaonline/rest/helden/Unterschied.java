@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 public class Unterschied {
 	private String name;
-	private int alt;
-	private int neu;
+	private Integer alt;
+	private Integer neu;
 }

@@ -153,7 +153,14 @@ public class HeldenService {
 					if (toOptional.isPresent()) {
 						T to = toOptional.get();
 						toList.remove(to);
-						unterschiede.addAenderung(new Unterschied(to.getName(), from.getWert().intValue(), to.getWert().intValue()));
+						Integer fromWert = from.getWert();
+						Integer toWert = to.getWert();
+						if(fromWert == null && toWert == null
+								|| fromWert != null && toWert != null && fromWert.equals(toWert)) {
+							return;
+						}
+						unterschiede.addAenderung(new Unterschied(to.getName(), from.getWert(), to.getWert()));
+
 					} else {
 						//Talent is present in from, but not in to. This hero unlearned.
 						unterschiede.addEntfernt(from);

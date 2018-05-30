@@ -5,7 +5,6 @@ import de.failender.dsaonline.api.HeldenSoftwareAPIOnline;
 import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.heldensoftware.xml.datenxml.Daten;
-import de.failender.heldensoftware.xml.datenxml.Ereignis;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,18 +71,12 @@ public class ApiService {
 		}
 		HeldenSoftwareAPI api = getApi(token);
 		cache = api.getHeldenDaten(heldenid);
-		fixDaten(cache);
+		UserHeldenService.clearEreigniskontrolle(cache.getEreignisse().getEreignis());
 		cachingService.setHeldenCache(heldenid, version, cache, api.getHeldXml(heldenid));
 		return cache;
 	}
 
-	private void fixDaten(Daten daten) {
-		List<Ereignis> ereignisse = daten.getEreignisse().getEreignis();
-		Ereignis ereignis = ereignisse.get(ereignisse.size() - 1);
-		if (ereignis.getAktion().equals("Änderungskontrolle")) {
-			ereignisse.remove(ereignisse.size() - 1);
-		}
-	}
+
 
 	public List<Held> getAllHelden(String token) {
 		return getAllHelden(token, true);
