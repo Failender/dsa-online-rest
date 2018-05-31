@@ -12,6 +12,8 @@ import java.util.List;
 public interface HeldRepository extends JpaRepository<HeldEntity, BigInteger> {
 	List<HeldEntity> findByUserIdAndDeleted(Integer userId, boolean deleted);
 
+	List<HeldEntity> findByGruppeId(int id);
+
 	@Transactional
 	@Modifying
 	@Query("UPDATE HeldEntity h SET h.gruppe.id = ?1 WHERE h.id = ?2")
