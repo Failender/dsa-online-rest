@@ -4,6 +4,7 @@ import de.failender.dsaonline.data.entity.EventEntity;
 import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.repository.EventRepository;
 import de.failender.dsaonline.data.repository.HeldRepository;
+import de.failender.dsaonline.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,22 +25,12 @@ public class EventController {
 	@Autowired
 	private HeldRepository heldRepository;
 
-	@GetMapping("{gruppe}")
-	public Map<String, List<EventDto>> getEventsForGruppe(@PathVariable int gruppe) {
-		List<HeldEntity> helden = this.heldRepository.findByGruppeId(gruppe);
-		List<EventEntity> gruppeEvents = eventRepository.findByOwnerIdAndType(BigInteger.valueOf(gruppe), EventEntity.Type.GRUPPE);
+	@Autowired
+	private EventService eventService;
 
-		Map<String, List<EventDto>> map = new HashMap<>();
-		map.put("Gruppe", gruppeEvents
-				.stream()
-				.map(event -> new EventDto(event.getName(), event.getStartDate(), event.getEndDate(), event.getId())).collect(Collectors.toList()));
-
-		helden.forEach(held -> {
-			map.put(held.getName(), eventRepository.findByOwnerIdAndType(held.getId(), EventEntity.Type.HELD).stream()
-					.map(event -> new EventDto(event.getName(), event.getStartDate(), event.getEndDate(), event.getId())).collect(Collectors.toList()));
-
-		});
-		return map;
+	@GetMapping("{gruppe}/{jahr}/{monat}")
+	public Map<String, List<EventDto>> getEventsForGruppe(@PathVariable int gruppe, @PathVariable int jahr, @PathVariable int monat) {
+		return eventService.getEventsForGruppeAndHelden(gruppe, jahr, monat);
 	}
 
 	@PostMapping

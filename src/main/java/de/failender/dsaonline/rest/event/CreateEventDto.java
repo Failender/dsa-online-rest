@@ -9,8 +9,8 @@ import java.math.BigInteger;
 public class CreateEventDto {
 
 	private String name;
-	private String startDate;
-	private String endDate;
+	private int startDate;
+	private int endDate;
 	private EventEntity.Type type;
 	private BigInteger ownerId;
 }

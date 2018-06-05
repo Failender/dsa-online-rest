@@ -7,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class EventDto {
 	private String name;
-	private String startDate;
-	private String endDate;
+	private int startDate;
+	private int endDate;
 	private int id;
 }

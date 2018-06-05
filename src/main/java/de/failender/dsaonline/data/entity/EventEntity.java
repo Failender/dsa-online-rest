@@ -19,12 +19,16 @@ public class EventEntity extends BaseEntity {
 	@Enumerated(EnumType.ORDINAL)
 	private Type type;
 
-	//Data-Type might change once frontend knows what it needs
 	@Column(name = "START_DATE")
-	private String startDate;
+	private int startDate;
 	@Column(name = "END_DATE")
-	private String endDate;
+	private int endDate;
 
+	@Column(name = "START_MONAT")
+	private int startMonat;
+
+	@Column(name ="END_MONAT")
+	private int endMonat;
 
 	public enum Type {
 		GRUPPE, HELD

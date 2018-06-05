@@ -34,6 +34,9 @@ public class VersionFakeService {
 	@Value("${dsa.online.fakes.directory}")
 	private String fakesDirectory;
 
+	@Value("${dsa.online.fakes.enabled}")
+	private boolean useFakes;
+
 	@PostConstruct
 	public void afterInit() {
 		log.info("Fakes directory is: " + fakesDirectory);
@@ -41,6 +44,9 @@ public class VersionFakeService {
 
 	//Fakes Versions, but only for ids in given list
 	public void fakeVersions(List<BigInteger> heldenIds) {
+		if(!useFakes) {
+			return;
+		}
 		File dir = new File(fakesDirectory + "/versionfakes");
 		Map<BigInteger, List<File>> mapping = new HashMap<>();
 		if (!dir.exists()) {
