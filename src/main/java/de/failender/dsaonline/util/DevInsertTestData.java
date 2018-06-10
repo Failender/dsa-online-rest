@@ -2,11 +2,12 @@ package de.failender.dsaonline.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.failender.dsaonline.data.repository.GruppeRepository;
-import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.security.SecurityUtils;
-import de.failender.dsaonline.service.*;
+import de.failender.dsaonline.service.CachingService;
+import de.failender.dsaonline.service.ConvertingService;
+import de.failender.dsaonline.service.UserHeldenService;
+import de.failender.dsaonline.service.UserService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,19 +41,13 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	private UserHeldenService userHeldenService;
 
 	@Autowired
-	private HeldRepository heldRepository;
-
-	@Autowired
-	private GruppeRepository gruppeRepository;
-
-	@Autowired
-	private ApiService apiService;
-
-	@Autowired
 	private CachingService cachingService;
 
 	@Autowired
 	private ConvertingService convertingService;
+
+//	@Autowired
+//	private EventService eventService;
 
 	@Value("${dsa.online.cache.droponstart}")
 	private boolean dropCacheOnStart;
@@ -88,11 +83,8 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 			throw new RuntimeException(e);
 		}
 		userRepository.findAll().forEach(userHeldenService::updateHeldenForUser);
-
 		log.info("Done inserting dev data");
 	}
-
-	//Only works in non jar'ed
 
 
 	@Data

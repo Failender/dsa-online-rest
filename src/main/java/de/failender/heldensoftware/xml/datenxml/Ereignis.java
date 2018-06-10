@@ -19,7 +19,7 @@ public class Ereignis {
 	@XmlElement(required = true)
 	private String aktion;
 	@XmlElement
-	private Integer alterzustand;
+	private String alterzustand;
 	@XmlElement
 	private int ap;
 	@XmlElement
@@ -35,7 +35,7 @@ public class Ereignis {
 	@XmlElement
 	private int lep;
 	@XmlElement
-	private Integer neuerzustand;
+	private String neuerzustand;
 	@XmlElement
 	private String object;
 	@XmlElement
@@ -49,11 +49,11 @@ public class Ereignis {
 		this.aktion = aktion;
 	}
 
-	public Integer getAlterzustand() {
+	public String getAlterzustand() {
 		return alterzustand;
 	}
 
-	public void setAlterzustand(Integer alterzustand) {
+	public void setAlterzustand(String alterzustand) {
 		this.alterzustand = alterzustand;
 	}
 
@@ -119,11 +119,11 @@ public class Ereignis {
 		this.lep = lep;
 	}
 
-	public Integer getNeuerzustand() {
+	public String getNeuerzustand() {
 		return neuerzustand;
 	}
 
-	public void setNeuerzustand(Integer neuerzustand) {
+	public void setNeuerzustand(String neuerzustand) {
 		this.neuerzustand = neuerzustand;
 	}
 

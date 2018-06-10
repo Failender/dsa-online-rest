@@ -2,7 +2,7 @@ pipeline:
   backend:
     image: plugins/docker
     repo: failender/dsa-online-rest
-    tags: latest
+    tags: kalender
     dockerfile: Dockerfile
     secrets: [ docker_username, docker_password ]
     debug: true

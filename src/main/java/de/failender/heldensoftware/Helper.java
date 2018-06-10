@@ -1,5 +1,6 @@
 package de.failender.heldensoftware;
 
+import lombok.extern.slf4j.Slf4j;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -22,6 +23,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 
+@Slf4j
 public class Helper {
 
 	static {
@@ -62,6 +64,7 @@ public class Helper {
 
 	public static InputStream postrequeststreamurlnoreaderurl(String adress, String ... strings) throws Exception {
 		String body = buildBody(strings);
+		log.info("Sending request: "  + body);
 		URL url = new URL(adress);
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.setRequestMethod("POST");
