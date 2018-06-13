@@ -5,9 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.CachingService;
-import de.failender.dsaonline.service.ConvertingService;
 import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.dsaonline.service.UserService;
+import de.failender.heldensoftware.api.HeldenApi;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	private CachingService cachingService;
 
 	@Autowired
-	private ConvertingService convertingService;
+	private HeldenApi heldenApi;
 
 //	@Autowired
 //	private EventService eventService;
@@ -57,11 +57,11 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-		if(dropCacheOnStart) {
+		if (dropCacheOnStart) {
 			cachingService.dropCache();
 		}
 
-		Thread converterThread = new Thread(new FileConvertingRunnable(convertingService, fakesDirectory));
+		Thread converterThread = new Thread(new FileConvertingRunnable(heldenApi, fakesDirectory));
 		converterThread.run();
 		log.info("Starting to insert dev data");
 		List<GrantedAuthority> fakeRights = new ArrayList<>();
@@ -71,7 +71,8 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 		InputStream is = DevInsertTestData.class.getClassLoader().getResourceAsStream("user.json");
 		ObjectMapper om = new ObjectMapper();
 		try {
-			List<UserData> data = om.readValue(is, new TypeReference<List<UserData>>(){});
+			List<UserData> data = om.readValue(is, new TypeReference<List<UserData>>() {
+			});
 			userService.createUsers(data);
 		} catch (IOException e) {
 			log.error("Error while inserting user data", e);

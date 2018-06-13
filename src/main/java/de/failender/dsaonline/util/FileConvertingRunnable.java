@@ -1,9 +1,11 @@
 package de.failender.dsaonline.util;
 
-import de.failender.dsaonline.service.ConvertingService;
 import de.failender.dsaonline.service.UserHeldenService;
+import de.failender.heldensoftware.api.HeldenApi;
+import de.failender.heldensoftware.api.requests.ConvertingRequest;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 
 import javax.xml.bind.JAXBException;
 import java.io.*;
@@ -15,11 +17,11 @@ import java.util.Arrays;
 public class FileConvertingRunnable implements Runnable {
 
 
-	private final ConvertingService convertingService;
+	private final HeldenApi heldenApi;
 	private final String fakesDirectory;
 
-	public FileConvertingRunnable(ConvertingService convertingService, String fakesDirectory) {
-		this.convertingService = convertingService;
+	public FileConvertingRunnable(HeldenApi heldenApi, String fakesDirectory) {
+		this.heldenApi = heldenApi;
 
 		this.fakesDirectory = fakesDirectory;
 	}
@@ -33,10 +35,10 @@ public class FileConvertingRunnable implements Runnable {
 		log.info("Starting to convert directories to version id format");
 		Arrays.stream(dir.listFiles(getDirectories()))
 				.forEach(diretory -> {
-					log.info("Processing directory {} " , diretory.getName());
+					log.info("Processing directory {} ", diretory.getName());
 					String heldid = diretory.getName();
 					File[] files = diretory.listFiles();
-					Arrays.sort(files, (a,b) -> {
+					Arrays.sort(files, (a, b) -> {
 
 						try {
 							Long aCreation = Files.readAttributes(a.toPath(), BasicFileAttributes.class).creationTime().toMillis();
@@ -45,7 +47,7 @@ public class FileConvertingRunnable implements Runnable {
 						} catch (IOException e) {
 							throw new RuntimeException(e);
 						}
-					} );
+					});
 					for (int i = 0; i < files.length; i++) {
 						File out = new File(dir, i + 1 + "." + heldid + ".xml");
 						try {
@@ -61,21 +63,20 @@ public class FileConvertingRunnable implements Runnable {
 				.forEach(file -> {
 					File outFile = new File(outDir, file.getName());
 					if (!outFile.exists()) {
-						log.info("Converting file: {}", file.getName());
-						String string = convertingService.convert(file);
 
-						if (string.isEmpty()) {
-							log.info("Converted is empty for file {}", file.getAbsoluteFile());
-							throw new RuntimeException("Converted is empty for file");
-						}
 						try {
+							log.info("Converting file: {}", file.getName());
+							ConvertingRequest datenRequest = new ConvertingRequest(HeldenApi.Format.datenxml, FileUtils.readFileToString(file, "UTF-8"));
+							InputStream stream = heldenApi.request(datenRequest, false);
 							//Make sure the file is valid
-							Daten daten = (Daten) JaxbUtil.getUnmarshaller(Daten.class).unmarshal(new StringReader(string));
+							Daten daten = (Daten) JaxbUtil.getUnmarshaller(Daten.class).unmarshal(stream);
 							UserHeldenService.clearEreigniskontrolle(daten.getEreignisse().getEreignis());
 							JaxbUtil.getMarshaller(Daten.class).marshal(daten, outFile);
 							log.info("Finished converting {}", file.getName());
 						} catch (JAXBException e) {
 							log.error("Critical error converting file, returned xml is invalid {}", file.getAbsoluteFile());
+							throw new RuntimeException(e);
+						} catch (IOException e) {
 							throw new RuntimeException(e);
 						}
 					}
@@ -84,10 +85,10 @@ public class FileConvertingRunnable implements Runnable {
 	}
 
 	private FilenameFilter getFiles() {
-		return (dir, name) -> !new File(dir,name).isDirectory();
+		return (dir, name) -> !new File(dir, name).isDirectory();
 	}
 
 	private FilenameFilter getDirectories() {
-		return (dir, name) -> new File(dir,name).isDirectory();
+		return (dir, name) -> new File(dir, name).isDirectory();
 	}
 }

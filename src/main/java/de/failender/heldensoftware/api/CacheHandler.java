@@ -15,7 +15,8 @@ public class CacheHandler {
 	}
 
 	public boolean hasCacheFor(ApiRequest<?> request) {
-		return request.getCacheFile(root).exists();
+		File file = request.getCacheFile(root);
+		return file != null && file.exists();
 	}
 
 	public InputStream getCache(ApiRequest<?> request) {
