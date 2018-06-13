@@ -13,10 +13,12 @@ public class ReturnHeldPdfRequest extends ApiRequest<InputStream> {
 
 	private final BigInteger heldid;
 	private final Authentication authentication;
+	private final int version;
 
-	public ReturnHeldPdfRequest(BigInteger heldid, Authentication authentication) {
+	public ReturnHeldPdfRequest(BigInteger heldid, Authentication authentication, int version) {
 		this.heldid = heldid;
 		this.authentication = authentication;
+		this.version = version;
 	}
 
 	@Override
@@ -24,7 +26,7 @@ public class ReturnHeldPdfRequest extends ApiRequest<InputStream> {
 		Map<String, String> data = new HashMap<>();
 		authentication.writeToRequest(data);
 		data.put("action", "returnheld");
-		data.put("format", HeldenApi.Format.pdfinternal.toString());
+		data.put("format", HeldenApi.Format.pdfintern.toString());
 		data.put("heldenid", heldid.toString());
 		return data;
 	}
@@ -36,6 +38,7 @@ public class ReturnHeldPdfRequest extends ApiRequest<InputStream> {
 
 	@Override
 	public File getCacheFile(File root) {
-		return new File(root, "pdf/" + heldid + ".pdf");
+		return new File(root, "pdf/" + version + "." + heldid + ".pdf");
+
 	}
 }

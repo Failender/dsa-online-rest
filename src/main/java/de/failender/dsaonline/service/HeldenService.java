@@ -5,7 +5,6 @@ import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.entity.VersionEntity;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.data.repository.VersionRepository;
-import de.failender.dsaonline.exceptions.PdfNotCachedException;
 import de.failender.dsaonline.rest.helden.*;
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.heldensoftware.xml.datenxml.*;
@@ -163,18 +162,14 @@ public class HeldenService {
 		List<VersionEntity> versionen = versionRepository.findByIdHeldid(heldenid);
 		return versionen
 				.stream()
-				.map(version -> new HeldVersion(version.getLastEvent(), version.getCreatedDate(), version.getId().getVersion(), version.isPdfCached()))
+				.map(version -> new HeldVersion(version.getLastEvent(), version.getCreatedDate(), version.getId().getVersion()))
 				.collect(Collectors.toList());
 	}
 
 	public void providePdfDownload(BigInteger id, int version, HttpServletResponse response) {
 		HeldEntity held = heldRepositoryService.findHeld(id);
 		SecurityUtils.canCurrentUserViewHeld(held);
-		VersionEntity versionEntity = heldRepositoryService.findVersion(id, version);
-		if (!versionEntity.isPdfCached()) {
-			log.info("Held with id {} and version {} has no pdf", id, version);
-			throw new PdfNotCachedException(id, version);
-		}
+		heldRepositoryService.findVersion(id, version);
 
 		cachingService.provideDownload(id, version, response, CachingService.CacheType.pdf);
 	}

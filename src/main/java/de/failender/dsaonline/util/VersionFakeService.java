@@ -4,21 +4,27 @@ import de.failender.dsaonline.data.entity.VersionEntity;
 import de.failender.dsaonline.service.CachingService;
 import de.failender.dsaonline.service.HeldRepositoryService;
 import de.failender.dsaonline.service.UserHeldenService;
+import de.failender.heldensoftware.api.HeldenApi;
+import de.failender.heldensoftware.api.Helper;
+import de.failender.heldensoftware.api.requests.ReturnHeldDatenWithEreignisseRequest;
+import de.failender.heldensoftware.api.requests.ReturnHeldPdfRequest;
+import de.failender.heldensoftware.api.requests.ReturnHeldXmlRequest;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.datenxml.Ereignis;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigInteger;
 import java.util.*;
+import java.util.zip.ZipFile;
 
 @Service
 @Slf4j
@@ -36,6 +42,9 @@ public class VersionFakeService {
 
 	@Value("${dsa.online.fakes.enabled}")
 	private boolean useFakes;
+
+	@Autowired
+	private HeldenApi heldenApi;
 
 	@PostConstruct
 	public void afterInit() {
@@ -69,47 +78,58 @@ public class VersionFakeService {
 				.forEach(entry -> entry.getValue().forEach(this::fakeVersion));
 	}
 
-//	public void fakeVersions() {
-//
-//		File dir = new File("fakes/versionfakes");
-//		Map<BigInteger, List<File>> mapping = new HashMap<>();
-//		for (File file : dir.listFiles()) {
-//			BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);
-//			mapping.computeIfAbsent(heldid, k -> new ArrayList<>()).add(file);
-//
-//		}
-//		mapping.values().forEach(list -> list.sort((one, two) -> {
-//			Integer firstVersion = Integer.valueOf(one.getName().split("\\.")[0]);
-//			Integer secondVersion = Integer.valueOf(two.getName().split("\\.")[0]);
-//			return firstVersion - secondVersion;
-//		}));
-//		mapping.entrySet().forEach(entry -> entry.getValue().forEach(this::fakeVersion));
-//
-//	}
+
 
 	private void fakeVersion(File file) {
-		File xmlFile = new File(fakesDirectory +"/versionfakes_helden", file.getName());
-		if (!xmlFile.exists()) {
-			log.error("Cant fake version {} because no corresponding xml file found", file.getName());
-			return;
-		}
-		String xml;
 		try {
-			xml = FileUtils.readFileToString(xmlFile, "UTF-8");
+			ZipFile zipFile = new ZipFile(file);
+			int version = Integer.valueOf(file.getName().split("\\.")[0]);
+			BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);
+			VersionEntity versionEntity = heldRepositoryService.findVersion(heldid, version);
+			ReturnHeldDatenWithEreignisseRequest request = new ReturnHeldDatenWithEreignisseRequest(versionEntity.getId().getHeldid(), null, versionEntity.getId().getVersion());
+			InputStream is = zipFile.getInputStream(zipFile.getEntry("daten.xml"));
+			if(IOUtils.contentEquals(is, heldenApi.requestRaw(request, true))) {
+				log.info("Skipping fake version {} {} because it is equal to the current version", heldid, version);
+				zipFile.close();
+				return;
+			}
+			Helper.copyFilesToHigherVersion(heldid, version, heldenApi.getCacheHandler());
+			fakeHeldenXml(zipFile.getInputStream(zipFile.getEntry("held.xml")), heldid, version);
+			fakePdf(zipFile.getInputStream(zipFile.getEntry("held.pdf")), heldid, version);
+			fakeDatenXml(zipFile.getInputStream(zipFile.getEntry("daten.xml")), heldid, version);
+			zipFile.close();
+
+
+
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
-		}
-		int version = Integer.valueOf(file.getName().split("\\.")[0]);
-		BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);
 
-		Unmarshaller unmarshaller = JaxbUtil.getUnmarshaller(Daten.class);
-		try {
-			Daten daten = (Daten) unmarshaller.unmarshal(file);
-			this.fakeVersion(daten, heldid, version, xml);
-		} catch (JAXBException e) {
-			throw new RuntimeException(e);
 		}
+
+
 	}
+
+	private void fakeDatenXml(InputStream is, BigInteger heldid, int version) {
+		ReturnHeldDatenWithEreignisseRequest req = new ReturnHeldDatenWithEreignisseRequest(heldid,null, version);
+		heldenApi.getCacheHandler().doCache(req, is);
+
+	}
+
+	private void fakeHeldenXml(InputStream is, BigInteger heldid, int version) {
+		ReturnHeldXmlRequest req = new ReturnHeldXmlRequest(heldid,null, version);
+		heldenApi.getCacheHandler().doCache(req, is);
+
+	}
+
+	private void fakePdf(InputStream is, BigInteger heldid, int version) {
+		ReturnHeldPdfRequest req = new ReturnHeldPdfRequest(heldid,null, version);
+		heldenApi.getCacheHandler().doCache(req, is);
+
+	}
+
+
 
 	private void fakeVersion(Daten daten, BigInteger heldid, int version, String xml) {
 
@@ -118,7 +138,6 @@ public class VersionFakeService {
 			//call this to trigger exception if held not present
 			heldRepositoryService.findHeld(heldid);
 			VersionEntity versionEntity = heldRepositoryService.findVersion(heldid, version);
-			versionEntity.setPdfCached(false);
 			List<Ereignis> ereignis = daten.getEreignisse().getEreignis();
 			versionEntity.setCreatedDate(new Date(ereignis.get(ereignis.size() - 1).getDate()));
 			versionEntity.setLastEvent(UserHeldenService.extractLastEreignis(ereignis));

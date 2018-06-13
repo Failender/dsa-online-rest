@@ -11,5 +11,4 @@ public class HeldVersion {
 	private String letztesAbenteuer;
 	private Date datum;
 	private int version;
-	private boolean pdfCached;
 }

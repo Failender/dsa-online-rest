@@ -35,4 +35,8 @@ public class CacheHandler {
 			throw new RuntimeException(e);
 		}
 	}
+
+	public File getRoot() {
+		return root;
+	}
 }

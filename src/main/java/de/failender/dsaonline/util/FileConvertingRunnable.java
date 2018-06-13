@@ -6,12 +6,16 @@ import de.failender.heldensoftware.api.requests.ConvertingRequest;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 
 import javax.xml.bind.JAXBException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Arrays;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 @Slf4j
 public class FileConvertingRunnable implements Runnable {
@@ -61,17 +65,31 @@ public class FileConvertingRunnable implements Runnable {
 		log.info("Starting to convert helden to daten format");
 		Arrays.stream(dir.listFiles(getFiles()))
 				.forEach(file -> {
-					File outFile = new File(outDir, file.getName());
+					String fileName = FilenameUtils.removeExtension(file.getName()) + ".zip";
+					File outFile = new File(outDir, fileName);
 					if (!outFile.exists()) {
 
 						try {
+							ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(outFile));
 							log.info("Converting file: {}", file.getName());
-							ConvertingRequest datenRequest = new ConvertingRequest(HeldenApi.Format.datenxml, FileUtils.readFileToString(file, "UTF-8"));
+							String xml = FileUtils.readFileToString(file, "UTF-8");
+							ConvertingRequest datenRequest = new ConvertingRequest(HeldenApi.Format.datenxml, xml);
+							ConvertingRequest pdfRequest = new ConvertingRequest(HeldenApi.Format.pdfintern, xml);
 							InputStream stream = heldenApi.request(datenRequest, false);
 							//Make sure the file is valid
 							Daten daten = (Daten) JaxbUtil.getUnmarshaller(Daten.class).unmarshal(stream);
 							UserHeldenService.clearEreigniskontrolle(daten.getEreignisse().getEreignis());
-							JaxbUtil.getMarshaller(Daten.class).marshal(daten, outFile);
+							zos.putNextEntry(new ZipEntry("daten.xml"));
+							JaxbUtil.getMarshaller(Daten.class).marshal(daten, zos);
+							zos.closeEntry();
+							zos.putNextEntry(new ZipEntry("held.pdf"));
+							IOUtils.copy(heldenApi.requestRaw(pdfRequest, false), zos);
+							zos.closeEntry();
+							zos.putNextEntry(new ZipEntry("held.xml"));
+							IOUtils.copy(IOUtils.toInputStream(xml, "UTF-8"), zos);
+							zos.closeEntry();
+							zos.close();
+
 							log.info("Finished converting {}", file.getName());
 						} catch (JAXBException e) {
 							log.error("Critical error converting file, returned xml is invalid {}", file.getAbsoluteFile());

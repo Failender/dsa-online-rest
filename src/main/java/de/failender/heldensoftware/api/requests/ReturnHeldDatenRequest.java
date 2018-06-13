@@ -18,10 +18,12 @@ public class ReturnHeldDatenRequest extends ApiRequest<Daten> {
 
 	private final BigInteger heldid;
 	private final Authentication authentication;
+	private final int version;
 
-	public ReturnHeldDatenRequest(BigInteger heldid, Authentication authentication) {
+	public ReturnHeldDatenRequest(BigInteger heldid, Authentication authentication, int version) {
 		this.heldid = heldid;
 		this.authentication = authentication;
+		this.version = version;
 	}
 
 
@@ -48,6 +50,6 @@ public class ReturnHeldDatenRequest extends ApiRequest<Daten> {
 
 	@Override
 	public File getCacheFile(File root) {
-		return new File(root, "daten/" + heldid + ".xml");
+		return new File(root, "daten/" + version + "." + heldid + ".xml");
 	}
 }

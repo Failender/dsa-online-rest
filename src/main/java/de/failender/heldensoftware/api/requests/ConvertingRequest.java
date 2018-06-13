@@ -26,14 +26,14 @@ public class ConvertingRequest extends ApiRequest<InputStream> {
 	@Override
 	public Map<String, String> writeRequest() {
 		Map<String, String> data = new HashMap<>();
-		data.put("held", "xml");
+		data.put("held", xml);
 
 		return data;
 	}
 
 	@Override
 	public InputStream mapResponse(InputStream is) {
-		return null;
+		return is;
 	}
 
 	@Override

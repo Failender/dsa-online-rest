@@ -75,7 +75,6 @@ public class UserHeldenService {
 			VersionEntity versionEntity = new VersionEntity();
 			versionEntity.setId(new VersionEntity.VersionId(held.getHeldenid(), 1));
 			versionEntity.setCreatedDate(DateUtil.convert(held.getHeldlastchange()));
-			versionEntity.setPdfCached(true);
 			heldRepositoryService.saveVersion(versionEntity);
 			log.info("Saving new held {} for user {} with version {}", heldEntity.getName(), userEntity.getName(), versionEntity.getId().getVersion());
 			forceCacheBuildFor(userEntity, heldEntity, 1);
@@ -120,7 +119,6 @@ public class UserHeldenService {
 
 		VersionEntity versionEntity = new VersionEntity();
 		versionEntity.setId(new VersionEntity.VersionId(xmlHeld.getHeldenid(), version));
-		versionEntity.setPdfCached(true);
 		versionEntity.setCreatedDate(DateUtil.convert(xmlHeld.getHeldlastchange()));
 
 		versionEntity.setLastEvent(extractLastEreignis(apiService.getHeldenDaten(xmlHeld.getHeldenid(), version, user.getToken()).getEreignisse().getEreignis()));

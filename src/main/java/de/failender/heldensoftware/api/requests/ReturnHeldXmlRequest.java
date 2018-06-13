@@ -13,17 +13,19 @@ public class ReturnHeldXmlRequest extends ApiRequest<String> {
 
 	private final BigInteger heldid;
 	private final Authentication authentication;
+	private final int version;
 
-	public ReturnHeldXmlRequest(BigInteger heldid, Authentication authentication) {
+	public ReturnHeldXmlRequest(BigInteger heldid, Authentication authentication, int version) {
 		this.heldid = heldid;
 		this.authentication = authentication;
+		this.version = version;
 	}
 
 	@Override
 	public Map<String, String> writeRequest() {
 		Map<String, String> data = new HashMap<>();
 		data.put("action", "returnheld");
-		data.put("format", HeldenApi.Format.pdfinternal.toString());
+		data.put("format", HeldenApi.Format.pdfintern.toString());
 		data.put("heldenid", heldid.toString());
 		authentication.writeToRequest(data);
 		return data;
@@ -52,6 +54,6 @@ public class ReturnHeldXmlRequest extends ApiRequest<String> {
 
 	@Override
 	public File getCacheFile(File root) {
-		return null;
+		return new File(root, "xml/" + version + "." + heldid + ".xml");
 	}
 }

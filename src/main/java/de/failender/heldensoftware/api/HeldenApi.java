@@ -80,6 +80,10 @@ public class HeldenApi {
 	}
 
 	public enum Format {
-		pdfinternal, heldenxml, datenxml
+		pdfintern, heldenxml, datenxml
+	}
+
+	public CacheHandler getCacheHandler() {
+		return cacheHandler;
 	}
 }

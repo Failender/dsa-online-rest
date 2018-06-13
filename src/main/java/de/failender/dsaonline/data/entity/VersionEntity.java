@@ -23,10 +23,6 @@ public class VersionEntity {
 	@Column(name = "LAST_EVENT")
 	private String lastEvent;
 
-	@Column(name = "PDF_CACHED")
-	private boolean pdfCached;
-
-
 	@Embeddable
 	@Data
 	@AllArgsConstructor
