@@ -1,4 +1,4 @@
-package de.failender.heldensoftware.xml.api.authentication;
+package de.failender.heldensoftware.api.authentication;
 
 import java.util.Map;
 
