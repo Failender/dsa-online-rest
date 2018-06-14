@@ -3,7 +3,7 @@ package de.failender.heldensoftware.api.requests;
 import de.failender.dsaonline.exceptions.CorruptXmlException;
 import de.failender.dsaonline.util.JaxbUtil;
 import de.failender.heldensoftware.api.authentication.TokenAuthentication;
-import de.failender.heldensoftware.xml.datenxml.Daten;
+import de.failender.heldensoftware.xml.heldenliste.Helden;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GetAllHeldenRequest extends ApiRequest<Daten> {
+public class GetAllHeldenRequest extends ApiRequest<Helden> {
 
 	private final TokenAuthentication authentication;
 
@@ -31,10 +31,10 @@ public class GetAllHeldenRequest extends ApiRequest<Daten> {
 
 
 	@Override
-	public Daten mapResponse(InputStream is) {
-		Unmarshaller unmarshaller = JaxbUtil.getUnmarshaller(Daten.class);
+	public Helden mapResponse(InputStream is) {
+		Unmarshaller unmarshaller = JaxbUtil.getUnmarshaller(Helden.class);
 		try {
-			return (Daten) unmarshaller.unmarshal(new InputStreamReader(is));
+			return (Helden) unmarshaller.unmarshal(new InputStreamReader(is));
 		} catch (JAXBException e) {
 			throw new CorruptXmlException(e);
 		}

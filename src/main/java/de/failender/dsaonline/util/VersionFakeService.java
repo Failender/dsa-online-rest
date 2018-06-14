@@ -1,7 +1,6 @@
 package de.failender.dsaonline.util;
 
 import de.failender.dsaonline.data.entity.VersionEntity;
-import de.failender.dsaonline.service.CachingService;
 import de.failender.dsaonline.service.HeldRepositoryService;
 import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.heldensoftware.api.HeldenApi;
@@ -32,9 +31,6 @@ public class VersionFakeService {
 
 
 	@Autowired
-	private CachingService cachingService;
-
-	@Autowired
 	private HeldRepositoryService heldRepositoryService;
 
 	@Value("${dsa.online.fakes.directory}")
@@ -53,7 +49,7 @@ public class VersionFakeService {
 
 	//Fakes Versions, but only for ids in given list
 	public void fakeVersions(List<BigInteger> heldenIds) {
-		if(!useFakes) {
+		if (!useFakes) {
 			return;
 		}
 		File dir = new File(fakesDirectory + "/versionfakes");
@@ -79,7 +75,6 @@ public class VersionFakeService {
 	}
 
 
-
 	private void fakeVersion(File file) {
 		try {
 			ZipFile zipFile = new ZipFile(file);
@@ -88,7 +83,7 @@ public class VersionFakeService {
 			VersionEntity versionEntity = heldRepositoryService.findVersion(heldid, version);
 			ReturnHeldDatenWithEreignisseRequest request = new ReturnHeldDatenWithEreignisseRequest(versionEntity.getId().getHeldid(), null, versionEntity.getId().getVersion());
 			InputStream is = zipFile.getInputStream(zipFile.getEntry("daten.xml"));
-			if(IOUtils.contentEquals(is, heldenApi.requestRaw(request, true))) {
+			if (IOUtils.contentEquals(is, heldenApi.requestRaw(request, true))) {
 				log.info("Skipping fake version {} {} because it is equal to the current version", heldid, version);
 				zipFile.close();
 				return;
@@ -98,7 +93,6 @@ public class VersionFakeService {
 			fakePdf(zipFile.getInputStream(zipFile.getEntry("held.pdf")), heldid, version);
 			fakeDatenXml(zipFile.getInputStream(zipFile.getEntry("daten.xml")), heldid, version);
 			zipFile.close();
-
 
 
 		} catch (FileNotFoundException e) {
@@ -112,23 +106,22 @@ public class VersionFakeService {
 	}
 
 	private void fakeDatenXml(InputStream is, BigInteger heldid, int version) {
-		ReturnHeldDatenWithEreignisseRequest req = new ReturnHeldDatenWithEreignisseRequest(heldid,null, version);
+		ReturnHeldDatenWithEreignisseRequest req = new ReturnHeldDatenWithEreignisseRequest(heldid, null, version);
 		heldenApi.getCacheHandler().doCache(req, is);
 
 	}
 
 	private void fakeHeldenXml(InputStream is, BigInteger heldid, int version) {
-		ReturnHeldXmlRequest req = new ReturnHeldXmlRequest(heldid,null, version);
+		ReturnHeldXmlRequest req = new ReturnHeldXmlRequest(heldid, null, version);
 		heldenApi.getCacheHandler().doCache(req, is);
 
 	}
 
 	private void fakePdf(InputStream is, BigInteger heldid, int version) {
-		ReturnHeldPdfRequest req = new ReturnHeldPdfRequest(heldid,null, version);
+		ReturnHeldPdfRequest req = new ReturnHeldPdfRequest(heldid, null, version);
 		heldenApi.getCacheHandler().doCache(req, is);
 
 	}
-
 
 
 	private void fakeVersion(Daten daten, BigInteger heldid, int version, String xml) {
@@ -141,9 +134,9 @@ public class VersionFakeService {
 			List<Ereignis> ereignis = daten.getEreignisse().getEreignis();
 			versionEntity.setCreatedDate(new Date(ereignis.get(ereignis.size() - 1).getDate()));
 			versionEntity.setLastEvent(UserHeldenService.extractLastEreignis(ereignis));
-			cachingService.purgePdfCacheFor(heldid, version);
+//			cachingService.purgePdfCacheFor(heldid, version);
 			this.heldRepositoryService.saveVersion(versionEntity);
-			cachingService.setHeldenCache(heldid, version, daten, xml);
+//			cachingService.setHeldenCache(heldid, version, daten, xml);
 		} else {
 			VersionEntity versionEntity = new VersionEntity();
 			versionEntity.setId(new VersionEntity.VersionId(heldid, version));
@@ -154,7 +147,7 @@ public class VersionFakeService {
 
 			versionEntity.setCreatedDate(new Date(ereignis.get(ereignis.size() - 1).getDate()));
 			this.heldRepositoryService.saveVersion(versionEntity);
-			cachingService.setHeldenCache(heldid, version, daten, xml);
+//			cachingService.setHeldenCache(heldid, version, daten, xml);
 		}
 	}
 }

@@ -51,7 +51,7 @@ public class ReturnHeldDatenWithEreignisseRequest extends ApiRequest<Daten> {
 
 	@Override
 	public File getCacheFile(File root) {
-		return new File(root, "datene/" + version + "." + heldid + ".xml");
+		return new File(root, "datene/" + heldid + "/" + version + ".xml");
 
 	}
 }

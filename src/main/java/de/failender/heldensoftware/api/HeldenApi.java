@@ -1,11 +1,11 @@
 package de.failender.heldensoftware.api;
 
 import de.failender.heldensoftware.api.requests.ApiRequest;
+import org.apache.commons.io.IOUtils;
+import org.springframework.http.MediaType;
 
-import java.io.File;
-import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -20,8 +20,21 @@ public class HeldenApi {
 		cacheHandler = new CacheHandler(cacheDirectory);
 	}
 
+	public <T> T request(ApiRequest<T> request) {
+		return request(request, true);
+	}
+
 	public <T> T request(ApiRequest<T> request, boolean useCache) {
 		return request.mapResponse(requestRaw(request, useCache));
+	}
+
+	public void provideDownload(ApiRequest<?> request, HttpServletResponse response) {
+		response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
+		try {
+			IOUtils.copy(requestRaw(request, true), response.getOutputStream());
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public InputStream requestRaw(ApiRequest<?> request, boolean useCache) {
@@ -73,6 +86,7 @@ public class HeldenApi {
 
 	private String mapEntry(Map.Entry<String, String> entry) {
 		try {
+
 			return entry.getKey() + "=" + URLEncoder.encode(entry.getValue(), "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			throw new RuntimeException(e);

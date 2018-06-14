@@ -31,27 +31,27 @@ public class UserService {
 
 	public UserEntity registerUser(UserRegistration userRegistration) {
 		SecurityUtils.checkRight(SecurityUtils.CREATE_USER);
-		if(userRegistration.getName() == null || userRegistration.getToken() == null || userRegistration.getGruppe() == null) {
+		if (userRegistration.getName() == null || userRegistration.getToken() == null || userRegistration.getGruppe() == null) {
 			throw new ValidationException();
 		}
-		if(this.userRepository.existsByName(userRegistration.getName())) {
+		if (this.userRepository.existsByName(userRegistration.getName())) {
 			throw new UserAlreadyExistsException();
 		}
 		GruppeEntity gruppeEntity = gruppeRepository.findByName(userRegistration.getGruppe());
-		if(gruppeEntity == null) {
+		if (gruppeEntity == null) {
 			throw new GroupNotFoundException();
 		}
 		UserEntity userEntity = new UserEntity();
 		userEntity.setGruppe(gruppeEntity);
 		userEntity.setName(userRegistration.getName());
 		userEntity.setToken(userRegistration.getToken());
-		if(userRegistration.getPassword() != null &&!userRegistration.getPassword().isEmpty()) {
+		if (userRegistration.getPassword() != null && !userRegistration.getPassword().isEmpty()) {
 			userEntity.setPassword(userRegistration.getPassword());
 		}
 		userEntity = this.userRepository.save(userEntity);
 		userHeldenService.forceUpdateHeldenForUser(userEntity);
 		userHeldenService.fakeHeldenForUser(userEntity);
-		userHeldenService.updateHeldenForUser(userEntity);
+		userHeldenService.updateHeldenForUser(userEntity, true);
 		return userEntity;
 
 	}
@@ -64,12 +64,12 @@ public class UserService {
 	public void createUsers(List<DevInsertTestData.UserData> data) {
 		data.forEach(
 				userData -> {
-					if(userRepository.existsByName(userData.getName())) {
+					if (userRepository.existsByName(userData.getName())) {
 						log.info("User with name {} already exists in database", userData.getName());
 						return;
 					}
-					String gruppe = null;
-					if(userData.getGruppe() != null) {
+					String gruppe;
+					if (userData.getGruppe() != null) {
 						gruppe = userData.getGruppe();
 					} else {
 						gruppe = this.gruppeRepository.findAll().get(0).getName();

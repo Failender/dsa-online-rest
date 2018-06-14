@@ -7,6 +7,13 @@ import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.util.DateUtil;
 import de.failender.dsaonline.util.VersionFakeService;
+import de.failender.heldensoftware.api.HeldenApi;
+import de.failender.heldensoftware.api.authentication.TokenAuthentication;
+import de.failender.heldensoftware.api.requests.GetAllHeldenRequest;
+import de.failender.heldensoftware.api.requests.ReturnHeldDatenWithEreignisseRequest;
+import de.failender.heldensoftware.api.requests.ReturnHeldPdfRequest;
+import de.failender.heldensoftware.api.requests.ReturnHeldXmlRequest;
+import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.datenxml.Ereignis;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import lombok.extern.slf4j.Slf4j;
@@ -27,15 +34,15 @@ public class UserHeldenService {
 
 	private final HeldRepository heldRepository;
 	private final UserRepository userRepository;
-	private ApiService apiService;
+	private final HeldenApi heldenApi;
 	private final VersionFakeService versionFakeService;
-	private final CachingService cachingService;
 
-	public UserHeldenService(HeldRepository heldRepository, UserRepository userRepository, VersionFakeService versionFakeService, CachingService cachingService) {
+	public UserHeldenService(HeldRepository heldRepository, UserRepository userRepository, HeldenApi heldenApi, VersionFakeService versionFakeService) {
 		this.heldRepository = heldRepository;
 		this.userRepository = userRepository;
+		this.heldenApi = heldenApi;
 		this.versionFakeService = versionFakeService;
-		this.cachingService = cachingService;
+
 	}
 
 
@@ -82,15 +89,16 @@ public class UserHeldenService {
 	}
 
 	public void updateHeldenForToken(String token) {
-		updateHeldenForUser(userRepository.findByToken(token));
+		updateHeldenForUser(userRepository.findByToken(token), true);
 	}
 
-	public void updateHeldenForUser(UserEntity userEntity) {
+	public void updateHeldenForUser(UserEntity userEntity, boolean cache) {
 		if (userEntity.getToken() == null) {
 			log.error("User with name {} has null token ", userEntity.getName());
 			return;
 		}
-		List<Held> helden = apiService.getAllHelden(userEntity.getToken());
+
+		List<Held> helden = heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(userEntity.getToken())), cache).getHeld();
 		this.updateHeldenForUser(userEntity, helden);
 
 	}
@@ -100,7 +108,7 @@ public class UserHeldenService {
 			log.error("User with name {} has null token ", userEntity.getName());
 			return;
 		}
-		List<Held> helden = apiService.getAllHelden(userEntity.getToken());
+		List<Held> helden = heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(userEntity.getToken()))).getHeld();
 		log.info("Faking versions for user " + userEntity.getName());
 		this.versionFakeService.fakeVersions(helden.stream().map(held -> held.getHeldenid()).collect(Collectors.toList()));
 	}
@@ -120,8 +128,8 @@ public class UserHeldenService {
 		VersionEntity versionEntity = new VersionEntity();
 		versionEntity.setId(new VersionEntity.VersionId(xmlHeld.getHeldenid(), version));
 		versionEntity.setCreatedDate(DateUtil.convert(xmlHeld.getHeldlastchange()));
-
-		versionEntity.setLastEvent(extractLastEreignis(apiService.getHeldenDaten(xmlHeld.getHeldenid(), version, user.getToken()).getEreignisse().getEreignis()));
+		Daten daten = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(xmlHeld.getHeldenid(), new TokenAuthentication(user.getToken()), version));
+		versionEntity.setLastEvent(extractLastEreignis(daten.getEreignisse().getEreignis()));
 
 		this.heldRepositoryService.saveVersion(versionEntity);
 	}
@@ -129,12 +137,10 @@ public class UserHeldenService {
 	//Force to fetch the held once, so its cache gets build. this can run in a separate thread to dont block the main flow
 	private void forceCacheBuildFor(UserEntity userEntity, HeldEntity heldEntity, int version) {
 		new Thread(() -> {
+			heldenApi.request(new ReturnHeldPdfRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false);
+			heldenApi.request(new ReturnHeldXmlRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false);
+			heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false);
 
-			apiService.getHeldenDaten(heldEntity.getId(), version, userEntity.getToken());
-			if (!cachingService.hasPdfCache(heldEntity.getId(), version)) {
-				log.info("Fetching pdf cache for {} version {}", heldEntity.getId(), version);
-				cachingService.setHeldenPdfCache(heldEntity.getId(), version, apiService.getPdf(userEntity.getToken(), heldEntity.getId()));
-			}
 
 		}).run();
 
@@ -143,18 +149,17 @@ public class UserHeldenService {
 	public void forceUpdateHeldenForUser(UserEntity userEntity) {
 		log.info("Refreshing helden for user {}", userEntity.getName());
 		if (userEntity.getToken() != null) {
-			this.apiService.purgeAllHeldenCache(userEntity.getToken());
-			this.updateHeldenForUser(userEntity);
+			this.updateHeldenForUser(userEntity, false);
 		}
 
 	}
 
 	public static String extractLastEreignis(List<Ereignis> ereignisse) {
-		for(int i= ereignisse.size() -1 ; i>= 0 ; i--) {
-			if(ereignisse.get(i).getAp() > 0) {
-				String s  = ereignisse.get(i).getKommentar();
+		for (int i = ereignisse.size() - 1; i >= 0; i--) {
+			if (ereignisse.get(i).getAp() > 0) {
+				String s = ereignisse.get(i).getKommentar();
 				int index = s.indexOf("Gesamt AP");
-				if(index == -1) {
+				if (index == -1) {
 					return s;
 				}
 				s = s.substring(0, index);
@@ -171,10 +176,5 @@ public class UserHeldenService {
 		if (ereignis.getAktion().equals("Änderungskontrolle")) {
 			ereignisse.remove(ereignisse.size() - 1);
 		}
-	}
-
-	@Autowired
-	public void setApiService(ApiService apiService) {
-		this.apiService = apiService;
 	}
 }

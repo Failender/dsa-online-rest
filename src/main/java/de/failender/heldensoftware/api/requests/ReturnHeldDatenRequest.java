@@ -50,6 +50,6 @@ public class ReturnHeldDatenRequest extends ApiRequest<Daten> {
 
 	@Override
 	public File getCacheFile(File root) {
-		return new File(root, "daten/" + version + "." + heldid + ".xml");
+		return new File(root, "daten/" + heldid + "/" + version + ".xml");
 	}
 }

@@ -7,9 +7,11 @@ import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.exceptions.HeldNotFoundException;
 import de.failender.dsaonline.rest.helden.HeldWithVersion;
 import de.failender.dsaonline.security.SecurityUtils;
-import de.failender.dsaonline.service.ApiService;
 import de.failender.dsaonline.service.HeldRepositoryService;
 import de.failender.dsaonline.service.HeldenService;
+import de.failender.heldensoftware.api.HeldenApi;
+import de.failender.heldensoftware.api.authentication.TokenAuthentication;
+import de.failender.heldensoftware.api.requests.GetAllHeldenRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +39,7 @@ public class GruppenController {
 	private UserRepository userRepository;
 
 	@Autowired
-	private ApiService apiService;
+	private HeldenApi heldenApi;
 
 	@Autowired
 	private HeldenService heldenService;
@@ -67,7 +69,7 @@ public class GruppenController {
 		userRepository.findAll()
 				.parallelStream()
 				.filter(user -> user.getToken() != null)
-				.map(user -> apiService.getAllHelden(user.getToken()))
+				.map(user -> heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(user.getToken()))).getHeld())
 				.flatMap(List::stream)
 				.forEach(held -> {
 					try {
@@ -91,7 +93,7 @@ public class GruppenController {
 		userRepository.findAll()
 				.parallelStream()
 				.filter(user -> user.getToken() != null)
-				.map(user -> apiService.getAllHelden(user.getToken()))
+				.map(user -> heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(user.getToken()))).getHeld())
 				.flatMap(List::stream)
 				.forEach(held -> {
 					try {

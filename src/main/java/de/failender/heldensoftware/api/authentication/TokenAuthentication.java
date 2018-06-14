@@ -8,6 +8,9 @@ public class TokenAuthentication implements Authentication {
 
 
 	public TokenAuthentication(String token) {
+		if (token == null) {
+			throw new IllegalArgumentException("Token can not be null");
+		}
 		this.token = token;
 	}
 

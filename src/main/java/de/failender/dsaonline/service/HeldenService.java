@@ -7,6 +7,10 @@ import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.data.repository.VersionRepository;
 import de.failender.dsaonline.rest.helden.*;
 import de.failender.dsaonline.security.SecurityUtils;
+import de.failender.heldensoftware.api.HeldenApi;
+import de.failender.heldensoftware.api.authentication.TokenAuthentication;
+import de.failender.heldensoftware.api.requests.ReturnHeldDatenWithEreignisseRequest;
+import de.failender.heldensoftware.api.requests.ReturnHeldPdfRequest;
 import de.failender.heldensoftware.xml.datenxml.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +22,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static de.failender.dsaonline.security.SecurityUtils.getAuthentication;
+
 @Service
 @Slf4j
 public class HeldenService {
@@ -26,13 +32,10 @@ public class HeldenService {
 	private HeldRepositoryService heldRepositoryService;
 
 	@Autowired
-	private ApiService apiService;
+	private HeldenApi heldenApi;
 
 	@Autowired
 	private UserRepository userRepository;
-
-	@Autowired
-	private CachingService cachingService;
 
 	@Autowired
 	private VersionRepository versionRepository;
@@ -62,7 +65,7 @@ public class HeldenService {
 
 		SecurityUtils.canCurrentUserViewHeld(held);
 		UserEntity owningUser = this.userRepository.findById(held.getUserId()).get();
-		return apiService.getHeldenDaten(id, version, owningUser.getToken());
+		return heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(id, new TokenAuthentication(owningUser.getToken()), version));
 	}
 
 	public HeldenUnterschied calculateUnterschied(BigInteger heldenid, int from, int to) {
@@ -84,8 +87,9 @@ public class HeldenService {
 		SecurityUtils.canCurrentUserViewHeld(held);
 		UserEntity userEntity = this.userRepository.findById(held.getUserId()).get();
 		token = userEntity.getToken();
-		Daten fromDaten = this.apiService.getHeldenDaten(held.getId(), from.getId().getVersion(), token);
-		Daten toDaten = this.apiService.getHeldenDaten(held.getId(), to.getId().getVersion(), token);
+
+		Daten fromDaten = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), from.getId().getVersion()));
+		Daten toDaten = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), to.getId().getVersion()));
 		return calculateUnterschied(fromDaten, toDaten);
 	}
 
@@ -141,7 +145,7 @@ public class HeldenService {
 						toList.remove(to);
 						Integer fromWert = from.getWert();
 						Integer toWert = to.getWert();
-						if(fromWert == null && toWert == null
+						if (fromWert == null && toWert == null
 								|| fromWert != null && toWert != null && fromWert.equals(toWert)) {
 							return;
 						}
@@ -170,8 +174,7 @@ public class HeldenService {
 		HeldEntity held = heldRepositoryService.findHeld(id);
 		SecurityUtils.canCurrentUserViewHeld(held);
 		heldRepositoryService.findVersion(id, version);
-
-		cachingService.provideDownload(id, version, response, CachingService.CacheType.pdf);
+		heldenApi.provideDownload(new ReturnHeldPdfRequest(id, getAuthentication(), version), response);
 	}
 
 	public void updateHeldenPublic(boolean isPublic, BigInteger heldid) {

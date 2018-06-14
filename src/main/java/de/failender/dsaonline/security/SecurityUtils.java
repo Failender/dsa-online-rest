@@ -3,6 +3,7 @@ package de.failender.dsaonline.security;
 import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.exceptions.NotAuthenticatedException;
+import de.failender.heldensoftware.api.authentication.TokenAuthentication;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -68,5 +69,12 @@ public class SecurityUtils {
 		if (user.getId() != held.getUserId()) {
 			checkRight(SecurityUtils.EDIT_ALL);
 		}
+	}
+
+	public static TokenAuthentication getAuthentication() {
+		checkLogin();
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserEntity user = (UserEntity) principal;
+		return new TokenAuthentication(user.getToken());
 	}
 }

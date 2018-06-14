@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.security.SecurityUtils;
-import de.failender.dsaonline.service.CachingService;
 import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.dsaonline.service.UserService;
 import de.failender.heldensoftware.api.HeldenApi;
@@ -40,8 +39,6 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	@Autowired
 	private UserHeldenService userHeldenService;
 
-	@Autowired
-	private CachingService cachingService;
 
 	@Autowired
 	private HeldenApi heldenApi;
@@ -57,9 +54,6 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-		if (dropCacheOnStart) {
-			cachingService.dropCache();
-		}
 
 		Thread converterThread = new Thread(new FileConvertingRunnable(heldenApi, fakesDirectory));
 		converterThread.run();
@@ -83,7 +77,7 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
-		userRepository.findAll().forEach(userHeldenService::updateHeldenForUser);
+		userRepository.findAll().forEach(user -> userHeldenService.updateHeldenForUser(user, true));
 		log.info("Done inserting dev data");
 	}
 

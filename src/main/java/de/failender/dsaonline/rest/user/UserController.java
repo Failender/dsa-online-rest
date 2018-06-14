@@ -1,12 +1,11 @@
 package de.failender.dsaonline.rest.user;
 
-import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.security.SecurityUtils;
-import de.failender.dsaonline.service.ApiService;
-import de.failender.dsaonline.service.HeldenService;
 import de.failender.dsaonline.service.UserService;
 import de.failender.dsaonline.util.DevInsertTestData;
+import de.failender.heldensoftware.api.HeldenApi;
+import de.failender.heldensoftware.api.requests.GetAllHeldenRequest;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,29 +15,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static de.failender.dsaonline.security.SecurityUtils.getAuthentication;
+
 @RestController
 @RequestMapping("api/user")
 public class UserController {
 
 	@Autowired
-	private ApiService apiService;
-
-
-	@Autowired
-	private HeldRepository heldRepository;
+	private HeldenApi heldenApi;
 
 	@Autowired
 	private UserRepository userRepository;
 
-	@Autowired
-	private HeldenService heldenService;
 
 	@Autowired
 	private UserService userService;
 
 	@GetMapping("helden")
 	public List<Held> getHelden() {
-		return apiService.getAllHelden();
+		return heldenApi.request(new GetAllHeldenRequest(getAuthentication())).getHeld();
 	}
 
 	@GetMapping("helden/all")
@@ -46,8 +41,8 @@ public class UserController {
 		SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);
 		return this.userRepository.findAll()
 				.stream()
-				.map(user -> this.apiService.getAllHelden(user.getToken()))
-				.flatMap(e-> e.stream())
+				.map(user -> this.heldenApi.request(new GetAllHeldenRequest(getAuthentication())).getHeld())
+				.flatMap(e -> e.stream())
 				.collect(Collectors.toList());
 
 
@@ -68,9 +63,6 @@ public class UserController {
 	public List<String> login() {
 		return SecurityUtils.getAuthorities();
 	}
-
-
-
 
 
 }
