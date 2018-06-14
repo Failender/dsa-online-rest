@@ -95,6 +95,7 @@ public class FileConvertingRunnable implements Runnable {
 							log.error("Critical error converting file, returned xml is invalid {}", file.getAbsoluteFile());
 							throw new RuntimeException(e);
 						} catch (IOException e) {
+							log.error("Critical error converting file", e);
 							throw new RuntimeException(e);
 						}
 					}

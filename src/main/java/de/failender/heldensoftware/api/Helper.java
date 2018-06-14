@@ -25,8 +25,9 @@ public class Helper {
 	public static void copyPdfToHigherVersion(BigInteger heldid, int version, CacheHandler cacheHandler) {
 		File from = getFileFor(new ReturnHeldPdfRequest(heldid, null, version), cacheHandler);
 		File to = getFileFor(new ReturnHeldPdfRequest(heldid, null, version + 1), cacheHandler);
+
 		try {
-			FileUtils.moveFile(from, to);
+			FileUtils.copyFile(from, to);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -35,8 +36,9 @@ public class Helper {
 	public static void copyXmlToHigherVersion(BigInteger heldid, int version, CacheHandler cacheHandler) {
 		File from = getFileFor(new ReturnHeldXmlRequest(heldid, null, version), cacheHandler);
 		File to = getFileFor(new ReturnHeldXmlRequest(heldid, null, version + 1), cacheHandler);
+
 		try {
-			FileUtils.moveFile(from, to);
+			FileUtils.copyFile(from, to);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -45,8 +47,9 @@ public class Helper {
 	public static void copyDatenToHigherVersion(BigInteger heldid, int version, CacheHandler cacheHandler) {
 		File from = getFileFor(new ReturnHeldDatenWithEreignisseRequest(heldid, null, version), cacheHandler);
 		File to = getFileFor(new ReturnHeldDatenWithEreignisseRequest(heldid, null, version + 1), cacheHandler);
+
 		try {
-			FileUtils.moveFile(from, to);
+			FileUtils.copyFile(from, to);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

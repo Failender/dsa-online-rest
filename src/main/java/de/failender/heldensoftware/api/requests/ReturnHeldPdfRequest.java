@@ -38,7 +38,8 @@ public class ReturnHeldPdfRequest extends ApiRequest<InputStream> {
 
 	@Override
 	public File getCacheFile(File root) {
-		return new File(root, "pdf/" + heldid + "/" + version + ".pdf");
+		File directory = new File(root, "pdf/" + heldid);
+		return new File(directory , version + ".pdf");
 
 	}
 }

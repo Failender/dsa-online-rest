@@ -27,10 +27,18 @@ public class CacheHandler {
 		}
 	}
 
+	public boolean canCache(ApiRequest<?> apiRequest) {
+		return apiRequest.getCacheFile(root) != null;
+	}
+
 	public void doCache(ApiRequest<?> request, InputStream is) {
 
 		try {
-			FileUtils.copyInputStreamToFile(is, request.getCacheFile(root));
+			File cacheFile = request.getCacheFile(root);
+			if(cacheFile != null) {
+				FileUtils.copyInputStreamToFile(is, cacheFile);
+			}
+			is.close();
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

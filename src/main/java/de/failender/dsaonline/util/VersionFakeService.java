@@ -81,7 +81,7 @@ public class VersionFakeService {
 			int version = Integer.valueOf(file.getName().split("\\.")[0]);
 			BigInteger heldid = new BigInteger(file.getName().split("\\.")[1]);
 			VersionEntity versionEntity = heldRepositoryService.findVersion(heldid, version);
-			ReturnHeldDatenWithEreignisseRequest request = new ReturnHeldDatenWithEreignisseRequest(versionEntity.getId().getHeldid(), null, versionEntity.getId().getVersion());
+			ReturnHeldDatenWithEreignisseRequest request = new ReturnHeldDatenWithEreignisseRequest(versionEntity.getId().getHeldid(), null, version);
 			InputStream is = zipFile.getInputStream(zipFile.getEntry("daten.xml"));
 			if (IOUtils.contentEquals(is, heldenApi.requestRaw(request, true))) {
 				log.info("Skipping fake version {} {} because it is equal to the current version", heldid, version);
@@ -93,7 +93,8 @@ public class VersionFakeService {
 			fakePdf(zipFile.getInputStream(zipFile.getEntry("held.pdf")), heldid, version);
 			fakeDatenXml(zipFile.getInputStream(zipFile.getEntry("daten.xml")), heldid, version);
 			zipFile.close();
-
+			versionEntity.getId().setVersion(version + 1);
+			heldRepositoryService.saveVersion(versionEntity);
 
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);

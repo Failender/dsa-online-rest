@@ -54,6 +54,10 @@ public class ReturnHeldXmlRequest extends ApiRequest<String> {
 
 	@Override
 	public File getCacheFile(File root) {
-		return new File(root, "xml/" + heldid + "/" + version + ".xml");
+		File directory = new File(root, "xml/" + heldid);
+		if(!directory.exists()) {
+			directory.mkdirs();
+		}
+ 		return  new File(directory, version + ".xml");
 	}
 }

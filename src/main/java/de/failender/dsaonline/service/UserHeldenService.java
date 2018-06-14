@@ -20,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -136,13 +137,19 @@ public class UserHeldenService {
 
 	//Force to fetch the held once, so its cache gets build. this can run in a separate thread to dont block the main flow
 	private void forceCacheBuildFor(UserEntity userEntity, HeldEntity heldEntity, int version) {
-		new Thread(() -> {
-			heldenApi.request(new ReturnHeldPdfRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false);
+		try {
+			heldenApi.request(new ReturnHeldPdfRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false).close();
 			heldenApi.request(new ReturnHeldXmlRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false);
 			heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false);
 
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 
-		}).run();
+//		new Thread(() -> {
+//
+//
+//		}).run();
 
 	}
 

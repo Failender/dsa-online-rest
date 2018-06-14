@@ -42,6 +42,10 @@ public class GetAllHeldenRequest extends ApiRequest<Helden> {
 
 	@Override
 	public File getCacheFile(File root) {
-		return new File(root, "helden/" + authentication.getToken() + ".xml");
+		File directory = new File(root, "helden");
+		if(!directory.exists()) {
+			directory.mkdirs();
+		}
+		return new File(directory, authentication.getToken() + ".xml");
 	}
 }

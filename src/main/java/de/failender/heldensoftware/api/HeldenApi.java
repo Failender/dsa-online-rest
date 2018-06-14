@@ -41,13 +41,16 @@ public class HeldenApi {
 		if (useCache) {
 			if (cacheHandler.hasCacheFor(request)) {
 				return cacheHandler.getCache(request);
-			} else {
-				InputStream is = doRequest(request);
-				cacheHandler.doCache(request, is);
-				return cacheHandler.getCache(request);
 			}
 		}
-		return doRequest(request);
+		InputStream is = doRequest(request);
+		if(cacheHandler.canCache(request)) {
+			cacheHandler.doCache(request, is);
+			return cacheHandler.getCache(request);
+		}
+		return is;
+
+
 	}
 
 	private InputStream doRequest(ApiRequest request) {
