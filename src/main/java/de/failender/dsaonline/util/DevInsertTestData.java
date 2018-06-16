@@ -9,6 +9,7 @@ import de.failender.dsaonline.service.UserService;
 import de.failender.heldensoftware.api.HeldenApi;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.flywaydb.core.Flyway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -43,6 +44,8 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	@Autowired
 	private HeldenApi heldenApi;
 
+	@Value("${dsa.online.clean.on.start}")
+	private boolean cleanOnStart;
 //	@Autowired
 //	private EventService eventService;
 
@@ -52,9 +55,16 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	@Value("${dsa.online.fakes.directory}")
 	private String fakesDirectory;
 
+	@Autowired
+	private Flyway flyway;
+
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-
+		if(cleanOnStart) {
+			log.info("Cleaning database");
+			flyway.clean();
+			flyway.migrate();
+		}
 		Thread converterThread = new Thread(new FileConvertingRunnable(heldenApi, fakesDirectory));
 		converterThread.run();
 		log.info("Starting to insert dev data");
@@ -68,7 +78,7 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 			List<UserData> data = om.readValue(is, new TypeReference<List<UserData>>() {
 			});
 			userService.createUsers(data);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			log.error("Error while inserting user data", e);
 		}
 		SecurityContextHolder.getContext().setAuthentication(null);
