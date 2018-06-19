@@ -72,6 +72,9 @@ public class EventTest extends DsaOnlineTest {
 		createEventDto.setType(EventEntity.Type.HELD);
 		eventService.createEvent(createEventDto);
 
+		createEventDto.setDate(dsaMonat.getStartTag() - 100);
+		eventService.createEvent(createEventDto);
+
 		eventMap = eventService.getEventsForGruppeAndHelden(TEST_GRUPPE.intValue(), dsaMonat);
 		Assertions.assertThat(eventMap.size()).isEqualTo(2);
 		Assertions.assertThat(eventMap.get(TEST_HELD_NAME).size()).isEqualTo(1);
