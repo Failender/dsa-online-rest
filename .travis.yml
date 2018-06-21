@@ -1,0 +1,18 @@
+sudo: required
+
+language: java
+
+services:
+  - docker
+
+
+before_install:
+  - chmod +x mvnw
+
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - docker build -f Dockerfile -t $REPO:$TRAVIS_BRANCH .
+  - docker push $REPO
+  - echo $TRAVIS_BRANCH
+  - echo $DOCKER_USER
+  - echo $DOCKER_PASS

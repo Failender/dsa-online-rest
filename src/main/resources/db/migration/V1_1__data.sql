@@ -66,8 +66,8 @@ CREATE TABLE ROLES_TO_USER(
 
 
 INSERT INTO ROLES VALUES
-	(1, 'Administrator'),
-	(2, 'Meister');
+	(1, 'Administrator');
+
 
 INSERT INTO RIGHTS VALUES
 	(1, 'CREATE_USER'),
@@ -82,5 +82,4 @@ INSERT INTO ROLES_TO_RIGHTS VALUES
 	(1, 1),
 	(1, 2),
 	(1, 3),
-	(1, 4),
-	(2, 2);
+	(1, 4);
