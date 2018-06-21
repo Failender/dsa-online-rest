@@ -14,3 +14,5 @@ after_success:
   - docker build -f Dockerfile -t $REPO:$TRAVIS_BRANCH .
   - docker push $REPO
   - echo $TRAVIS_BRANCH
+  - echo $DOCKER_USER
+  - echo $DOCKER_PASS
