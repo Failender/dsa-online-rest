@@ -3,10 +3,11 @@ package de.failender.dsaonline.data.entity.abenteuer;
 import de.failender.dsaonline.data.entity.AuditingEntity;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name ="ABENTEUER")
 @Data
 public class AbenteuerEntity extends AuditingEntity {
 
@@ -16,9 +17,11 @@ public class AbenteuerEntity extends AuditingEntity {
 	private Integer gruppeId;
 
 	@JoinColumn(name = "ABENTEUER_ID")
+	@OneToMany
 	private List<BonusApEntity> bonusAp;
 
 	@JoinColumn(name = "ABENTEUER_ID")
+	@OneToMany
 	private List<SeEntity> ses;
 
 
