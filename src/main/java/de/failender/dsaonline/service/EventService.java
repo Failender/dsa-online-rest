@@ -34,7 +34,7 @@ public class EventService {
 
 
 	public Map<String, List<EventDto>> getEventsForGruppeAndHelden(int gruppe, DsaMonat dsaMonat) {
-		log.info("Finding events between {} and {}", dsaMonat.getStartTag(), dsaMonat.getEndTag());
+		log.info("Finding events between {} and {} for gruppe {}", dsaMonat.getStartTag(), dsaMonat.getEndTag(), gruppe);
 		Map<String, List<EventDto>> events = getEventsForGruppe(gruppe, dsaMonat);
 		events.putAll(getEventsForHelden(gruppe, dsaMonat));
 		return events;
