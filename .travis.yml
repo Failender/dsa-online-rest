@@ -11,7 +11,6 @@ before_install:
 
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - docker build -f Dockerfile -t $REPO:$COMMIT .
+  - docker build -f Dockerfile -t $REPO:$TRAVIS_BRANCH .
   - docker push $REPO
-  - echo $REPO
-  - echo $REPO:$COMMIT
+  - echo $TRAVIS_BRANCH
