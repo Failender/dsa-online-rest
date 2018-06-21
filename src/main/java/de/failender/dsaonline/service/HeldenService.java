@@ -98,7 +98,8 @@ public class HeldenService {
 				calculateTalentUnterschied(from, to),
 				calculateZauberUnterschied(from, to),
 				calculateEreignisUnterschied(from, to),
-				calculateVorteilUnterschied(from, to));
+				calculateVorteilUnterschied(from, to),
+				calculateGegenstandUnterschied(from, to));
 		return heldenUnterschied;
 	}
 
@@ -114,6 +115,25 @@ public class HeldenService {
 		return calculateUnterschied(from.getVorteile().getVorteil(), to.getVorteile().getVorteil());
 	}
 
+	private Unterschiede<Gegenstand> calculateGegenstandUnterschied(Daten from, Daten to) {
+		Unterschiede<Gegenstand> unterschiede = new Unterschiede<>();
+		List<Gegenstand> toGegenstaende = to.getGegenstaende().getGegenstand();
+		for (Gegenstand gegenstand : from.getGegenstaende().getGegenstand()) {
+			Optional<Gegenstand> toGegenstandOpt = toGegenstaende.stream()
+					.filter(gegenstand1 -> gegenstand1.getName().equals(gegenstand.getName()))
+					.findFirst();
+			if(toGegenstandOpt.isPresent()) {
+				toGegenstaende.remove(toGegenstandOpt.get());
+			} else {
+				unterschiede.addEntfernt(gegenstand);
+			}
+		}
+		for (Gegenstand gegenstand : toGegenstaende) {
+			unterschiede.addNeu(gegenstand);
+		}
+		return unterschiede;
+	}
+
 	//Calculating ereignis unterschied only supports showing all events after the last one in from
 	private Unterschiede<Ereignis> calculateEreignisUnterschied(Daten from, Daten to) {
 		Unterschiede<Ereignis> ereignisUnterschiede = new Unterschiede<>();
@@ -126,7 +146,9 @@ public class HeldenService {
 		if (from.getEreignisse().getEreignis().get(lastIndex).equals(to.getEreignisse().getEreignis().get(lastIndex))) {
 
 		} else {
-			log.error("here is a critical error comparing ereignis for {}. to has a different item at the last index of from");
+			log.error("here is a critical error comparing ereignis for {}. to has a different item at the last index of from", from.getAngaben().getName());
+			log.error(from.getEreignisse().getEreignis().get(lastIndex).toString());
+			log.error(to.getEreignisse().getEreignis().get(lastIndex).toString());
 		}
 		for (int i = lastIndex + 1; i < to.getEreignisse().getEreignis().size(); i++) {
 			ereignisUnterschiede.addNeu(to.getEreignisse().getEreignis().get(i));

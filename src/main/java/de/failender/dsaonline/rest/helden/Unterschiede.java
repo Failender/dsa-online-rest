@@ -27,5 +27,8 @@ public class Unterschiede<T> {
 	}
 
 
+	public boolean getEmpty() {
+		return neu.isEmpty() && entfernt.isEmpty() && aenderungen.isEmpty();
+	}
 
 }

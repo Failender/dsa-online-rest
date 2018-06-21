@@ -14,6 +14,8 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
+import static de.failender.dsaonline.service.UserHeldenService.clearEreigniskontrolle;
+
 public class ReturnHeldDatenWithEreignisseRequest extends ApiRequest<Daten> {
 
 	private final BigInteger heldid;
@@ -42,7 +44,9 @@ public class ReturnHeldDatenWithEreignisseRequest extends ApiRequest<Daten> {
 	public Daten mapResponse(InputStream is) {
 		Unmarshaller unmarshaller = JaxbUtil.getUnmarshaller(Daten.class);
 		try {
-			return (Daten) unmarshaller.unmarshal(is);
+			Daten daten = (Daten) unmarshaller.unmarshal(is);
+			clearEreigniskontrolle(daten.getEreignisse().getEreignis());
+			return daten;
 		} catch (JAXBException e) {
 			throw new CorruptXmlException(e);
 		}
