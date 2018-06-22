@@ -75,7 +75,7 @@ public class FileConvertingRunnable implements Runnable {
 							String xml = FileUtils.readFileToString(file, "UTF-8");
 							ConvertingRequest datenRequest = new ConvertingRequest(HeldenApi.Format.datenxml, xml);
 							ConvertingRequest pdfRequest = new ConvertingRequest(HeldenApi.Format.pdfintern, xml);
-							InputStream stream = heldenApi.request(datenRequest, false);
+							InputStream stream = heldenApi.requestOrThrow(datenRequest, false);
 							//Make sure the file is valid
 							Daten daten = (Daten) JaxbUtil.getUnmarshaller(Daten.class).unmarshal(stream);
 							UserHeldenService.clearEreigniskontrolle(daten.getEreignisse().getEreignis());
@@ -83,7 +83,7 @@ public class FileConvertingRunnable implements Runnable {
 							JaxbUtil.getMarshaller(Daten.class).marshal(daten, zos);
 							zos.closeEntry();
 							zos.putNextEntry(new ZipEntry("held.pdf"));
-							IOUtils.copy(heldenApi.requestRaw(pdfRequest, false), zos);
+							IOUtils.copy(heldenApi.requestRawOrThrow(pdfRequest, false), zos);
 							zos.closeEntry();
 							zos.putNextEntry(new ZipEntry("held.xml"));
 							IOUtils.copy(IOUtils.toInputStream(xml, "UTF-8"), zos);

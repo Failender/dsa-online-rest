@@ -1,22 +1,11 @@
 package de.failender.heldensoftware;
 
 import lombok.extern.slf4j.Slf4j;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathFactory;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -27,7 +16,7 @@ import java.net.URLEncoder;
 public class Helper {
 
 	static {
-		disableSSLCheck();
+//		disableSSLCheck();
 	}
 
 	public static String postrequest(String ...strings) throws Exception {
@@ -133,68 +122,7 @@ public class Helper {
 	}
 
 
-	static public NodeList getDaten(Document daten, String search) {
-
-		XPath xpath = XPathFactory.newInstance().newXPath();
-		try {
-			//search = search.replace("'", "\"");
-			XPathExpression expr = xpath.compile(search);
-			Object result = expr.evaluate(daten, XPathConstants.NODESET);
-			NodeList nodes = (NodeList) result;
-			return nodes;
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return null;
-			//return getDatenAsString(search);
-		}
-	}
-
-	/**
-	 * Wandelt einen String in ein XML-Dokument um
-	 * @param xmlstring XML-String
-	 * @return fertiges DOC
-	 * @throws SAXException Fehler
-	 * @throws IOException Fehler
-	 * @throws ParserConfigurationException Fehler
-	 */
-	public static Document string2Doc(String xmlstring)
-			throws SAXException, IOException, ParserConfigurationException {
-
-		DocumentBuilderFactory dbf =
-				DocumentBuilderFactory.newInstance();
-		DocumentBuilder db = dbf.newDocumentBuilder();
-		InputSource is = new InputSource();
-		is.setCharacterStream(new StringReader(xmlstring));
-		return db.parse(is);
-
-	}
 
 
-	static public String getDatenAsString(org.w3c.dom.Document doc, String search) {
-		XPath xpath = XPathFactory.newInstance().newXPath();
-		try {
-			//search = search.replace("'", "\"");
-			XPathExpression expr = xpath.compile(search);
-			Object result = expr.evaluate(doc, XPathConstants.STRING);
-			return (String) result;
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return null;
-		}
 
-	}
-
-	static public Long getDatenAsNumber(org.w3c.dom.Document doc, String search) {
-		XPath xpath = XPathFactory.newInstance().newXPath();
-		try {
-			//search = search.replace("'", "\"");
-			XPathExpression expr = xpath.compile(search);
-			Object result = expr.evaluate(doc, XPathConstants.NUMBER);
-			return Math.round((Double) result);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return null;
-		}
-
-	}
 }
