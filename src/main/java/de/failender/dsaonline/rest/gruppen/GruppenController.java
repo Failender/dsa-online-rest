@@ -69,7 +69,7 @@ public class GruppenController {
 		Flux.fromIterable(userRepository.findAll())
 				.filter(user -> user.getToken() != null)
 				.flatMap(user -> heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(user.getToken()))))
-				.flatMap(val -> Flux.fromIterable(val.getHeld()))
+				.flatMapIterable(val -> val.getHeld())
 				.subscribe(held -> {
 					HeldWithVersion heldWithVersion = this.heldRepositoryService.findHeldWithLatestVersion(held.getHeldenid());
 					value.get(heldWithVersion.getHeld().getGruppe().getName()).getHelden().add(heldenService.mapToHeldenInfo(heldWithVersion));
