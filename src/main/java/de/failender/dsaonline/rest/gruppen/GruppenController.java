@@ -4,7 +4,6 @@ import de.failender.dsaonline.data.entity.GruppeEntity;
 import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.repository.GruppeRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
-import de.failender.dsaonline.exceptions.HeldNotFoundException;
 import de.failender.dsaonline.rest.helden.HeldWithVersion;
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.HeldRepositoryService;
@@ -15,6 +14,7 @@ import de.failender.heldensoftware.api.requests.GetAllHeldenRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -66,20 +66,14 @@ public class GruppenController {
 		Map<String, GruppeIncludingHelden> value = gruppen
 				.stream()
 				.collect(Collectors.toMap(gruppe -> gruppe.getName(), gruppe -> new GruppeIncludingHelden(gruppe.getName(), gruppe.getId(), new ArrayList<>())));
-		userRepository.findAll()
-				.parallelStream()
+		Flux.fromIterable(userRepository.findAll())
 				.filter(user -> user.getToken() != null)
-				.map(user -> heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(user.getToken()))).getHeld())
-				.flatMap(List::stream)
-				.forEach(held -> {
-					try {
-						HeldWithVersion heldWithVersion = this.heldRepositoryService.findHeldWithLatestVersion(held.getHeldenid());
-						value.get(heldWithVersion.getHeld().getGruppe().getName()).getHelden().add(heldenService.mapToHeldenInfo(heldWithVersion));
-					} catch (HeldNotFoundException e) {
-						;
-					}
+				.flatMap(user -> heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(user.getToken()))))
+				.flatMap(val -> Flux.fromIterable(val.getHeld()))
+				.subscribe(held -> {
+					HeldWithVersion heldWithVersion = this.heldRepositoryService.findHeldWithLatestVersion(held.getHeldenid());
+					value.get(heldWithVersion.getHeld().getGruppe().getName()).getHelden().add(heldenService.mapToHeldenInfo(heldWithVersion));
 				});
-
 
 		return value.values();
 	}
@@ -90,20 +84,14 @@ public class GruppenController {
 		Map<String, GruppeIncludingHelden> value = gruppen
 				.stream()
 				.collect(Collectors.toMap(gruppe -> gruppe.getName(), gruppe -> new GruppeIncludingHelden(gruppe.getName(), gruppe.getId(), new ArrayList<>())));
-		userRepository.findAll()
-				.parallelStream()
+		Flux.fromIterable(userRepository.findAll())
 				.filter(user -> user.getToken() != null)
-				.map(user -> heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(user.getToken()))).getHeld())
-				.flatMap(List::stream)
-				.forEach(held -> {
-					try {
-						HeldWithVersion heldWithVersion = this.heldRepositoryService.findHeldWithLatestVersion(held.getHeldenid());
-						if (heldWithVersion.getHeld().isPublic()) {
-							value.get(heldWithVersion.getHeld().getGruppe().getName()).getHelden().add(heldenService.mapToHeldenInfo(heldWithVersion));
-						}
-
-					} catch (HeldNotFoundException e) {
-						;
+				.flatMap(user -> heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(user.getToken()))))
+				.flatMap(val -> Flux.fromIterable(val.getHeld()))
+				.subscribe(held -> {
+					HeldWithVersion heldWithVersion = this.heldRepositoryService.findHeldWithLatestVersion(held.getHeldenid());
+					if (heldWithVersion.getHeld().isPublic()) {
+						value.get(heldWithVersion.getHeld().getGruppe().getName()).getHelden().add(heldenService.mapToHeldenInfo(heldWithVersion));
 					}
 				});
 

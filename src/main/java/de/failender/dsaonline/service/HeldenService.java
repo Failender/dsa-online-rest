@@ -65,7 +65,7 @@ public class HeldenService {
 
 		SecurityUtils.canCurrentUserViewHeld(held);
 		UserEntity owningUser = this.userRepository.findById(held.getUserId()).get();
-		return heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(id, new TokenAuthentication(owningUser.getToken()), version));
+		return heldenApi.requestOrThrow(new ReturnHeldDatenWithEreignisseRequest(id, new TokenAuthentication(owningUser.getToken()), version), true);
 	}
 
 	public HeldenUnterschied calculateUnterschied(BigInteger heldenid, int from, int to) {
@@ -88,8 +88,8 @@ public class HeldenService {
 		UserEntity userEntity = this.userRepository.findById(held.getUserId()).get();
 		token = userEntity.getToken();
 
-		Daten fromDaten = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), from.getId().getVersion()));
-		Daten toDaten = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), to.getId().getVersion()));
+		Daten fromDaten = heldenApi.requestOrThrow(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), from.getId().getVersion()));
+		Daten toDaten = heldenApi.requestOrThrow(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), to.getId().getVersion()));
 		return calculateUnterschied(fromDaten, toDaten);
 	}
 
