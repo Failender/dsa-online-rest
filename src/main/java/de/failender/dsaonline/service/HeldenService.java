@@ -88,15 +88,12 @@ public class HeldenService {
 		SecurityUtils.canCurrentUserViewHeld(held);
 		UserEntity userEntity = this.userRepository.findById(held.getUserId()).get();
 		String token = userEntity.getToken();
-		System.out.println("pre");
 		Tuple2<Daten, Daten> datenTuple = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), from.getId().getVersion())).zipWith(
 				heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), to.getId().getVersion()))).block();
-		System.out.println("post");
 		return calculateUnterschied(datenTuple.getT1(), datenTuple.getT2());
 	}
 
-	private HeldenUnterschied calculateUnterschied(Daten from, Daten to) {
-		System.out.println("wtf");
+	public HeldenUnterschied calculateUnterschied(Daten from, Daten to) {
 		HeldenUnterschied heldenUnterschied = new HeldenUnterschied(
 				calculateTalentUnterschied(from, to),
 				calculateZauberUnterschied(from, to),
@@ -142,8 +139,10 @@ public class HeldenService {
 		Unterschiede<Ereignis> ereignisUnterschiede = new Unterschiede<>();
 		if (from.getEreignisse().getEreignis().size() > to.getEreignisse().getEreignis().size()) {
 			log.error("There is a critical error comparing ereignis for {}. from has more events then to.", from.getAngaben().getName());
-			return ereignisUnterschiede;
-
+//			return ereignisUnterschiede; Switch both around and compare that way. TODO Maybe use a processing heaviver approach if this is happening
+			Daten temp = from;
+			from = to;
+			to = temp;
 		}
 		int lastIndex = from.getEreignisse().getEreignis().size() - 1;
 		if (from.getEreignisse().getEreignis().get(lastIndex).equals(to.getEreignisse().getEreignis().get(lastIndex))) {
@@ -183,8 +182,6 @@ public class HeldenService {
 					}
 				}
 		);
-		System.out.println(toList.size());
-		System.out.println("here");
 		toList.forEach(toTalent -> unterschiede.addNeu(toTalent));
 		return unterschiede;
 	}

@@ -1,28 +1,32 @@
 package de.failender.dsaonline.util;
 
 import de.failender.dsaonline.data.entity.VersionEntity;
+import de.failender.dsaonline.exceptions.CorruptXmlException;
+import de.failender.dsaonline.rest.helden.HeldenUnterschied;
 import de.failender.dsaonline.service.HeldRepositoryService;
-import de.failender.dsaonline.service.UserHeldenService;
+import de.failender.dsaonline.service.HeldenService;
 import de.failender.heldensoftware.api.HeldenApi;
 import de.failender.heldensoftware.api.Helper;
 import de.failender.heldensoftware.api.requests.ReturnHeldDatenWithEreignisseRequest;
 import de.failender.heldensoftware.api.requests.ReturnHeldPdfRequest;
 import de.failender.heldensoftware.api.requests.ReturnHeldXmlRequest;
 import de.failender.heldensoftware.xml.datenxml.Daten;
-import de.failender.heldensoftware.xml.datenxml.Ereignis;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.zip.ZipFile;
 
 @Service
@@ -41,6 +45,12 @@ public class VersionFakeService {
 
 	@Autowired
 	private HeldenApi heldenApi;
+
+	private final HeldenService heldenService;
+
+	public VersionFakeService(HeldenService heldenService) {
+		this.heldenService = heldenService;
+	}
 
 	@PostConstruct
 	public void afterInit() {
@@ -84,7 +94,10 @@ public class VersionFakeService {
 			VersionEntity versionEntity = heldRepositoryService.findVersion(heldid, version);
 			ReturnHeldDatenWithEreignisseRequest request = new ReturnHeldDatenWithEreignisseRequest(versionEntity.getId().getHeldid(), null, version);
 			InputStream is = zipFile.getInputStream(zipFile.getEntry("daten.xml"));
-			if (IOUtils.contentEquals(is, heldenApi.requestRaw(request, true).block())) {
+			Daten fakeDaten = (Daten) JaxbUtil.getUnmarshaller(Daten.class).unmarshal(is);
+			Daten cacheDaten = heldenApi.request(request, true).block();
+			HeldenUnterschied unterschied = heldenService.calculateUnterschied(fakeDaten, cacheDaten);
+			if (unterschied.getEreignis().getEmpty() && unterschied.getGegenstaende().getEmpty()) {
 				log.info("Skipping fake version {} {} because it is equal to the current version", heldid, version);
 				zipFile.close();
 				return;
@@ -103,6 +116,8 @@ public class VersionFakeService {
 		} catch (IOException e) {
 			log.error("Exceptin while faking version", e);
 			throw new RuntimeException(e);
+		} catch (JAXBException e) {
+			throw new CorruptXmlException(e);
 		}
 
 
