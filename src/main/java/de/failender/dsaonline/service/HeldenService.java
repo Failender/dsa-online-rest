@@ -15,6 +15,7 @@ import de.failender.heldensoftware.xml.datenxml.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.util.function.Tuple2;
 
 import javax.servlet.http.HttpServletResponse;
 import java.math.BigInteger;
@@ -65,7 +66,7 @@ public class HeldenService {
 
 		SecurityUtils.canCurrentUserViewHeld(held);
 		UserEntity owningUser = this.userRepository.findById(held.getUserId()).get();
-		return heldenApi.requestOrThrow(new ReturnHeldDatenWithEreignisseRequest(id, new TokenAuthentication(owningUser.getToken()), version), true);
+		return heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(id, new TokenAuthentication(owningUser.getToken()), version), true).block();
 	}
 
 	public HeldenUnterschied calculateUnterschied(BigInteger heldenid, int from, int to) {
@@ -88,9 +89,9 @@ public class HeldenService {
 		UserEntity userEntity = this.userRepository.findById(held.getUserId()).get();
 		token = userEntity.getToken();
 
-		Daten fromDaten = heldenApi.requestOrThrow(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), from.getId().getVersion()));
-		Daten toDaten = heldenApi.requestOrThrow(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), to.getId().getVersion()));
-		return calculateUnterschied(fromDaten, toDaten);
+		Tuple2<Daten, Daten> datenTuple = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), from.getId().getVersion())).zipWith(
+				heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), to.getId().getVersion()))).block();
+		return calculateUnterschied(datenTuple.getT1(), datenTuple.getT2());
 	}
 
 	private HeldenUnterschied calculateUnterschied(Daten from, Daten to) {

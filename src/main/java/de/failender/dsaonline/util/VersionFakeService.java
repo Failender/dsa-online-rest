@@ -68,6 +68,7 @@ public class VersionFakeService {
 			Integer secondVersion = Integer.valueOf(two.getName().split("\\.")[0]);
 			return firstVersion - secondVersion;
 		}));
+
 		mapping.entrySet()
 				.stream()
 				.filter(entry -> heldenIds.contains(entry.getKey()))
@@ -83,7 +84,7 @@ public class VersionFakeService {
 			VersionEntity versionEntity = heldRepositoryService.findVersion(heldid, version);
 			ReturnHeldDatenWithEreignisseRequest request = new ReturnHeldDatenWithEreignisseRequest(versionEntity.getId().getHeldid(), null, version);
 			InputStream is = zipFile.getInputStream(zipFile.getEntry("daten.xml"));
-			if (IOUtils.contentEquals(is, heldenApi.requestRaw(request, true))) {
+			if (IOUtils.contentEquals(is, heldenApi.requestRaw(request, true).block())) {
 				log.info("Skipping fake version {} {} because it is equal to the current version", heldid, version);
 				zipFile.close();
 				return;
@@ -95,12 +96,13 @@ public class VersionFakeService {
 			zipFile.close();
 			versionEntity.getId().setVersion(version + 1);
 			heldRepositoryService.saveVersion(versionEntity);
-
+			log.info("Saved fake {} {}", versionEntity.getId().getHeldid(), versionEntity.getId().getVersion());
 		} catch (FileNotFoundException e) {
+			log.error("Exceptin while faking version", e);
 			throw new RuntimeException(e);
 		} catch (IOException e) {
+			log.error("Exceptin while faking version", e);
 			throw new RuntimeException(e);
-
 		}
 
 

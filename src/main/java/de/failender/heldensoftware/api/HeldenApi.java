@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -25,15 +27,14 @@ import java.util.stream.Collectors;
 public class HeldenApi {
 
 	private final CacheHandler cacheHandler;
-	private final FailedRequestsRetrier failedRequestsRetrier;
 	private final HttpClient httpClient;
 
 	public HeldenApi(File cacheDirectory) {
+
 		this.httpClient = HttpClients.custom()
 				.setConnectionManager(new PoolingHttpClientConnectionManager())
 				.build();
 		cacheHandler = new CacheHandler(cacheDirectory);
-		failedRequestsRetrier = new FailedRequestsRetrier(this);
 	}
 
 	public <T> Mono<T> request(ApiRequest<T> request) {
@@ -85,8 +86,8 @@ public class HeldenApi {
 			throw new RuntimeException(e);
 		}
 		httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-		httpPost.setHeader("Content-Length", String.valueOf(body.length()));
-		return Mono.create(consumer -> {
+
+		Mono<InputStream> mono = Mono.create(consumer -> {
 
 			try {
 				HttpResponse response = httpClient.execute(httpPost);
@@ -100,8 +101,10 @@ public class HeldenApi {
 				e.printStackTrace();
 				throw new ApiOfflineException();
 			}
-
 		});
+
+		return mono
+				.retryWhen(companion -> companion.flatMap(val -> Mono.delay(Duration.ofSeconds(10))));
 
 	}
 

@@ -99,7 +99,7 @@ public class UserHeldenService {
 			return;
 		}
 
-		List<Held> helden = heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(userEntity.getToken())), cache).getHeld();
+		List<Held> helden = heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(userEntity.getToken())), cache).block().getHeld();
 		this.updateHeldenForUser(userEntity, helden);
 
 	}
@@ -109,7 +109,7 @@ public class UserHeldenService {
 			log.error("User with name {} has null token ", userEntity.getName());
 			return;
 		}
-		List<Held> helden = heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(userEntity.getToken()))).getHeld();
+		List<Held> helden = heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(userEntity.getToken()))).block().getHeld();
 		log.info("Faking versions for user " + userEntity.getName());
 		this.versionFakeService.fakeVersions(helden.stream().map(held -> held.getHeldenid()).collect(Collectors.toList()));
 	}
@@ -129,7 +129,7 @@ public class UserHeldenService {
 		VersionEntity versionEntity = new VersionEntity();
 		versionEntity.setId(new VersionEntity.VersionId(xmlHeld.getHeldenid(), version));
 		versionEntity.setCreatedDate(DateUtil.convert(xmlHeld.getHeldlastchange()));
-		Daten daten = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(xmlHeld.getHeldenid(), new TokenAuthentication(user.getToken()), version));
+		Daten daten = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(xmlHeld.getHeldenid(), new TokenAuthentication(user.getToken()), version)).block();
 		versionEntity.setLastEvent(extractLastEreignis(daten.getEreignisse().getEreignis()));
 
 		this.heldRepositoryService.saveVersion(versionEntity);
@@ -140,7 +140,7 @@ public class UserHeldenService {
 		try {
 			heldenApi.request(new ReturnHeldXmlRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false);
 			heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false);
-			heldenApi.request(new ReturnHeldPdfRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false).close();
+			heldenApi.request(new ReturnHeldPdfRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false).block().close();
 
 		} catch (IOException e) {
 			throw new RuntimeException(e);

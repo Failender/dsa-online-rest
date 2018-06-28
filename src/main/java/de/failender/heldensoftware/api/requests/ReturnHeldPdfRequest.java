@@ -24,7 +24,9 @@ public class ReturnHeldPdfRequest extends ApiRequest<InputStream> {
 	@Override
 	public Map<String, String> writeRequest() {
 		Map<String, String> data = new HashMap<>();
-		authentication.writeToRequest(data);
+		if(authentication != null) {
+			authentication.writeToRequest(data);
+		}
 		data.put("action", "returnheld");
 		data.put("format", HeldenApi.Format.pdfintern.toString());
 		data.put("heldenid", heldid.toString());

@@ -33,7 +33,7 @@ public class UserController {
 
 	@GetMapping("helden")
 	public List<Held> getHelden() {
-		return heldenApi.request(new GetAllHeldenRequest(getAuthentication())).getHeld();
+		return heldenApi.request(new GetAllHeldenRequest(getAuthentication())).block().getHeld();
 	}
 
 	@GetMapping("helden/all")
@@ -41,7 +41,7 @@ public class UserController {
 		SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);
 		return this.userRepository.findAll()
 				.stream()
-				.map(user -> this.heldenApi.request(new GetAllHeldenRequest(getAuthentication())).getHeld())
+				.map(user -> this.heldenApi.request(new GetAllHeldenRequest(getAuthentication())).block().getHeld())
 				.flatMap(e -> e.stream())
 				.collect(Collectors.toList());
 

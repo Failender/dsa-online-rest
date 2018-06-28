@@ -27,7 +27,9 @@ public class ReturnHeldXmlRequest extends ApiRequest<String> {
 		data.put("action", "returnheld");
 		data.put("format", HeldenApi.Format.pdfintern.toString());
 		data.put("heldenid", heldid.toString());
-		authentication.writeToRequest(data);
+		if(authentication != null) {
+			authentication.writeToRequest(data);
+		}
 		return data;
 	}
 

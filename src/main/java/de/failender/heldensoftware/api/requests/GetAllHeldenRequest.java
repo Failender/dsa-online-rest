@@ -24,7 +24,9 @@ public class GetAllHeldenRequest extends ApiRequest<Helden> {
 	@Override
 	public Map<String, String> writeRequest() {
 		Map<String, String> data = new HashMap<>();
-		authentication.writeToRequest(data);
+		if(authentication != null) {
+			authentication.writeToRequest(data);
+		}
 		data.put("action", "listhelden");
 		return data;
 	}

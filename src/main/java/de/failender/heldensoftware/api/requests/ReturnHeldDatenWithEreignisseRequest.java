@@ -32,7 +32,9 @@ public class ReturnHeldDatenWithEreignisseRequest extends ApiRequest<Daten> {
 	@Override
 	public Map<String, String> writeRequest() {
 		Map<String, String> data = new HashMap<>();
-		authentication.writeToRequest(data);
+		if(authentication != null) {
+			authentication.writeToRequest(data);
+		}
 		data.put("action", "returnheld");
 		data.put("format", HeldenApi.Format.datenxml.toString());
 		data.put("heldenid", heldid.toString());
