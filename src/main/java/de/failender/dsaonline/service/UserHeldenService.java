@@ -17,10 +17,13 @@ import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.datenxml.Ereignis;
 import de.failender.heldensoftware.xml.heldenliste.Held;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -47,18 +50,19 @@ public class UserHeldenService {
 	}
 
 
-	public void updateHeldenForUser(UserEntity userEntity, List<Held> helden) {
-		log.info("Updating helden for user {}, online found {}", userEntity.getName(), helden.size());
+	public void updateHeldenForUser(UserEntity userEntity, List<Held> helde) {
+		final List<Held> sHelden = Collections.synchronizedList(helde);
+		log.info("Updating helden for user {}, online found {}", userEntity.getName(), sHelden.size());
 
-		heldRepository.findByUserIdAndDeleted(userEntity.getId(), false).forEach(heldEntity -> {
-			Optional<Held> heldOptional = helden.stream().filter(_held -> _held.getName().equals(heldEntity.getName())).findFirst();
+		heldRepository.findByUserIdAndDeleted(userEntity.getId(), false).parallelStream().forEach(heldEntity -> {
+			Optional<Held> heldOptional = sHelden.stream().filter(_held -> _held.getName().equals(heldEntity.getName())).findFirst();
 			if (!heldOptional.isPresent()) {
 				log.info("Held with name {} is no longer online, disabling it", heldEntity.getName());
 				heldEntity.setDeleted(true);
 
 			} else {
 				Held xmlHeld = heldOptional.get();
-				helden.remove(xmlHeld);
+				sHelden.remove(xmlHeld);
 				VersionEntity versionEntity = heldRepositoryService.findLatestVersion(heldEntity);
 				if (isOnlineVersionOlder(xmlHeld, versionEntity.getCreatedDate())) {
 					log.info("Got a new version for held with name {}", heldEntity.getName());
@@ -71,7 +75,7 @@ public class UserHeldenService {
 				}
 			}
 		});
-		helden.forEach(held -> {
+		sHelden.forEach(held -> {
 			HeldEntity heldEntity = new HeldEntity();
 			heldEntity.setGruppe(userEntity.getGruppe());
 			heldEntity.setName(held.getName());
@@ -137,18 +141,14 @@ public class UserHeldenService {
 
 	//Force to fetch the held once, so its cache gets build. this can run in a separate thread to dont block the main flow
 	private void forceCacheBuildFor(UserEntity userEntity, HeldEntity heldEntity, int version) {
-		try {
-			heldenApi.request(new ReturnHeldXmlRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false);
-			heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false);
-			heldenApi.request(new ReturnHeldPdfRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false).block().close();
+		Mono.zip(heldenApi.request(new ReturnHeldXmlRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false),
+				heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false),
+				heldenApi.request(new ReturnHeldPdfRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false))
+				.subscribe(data -> IOUtils.closeQuietly(data.getT3()));
 
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-//		new Thread(() -> {
-//
-//
-//		}).run();
+
+
+
 
 	}
 

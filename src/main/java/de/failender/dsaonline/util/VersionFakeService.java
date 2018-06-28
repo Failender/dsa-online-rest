@@ -125,32 +125,4 @@ public class VersionFakeService {
 		heldenApi.getCacheHandler().doCache(req, is);
 
 	}
-
-
-	private void fakeVersion(Daten daten, BigInteger heldid, int version, String xml) {
-
-		log.info("Faking version {} for held {}", version, heldid);
-		if (version == 1) {
-			//call this to trigger exception if held not present
-			heldRepositoryService.findHeld(heldid);
-			VersionEntity versionEntity = heldRepositoryService.findVersion(heldid, version);
-			List<Ereignis> ereignis = daten.getEreignisse().getEreignis();
-			versionEntity.setCreatedDate(new Date(ereignis.get(ereignis.size() - 1).getDate()));
-			versionEntity.setLastEvent(UserHeldenService.extractLastEreignis(ereignis));
-//			cachingService.purgePdfCacheFor(heldid, version);
-			this.heldRepositoryService.saveVersion(versionEntity);
-//			cachingService.setHeldenCache(heldid, version, daten, xml);
-		} else {
-			VersionEntity versionEntity = new VersionEntity();
-			versionEntity.setId(new VersionEntity.VersionId(heldid, version));
-
-			List<Ereignis> ereignis = daten.getEreignisse().getEreignis();
-
-			versionEntity.setLastEvent(UserHeldenService.extractLastEreignis(ereignis));
-
-			versionEntity.setCreatedDate(new Date(ereignis.get(ereignis.size() - 1).getDate()));
-			this.heldRepositoryService.saveVersion(versionEntity);
-//			cachingService.setHeldenCache(heldid, version, daten, xml);
-		}
-	}
 }
