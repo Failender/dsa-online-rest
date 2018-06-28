@@ -22,8 +22,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
-import java.io.IOException;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -50,19 +48,18 @@ public class UserHeldenService {
 	}
 
 
-	public void updateHeldenForUser(UserEntity userEntity, List<Held> helde) {
-		final List<Held> sHelden = Collections.synchronizedList(helde);
-		log.info("Updating helden for user {}, online found {}", userEntity.getName(), sHelden.size());
+	public void updateHeldenForUser(UserEntity userEntity, List<Held> helden) {
+		log.info("Updating helden for user {}, online found {}", userEntity.getName(), helden.size());
 
-		heldRepository.findByUserIdAndDeleted(userEntity.getId(), false).parallelStream().forEach(heldEntity -> {
-			Optional<Held> heldOptional = sHelden.stream().filter(_held -> _held.getName().equals(heldEntity.getName())).findFirst();
+		heldRepository.findByUserIdAndDeleted(userEntity.getId(), false).forEach(heldEntity -> {
+			Optional<Held> heldOptional = helden.stream().filter(_held -> _held.getName().equals(heldEntity.getName())).findFirst();
 			if (!heldOptional.isPresent()) {
 				log.info("Held with name {} is no longer online, disabling it", heldEntity.getName());
 				heldEntity.setDeleted(true);
 
 			} else {
 				Held xmlHeld = heldOptional.get();
-				sHelden.remove(xmlHeld);
+				helden.remove(xmlHeld);
 				VersionEntity versionEntity = heldRepositoryService.findLatestVersion(heldEntity);
 				if (isOnlineVersionOlder(xmlHeld, versionEntity.getCreatedDate())) {
 					log.info("Got a new version for held with name {}", heldEntity.getName());
@@ -75,7 +72,7 @@ public class UserHeldenService {
 				}
 			}
 		});
-		sHelden.forEach(held -> {
+		helden.forEach(held -> {
 			HeldEntity heldEntity = new HeldEntity();
 			heldEntity.setGruppe(userEntity.getGruppe());
 			heldEntity.setName(held.getName());

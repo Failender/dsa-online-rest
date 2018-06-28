@@ -84,17 +84,19 @@ public class HeldenService {
 	}
 
 	private HeldenUnterschied calculateUnterschied(HeldEntity held, VersionEntity from, VersionEntity to) {
-		String token;
+
 		SecurityUtils.canCurrentUserViewHeld(held);
 		UserEntity userEntity = this.userRepository.findById(held.getUserId()).get();
-		token = userEntity.getToken();
-
+		String token = userEntity.getToken();
+		System.out.println("pre");
 		Tuple2<Daten, Daten> datenTuple = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), from.getId().getVersion())).zipWith(
 				heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), to.getId().getVersion()))).block();
+		System.out.println("post");
 		return calculateUnterschied(datenTuple.getT1(), datenTuple.getT2());
 	}
 
 	private HeldenUnterschied calculateUnterschied(Daten from, Daten to) {
+		System.out.println("wtf");
 		HeldenUnterschied heldenUnterschied = new HeldenUnterschied(
 				calculateTalentUnterschied(from, to),
 				calculateZauberUnterschied(from, to),
@@ -181,6 +183,8 @@ public class HeldenService {
 					}
 				}
 		);
+		System.out.println(toList.size());
+		System.out.println("here");
 		toList.forEach(toTalent -> unterschiede.addNeu(toTalent));
 		return unterschiede;
 	}
