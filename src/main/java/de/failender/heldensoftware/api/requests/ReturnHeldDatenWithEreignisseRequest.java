@@ -61,7 +61,6 @@ public class ReturnHeldDatenWithEreignisseRequest extends ApiRequest<Daten> {
 		if(!directory.exists()) {
 			directory.mkdirs();
 		}
-
 		return new File(directory, version + ".xml");
 
 	}

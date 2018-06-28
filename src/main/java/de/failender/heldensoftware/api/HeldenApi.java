@@ -19,7 +19,6 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -62,7 +61,7 @@ public class HeldenApi {
 
 	public Mono<InputStream> requestRaw(ApiRequest request, boolean useCache) {
 		if (useCache && cacheHandler.hasCacheFor(request)) {
-			Mono.just(cacheHandler.getCache(request));
+			return Mono.just(cacheHandler.getCache(request));
 		}
 		return doRequest(request)
 				.map(is -> {
