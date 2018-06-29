@@ -140,7 +140,8 @@ public class HeldenService {
 		if (from.getEreignisse().getEreignis().size() > to.getEreignisse().getEreignis().size()) {
 			log.error("There is a critical error comparing ereignis for {}. from has more events then to.", from.getAngaben().getName());
 //			return ereignisUnterschiede; Switch both around and compare that way. TODO Maybe use a processing heaviver approach if this is happening
-			Daten temp = from;
+			Daten temp
+					= from;
 			from = to;
 			to = temp;
 		}

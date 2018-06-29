@@ -8,8 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
+import reactor.core.publisher.Mono;
 
-import javax.xml.bind.JAXBException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -63,37 +63,58 @@ public class FileConvertingRunnable implements Runnable {
 
 				});
 		log.info("Starting to convert helden to daten format");
-		Arrays.stream(dir.listFiles(getFiles()))
+		Arrays.stream(dir.listFiles(getFiles())).parallel()
 				.forEach(file -> {
 					String fileName = FilenameUtils.removeExtension(file.getName()) + ".zip";
+
 					File outFile = new File(outDir, fileName);
 					if (!outFile.exists()) {
-
 						try {
-							ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(outFile));
 							log.info("Converting file: {}", file.getName());
 							String xml = FileUtils.readFileToString(file, "UTF-8");
 							ConvertingRequest datenRequest = new ConvertingRequest(HeldenApi.Format.datenxml, xml);
 							ConvertingRequest pdfRequest = new ConvertingRequest(HeldenApi.Format.pdfintern, xml);
-							InputStream stream = heldenApi.request(datenRequest, false).block();
-							//Make sure the file is valid
-							Daten daten = (Daten) JaxbUtil.getUnmarshaller(Daten.class).unmarshal(stream);
-							UserHeldenService.clearEreigniskontrolle(daten.getEreignisse().getEreignis());
-							zos.putNextEntry(new ZipEntry("daten.xml"));
-							JaxbUtil.getMarshaller(Daten.class).marshal(daten, zos);
-							zos.closeEntry();
-							zos.putNextEntry(new ZipEntry("held.pdf"));
-							IOUtils.copy(heldenApi.requestRaw(pdfRequest, false).block(), zos);
-							zos.closeEntry();
-							zos.putNextEntry(new ZipEntry("held.xml"));
-							IOUtils.copy(IOUtils.toInputStream(xml, "UTF-8"), zos);
-							zos.closeEntry();
-							zos.close();
+							Mono.zip(heldenApi.request(datenRequest, false), heldenApi.requestRaw(pdfRequest, false))
+									.subscribe(tuple -> {
+												System.out.println("INSIDE");
+												InputStream datenStream = tuple.getT1();
+												InputStream pdfStream = tuple.getT2();
 
-							log.info("Finished converting {}", file.getName());
-						} catch (JAXBException e) {
-							log.error("Critical error converting file, returned xml is invalid {}", file.getAbsoluteFile());
-							throw new RuntimeException(e);
+
+												ZipOutputStream zos = null;
+												try {
+													Daten daten = (Daten) JaxbUtil.getUnmarshaller(Daten.class).unmarshal(datenStream);
+													UserHeldenService.clearEreigniskontrolle(daten.getEreignisse().getEreignis());
+													zos = new ZipOutputStream(new FileOutputStream(outFile));
+													zos.putNextEntry(new ZipEntry("daten.xml"));
+													JaxbUtil.getMarshaller(Daten.class).marshal(daten, zos);
+													zos.closeEntry();
+													zos.putNextEntry(new ZipEntry("held.pdf"));
+													IOUtils.copy(pdfStream, zos);
+													zos.closeEntry();
+													zos.putNextEntry(new ZipEntry("held.xml"));
+													IOUtils.copy(IOUtils.toInputStream(xml, "UTF-8"), zos);
+													zos.closeEntry();
+													zos.close();
+													log.info("Finished converting {}", file.getName());
+												} catch (FileNotFoundException e) {
+													e.printStackTrace();
+												} catch (Exception e) {
+													log.error("Critical error converting file", e);
+													if (zos != null) {
+														IOUtils.closeQuietly(zos);
+														if (outFile.exists()) {
+															outFile.delete();
+														}
+													}
+												}
+
+											},
+											(error) -> {
+												log.error("GOT AN ERROR WHILE CONVERTING", error);
+											});
+
+
 						} catch (IOException e) {
 							log.error("Critical error converting file", e);
 							throw new RuntimeException(e);

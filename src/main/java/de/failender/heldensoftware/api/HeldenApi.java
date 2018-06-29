@@ -3,14 +3,14 @@ package de.failender.heldensoftware.api;
 import de.failender.heldensoftware.api.requests.ApiRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.springframework.http.MediaType;
+import org.springframework.core.io.Resource;
+import org.springframework.http.*;
+import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.RestTemplate;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.time.Duration;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -26,13 +25,11 @@ import java.util.stream.Collectors;
 public class HeldenApi {
 
 	private final CacheHandler cacheHandler;
-	private final HttpClient httpClient;
+	private final RestTemplate restTemplate;
 
-	public HeldenApi(File cacheDirectory) {
+	public HeldenApi(File cacheDirectory, RestTemplate restTemplate) {
 
-		this.httpClient = HttpClients.custom()
-				.setConnectionManager(new PoolingHttpClientConnectionManager())
-				.build();
+		this.restTemplate = restTemplate;
 		cacheHandler = new CacheHandler(cacheDirectory);
 	}
 
@@ -84,27 +81,47 @@ public class HeldenApi {
 		} catch (UnsupportedEncodingException e) {
 			throw new RuntimeException(e);
 		}
-		httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-
-		Mono<InputStream> mono = Mono.create(consumer -> {
+		HttpHeaders header = new HttpHeaders();
+		header.set("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+		HttpEntity<String> entity = new HttpEntity<>(body, header);
+		Mono<InputStream> mono = Mono.fromCallable(() -> {
 
 			try {
-				HttpResponse response = httpClient.execute(httpPost);
-				consumer.success(response.getEntity().getContent());
+				ResponseEntity<Resource> response = null;
+				response = restTemplate.exchange(request.url(), HttpMethod.POST, entity, Resource.class);
+
+				if(response.getStatusCode().value() == 503) {
+					logError(request, body);
+					throw new ApiOfflineException();
+
+				} else {
+					return response.getBody().getInputStream();
+				}
+
 			} catch (IOException e) {
-				log.info("############");
-				log.info("Received failed requests to url ", request.url());
-				log.info("Body is: ");
-				log.info(body);
-				log.info("############");
+				logError(request, body);
 				e.printStackTrace();
+				throw new ApiOfflineException();
+
+			} catch(HttpServerErrorException e) {
+				logError(request, body);
+				e.printStackTrace();
+				log.error("Error from api {}: {}",e.getStatusCode(), e.getStatusText());
 				throw new ApiOfflineException();
 			}
 		});
 
 		return mono
-				.retryWhen(companion -> companion.flatMap(val -> Mono.delay(Duration.ofSeconds(10))));
+				.subscribeOn(Schedulers.elastic());
 
+	}
+
+	private void logError(ApiRequest request, String body) {
+		log.info("############");
+		log.info("Received failed request to url {}", request.url());
+		log.info("Body is: ");
+		log.info(body);
+		log.info("############");
 	}
 
 	private String buildBody(Map<String, String> data) {
@@ -130,4 +147,6 @@ public class HeldenApi {
 	public CacheHandler getCacheHandler() {
 		return cacheHandler;
 	}
+
+
 }
