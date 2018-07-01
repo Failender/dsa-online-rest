@@ -44,8 +44,7 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	@Autowired
 	private HeldenApi heldenApi;
 
-	@Value("${dsa.online.clean.on.start}")
-	private boolean cleanOnStart;
+
 //	@Autowired
 //	private EventService eventService;
 
@@ -55,16 +54,8 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	@Value("${dsa.online.fakes.directory}")
 	private String fakesDirectory;
 
-	@Autowired
-	private Flyway flyway;
-
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-		if(cleanOnStart) {
-			log.info("Cleaning database");
-			flyway.clean();
-			flyway.migrate();
-		}
 		Thread converterThread = new Thread(new FileConvertingRunnable(heldenApi, fakesDirectory));
 		converterThread.run();
 		log.info("Starting to insert dev data");
