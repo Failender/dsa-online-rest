@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?xml-stylesheet type="text/xsl" href="helden.xsl"?><helden Version="5.5.3">
-<held key="1462825909677" name="Torimalvo Novritalkos - Meister des Feuers, Erlöser der Perlentaucher, Vollstrecker der Druiden" stand="1529732821962">
+<held key="1462825909677" name="Torimalvo Novritalkos - Meister des Feuers, Erlöser der Perlentaucher, Vollstrecker der Druiden" stand="1525475907724">
 <mods/>
 <basis>
 <geschlecht name="männlich"/>
@@ -22,8 +22,8 @@
 <verify value="17"/>
 <notiz notiz0="Notizen" notiz1="" notiz10="" notiz11="" notiz2="" notiz3="" notiz4="" notiz5="" notiz6="" notiz7="" notiz8="" notiz9=""/>
 <portraet value=""/>
-<abenteuerpunkte value="5470"/>
-<freieabenteuerpunkte value="323"/>
+<abenteuerpunkte value="4970"/>
+<freieabenteuerpunkte value="290"/>
 <gilde name="weiß"/>
 </basis>
 <eigenschaften>
@@ -355,29 +355,6 @@
 <ereignis Abenteuerpunkte="-3" Alt="2" Info="Gegenseitiges Lehren" Neu="3" obj="Odem Arcanum [Magier]" text="Zauber steigern" time="1525475884551" version="HS 5.5.3"/>
 <ereignis Abenteuerpunkte="-29" Alt="7" Info="Selbststudium" Neu="8" obj="Überreden" text="Talent steigern" time="1525475905866" version="HS 5.5.3"/>
 <ereignis Abenteuerpunkte="-14" Alt="5" Info="Gegenseitiges Lehren" Neu="6" obj="Überzeugen" text="Talent steigern" time="1525475907724" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="500" kommentar="Die Rettung des Eisens Gesamt AP: 500 Verfügbare AP: 500" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1529732521229" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-13" Alt="3" Info="SE, Gegenseitiges Lehren" Neu="4" obj="Athletik" text="Talent steigern" time="1529732544164" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-6" Alt="1" Info="SE, Gegenseitiges Lehren" Neu="2" obj="Schleichen" text="Talent steigern" time="1529732552991" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-12" Alt="2" Info="Gegenseitiges Lehren" Neu="3" obj="Schleichen" text="Talent steigern" time="1529732553133" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-19" Alt="7" Info="SE, Selbststudium" Neu="8" obj="Sagen und Legenden" text="Talent steigern" time="1529732594687" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-17" Alt="4" Info="SE, Gegenseitiges Lehren" Neu="5" obj="Klettern" text="Talent steigern" time="1529732618487" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-27" Alt="5" Info="Gegenseitiges Lehren" Neu="6" obj="Klettern" text="Talent steigern" time="1529732618623" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-17" Alt="4" Info="SE, Gegenseitiges Lehren" Neu="5" obj="Athletik" text="Talent steigern" time="1529732712880" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-27" Alt="5" Info="Gegenseitiges Lehren" Neu="6" obj="Athletik" text="Talent steigern" time="1529732720739" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-17" Alt="4" Info="SE, Gegenseitiges Lehren" Neu="5" obj="Selbstbeherrschung" text="Talent steigern" time="1529732727055" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-27" Alt="5" Info="Gegenseitiges Lehren" Neu="6" obj="Selbstbeherrschung" text="Talent steigern" time="1529732727206" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-3" Alt="0" Info="Gegenseitiges Lehren" Neu="1" obj="Sich verstecken" text="Talent steigern" time="1529732730109" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-7" Alt="1" Info="Gegenseitiges Lehren" Neu="2" obj="Sich verstecken" text="Talent steigern" time="1529732730245" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-12" Alt="2" Info="Gegenseitiges Lehren" Neu="3" obj="Sich verstecken" text="Talent steigern" time="1529732730722" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-22" Alt="4" Info="Gegenseitiges Lehren" Neu="5" obj="Singen" text="Talent steigern" time="1529732733895" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-8" Alt="3" Info="Gegenseitiges Lehren" Neu="4" obj="Betören" text="Talent steigern" time="1529732737851" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-17" Alt="6" Info="Gegenseitiges Lehren" Neu="7" obj="Überzeugen" text="Talent steigern" time="1529732752152" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-34" Alt="8" Info="Selbststudium" Neu="9" obj="Überreden" text="Talent steigern" time="1529732753377" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-48" Alt="7" Info="Selbststudium" Neu="8" obj="Sinnenschärfe" text="Talent steigern" time="1529732760371" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-17" Alt="4" Info="Gegenseitiges Lehren" Neu="5" obj="Applicatus Zauberspeicher [Magier]" text="Zauber steigern" time="1529732792738" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-55" Alt="8" Info="Selbststudium" Neu="9" obj="Gardianum Zauberschild [Magier]" text="Zauber steigern" time="1529732798058" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-30" Alt="2" Info="Selbststudium" Neu="3" obj="Invercano Spiegeltrick [Magier]" text="Zauber steigern" time="1529732809864" version="HS 5.5.3"/>
-<ereignis Abenteuerpunkte="-32" Alt="11" Info="Selbststudium" Neu="12" obj="Armatrutz [Magier]" text="Zauber steigern" time="1529732821962" version="HS 5.5.3"/>
 </ereignisse>
 <talentliste>
 <talent lernmethode="Gegenseitiges Lehren" name="Armbrust" probe=" (GE/FF/KK)" value="1"/>
@@ -390,25 +367,25 @@
 <talent lernmethode="Selbststudium" name="Schwerter" probe=" (GE/GE/KK)" value="7"/>
 <talent lernmethode="Selbststudium" name="Stäbe" probe=" (GE/GE/KK)" value="8"/>
 <talent lernmethode="Gegenseitiges Lehren" name="Wurfmesser" probe=" (GE/FF/KK)" value="0"/>
-<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Athletik" probe=" (GE/KO/KK)" value="6"/>
-<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Klettern" probe=" (MU/GE/KK)" value="6"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Athletik" probe=" (GE/KO/KK)" value="3"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Klettern" probe=" (MU/GE/KK)" value="4"/>
 <talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Körperbeherrschung" probe=" (MU/IN/GE)" value="7"/>
 <talent be="BE-2" lernmethode="Gegenseitiges Lehren" name="Reiten" probe=" (CH/GE/KK)" value="2"/>
-<talent be="BE" lernmethode="Gegenseitiges Lehren" name="Schleichen" probe=" (MU/IN/GE)" value="3"/>
+<talent be="BE" lernmethode="Gegenseitiges Lehren" name="Schleichen" probe=" (MU/IN/GE)" value="1"/>
 <talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Schwimmen" probe=" (GE/KO/KK)" value="1"/>
-<talent be="" lernmethode="Gegenseitiges Lehren" name="Selbstbeherrschung" probe=" (MU/KO/KK)" value="6"/>
-<talent be="BE-2" lernmethode="Gegenseitiges Lehren" name="Sich verstecken" probe=" (MU/IN/GE)" value="3"/>
-<talent be="BE-3" lernmethode="Gegenseitiges Lehren" name="Singen" probe=" (IN/CH/CH)" value="5"/>
-<talent be="0-&gt;BE" lernmethode="Selbststudium" name="Sinnenschärfe" probe=" (KL/IN/IN)" value="8"/>
+<talent be="" lernmethode="Gegenseitiges Lehren" name="Selbstbeherrschung" probe=" (MU/KO/KK)" value="4"/>
+<talent be="BE-2" lernmethode="Gegenseitiges Lehren" name="Sich verstecken" probe=" (MU/IN/GE)" value="0"/>
+<talent be="BE-3" lernmethode="Gegenseitiges Lehren" name="Singen" probe=" (IN/CH/CH)" value="4"/>
+<talent be="0-&gt;BE" lernmethode="Selbststudium" name="Sinnenschärfe" probe=" (KL/IN/IN)" value="7"/>
 <talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Tanzen" probe=" (CH/GE/GE)" value="3"/>
 <talent be="" lernmethode="Gegenseitiges Lehren" name="Zechen" probe=" (IN/KO/KK)" value="0"/>
-<talent lernmethode="Gegenseitiges Lehren" name="Betören" probe=" (IN/CH/CH)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Betören" probe=" (IN/CH/CH)" value="3"/>
 <talent lernmethode="Lehrmeister" name="Etikette" probe=" (KL/IN/CH)" value="7"/>
 <talent lernmethode="Gegenseitiges Lehren" name="Gassenwissen" probe=" (KL/IN/CH)" value="1"/>
 <talent lernmethode="Gegenseitiges Lehren" name="Lehren" probe=" (KL/IN/CH)" value="7"/>
 <talent lernmethode="Selbststudium" name="Menschenkenntnis" probe=" (KL/IN/CH)" value="7"/>
-<talent lernmethode="Selbststudium" name="Überreden" probe=" (MU/IN/CH)" value="9"/>
-<talent lernmethode="Gegenseitiges Lehren" name="Überzeugen" probe=" (KL/IN/CH)" value="7"/>
+<talent lernmethode="Selbststudium" name="Überreden" probe=" (MU/IN/CH)" value="8"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Überzeugen" probe=" (KL/IN/CH)" value="6"/>
 <talent lernmethode="Gegenseitiges Lehren" name="Fährtensuchen" probe=" (KL/IN/KO)" value="0"/>
 <talent lernmethode="Gegenseitiges Lehren" name="Fesseln/Entfesseln" probe=" (FF/GE/KK)" value="1"/>
 <talent lernmethode="Gegenseitiges Lehren" name="Fischen/Angeln" probe=" (IN/FF/KK)" value="1"/>
@@ -424,7 +401,7 @@
 <talent lernmethode="Gegenseitiges Lehren" name="Pflanzenkunde" probe=" (KL/IN/FF)" value="2"/>
 <talent lernmethode="Gegenseitiges Lehren" name="Rechnen" probe=" (KL/KL/IN)" value="7"/>
 <talent lernmethode="Gegenseitiges Lehren" name="Rechtskunde" probe=" (KL/KL/IN)" value="7"/>
-<talent lernmethode="Selbststudium" name="Sagen und Legenden" probe=" (KL/IN/CH)" value="8"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Sagen und Legenden" probe=" (KL/IN/CH)" value="7"/>
 <talent lernmethode="Gegenseitiges Lehren" name="Staatskunst" probe=" (KL/IN/CH)" value="5"/>
 <talent lernmethode="Gegenseitiges Lehren" name="Sternkunde" probe=" (KL/KL/IN)" value="2"/>
 <talent lernmethode="Gegenseitiges Lehren" name="Tierkunde" probe=" (MU/KL/IN)" value="1"/>
@@ -451,8 +428,8 @@
 <zauber anmerkungen="" hauszauber="false" k="C" kosten="" lernmethode="Gegenseitiges Lehren" name="Adamantium Erzstruktur" probe=" (KL/FF/KO)" reichweite="" repraesentation="Magier" value="3" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
 <zauber anmerkungen="" hauszauber="true" k="B" kosten="" lernmethode="Selbststudium" name="Adlerauge Luchsenohr" probe=" (KL/IN/FF)" reichweite="" repraesentation="Magier" value="5" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
 <zauber anmerkungen="" hauszauber="false" k="C" kosten="" lernmethode="Selbststudium" name="Ängste lindern" probe=" (MU/IN/CH)" reichweite="" repraesentation="Magier" value="8" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
-<zauber anmerkungen="" hauszauber="false" k="C" kosten="" lernmethode="Gegenseitiges Lehren" name="Applicatus Zauberspeicher" probe=" (KL/FF/FF)" reichweite="" repraesentation="Magier" value="5" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
-<zauber anmerkungen="" hauszauber="true" k="B" kosten="" lernmethode="Selbststudium" name="Armatrutz" probe=" (IN/GE/KO)" reichweite="" repraesentation="Magier" value="12" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="C" kosten="" lernmethode="Gegenseitiges Lehren" name="Applicatus Zauberspeicher" probe=" (KL/FF/FF)" reichweite="" repraesentation="Magier" value="4" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="true" k="B" kosten="" lernmethode="Selbststudium" name="Armatrutz" probe=" (IN/GE/KO)" reichweite="" repraesentation="Magier" value="11" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
 <zauber anmerkungen="" hauszauber="true" k="B" kosten="" lernmethode="Selbststudium" name="Attributo" probe=" (KL/CH/**)" reichweite="" repraesentation="Magier" value="14" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
 <zauber anmerkungen="" hauszauber="false" k="C" kosten="" lernmethode="Selbststudium" name="Balsam Salabunde" probe=" (KL/IN/CH)" reichweite="" repraesentation="Magier" value="9" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
 <zauber anmerkungen="" hauszauber="true" k="B" kosten="" lernmethode="Lehrmeister" name="Blitz dich find" probe=" (KL/IN/GE)" reichweite="" repraesentation="Magier" value="15" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
@@ -464,10 +441,10 @@
 <zauber anmerkungen="" hauszauber="false" k="C" kosten="" lernmethode="Gegenseitiges Lehren" name="Foramen Foraminor" probe=" (KL/KL/FF)" reichweite="" repraesentation="Scharlatan" value="6" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
 <zauber anmerkungen="" hauszauber="false" k="D" kosten="" lernmethode="Gegenseitiges Lehren" name="Fortifex arkane Wand" probe=" (IN/KO/KK)" reichweite="" repraesentation="Magier" value="6" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
 <zauber anmerkungen="" hauszauber="true" k="C" kosten="" lernmethode="Selbststudium" name="Fulminictus Donnerkeil" probe=" (IN/GE/KO)" reichweite="" repraesentation="Magier" value="7" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
-<zauber anmerkungen="" hauszauber="false" k="D" kosten="" lernmethode="Selbststudium" name="Gardianum Zauberschild" probe=" (KL/IN/KO)" reichweite="" repraesentation="Magier" value="9" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="D" kosten="" lernmethode="Selbststudium" name="Gardianum Zauberschild" probe=" (KL/IN/KO)" reichweite="" repraesentation="Magier" value="8" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
 <zauber anmerkungen="" hauszauber="true" k="C" kosten="" lernmethode="Selbststudium" name="Ignifaxius Flammenstrahl" probe=" (KL/FF/KO)" reichweite="" repraesentation="Magier" value="11" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
 <zauber anmerkungen="" hauszauber="false" k="D" kosten="" lernmethode="Selbststudium" name="Ignisphaero Feuerball" probe=" (MU/IN/KO)" reichweite="" repraesentation="Magier" value="10" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
-<zauber anmerkungen="" hauszauber="false" k="F" kosten="" lernmethode="Selbststudium" name="Invercano Spiegeltrick" probe=" (MU/IN/FF)" reichweite="" repraesentation="Magier" value="3" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="F" kosten="" lernmethode="Selbststudium" name="Invercano Spiegeltrick" probe=" (MU/IN/FF)" reichweite="" repraesentation="Magier" value="2" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
 <zauber anmerkungen="" hauszauber="false" k="A" kosten="" lernmethode="Gegenseitiges Lehren" name="Odem Arcanum" probe=" (KL/IN/IN)" reichweite="" repraesentation="Magier" value="3" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
 <zauber anmerkungen="" hauszauber="false" k="C" kosten="" lernmethode="Selbststudium" name="Paralysis starr wie Stein" probe=" (IN/CH/KK)" reichweite="" repraesentation="Magier" value="5" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
 <zauber anmerkungen="" hauszauber="false" k="B" kosten="" lernmethode="Selbststudium" name="Plumbumbarum schwerer Arm" probe=" (CH/GE/KK)" reichweite="" repraesentation="Magier" value="5" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
@@ -547,10 +524,10 @@
 <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
 </Transforms>
 <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
-<DigestValue>00x1LgOyfJNh+8HXigfVjnu1tOc=</DigestValue>
+<DigestValue>Ii2ltc6V5rf588G3Uy13jq/2aN4=</DigestValue>
 </Reference>
 </SignedInfo>
-<SignatureValue>ihXUTSA/jj3+riBMwOS0zFDo/JGLLZPJ+v8GO+4m52vy4NP4AiWelg==</SignatureValue>
+<SignatureValue>lI29K9UummxjBg9ivQD8YhAKgRdMCoRhEhQTpfvF5Dzj1ZUljLDnTw==</SignatureValue>
 <KeyInfo>
 <KeyValue>
 <DSAKeyValue>

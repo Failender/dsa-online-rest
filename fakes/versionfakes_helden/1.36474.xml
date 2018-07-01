@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="helden.xsl"?><helden Version="5.5.3">
+<held key="1526731633157" name="Kor Ghan" stand="1527019062322">
+<mods/>
+<basis>
+<geschlecht name="männlich"/>
+<settings name="DSA4.1"/>
+<rasse name="helden.model.rasse.Tulamide" string="Tulamide">
+<groesse gewicht="84" value="189"/>
+<aussehen alter="18" augenfarbe="schwarz" aussehentext0="" aussehentext1="" aussehentext2="" aussehentext3="" familietext0="" familietext1="" familietext2="" familietext3="" familietext4="" familietext5="" gbjahr="1003" gbmonat="12" gbtag="27" gprest="0" gpstart="110" haarfarbe="hellbraun" kalender="Bosparans Fall" stand="" titel=""/>
+</rasse>
+<kultur name="helden.model.kultur.TulamidischeStadtstaaten" schrift="Lesen/Schreiben Kusliker Zeichen" string="Tulamidische Stadtstaaten" zweitsprache="Sprachen kennen Garethi"/>
+<ausbildungen>
+<ausbildung art="Hauptprofession" name="helden.model.profession.Lehrmeister" string="Privater Lehrmeister: Schüler des Rafim Bey" tarnidentitaet="">
+<variante name="Schüler des Rafim Bey"/>
+</ausbildung>
+</ausbildungen>
+<verify value="1"/>
+<notiz notiz0="Notizen" notiz1="" notiz10="" notiz11="" notiz2="" notiz3="" notiz4="" notiz5="" notiz6="" notiz7="" notiz8="" notiz9=""/>
+<portraet value=""/>
+<abenteuerpunkte value="3890"/>
+<freieabenteuerpunkte value="46"/>
+<gilde name="keine"/>
+</basis>
+<eigenschaften>
+<eigenschaft mod="0" name="Mut" startwert="14" value="14"/>
+<eigenschaft mod="0" name="Klugheit" startwert="14" value="14"/>
+<eigenschaft mod="0" name="Intuition" startwert="13" value="13"/>
+<eigenschaft mod="0" name="Charisma" startwert="14" value="15"/>
+<eigenschaft mod="0" name="Fingerfertigkeit" startwert="12" value="12"/>
+<eigenschaft mod="0" name="Gewandtheit" startwert="12" value="12"/>
+<eigenschaft mod="0" name="Konstitution" startwert="12" value="12"/>
+<eigenschaft mod="0" name="Körperkraft" startwert="9" value="9"/>
+<eigenschaft mod="0" name="Sozialstatus" startwert="5" value="5"/>
+<eigenschaft mod="10" name="Lebensenergie" value="0"/>
+<eigenschaft mod="10" name="Ausdauer" value="0"/>
+<eigenschaft grossemeditation="0" mod="11" mrmod="-1" name="Astralenergie" permanent="-1" value="6"/>
+<eigenschaft karmalqueste="0" mod="0" name="Karmaenergie" value="0"/>
+<eigenschaft mod="-1" name="Magieresistenz" value="0"/>
+<eigenschaft mod="0" name="ini" value="11"/>
+<eigenschaft mod="0" name="at" value="7"/>
+<eigenschaft mod="0" name="pa" value="7"/>
+<eigenschaft mod="0" name="fk" value="7"/>
+</eigenschaften>
+<vt>
+<vorteil name="Astrale Regeneration" value="1"/>
+<vorteil name="Vollzauberer"/>
+<vorteil name="Eingeschränkter Sinn" value="Geruchssinn"/>
+<vorteil name="Neugier" value="10"/>
+<vorteil name="Rachsucht" value="10"/>
+<vorteil name="Verpflichtungen"/>
+<vorteil name="Vorurteile gegen">
+<auswahl position="0" value="10"/>
+<auswahl position="1" value="dicke menschen"/>
+</vorteil>
+</vt>
+<sf>
+<sonderfertigkeit name="Große Meditation"/>
+<sonderfertigkeit name="Invocatio Integra"/>
+<sonderfertigkeit name="Kulturkunde">
+<kultur name="Tulamidenlande"/>
+</sonderfertigkeit>
+<sonderfertigkeit name="Merkmalskenntnis: Beschwörung"/>
+<sonderfertigkeit name="Merkmalskenntnis: Dämonisch"/>
+<sonderfertigkeit name="Regeneration I"/>
+<sonderfertigkeit name="Repräsentation: Magier"/>
+<sonderfertigkeit name="Ritualkenntnis: Gildenmagie"/>
+<sonderfertigkeit name="Stabzauber: Bindung"/>
+<sonderfertigkeit name="Talentspezialisierung Malen/Zeichnen (Architektur)">
+<talent name="Malen/Zeichnen"/>
+<spezialisierung name="Architektur"/>
+</sonderfertigkeit>
+<sonderfertigkeit name="Zauberzeichen"/>
+<sonderfertigkeit name="Zauberzeichen: Bann- und Schutzkreis gegen Geisterwesen"/>
+<sonderfertigkeit name="Zauberzeichen: Bann- und Schutzkreis gegen gehörnte Dämonen"/>
+<sonderfertigkeit name="Zauberzeichen: Bann- und Schutzkreis gegen niedere Dämonen"/>
+<sonderfertigkeit name="Zauberzeichen: Glyphe der Elementaren Attraktion"/>
+<sonderfertigkeit name="Zauberzeichen: Satinavs Siegel"/>
+<sonderfertigkeit name="Zauberzeichen: Schutzkreis gegen Ungeziefer"/>
+</sf>
+<ereignisse>
+<ereignis obj="max GP für Helden: 110" text="EINSTELLUNG" time="1526731634161" version="HS 5.5.3"/>
+<ereignis obj="max Eigenschafts-GP für Helden: 100" text="EINSTELLUNG" time="1526731634161" version="HS 5.5.3"/>
+<ereignis obj="max Eigenschafts-Wert für Helden: 14" text="EINSTELLUNG" time="1526731634161" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="0" kommentar="0 GP" obj="Rasse: Tulamide" text="RKP" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="0" kommentar="3 GP" obj="Kultur: Tulamidische Stadtstaaten" text="RKP" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="0" kommentar="23 GP" obj="Profession: Privater Lehrmeister: Schüler des Rafim Bey" text="RKP" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="14" kommentar="14 GP" obj="Mut: 14" text="EIGENSCHAFTEN" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="14" kommentar="14 GP" obj="Klugheit: 14" text="EIGENSCHAFTEN" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="13" kommentar="13 GP" obj="Intuition: 13" text="EIGENSCHAFTEN" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="14" kommentar="14 GP" obj="Charisma: 14" text="EIGENSCHAFTEN" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="12" kommentar="12 GP" obj="Fingerfertigkeit: 12" text="EIGENSCHAFTEN" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="12" kommentar="12 GP" obj="Gewandtheit: 12" text="EIGENSCHAFTEN" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="12" kommentar="12 GP" obj="Konstitution: 12" text="EIGENSCHAFTEN" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="9" kommentar="9 GP" obj="Körperkraft: 9" text="EIGENSCHAFTEN" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="5" kommentar="0 GP" obj="Sozialstatus: 5" text="EIGENSCHAFTEN" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="1" kommentar="3 AP" obj="Hiebwaffen: 1" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="2" kommentar="7 AP" obj="Hiebwaffen: 2" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="3" kommentar="12 AP" obj="Hiebwaffen: 3" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="4" kommentar="17 AP" obj="Hiebwaffen: 4" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="5" kommentar="22 AP" obj="Hiebwaffen: 5" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="6" kommentar="27 AP" obj="Hiebwaffen: 6" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="5" kommentar="11 AP" obj="Magiekunde: 5" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="6" kommentar="14 AP" obj="Magiekunde: 6" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="7" kommentar="17 AP" obj="Magiekunde: 7" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="5" kommentar="11 AP" obj="Malen/Zeichnen: 5" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="4" kommentar="21 AP" obj="Ritualkenntnis: Gildenmagie: 4" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="5" kommentar="28 AP" obj="Ritualkenntnis: Gildenmagie: 5" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="6" kommentar="34 AP" obj="Ritualkenntnis: Gildenmagie: 6" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="7" kommentar="41 AP" obj="Ritualkenntnis: Gildenmagie: 7" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="8" kommentar="48 AP" obj="Ritualkenntnis: Gildenmagie: 8" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="9" kommentar="55 AP" obj="Ritualkenntnis: Gildenmagie: 9" text="TALENT" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="0" kommentar="2 AP" obj="Armatrutz [Magier]: 0" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="1" kommentar="2 AP" obj="Armatrutz [Magier]: 1" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="2" kommentar="4 AP" obj="Armatrutz [Magier]: 2" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="3" kommentar="6 AP" obj="Blitz dich find [Magier]: 3" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="4" kommentar="8 AP" obj="Blitz dich find [Magier]: 4" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="5" kommentar="11 AP" obj="Blitz dich find [Magier]: 5" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="8" kommentar="19 AP" obj="Invocatio maior [Magier] (HZ): 8" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="9" kommentar="22 AP" obj="Invocatio maior [Magier] (HZ): 9" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="10" kommentar="25 AP" obj="Invocatio maior [Magier] (HZ): 10" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="11" kommentar="28 AP" obj="Invocatio maior [Magier] (HZ): 11" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="0" kommentar="2 AP" obj="Somnigravis tiefer Schlaf [Magier]: 0" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="2" kommentar="6 AP" obj="Balsam Salabunde [Magier]: 2" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="3" kommentar="9 AP" obj="Balsam Salabunde [Magier]: 3" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="5" kommentar="17 AP" obj="Gardianum Zauberschild [Magier] (HZ): 5" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="0" kommentar="3 AP" obj="Ignifaxius Flammenstrahl [Magier]: 0" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="1" kommentar="2 AP" obj="Ignifaxius Flammenstrahl [Magier]: 1" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="2" kommentar="6 AP" obj="Ignifaxius Flammenstrahl [Magier]: 2" text="ZAUBER" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="0" kommentar="4 GP" obj="Merkmalskenntnis: Beschwörung" text="SF" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="0" kommentar="1 GP" obj="Regeneration I" text="SF" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="0" kommentar="4 GP" obj="Astrale Regeneration: 1" text="VORTEILE" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="0" kommentar="-5 GP" obj="Eingeschränkter Sinn: Geruchssinn" text="VORTEILE" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="0" kommentar="-5 GP" obj="Neugier: 10" text="VORTEILE" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="0" kommentar="-10 GP" obj="Rachsucht: 10" text="VORTEILE" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="0" kommentar="0 GP" obj="Verpflichtungen" text="VORTEILE" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="0" kommentar="0 GP" obj="Vollzauberer" text="VORTEILE" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Alt="0" Neu="0" kommentar="-5 GP" obj="Vorurteile gegen: dicke menschen 10" text="VORTEILE" time="1526731634163" version="HS 5.5.3"/>
+<ereignis obj="Auswahl" text="Lesen/Schreiben Kusliker Zeichen" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Neu="1" obj="Auswahl" text="Gaukeleien" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Neu="4" obj="Auswahl" text="Hartes schmelze! [Borbaradianer]" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Neu="1" obj="Auswahl" text="Salander Mutander [Magier]" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Neu="1" obj="Auswahl" text="Bannbaladin [Magier]" time="1526731634163" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="200" kommentar="erstes abenteuer Gesamt AP: 200 Verfügbare AP: 200" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1526733301613" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-41" Alt="6;0;0" Info="Selbststudium" Neu="7;0;0" obj="Hiebwaffen" text="Nahkampftalent steigern" time="1526733326390" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-7" Alt="5" Info="SE, Gegenseitiges Lehren" Neu="6" obj="Blitz dich find [Magier]" text="Zauber steigern" time="1526733335551" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-9" Alt="2" Info="Selbststudium" Neu="3" obj="Armatrutz [Magier]" text="Zauber steigern" time="1526733339766" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-25" Alt="6" Info="Selbststudium" Neu="7" obj="Blitz dich find [Magier]" text="Zauber steigern" time="1526733355850" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-2" Alt="0" Info="Selbststudium" Neu="1" obj="Somnigravis tiefer Schlaf [Magier]" text="Zauber steigern" time="1526733369854" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-6" Alt="1" Info="Selbststudium" Neu="2" obj="Somnigravis tiefer Schlaf [Magier]" text="Zauber steigern" time="1526733370372" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-9" Alt="2" Info="Selbststudium" Neu="3" obj="Somnigravis tiefer Schlaf [Magier]" text="Zauber steigern" time="1526733370907" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-15" Alt="2" Info="Selbststudium" Neu="3" obj="Sinnenschärfe" text="Talent steigern" time="1526733388497" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-29" Alt="7" Info="Selbststudium" Neu="8" obj="Magiekunde" text="Talent steigern" time="1526733397961" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-21" Alt="5" Info="Selbststudium" Neu="6" obj="Malen/Zeichnen" text="Talent steigern" time="1526733403648" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-25" Alt="6" Info="Selbststudium" Neu="7" obj="Malen/Zeichnen" text="Talent steigern" time="1526733404852" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="300" kommentar="2.abenzeuer Gesamt AP: 300 Verfügbare AP: 300" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1526733440360" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-50" Alt="-1" Neu="0" obj="Astralenergie" text="Eigenschaft Rückkauf" time="1526733445687" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-8" Alt="0" Neu="1" obj="Astralenergie" text="Eigenschaft steigern" time="1526733447033" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-95" Alt="9" Info="Selbststudium" Neu="10" obj="Ritualkenntnis: Gildenmagie" text="Talent steigern" time="1526733477186" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-4" Alt="0" Info="Selbststudium" Neu="1" obj="Athletik" text="Talent steigern" time="1526733486714" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-28" Alt="4" Info="Selbststudium" Neu="5" obj="Zechen" text="Talent steigern" time="1526733505969" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-9" Alt="1" Info="Selbststudium" Neu="2" obj="Körperbeherrschung" text="Talent steigern" time="1526733512024" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-15" Alt="2" Info="Selbststudium" Neu="3" obj="Selbstbeherrschung" text="Talent steigern" time="1526733513236" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-29" Alt="7" Info="Selbststudium" Neu="8" obj="Malen/Zeichnen" text="Talent steigern" time="1526733518923" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-29" Alt="7" Info="Selbststudium" Neu="8" obj="Blitz dich find [Magier]" text="Zauber steigern" time="1526733529518" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-8" Alt="3" Info="SE, Gegenseitiges Lehren" Neu="4" obj="Balsam Salabunde [Magier]" text="Zauber steigern" time="1526733533502" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-13" Alt="3" Info="Selbststudium" Neu="4" obj="Somnigravis tiefer Schlaf [Magier]" text="Zauber steigern" time="1526733544416" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-17" Alt="4" Info="Selbststudium" Neu="5" obj="Somnigravis tiefer Schlaf [Magier]" text="Zauber steigern" time="1526733545404" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="250" kommentar="ertert Gesamt AP: 250 Verfügbare AP: 250" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1526733577172" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-29" Alt="7;0;0" Info="SE, Gegenseitiges Lehren" Neu="8;0;0" obj="Hiebwaffen" text="Nahkampftalent steigern" time="1526733595201" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-11" Alt="8" Info="SE, Gegenseitiges Lehren" Neu="9" obj="Magiekunde" text="Talent steigern" time="1526733607303" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-12" Alt="2" Info="Selbststudium" Neu="3" obj="Ignifaxius Flammenstrahl [Magier]" text="Zauber steigern" time="1526733630509" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-17" Alt="3" Info="Selbststudium" Neu="4" obj="Ignifaxius Flammenstrahl [Magier]" text="Zauber steigern" time="1526733630747" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-27" Alt="5" Info="Selbststudium" Neu="6" obj="Gardianum Zauberschild [Magier]" text="Zauber steigern" time="1526733638674" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-34" Alt="8" Info="Selbststudium" Neu="9" obj="Blitz dich find [Magier]" text="Zauber steigern" time="1526733643725" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-34" Alt="8" Info="Selbststudium" Neu="9" obj="Malen/Zeichnen" text="Talent steigern" time="1526733663848" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="200" kommentar="namenlosenwoche Gesamt AP: 200 Verfügbare AP: 200" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1526733683561" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-21" Alt="5" Info="SE, Gegenseitiges Lehren" Neu="6" obj="Zechen" text="Talent steigern" time="1526733709695" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-38" Alt="9" Info="Selbststudium" Neu="10" obj="Malen/Zeichnen" text="Talent steigern" time="1526733719461" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-18" Alt="1" Neu="2" obj="Astralenergie" text="Eigenschaft steigern" time="1526733726176" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-33" Alt="6" Info="Selbststudium" Neu="7" obj="Gardianum Zauberschild [Magier]" text="Zauber steigern" time="1526733741951" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-39" Alt="7" Info="Selbststudium" Neu="8" obj="Gardianum Zauberschild [Magier]" text="Zauber steigern" time="1526733742532" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="450" kommentar="einhorn gesamt Gesamt AP: 450 Verfügbare AP: 450" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1526733752691" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-2" Alt="0" Info="SE, Gegenseitiges Lehren" Neu="1" obj="Schwimmen" text="Talent steigern" time="1526733778883" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-14" Alt="10" Info="SE, Gegenseitiges Lehren" Neu="11" obj="Malen/Zeichnen" text="Talent steigern" time="1526733784379" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-7" Alt="5" Info="SE, Gegenseitiges Lehren" Neu="6" obj="Somnigravis tiefer Schlaf [Magier]" text="Zauber steigern" time="1526733806266" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-25" Alt="6" Info="Selbststudium" Neu="7" obj="Somnigravis tiefer Schlaf [Magier]" text="Zauber steigern" time="1526733809324" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-55" Alt="8;0;0" Info="Selbststudium" Neu="9;0;0" obj="Hiebwaffen" text="Nahkampftalent steigern" time="1526733832735" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-17" Alt="4" Info="Gegenseitiges Lehren" Neu="5" obj="Balsam Salabunde [Magier]" text="Zauber steigern" time="1526733838494" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-27" Alt="5" Info="Selbststudium" Neu="6" obj="Balsam Salabunde [Magier]" text="Zauber steigern" time="1526733847226" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-15" Neu="0" obj="Motoricus [Magier]" text="Zauber aktivieren" time="1526733880744" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-3" Alt="0" Info="Selbststudium" Neu="1" obj="Motoricus [Magier]" text="Zauber steigern" time="1526733885483" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-7" Alt="1" Info="Selbststudium" Neu="2" obj="Motoricus [Magier]" text="Zauber steigern" time="1526733885705" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-12" Alt="2" Info="Selbststudium" Neu="3" obj="Motoricus [Magier]" text="Zauber steigern" time="1526733885890" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-17" Alt="3" Info="Selbststudium" Neu="4" obj="Motoricus [Magier]" text="Zauber steigern" time="1526733886096" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-22" Alt="4" Info="Selbststudium" Neu="5" obj="Motoricus [Magier]" text="Zauber steigern" time="1526733886359" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-27" Alt="5" Info="Selbststudium" Neu="6" obj="Motoricus [Magier]" text="Zauber steigern" time="1526733886877" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-33" Alt="6" Info="Selbststudium" Neu="7" obj="Balsam Salabunde [Magier]" text="Zauber steigern" time="1526733971712" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-13" Alt="3" Info="Selbststudium" Neu="4" obj="Armatrutz [Magier]" text="Zauber steigern" time="1526733973799" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-17" Alt="4" Info="Selbststudium" Neu="5" obj="Armatrutz [Magier]" text="Zauber steigern" time="1526733974199" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-21" Alt="5" Info="Selbststudium" Neu="6" obj="Armatrutz [Magier]" text="Zauber steigern" time="1526733974684" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-38" Alt="9" Info="Selbststudium" Neu="10" obj="Blitz dich find [Magier]" text="Zauber steigern" time="1526733977516" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-45" Alt="8" Info="Selbststudium" Neu="9" obj="Gardianum Zauberschild [Magier]" text="Zauber steigern" time="1526733980667" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="200" kommentar=" Gesamt AP: 200 Verfügbare AP: 200" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1526734025972" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-65" Alt="11" Info="Selbststudium" Neu="12" obj="Malen/Zeichnen" text="Talent steigern" time="1526734034148" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-30" Alt="2" Neu="3" obj="Astralenergie" text="Eigenschaft steigern" time="1526734070518" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-100" obj="Zauberzeichen" text="Sonderfertigkeit hinzugefügt" time="1526734080720" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-75" obj="Zauberzeichen: Glyphe der Elementaren Attraktion" text="Sonderfertigkeit hinzugefügt" time="1526734102454" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-25" obj="Zauberzeichen: Bann- und Schutzkreis gegen Geisterwesen" text="Sonderfertigkeit hinzugefügt" time="1526734126239" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-25" obj="Zauberzeichen: Schutzkreis gegen Ungeziefer" text="Sonderfertigkeit hinzugefügt" time="1526734129736" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="200" kommentar=" Gesamt AP: 200 Verfügbare AP: 200" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1526734150349" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-65" Alt="11" Info="Selbststudium" Neu="12" obj="Invocatio maior [Magier]" text="Zauber steigern" time="1526734152415" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-80" obj="Talentspezialisierung Malen/Zeichnen (Architektur)" text="Sonderfertigkeit hinzugefügt" time="1526734167010" version="HS 5.5.3"/>
+<ereignis kommentar="falsch gesteigert" obj="Abenteuerpunkte (Ausgaben)" text="Ereignis eingeben" time="1526734232847" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="200" kommentar=" Gesamt AP: 200 Verfügbare AP: 200" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1526734392155" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-55" Alt="10" Info="Selbststudium" Neu="11" obj="Blitz dich find [Magier]" text="Zauber steigern" time="1526734397524" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-50" Alt="9" Info="Selbststudium" Neu="10" obj="Gardianum Zauberschild [Magier]" text="Zauber steigern" time="1526734401681" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-140" Alt="10" Info="Selbststudium" Neu="11" obj="Ritualkenntnis: Gildenmagie" text="Talent steigern" time="1526734454394" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-65" Alt="9;0;0" Info="Selbststudium" Neu="10;0;0" obj="Hiebwaffen" text="Nahkampftalent steigern" time="1526734463533" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="200" kommentar=" Gesamt AP: 200 Verfügbare AP: 200" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1526734508604" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-6" Alt="4" Info="SE, Gegenseitiges Lehren" Neu="5" obj="Sagen und Legenden" text="Talent steigern" time="1526734517456" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-4" Alt="3" Info="SE, Gegenseitiges Lehren" Neu="4" obj="Götter und Kulte" text="Talent steigern" time="1526734524370" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-9" Alt="1" Info="Selbststudium" Neu="2" obj="Athletik" text="Talent steigern" time="1526734531691" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-15" Alt="2" Info="Selbststudium" Neu="3" obj="Athletik" text="Talent steigern" time="1526734532239" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-9" Alt="1" Info="Selbststudium" Neu="2" obj="Klettern" text="Talent steigern" time="1526734534982" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-21" Alt="3" Info="Selbststudium" Neu="4" obj="Selbstbeherrschung" text="Talent steigern" time="1526734538720" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-28" Alt="4" Info="Selbststudium" Neu="5" obj="Selbstbeherrschung" text="Talent steigern" time="1526734540283" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-13" Alt="3" Info="Selbststudium" Neu="4" obj="Überreden" text="Talent steigern" time="1526734554072" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-17" Alt="4" Info="Selbststudium" Neu="5" obj="Überreden" text="Talent steigern" time="1526734554803" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-13" Alt="3" Info="Selbststudium" Neu="4" obj="Hauswirtschaft" text="Talent steigern" time="1526734563067" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="200" kommentar=" Gesamt AP: 200 Verfügbare AP: 200" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1526734601228" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-42" Alt="3" Neu="4" obj="Astralenergie" text="Eigenschaft steigern" time="1526734608082" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-65" Alt="11" Info="Selbststudium" Neu="12" obj="Blitz dich find [Magier]" text="Zauber steigern" time="1526734620219" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-70" Alt="10" Info="Selbststudium" Neu="11" obj="Gardianum Zauberschild [Magier]" text="Zauber steigern" time="1526734622992" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="250" kommentar=" Gesamt AP: 250 Verfügbare AP: 250" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1526734644533" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-55" Alt="4" Neu="5" obj="Astralenergie" text="Eigenschaft steigern" time="1526734647841" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-210" Alt="14" Info="SE" Neu="15" obj="Charisma" text="Eigenschaft steigern" time="1526734652073" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="150" kommentar=" Gesamt AP: 150 Verfügbare AP: 150" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1526734805194" version="HS 5.5.3"/>
+<ereignis Lebensenergie="-2" obj="Balsam Salabunde, Rettung von der Schwelle des Todes (Patient)" text="Ereignis eingeben" time="1526734822808" version="HS 5.5.3"/>
+<ereignis Lebensenergie="2" obj="Sonstiges Ereignis (Hinzugewinn)" text="Ereignis eingeben" time="1526734845703" version="HS 5.5.3"/>
+<ereignis Astralenergie="-1" obj="Sonstiges Ereignis (Verlust)" text="Ereignis eingeben" time="1526734874995" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-50" Alt="-1" Neu="0" obj="Astralenergie" text="Eigenschaft Rückkauf" time="1526734880618" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-70" Alt="5" Neu="6" obj="Astralenergie" text="Eigenschaft steigern" time="1526734882260" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="200" kommentar=" Gesamt AP: 200 Verfügbare AP: 200" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1526734911520" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-80" Alt="11" Info="Selbststudium" Neu="12" obj="Gardianum Zauberschild [Magier]" text="Zauber steigern" time="1526734936562" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-160" Alt="11" Info="Selbststudium" Neu="12" obj="Ritualkenntnis: Gildenmagie" text="Talent steigern" time="1526734952171" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-1" Alt="0" Info="SE, Gegenseitiges Lehren" Neu="1" obj="Kochen" text="Talent steigern" time="1526734973872" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-34" Alt="5" Info="Selbststudium" Neu="6" obj="Selbstbeherrschung" text="Talent steigern" time="1526734986426" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="200" kommentar=" Gesamt AP: 200 Verfügbare AP: 200" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1526734993835" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-105" Alt="10;0;0" Info="Selbststudium" Neu="11;0;0" obj="Hiebwaffen" text="Nahkampftalent steigern" time="1526735005244" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-38" Alt="9" Info="Selbststudium" Neu="10" obj="Magiekunde" text="Talent steigern" time="1526735022398" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-55" Alt="10" Info="Selbststudium" Neu="11" obj="Magiekunde" text="Talent steigern" time="1526735026657" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="150" kommentar=" Gesamt AP: 150 Verfügbare AP: 150" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1526735043656" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-65" Alt="11" Info="Selbststudium" Neu="12" obj="Magiekunde" text="Talent steigern" time="1526735047475" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-70" Alt="12" Info="Selbststudium" Neu="13" obj="Malen/Zeichnen" text="Talent steigern" time="1526735059066" version="HS 5.5.3"/>
+<ereignis Astralenergie="-1" obj="Sonstiges Ereignis (Verlust)" text="Ereignis eingeben" time="1526735089318" version="HS 5.5.3"/>
+</ereignisse>
+<talentliste>
+<talent lernmethode="Gegenseitiges Lehren" name="Dolche" probe=" (GE/GE/KK)" value="2"/>
+<talent lernmethode="Selbststudium" name="Hiebwaffen" probe=" (GE/GE/KK)" value="11"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Raufen" probe=" (GE/GE/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Ringen" probe=" (GE/GE/KK)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Säbel" probe=" (GE/GE/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Stäbe" probe=" (GE/GE/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Wurfmesser" probe=" (GE/FF/KK)" value="0"/>
+<talent be="BEx2" lernmethode="Selbststudium" name="Athletik" probe=" (GE/KO/KK)" value="3"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Gaukeleien" probe=" (MU/CH/FF)" value="1"/>
+<talent be="BEx2" lernmethode="Selbststudium" name="Klettern" probe=" (MU/GE/KK)" value="2"/>
+<talent be="BEx2" lernmethode="Selbststudium" name="Körperbeherrschung" probe=" (MU/IN/GE)" value="2"/>
+<talent be="BE-2" lernmethode="Gegenseitiges Lehren" name="Reiten" probe=" (CH/GE/KK)" value="2"/>
+<talent be="BE" lernmethode="Gegenseitiges Lehren" name="Schleichen" probe=" (MU/IN/GE)" value="1"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Schwimmen" probe=" (GE/KO/KK)" value="1"/>
+<talent be="" lernmethode="Selbststudium" name="Selbstbeherrschung" probe=" (MU/KO/KK)" value="6"/>
+<talent be="BE-2" lernmethode="Gegenseitiges Lehren" name="Sich verstecken" probe=" (MU/IN/GE)" value="1"/>
+<talent be="BE-3" lernmethode="Gegenseitiges Lehren" name="Singen" probe=" (IN/CH/CH)" value="0"/>
+<talent be="0-&gt;BE" lernmethode="Selbststudium" name="Sinnenschärfe" probe=" (KL/IN/IN)" value="3"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Tanzen" probe=" (CH/GE/GE)" value="1"/>
+<talent be="" lernmethode="Selbststudium" name="Zechen" probe=" (IN/KO/KK)" value="6"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Etikette" probe=" (KL/IN/CH)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Gassenwissen" probe=" (KL/IN/CH)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Lehren" probe=" (KL/IN/CH)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Menschenkenntnis" probe=" (KL/IN/CH)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Sich verkleiden" probe=" (MU/CH/GE)" value="1"/>
+<talent lernmethode="Selbststudium" name="Überreden" probe=" (MU/IN/CH)" value="5"/>
+<talent lernmethode="Selbststudium" name="Fährtensuchen" probe=" (KL/IN/KO)" value="0"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Orientierung" probe=" (KL/IN/IN)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Wildnisleben" probe=" (IN/GE/KO)" value="0"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Brett-/Kartenspiel" probe=" (KL/KL/IN)" value="5"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Geschichtswissen" probe=" (KL/KL/IN)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Gesteinskunde" probe=" (KL/IN/FF)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Götter und Kulte" probe=" (KL/KL/IN)" se="true" value="4"/>
+<talent lernmethode="Selbststudium" name="Magiekunde" probe=" (KL/KL/IN)" value="12"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Mechanik" probe=" (KL/KL/FF)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Pflanzenkunde" probe=" (KL/IN/FF)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Rechnen" probe=" (KL/KL/IN)" value="5"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Rechtskunde" probe=" (KL/KL/IN)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Sagen und Legenden" probe=" (KL/IN/CH)" value="5"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Schätzen" probe=" (KL/IN/IN)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Sternkunde" probe=" (KL/KL/IN)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Tierkunde" probe=" (MU/KL/IN)" value="2"/>
+<talent k="18" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Garethi" probe=" (KL/IN/CH)" value="10"/>
+<talent k="18" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Tulamidya" probe=" (KL/IN/CH)" value="14"/>
+<talent k="21" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Urtulamidya" probe=" (KL/IN/CH)" value="5"/>
+<talent k="15" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Zhayad" probe=" (KL/IN/CH)" value="8"/>
+<talent k="10" lernmethode="Gegenseitiges Lehren" name="Lesen/Schreiben Kusliker Zeichen" probe=" (KL/KL/FF)" value="5"/>
+<talent k="14" lernmethode="Gegenseitiges Lehren" name="Lesen/Schreiben Tulamidya" probe=" (KL/KL/FF)" value="8"/>
+<talent k="16" lernmethode="Gegenseitiges Lehren" name="Lesen/Schreiben Urtulamidya" probe=" (KL/KL/FF)" value="5"/>
+<talent k="18" lernmethode="Gegenseitiges Lehren" name="Lesen/Schreiben Zhayad" probe=" (KL/KL/FF)" value="8"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Alchimie" probe=" (MU/KL/FF)" value="2"/>
+<talent lernmethode="Selbststudium" name="Hauswirtschaft" probe=" (IN/CH/FF)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Heilkunde: Wunden" probe=" (KL/CH/FF)" value="0"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Holzbearbeitung" probe=" (KL/FF/KK)" value="0"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Kochen" probe=" (KL/IN/FF)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Lederarbeiten" probe=" (KL/FF/FF)" value="0"/>
+<talent lernmethode="Selbststudium" name="Malen/Zeichnen" probe=" (KL/IN/FF)" value="13"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Schneidern" probe=" (KL/FF/FF)" value="0"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Winzer" probe=" (KL/FF/KK)" value="3"/>
+<talent lernmethode="Selbststudium" name="Ritualkenntnis: Gildenmagie" probe=" (--/--/--)" value="12"/>
+</talentliste>
+<zauberliste>
+<zauber anmerkungen="" hauszauber="true" k="C" kosten="" lernmethode="Gegenseitiges Lehren" name="Abvenenum reine Speise" probe=" (KL/KL/FF)" reichweite="" repraesentation="Magier" value="5" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="D" kosten="" lernmethode="Gegenseitiges Lehren" name="Analys Arkanstruktur" probe=" (KL/KL/IN)" reichweite="" repraesentation="Magier" value="1" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="B" kosten="" lernmethode="Selbststudium" name="Armatrutz" probe=" (IN/GE/KO)" reichweite="" repraesentation="Magier" value="6" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="B" kosten="" lernmethode="Gegenseitiges Lehren" name="Attributo" probe=" (KL/CH/**)" reichweite="" repraesentation="Magier" value="2" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="C" kosten="" lernmethode="Selbststudium" name="Balsam Salabunde" probe=" (KL/IN/CH)" reichweite="" repraesentation="Magier" value="7" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="B" kosten="" lernmethode="Gegenseitiges Lehren" name="Bannbaladin" probe=" (IN/CH/CH)" reichweite="" repraesentation="Magier" value="1" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="C" kosten="" lernmethode="Gegenseitiges Lehren" name="Beschwörung vereiteln" probe=" (MU/IN/CH)" reichweite="" repraesentation="Magier" value="4" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="B" kosten="" lernmethode="Selbststudium" name="Blitz dich find" probe=" (KL/IN/GE)" reichweite="" repraesentation="Magier" value="12" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="C" kosten="" lernmethode="Gegenseitiges Lehren" name="Elementarbann" probe=" (IN/CH/KO)" reichweite="" repraesentation="Magier" value="3" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="A" kosten="" lernmethode="Gegenseitiges Lehren" name="Flim Flam Funkel" probe=" (KL/KL/FF)" reichweite="" repraesentation="Magier" value="5" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="C" kosten="" lernmethode="Gegenseitiges Lehren" name="Fulminictus Donnerkeil" probe=" (IN/GE/KO)" reichweite="" repraesentation="Magier" value="3" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="true" k="D" kosten="" lernmethode="Selbststudium" name="Gardianum Zauberschild" probe=" (KL/IN/KO)" reichweite="" repraesentation="Magier" value="12" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="true" k="C" kosten="" lernmethode="Gegenseitiges Lehren" name="Hartes schmelze!" probe=" (MU/KL/KK)" reichweite="" repraesentation="Borbaradianer" value="4" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="C" kosten="" lernmethode="Selbststudium" name="Ignifaxius Flammenstrahl" probe=" (KL/FF/KO)" reichweite="" repraesentation="Magier" value="4" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="true" k="E" kosten="" lernmethode="Selbststudium" name="Invocatio maior" probe=" (MU/MU/CH)" reichweite="" repraesentation="Magier" value="12" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="true" k="D" kosten="" lernmethode="Gegenseitiges Lehren" name="Invocatio minor" probe=" (MU/MU/CH)" reichweite="" repraesentation="Magier" value="7" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="true" k="D" kosten="" lernmethode="Gegenseitiges Lehren" name="Klarum Purum" probe=" (KL/KL/CH)" reichweite="" repraesentation="Magier" value="7" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="A" kosten="" lernmethode="Gegenseitiges Lehren" name="Manifesto Element" probe=" (KL/IN/CH)" reichweite="" repraesentation="Magier" value="3" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="C" kosten="" lernmethode="Selbststudium" name="Motoricus" probe=" (KL/FF/KK)" reichweite="" repraesentation="Magier" value="6" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="A" kosten="" lernmethode="Gegenseitiges Lehren" name="Odem Arcanum" probe=" (KL/IN/IN)" reichweite="" repraesentation="Magier" value="5" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="true" k="D" kosten="" lernmethode="Gegenseitiges Lehren" name="Pentagramma Sphärenbann" probe=" (MU/MU/CH)" reichweite="" repraesentation="Magier" value="4" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="E" kosten="" lernmethode="Gegenseitiges Lehren" name="Salander Mutander" probe=" (KL/CH/KO)" reichweite="" repraesentation="Magier" value="1" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+<zauber anmerkungen="" hauszauber="false" k="B" kosten="" lernmethode="Selbststudium" name="Somnigravis tiefer Schlaf" probe=" (KL/CH/CH)" reichweite="" repraesentation="Magier" value="7" variante="" wirkungsdauer="" zauberdauer="" zauberkommentar=""/>
+</zauberliste>
+<kampf>
+<kampfwerte name="Dolche">
+<attacke value="7"/>
+<parade value="9"/>
+</kampfwerte>
+<kampfwerte name="Hiebwaffen">
+<attacke value="14"/>
+<parade value="11"/>
+</kampfwerte>
+<kampfwerte name="Raufen">
+<attacke value="8"/>
+<parade value="7"/>
+</kampfwerte>
+<kampfwerte name="Ringen">
+<attacke value="9"/>
+<parade value="7"/>
+</kampfwerte>
+<kampfwerte name="Säbel">
+<attacke value="8"/>
+<parade value="7"/>
+</kampfwerte>
+<kampfwerte name="Stäbe">
+<attacke value="8"/>
+<parade value="7"/>
+</kampfwerte>
+</kampf>
+<gegenstände>
+<gegenstand anzahl="1" name="Streitkolben" slot="0"/>
+</gegenstände>
+<BoniWaffenlos/>
+<kommentare>
+<sfInfos dauer="" kosten="" probe="" sf="" sfname="Stabzauber: Bindung" wirkung=""/>
+<sfInfos dauer="" kosten="" probe="" sf="" sfname="Zauberzeichen" wirkung=""/>
+<sfInfos dauer="" kosten="" probe="" sf="" sfname="Zauberzeichen: Bann- und Schutzkreis gegen Geisterwesen" wirkung=""/>
+<sfInfos dauer="" kosten="" probe="" sf="" sfname="Zauberzeichen: Bann- und Schutzkreis gegen gehörnte Dämonen" wirkung=""/>
+<sfInfos dauer="" kosten="" probe="" sf="" sfname="Zauberzeichen: Bann- und Schutzkreis gegen niedere Dämonen" wirkung=""/>
+<sfInfos dauer="" kosten="" probe="" sf="" sfname="Zauberzeichen: Glyphe der Elementaren Attraktion" wirkung=""/>
+<sfInfos dauer="" kosten="" probe="" sf="" sfname="Zauberzeichen: Satinavs Siegel" wirkung=""/>
+<sfInfos dauer="" kosten="" probe="" sf="" sfname="Zauberzeichen: Schutzkreis gegen Ungeziefer" wirkung=""/>
+</kommentare>
+<ausrüstungen>
+<heldenausruestung bezeichner="" bfakt="1" bfmin="1" hand="rechts" name="nkwaffe1" schild="0" set="0" slot="0" talent="Hiebwaffen" waffenname="Streitkolben"/>
+<heldenausruestung name="jagtwaffe" nummer="0" set="0"/>
+</ausrüstungen>
+<verbindungen/>
+<extention/>
+<geldboerse/>
+<plugindata/>
+</held>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+<SignedInfo>
+<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/>
+<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#dsa-sha1"/>
+<Reference URI="">
+<Transforms>
+<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+</Transforms>
+<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<DigestValue>tfENdoY3hbQ7pncsxn7o16XG0wA=</DigestValue>
+</Reference>
+</SignedInfo>
+<SignatureValue>hUcXclxX4p+baZ1upmIV4eK6/ABAW9IG1/1jXckzgsYFrqH4/2syhw==</SignatureValue>
+<KeyInfo>
+<KeyValue>
+<DSAKeyValue>
+<P>/KaCzo4Syrom78z3EQ5SbbB4sF7ey80etKII864WF64B81uRpH5t9jQTxeEu0ImbzRMqzVDZkVG9
+xD7nN1kuFw==</P>
+<Q>li7dzDacuo67Jg7mtqEm2TRuOMU=</Q>
+<G>Z4Rxsnqc9E7pGknFFH2xqaryRPBaQ01khpMdLRQnG541Awtx/XPaF5Bpsy4pNWMOHCBiNU0Nogps
+QW5QvnlMpA==</G>
+<Y>uVrvWkzIbUdL7E80AiD0PJDX3Ck0beY5StXp1wDAA1/ePpemd6rTBNd8YoCzOovNrX016YMcTSiO
+iExM4RWtJA==</Y>
+</DSAKeyValue>
+</KeyValue>
+</KeyInfo>
+</Signature>
+</helden>

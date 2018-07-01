@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="helden.xsl"?><helden Version="5.5.3">
+<held key="1466359339990" name="Alana Celter-Rhagma" stand="1469039194953">
+<mods/>
+<basis>
+<geschlecht name="weiblich"/>
+<settings name="DSA4.1">
+<inc name="Wege der Alchimie"/>
+</settings>
+<rasse name="helden.model.rasse.Mittellaender" string="Mittelländerin">
+<groesse gewicht="83" value="183"/>
+<aussehen alter="21" augenfarbe="grün" aussehentext0="" aussehentext1="" aussehentext2="" aussehentext3="" familietext0="" familietext1="" familietext2="" familietext3="" familietext4="" familietext5="" gbjahr="1001" gbmonat="5" gbtag="17" gprest="0" gpstart="110" haarfarbe="schwarz" kalender="Bosparans Fall" stand="" titel=""/>
+</rasse>
+<kultur name="helden.model.kultur.Garetien" string="Mittelländische Städte/Hafenstädte und Städte an großen Flüssen">
+<variante name="Hafenstädte und Städte an großen Flüssen"/>
+</kultur>
+<ausbildungen>
+<ausbildung art="Hauptprofession" name="helden.model.profession.Gelehrter" string="Gelehrte: Anatomin" tarnidentitaet="">
+<variante name="Anatomin"/>
+</ausbildung>
+</ausbildungen>
+<verify value="1"/>
+<notiz notiz0="Notizen" notiz1="" notiz10="" notiz11="" notiz2="" notiz3="" notiz4="" notiz5="" notiz6="" notiz7="" notiz8="" notiz9=""/>
+<portraet value=""/>
+<abenteuerpunkte value="810"/>
+<freieabenteuerpunkte value="3"/>
+</basis>
+<eigenschaften>
+<eigenschaft mod="0" name="Mut" startwert="13" value="13"/>
+<eigenschaft mod="0" name="Klugheit" startwert="14" value="14"/>
+<eigenschaft mod="0" name="Intuition" startwert="14" value="14"/>
+<eigenschaft mod="0" name="Charisma" startwert="12" value="12"/>
+<eigenschaft mod="0" name="Fingerfertigkeit" startwert="11" value="11"/>
+<eigenschaft mod="0" name="Gewandtheit" startwert="14" value="14"/>
+<eigenschaft mod="0" name="Konstitution" startwert="11" value="11"/>
+<eigenschaft mod="0" name="Körperkraft" startwert="11" value="11"/>
+<eigenschaft mod="0" name="Sozialstatus" startwert="6" value="6"/>
+<eigenschaft mod="10" name="Lebensenergie" value="0"/>
+<eigenschaft mod="10" name="Ausdauer" value="0"/>
+<eigenschaft grossemeditation="0" mod="0" mrmod="-4" name="Astralenergie" value="0"/>
+<eigenschaft karmalqueste="0" mod="0" name="Karmaenergie" value="0"/>
+<eigenschaft mod="-4" name="Magieresistenz" value="0"/>
+<eigenschaft mod="0" name="ini" value="11"/>
+<eigenschaft mod="0" name="at" value="8"/>
+<eigenschaft mod="0" name="pa" value="8"/>
+<eigenschaft mod="0" name="fk" value="7"/>
+</eigenschaften>
+<vt>
+<vorteil name="Akademische Ausbildung (Gelehrter)"/>
+<vorteil name="Gutaussehend"/>
+<vorteil name="Guter Ruf" value="2"/>
+<vorteil name="Gutes Gedächtnis"/>
+<vorteil name="Richtungssinn"/>
+<vorteil name="Neugier" value="12"/>
+</vt>
+<sf>
+<sonderfertigkeit name="Kulturkunde">
+<kultur name="Mittelreich"/>
+</sonderfertigkeit>
+<sonderfertigkeit name="Nandusgefälliges Wissen"/>
+<sonderfertigkeit name="Ortskenntnis">
+<auswahl name="Stadtteil/Kleinstadt"/>
+</sonderfertigkeit>
+</sf>
+<ereignisse>
+<ereignis obj="max GP für Helden: 110" text="EINSTELLUNG" time="1466359342996" version="HS 5.5.1"/>
+<ereignis obj="max Eigenschafts-GP für Helden: 100" text="EINSTELLUNG" time="1466359342996" version="HS 5.5.1"/>
+<ereignis obj="max Eigenschafts-Wert für Helden: 14" text="EINSTELLUNG" time="1466359342996" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="0 GP" obj="Rasse: Mittelländerin" text="RKP" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="3 GP" obj="Kultur: Mittelländische Städte/Hafenstädte und Städte an großen Flüssen" text="RKP" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="2 GP" obj="Profession: Gelehrte: Anatomin" text="RKP" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="13" kommentar="13 GP" obj="Mut: 13" text="EIGENSCHAFTEN" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="14" kommentar="14 GP" obj="Klugheit: 14" text="EIGENSCHAFTEN" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="14" kommentar="14 GP" obj="Intuition: 14" text="EIGENSCHAFTEN" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="12" kommentar="12 GP" obj="Charisma: 12" text="EIGENSCHAFTEN" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="11" kommentar="11 GP" obj="Fingerfertigkeit: 11" text="EIGENSCHAFTEN" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="14" kommentar="14 GP" obj="Gewandtheit: 14" text="EIGENSCHAFTEN" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="11" kommentar="11 GP" obj="Konstitution: 11" text="EIGENSCHAFTEN" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="11" kommentar="11 GP" obj="Körperkraft: 11" text="EIGENSCHAFTEN" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="6" kommentar="0 GP" obj="Sozialstatus: 6" text="EIGENSCHAFTEN" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="2" kommentar="9 AP" obj="Fechtwaffen: 2" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="3" kommentar="15 AP" obj="Fechtwaffen: 3" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="4" kommentar="21 AP" obj="Fechtwaffen: 4" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="5" kommentar="28 AP" obj="Fechtwaffen: 5" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="6" kommentar="34 AP" obj="Fechtwaffen: 6" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="7" kommentar="41 AP" obj="Fechtwaffen: 7" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="8" kommentar="48 AP" obj="Fechtwaffen: 8" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="9" kommentar="55 AP" obj="Fechtwaffen: 9" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="10" kommentar="65 AP" obj="Fechtwaffen: 10" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="11" kommentar="70 AP" obj="Fechtwaffen: 11" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="1" kommentar="3 AP" obj="Schleichen: 1" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="2" kommentar="7 AP" obj="Schleichen: 2" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="3" kommentar="12 AP" obj="Schleichen: 3" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="4" kommentar="17 AP" obj="Schleichen: 4" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="5" kommentar="22 AP" obj="Schleichen: 5" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="2" kommentar="7 AP" obj="Sinnenschärfe: 2" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="3" kommentar="12 AP" obj="Sinnenschärfe: 3" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="1" kommentar="2 AP" obj="Orientierung: 1" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="2" kommentar="4 AP" obj="Orientierung: 2" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="3" kommentar="6 AP" obj="Orientierung: 3" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="4" kommentar="8 AP" obj="Orientierung: 4" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="5" kommentar="11 AP" obj="Orientierung: 5" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="6" kommentar="14 AP" obj="Orientierung: 6" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="7" kommentar="17 AP" obj="Orientierung: 7" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="8" kommentar="10 AP" obj="Anatomie: 8" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="9" kommentar="11 AP" obj="Anatomie: 9" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="3" kommentar="3 AP" obj="Magiekunde: 3" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="4" kommentar="4 AP" obj="Magiekunde: 4" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="1" kommentar="2 AP" obj="Holzbearbeitung: 1" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="1" kommentar="2 AP" obj="Kochen: 1" text="TALENT" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="0 GP" obj="Akademische Ausbildung (Gelehrter)" text="VORTEILE" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="5 GP" obj="Gutaussehend" text="VORTEILE" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="2 GP" obj="Guter Ruf: 2" text="VORTEILE" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="7 GP" obj="Gutes Gedächtnis" text="VORTEILE" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="-12 GP" obj="Neugier: 12" text="VORTEILE" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="3 GP" obj="Richtungssinn" text="VORTEILE" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Neu="1" obj="Auswahl" text="Wurfmesser" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Neu="3" obj="Auswahl" text="Sprachen kennen Rogolan" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Neu="1" obj="Auswahl" text="Hauswirtschaft" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Neu="1" obj="Auswahl" text="Fechtwaffen" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Neu="1" obj="Auswahl" text="Raufen" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Neu="6" obj="Auswahl" text="Sprachen kennen Alaani" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Neu="8" obj="Auswahl" text="Sprachen kennen Isdira" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Neu="4" obj="Auswahl" text="Lesen/Schreiben Isdira/Asdharia" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Neu="2" obj="Auswahl" text="Sprachen kennen Rogolan" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Neu="4" obj="Auswahl" text="Lesen/Schreiben Rogolan" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Neu="2" obj="Auswahl" text="Magiekunde" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Neu="1" obj="Auswahl" text="Pflanzenkunde" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Neu="1" obj="Auswahl" text="Fahrzeug lenken" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Neu="1" obj="Auswahl" text="Heilkunde: Seele" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Neu="1" obj="Auswahl" text="Schlösser knacken" time="1466359342997" version="HS 5.5.1"/>
+<ereignis Abenteuerpunkte="250" kommentar=" Gesamt AP: 250 Verfügbare AP: 250" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1469039081213" version="HS 5.5.1"/>
+<ereignis Abenteuerpunkte="-6" Alt="4" Info="SE, Gegenseitiges Lehren" Neu="5" obj="Magiekunde" text="Talent steigern" time="1469039103163" version="HS 5.5.1"/>
+<ereignis Abenteuerpunkte="-7" Alt="5" Info="SE, Gegenseitiges Lehren" Neu="6" obj="Heilkunde: Wunden" text="Talent steigern" time="1469039117047" version="HS 5.5.1"/>
+<ereignis Abenteuerpunkte="-6" Alt="2" Info="Gegenseitiges Lehren" Neu="3" obj="Überzeugen" text="Talent steigern" time="1469039131757" version="HS 5.5.1"/>
+<ereignis Abenteuerpunkte="-8" Alt="3" Info="Gegenseitiges Lehren" Neu="4" obj="Überzeugen" text="Talent steigern" time="1469039132506" version="HS 5.5.1"/>
+<ereignis Abenteuerpunkte="-38" Alt="9" Info="Selbststudium" Neu="10" obj="Anatomie" text="Talent steigern" time="1469039142818" version="HS 5.5.1"/>
+<ereignis Abenteuerpunkte="-55" Alt="10" Info="Selbststudium" Neu="11" obj="Anatomie" text="Talent steigern" time="1469039143832" version="HS 5.5.1"/>
+<ereignis Abenteuerpunkte="-65" Alt="11" Info="Selbststudium" Neu="12" obj="Anatomie" text="Talent steigern" time="1469039145423" version="HS 5.5.1"/>
+<ereignis Abenteuerpunkte="-6" Alt="2" Info="Gegenseitiges Lehren" Neu="3" obj="Fleischer" text="Talent steigern" time="1469039154658" version="HS 5.5.1"/>
+<ereignis Abenteuerpunkte="-8" Alt="3" Info="Gegenseitiges Lehren" Neu="4" obj="Fleischer" text="Talent steigern" time="1469039155485" version="HS 5.5.1"/>
+<ereignis Abenteuerpunkte="-11" Alt="4" Info="Gegenseitiges Lehren" Neu="5" obj="Fleischer" text="Talent steigern" time="1469039156281" version="HS 5.5.1"/>
+<ereignis Abenteuerpunkte="-14" Alt="5" Info="Gegenseitiges Lehren" Neu="6" obj="Fleischer" text="Talent steigern" time="1469039157295" version="HS 5.5.1"/>
+<ereignis Abenteuerpunkte="-17" Alt="6" Info="Gegenseitiges Lehren" Neu="7" obj="Fleischer" text="Talent steigern" time="1469039158293" version="HS 5.5.1"/>
+<ereignis Abenteuerpunkte="-3" Alt="0" Info="Gegenseitiges Lehren" Neu="1" obj="Körperbeherrschung" text="Talent steigern" time="1469039191365" version="HS 5.5.1"/>
+<ereignis Abenteuerpunkte="-3" Alt="0" Info="Gegenseitiges Lehren" Neu="1" obj="Athletik" text="Talent steigern" time="1469039194953" version="HS 5.5.1"/>
+</ereignisse>
+<talentliste>
+<talent lernmethode="Gegenseitiges Lehren" name="Armbrust" probe=" (GE/FF/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Dolche" probe=" (GE/GE/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Fechtwaffen" probe=" (GE/GE/KK)" value="11"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Hiebwaffen" probe=" (GE/GE/KK)" value="0"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Infanteriewaffen" probe=" (GE/GE/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Raufen" probe=" (GE/GE/KK)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Ringen" probe=" (GE/GE/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Säbel" probe=" (GE/GE/KK)" value="0"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Wurfmesser" probe=" (GE/FF/KK)" value="1"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Athletik" probe=" (GE/KO/KK)" value="1"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Klettern" probe=" (MU/GE/KK)" value="0"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Körperbeherrschung" probe=" (MU/IN/GE)" value="1"/>
+<talent be="BE" lernmethode="Gegenseitiges Lehren" name="Schleichen" probe=" (MU/IN/GE)" value="5"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Schwimmen" probe=" (GE/KO/KK)" value="1"/>
+<talent be="" lernmethode="Gegenseitiges Lehren" name="Selbstbeherrschung" probe=" (MU/KO/KK)" value="1"/>
+<talent be="BE-2" lernmethode="Gegenseitiges Lehren" name="Sich verstecken" probe=" (MU/IN/GE)" value="0"/>
+<talent be="BE-3" lernmethode="Gegenseitiges Lehren" name="Singen" probe=" (IN/CH/CH)" value="0"/>
+<talent be="0-&gt;BE" lernmethode="Gegenseitiges Lehren" name="Sinnenschärfe" probe=" (KL/IN/IN)" value="3"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Tanzen" probe=" (CH/GE/GE)" value="1"/>
+<talent be="" lernmethode="Gegenseitiges Lehren" name="Zechen" probe=" (IN/KO/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Etikette" probe=" (KL/IN/CH)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Gassenwissen" probe=" (KL/IN/CH)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Lehren" probe=" (KL/IN/CH)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Menschenkenntnis" probe=" (KL/IN/CH)" value="6"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Schriftlicher Ausdruck" probe=" (KL/IN/IN)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Überreden" probe=" (MU/IN/CH)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Überzeugen" probe=" (KL/IN/CH)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Fährtensuchen" probe=" (KL/IN/KO)" value="0"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Fesseln/Entfesseln" probe=" (FF/GE/KK)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Fischen/Angeln" probe=" (IN/FF/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Orientierung" probe=" (KL/IN/IN)" value="7"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Wildnisleben" probe=" (IN/GE/KO)" value="0"/>
+<talent lernmethode="Selbststudium" name="Anatomie" probe=" (MU/KL/FF)" value="12"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Geografie" probe=" (KL/KL/IN)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Geschichtswissen" probe=" (KL/KL/IN)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Götter und Kulte" probe=" (KL/KL/IN)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Heraldik" probe=" (KL/KL/FF)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Magiekunde" probe=" (KL/KL/IN)" value="5"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Pflanzenkunde" probe=" (KL/IN/FF)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Philosophie" probe=" (KL/KL/IN)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Rechnen" probe=" (KL/KL/IN)" value="5"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Rechtskunde" probe=" (KL/KL/IN)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Sagen und Legenden" probe=" (KL/IN/CH)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Sprachenkunde" probe=" (KL/KL/IN)" value="1"/>
+<talent k="21" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Alaani" probe=" (KL/IN/CH)" value="6"/>
+<talent k="18" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Garethi" probe=" (KL/IN/CH)" value="14"/>
+<talent k="21" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Isdira" probe=" (KL/IN/CH)" value="8"/>
+<talent k="21" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Rogolan" probe=" (KL/IN/CH)" value="5"/>
+<talent k="18" lernmethode="Gegenseitiges Lehren" name="Lesen/Schreiben Isdira/Asdharia" probe=" (KL/KL/FF)" value="4"/>
+<talent k="10" lernmethode="Gegenseitiges Lehren" name="Lesen/Schreiben Kusliker Zeichen" probe=" (KL/KL/FF)" value="6"/>
+<talent k="11" lernmethode="Gegenseitiges Lehren" name="Lesen/Schreiben Rogolan" probe=" (KL/KL/FF)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Boote fahren" probe=" (GE/KO/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Fahrzeug lenken" probe=" (IN/CH/FF)" value="1"/>
+<talent lernmethode="Selbststudium" name="Fleischer" probe=" (KL/FF/KK)" value="7"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Hauswirtschaft" probe=" (IN/CH/FF)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Heilkunde: Gift" probe=" (MU/KL/IN)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Heilkunde: Krankheiten" probe=" (MU/KL/CH)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Heilkunde: Seele" probe=" (IN/CH/CH)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Heilkunde: Wunden" probe=" (KL/CH/FF)" value="6"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Holzbearbeitung" probe=" (KL/FF/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Kochen" probe=" (KL/IN/FF)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Lederarbeiten" probe=" (KL/FF/FF)" value="0"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Malen/Zeichnen" probe=" (KL/IN/FF)" value="5"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Schlösser knacken" probe=" (IN/FF/FF)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Schneidern" probe=" (KL/FF/FF)" value="0"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Seefahrt" probe=" (FF/GE/KK)" value="1"/>
+</talentliste>
+<zauberliste/>
+<kampf>
+<kampfwerte name="Dolche">
+<attacke value="9"/>
+<parade value="8"/>
+</kampfwerte>
+<kampfwerte name="Fechtwaffen">
+<attacke value="15"/>
+<parade value="12"/>
+</kampfwerte>
+<kampfwerte name="Hiebwaffen">
+<attacke value="8"/>
+<parade value="8"/>
+</kampfwerte>
+<kampfwerte name="Infanteriewaffen">
+<attacke value="8"/>
+<parade value="9"/>
+</kampfwerte>
+<kampfwerte name="Raufen">
+<attacke value="10"/>
+<parade value="8"/>
+</kampfwerte>
+<kampfwerte name="Ringen">
+<attacke value="8"/>
+<parade value="9"/>
+</kampfwerte>
+<kampfwerte name="Säbel">
+<attacke value="8"/>
+<parade value="8"/>
+</kampfwerte>
+</kampf>
+<gegenstände>
+<gegenstand anzahl="1" name="Rapier" slot="0">
+<modallgemein>
+<gewicht value="45.0"/>
+<preis value="0"/>
+<name value="Rapier"/>
+</modallgemein>
+<Nahkampfwaffe variante="0">
+<talente kampftalent="Fechtwaffen"/>
+<talente kampftalent="Fechtwaffen"/>
+</Nahkampfwaffe>
+</gegenstand>
+</gegenstände>
+<BoniWaffenlos/>
+<kommentare/>
+<ausrüstungen>
+<heldenausruestung name="jagtwaffe" nummer="0" set="0"/>
+</ausrüstungen>
+<verbindungen/>
+<extention/>
+<geldboerse/>
+<plugindata/>
+</held>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+<SignedInfo>
+<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/>
+<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#dsa-sha1"/>
+<Reference URI="">
+<Transforms>
+<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+</Transforms>
+<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<DigestValue>/oVpnFmRjr0Lync49nYhyEoR1zQ=</DigestValue>
+</Reference>
+</SignedInfo>
+<SignatureValue>jh1goPtkbhsC6G8SLALEsScH+Y5gzNY8llUMgVMyYZoljDakvcTPlg==</SignatureValue>
+<KeyInfo>
+<KeyValue>
+<DSAKeyValue>
+<P>/KaCzo4Syrom78z3EQ5SbbB4sF7ey80etKII864WF64B81uRpH5t9jQTxeEu0ImbzRMqzVDZkVG9
+xD7nN1kuFw==</P>
+<Q>li7dzDacuo67Jg7mtqEm2TRuOMU=</Q>
+<G>Z4Rxsnqc9E7pGknFFH2xqaryRPBaQ01khpMdLRQnG541Awtx/XPaF5Bpsy4pNWMOHCBiNU0Nogps
+QW5QvnlMpA==</G>
+<Y>uVrvWkzIbUdL7E80AiD0PJDX3Ck0beY5StXp1wDAA1/ePpemd6rTBNd8YoCzOovNrX016YMcTSiO
+iExM4RWtJA==</Y>
+</DSAKeyValue>
+</KeyValue>
+</KeyInfo>
+</Signature>
+</helden>

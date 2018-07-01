@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="helden.xsl"?><helden Version="5.5.3">
+<held key="1463937069751" name="Halbelf Maik" stand="1464019806597">
+<mods/>
+<basis>
+<geschlecht name="männlich"/>
+<settings name="DSA4.1"/>
+<rasse name="helden.model.rasse.Halbelf" string="Halbelf: Halbelf thorwalscher Abstammung, in menschlicher Kultur aufgewachsen">
+<groesse gewicht="65" value="185"/>
+<aussehen alter="18" augenfarbe="grau" aussehentext0="" aussehentext1="" aussehentext2="" aussehentext3="" familietext0="" familietext1="" familietext2="" familietext3="" familietext4="" familietext5="" gbjahr="1003" gbmonat="5" gbtag="13" gprest="0" gpstart="110" haarfarbe="schwarz" kalender="Bosparans Fall" stand="" titel=""/>
+<variante name="Halbelf thorwalscher Abstammung"/>
+<variante name="in menschlicher Kultur aufgewachsen"/>
+</rasse>
+<kultur name="helden.model.kultur.Mittelreich" string="Mittelländische Landbevölkerung - Fern der Zivilisation">
+<variante name="Fern der Zivilisation"/>
+</kultur>
+<ausbildungen>
+<ausbildung art="Hauptprofession" name="helden.model.profession.Grosswildjaeger" string="Großwildjäger: Kopfgeldjäger" tarnidentitaet="">
+<variante name="Kopfgeldjäger"/>
+</ausbildung>
+</ausbildungen>
+<verify value="1"/>
+<notiz notiz0="Notizen" notiz1="" notiz10="" notiz11="" notiz2="" notiz3="" notiz4="" notiz5="" notiz6="" notiz7="" notiz8="" notiz9=""/>
+<portraet value=""/>
+<abenteuerpunkte value="440"/>
+<freieabenteuerpunkte value="0"/>
+</basis>
+<eigenschaften>
+<eigenschaft mod="0" name="Mut" startwert="12" value="12"/>
+<eigenschaft mod="0" name="Klugheit" startwert="11" value="11"/>
+<eigenschaft mod="0" name="Intuition" startwert="11" value="11"/>
+<eigenschaft mod="0" name="Charisma" startwert="10" value="10"/>
+<eigenschaft mod="0" name="Fingerfertigkeit" startwert="8" value="8"/>
+<eigenschaft mod="0" name="Gewandtheit" startwert="11" value="11"/>
+<eigenschaft mod="0" name="Konstitution" startwert="12" value="12"/>
+<eigenschaft mod="0" name="Körperkraft" startwert="11" value="11"/>
+<eigenschaft mod="0" name="Sozialstatus" startwert="5" value="5"/>
+<eigenschaft mod="9" name="Lebensenergie" value="0"/>
+<eigenschaft mod="10" name="Ausdauer" value="0"/>
+<eigenschaft grossemeditation="0" mod="-6" mrmod="-4" name="Astralenergie" value="0"/>
+<eigenschaft karmalqueste="0" mod="0" name="Karmaenergie" value="0"/>
+<eigenschaft mod="-4" name="Magieresistenz" value="0"/>
+<eigenschaft mod="0" name="ini" value="9"/>
+<eigenschaft mod="0" name="at" value="7"/>
+<eigenschaft mod="0" name="pa" value="7"/>
+<eigenschaft mod="0" name="fk" value="6"/>
+</eigenschaften>
+<vt>
+<vorteil name="Geräuschhexerei"/>
+<vorteil name="Gutaussehend"/>
+<vorteil name="Koboldfreund"/>
+<vorteil name="Viertelzauberer"/>
+<vorteil name="Impulsiv"/>
+<vorteil name="Vorurteile gegen">
+<auswahl position="0" value="10"/>
+<auswahl position="1" value="Dicke Menschen"/>
+</vorteil>
+</vt>
+<sf>
+<sonderfertigkeit name="Aufmerksamkeit"/>
+<sonderfertigkeit name="Ausweichen II"/>
+<sonderfertigkeit name="Betäubungsschlag"/>
+<sonderfertigkeit name="Eiskundig"/>
+<sonderfertigkeit name="Kulturkunde">
+<kultur name="Mittelreich"/>
+</sonderfertigkeit>
+<sonderfertigkeit name="Talentspezialisierung Schleuder (Wurfnetz)">
+<talent name="Schleuder"/>
+<spezialisierung name="Wurfnetz"/>
+</sonderfertigkeit>
+<verbilligtesonderfertigkeit name="Scharfschütze">
+<auswahl auswahl="Blasrohr"/>
+</verbilligtesonderfertigkeit>
+<verbilligtesonderfertigkeit name="Kopfstoß"/>
+<verbilligtesonderfertigkeit name="Schmutzige Tricks"/>
+<verbilligtesonderfertigkeit name="Versteckte Klinge"/>
+</sf>
+<ereignisse>
+<ereignis obj="max GP für Helden: 110" text="EINSTELLUNG" time="1463937071606" version="HS 5.5.1"/>
+<ereignis obj="max Eigenschafts-GP für Helden: 100" text="EINSTELLUNG" time="1463937071606" version="HS 5.5.1"/>
+<ereignis obj="max Eigenschafts-Wert für Helden: 14" text="EINSTELLUNG" time="1463937071606" version="HS 5.5.1"/>
+<ereignis obj="Es wurden verbilligte SF gewählt. Die Auswahl unterliegt der Meistergenehimgung." text="Meistergenehmigung notwendig" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="4 GP" obj="Rasse: Halbelf: Halbelf thorwalscher Abstammung, in menschlicher Kultur aufgewachsen" text="RKP" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="4 GP" obj="Kultur: Mittelländische Landbevölkerung - Fern der Zivilisation" text="RKP" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="13 GP" obj="Profession: Großwildjäger: Kopfgeldjäger" text="RKP" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="12" kommentar="12 GP" obj="Mut: 12" text="EIGENSCHAFTEN" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="11" kommentar="11 GP" obj="Klugheit: 11" text="EIGENSCHAFTEN" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="11" kommentar="11 GP" obj="Intuition: 11" text="EIGENSCHAFTEN" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="10" kommentar="10 GP" obj="Charisma: 10" text="EIGENSCHAFTEN" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="8" kommentar="8 GP" obj="Fingerfertigkeit: 8" text="EIGENSCHAFTEN" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="11" kommentar="11 GP" obj="Gewandtheit: 11" text="EIGENSCHAFTEN" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="12" kommentar="12 GP" obj="Konstitution: 12" text="EIGENSCHAFTEN" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="11" kommentar="11 GP" obj="Körperkraft: 11" text="EIGENSCHAFTEN" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="5" kommentar="0 GP" obj="Sozialstatus: 5" text="EIGENSCHAFTEN" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="4" kommentar="17 AP" obj="Dolche: 4" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="5" kommentar="17 AP" obj="Raufen: 5" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="2" kommentar="7 AP" obj="Klettern: 2" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="1" kommentar="3 AP" obj="Schwimmen: 1" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="2" kommentar="7 AP" obj="Schwimmen: 2" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="1" kommentar="3 AP" obj="Zechen: 1" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="2 AP" obj="Schauspielerei: 0" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="1" kommentar="2 AP" obj="Schauspielerei: 1" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="2" kommentar="4 AP" obj="Schauspielerei: 2" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="3" kommentar="6 AP" obj="Schauspielerei: 3" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="4" kommentar="8 AP" obj="Schauspielerei: 4" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="5" kommentar="11 AP" obj="Fesseln/Entfesseln: 5" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="2" kommentar="4 AP" obj="Götter und Kulte: 2" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="2 AP" obj="Magiekunde: 0" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="1" kommentar="2 AP" obj="Magiekunde: 1" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="2" kommentar="4 AP" obj="Magiekunde: 2" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="1" kommentar="2 AP" obj="Rechnen: 1" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="2" kommentar="4 AP" obj="Rechnen: 2" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="3" kommentar="6 AP" obj="Schätzen: 3" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="1 AP" obj="Sprachen kennen Alt-Imperial/Aureliani: 0" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="1" kommentar="1 AP" obj="Sprachen kennen Alt-Imperial/Aureliani: 1" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="2" kommentar="2 AP" obj="Sprachen kennen Alt-Imperial/Aureliani: 2" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="1 AP" obj="Sprachen kennen Goblinisch: 0" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="1" kommentar="1 AP" obj="Sprachen kennen Goblinisch: 1" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="2" kommentar="2 AP" obj="Sprachen kennen Goblinisch: 2" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="1 AP" obj="Sprachen kennen Koboldisch: 0" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="1" kommentar="1 AP" obj="Sprachen kennen Koboldisch: 1" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="2" kommentar="2 AP" obj="Sprachen kennen Koboldisch: 2" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="3" kommentar="3 AP" obj="Sprachen kennen Koboldisch: 3" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="3" kommentar="6 AP" obj="Heilkunde: Gift: 3" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="4" kommentar="8 AP" obj="Heilkunde: Gift: 4" text="TALENT" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="200 AP" obj="Ausweichen II" text="SF" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="100 AP" obj="Betäubungsschlag" text="SF" time="1463937071607" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="40 vSF (Eiskundig)" obj="Kopfstoß" text="vSF" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="60 vSF (Eiskundig)" obj="Schmutzige Tricks" text="vSF" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="50 vSF (Eiskundig)" obj="Versteckte Klinge" text="vSF" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="3 GP" obj="Geräuschhexerei" text="VORTEILE" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="0 GP" obj="Gutaussehend" text="VORTEILE" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="-5 GP" obj="Impulsiv" text="VORTEILE" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="10 GP" obj="Koboldfreund" text="VORTEILE" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="0 GP" obj="Viertelzauberer" text="VORTEILE" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Alt="0" Neu="0" kommentar="-5 GP" obj="Vorurteile gegen: Dicke Menschen 10" text="VORTEILE" time="1463937071608" version="HS 5.5.1"/>
+<ereignis obj="Auswahl" text="Eiskundig" time="1463937071608" version="HS 5.5.1"/>
+<ereignis obj="Auswahl" text="Talentspezialisierung Schleuder (Wurfnetz)" time="1463937071608" version="HS 5.5.1"/>
+<ereignis obj="Auswahl" text="Eiskundig" time="1463937071608" version="HS 5.5.1"/>
+<ereignis obj="Auswahl" text="Scharfschütze [Blasrohr]" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Neu="1" obj="Auswahl" text="Infanteriewaffen" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Neu="2" obj="Auswahl" text="Gerber/Kürschner" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Neu="1" obj="Auswahl" text="Kochen" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Neu="3" obj="Auswahl" text="Sprachen kennen Thorwalsch" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Neu="4" obj="Auswahl" text="Armbrust" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Neu="2" obj="Auswahl" text="Hiebwaffen" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Neu="1" obj="Auswahl" text="Boote fahren" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Neu="4" obj="Auswahl" text="Sprachen kennen Thorwalsch" time="1463937071608" version="HS 5.5.1"/>
+<ereignis Neu="4" obj="Auswahl" text="Sprachen kennen Trollisch" time="1463937071608" version="HS 5.5.1"/>
+</ereignisse>
+<talentliste>
+<talent lernmethode="Gegenseitiges Lehren" name="Armbrust" probe=" (GE/FF/KK)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Dolche" probe=" (GE/GE/KK)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Hiebwaffen" probe=" (GE/GE/KK)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Infanteriewaffen" probe=" (GE/GE/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Raufen" probe=" (GE/GE/KK)" value="5"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Ringen" probe=" (GE/GE/KK)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Säbel" probe=" (GE/GE/KK)" value="0"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Schleuder" probe=" (GE/FF/KK)" value="5"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Speere" probe=" (GE/GE/KK)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Wurfmesser" probe=" (GE/FF/KK)" value="0"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Athletik" probe=" (GE/KO/KK)" value="2"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Klettern" probe=" (MU/GE/KK)" value="2"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Körperbeherrschung" probe=" (MU/IN/GE)" value="4"/>
+<talent be="BE-2" lernmethode="Gegenseitiges Lehren" name="Reiten" probe=" (CH/GE/KK)" value="3"/>
+<talent be="BE" lernmethode="Gegenseitiges Lehren" name="Schleichen" probe=" (MU/IN/GE)" value="4"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Schwimmen" probe=" (GE/KO/KK)" value="2"/>
+<talent be="" lernmethode="Gegenseitiges Lehren" name="Selbstbeherrschung" probe=" (MU/KO/KK)" value="3"/>
+<talent be="BE-2" lernmethode="Gegenseitiges Lehren" name="Sich verstecken" probe=" (MU/IN/GE)" value="3"/>
+<talent be="BE-3" lernmethode="Gegenseitiges Lehren" name="Singen" probe=" (IN/CH/CH)" value="1"/>
+<talent be="0-&gt;BE" lernmethode="Gegenseitiges Lehren" name="Sinnenschärfe" probe=" (KL/IN/IN)" value="6"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Tanzen" probe=" (CH/GE/GE)" value="1"/>
+<talent be="" lernmethode="Gegenseitiges Lehren" name="Zechen" probe=" (IN/KO/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Gassenwissen" probe=" (KL/IN/CH)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Menschenkenntnis" probe=" (KL/IN/CH)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Schauspielerei" probe=" (MU/KL/CH)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Überreden" probe=" (MU/IN/CH)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Überzeugen" probe=" (KL/IN/CH)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Fährtensuchen" probe=" (KL/IN/KO)" value="7"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Fesseln/Entfesseln" probe=" (FF/GE/KK)" value="5"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Orientierung" probe=" (KL/IN/IN)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Wettervorhersage" probe=" (KL/IN/IN)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Wildnisleben" probe=" (IN/GE/KO)" value="6"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Geografie" probe=" (KL/KL/IN)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Götter und Kulte" probe=" (KL/KL/IN)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Magiekunde" probe=" (KL/KL/IN)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Pflanzenkunde" probe=" (KL/IN/FF)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Rechnen" probe=" (KL/KL/IN)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Rechtskunde" probe=" (KL/KL/IN)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Sagen und Legenden" probe=" (KL/IN/CH)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Schätzen" probe=" (KL/IN/IN)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Tierkunde" probe=" (MU/KL/IN)" value="2"/>
+<talent k="21" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Alt-Imperial/Aureliani" probe=" (KL/IN/CH)" value="2"/>
+<talent k="18" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Garethi" probe=" (KL/IN/CH)" value="9"/>
+<talent k="12" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Goblinisch" probe=" (KL/IN/CH)" value="2"/>
+<talent k="15" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Koboldisch" probe=" (KL/IN/CH)" value="3"/>
+<talent k="18" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Thorwalsch" probe=" (KL/IN/CH)" value="7"/>
+<talent k="15" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Trollisch" probe=" (KL/IN/CH)" value="4"/>
+<talent k="10" lernmethode="Gegenseitiges Lehren" name="Lesen/Schreiben Kusliker Zeichen" probe=" (KL/KL/FF)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Ackerbau" probe=" (IN/FF/KO)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Boote fahren" probe=" (GE/KO/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Gerber/Kürschner" probe=" (KL/FF/KO)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Heilkunde: Gift" probe=" (MU/KL/IN)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Heilkunde: Wunden" probe=" (KL/CH/FF)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Holzbearbeitung" probe=" (KL/FF/KK)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Kochen" probe=" (KL/IN/FF)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Lederarbeiten" probe=" (KL/FF/FF)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Malen/Zeichnen" probe=" (KL/IN/FF)" value="0"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Schneidern" probe=" (KL/FF/FF)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Geräuschhexerei" probe=" (IN/CH/KO)" value="3"/>
+</talentliste>
+<zauberliste/>
+<kampf>
+<kampfwerte name="Dolche">
+<attacke value="9"/>
+<parade value="9"/>
+</kampfwerte>
+<kampfwerte name="Hiebwaffen">
+<attacke value="9"/>
+<parade value="8"/>
+</kampfwerte>
+<kampfwerte name="Infanteriewaffen">
+<attacke value="8"/>
+<parade value="7"/>
+</kampfwerte>
+<kampfwerte name="Raufen">
+<attacke value="12"/>
+<parade value="7"/>
+</kampfwerte>
+<kampfwerte name="Ringen">
+<attacke value="8"/>
+<parade value="10"/>
+</kampfwerte>
+<kampfwerte name="Säbel">
+<attacke value="7"/>
+<parade value="7"/>
+</kampfwerte>
+<kampfwerte name="Speere">
+<attacke value="9"/>
+<parade value="7"/>
+</kampfwerte>
+</kampf>
+<gegenstände/>
+<BoniWaffenlos/>
+<kommentare/>
+<ausrüstungen>
+<heldenausruestung name="jagtwaffe" nummer="0" set="0"/>
+</ausrüstungen>
+<verbindungen/>
+<extention/>
+<geldboerse/>
+<plugindata/>
+</held>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+<SignedInfo>
+<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/>
+<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#dsa-sha1"/>
+<Reference URI="">
+<Transforms>
+<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+</Transforms>
+<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<DigestValue>xjvVDJrdE65PbCDhBE8muz2X/ZA=</DigestValue>
+</Reference>
+</SignedInfo>
+<SignatureValue>N4IcLOgfsqykoOV9lYbhUwYD1yODtEBmYliSXSEC43fHME2a8ElLKA==</SignatureValue>
+<KeyInfo>
+<KeyValue>
+<DSAKeyValue>
+<P>/KaCzo4Syrom78z3EQ5SbbB4sF7ey80etKII864WF64B81uRpH5t9jQTxeEu0ImbzRMqzVDZkVG9
+xD7nN1kuFw==</P>
+<Q>li7dzDacuo67Jg7mtqEm2TRuOMU=</Q>
+<G>Z4Rxsnqc9E7pGknFFH2xqaryRPBaQ01khpMdLRQnG541Awtx/XPaF5Bpsy4pNWMOHCBiNU0Nogps
+QW5QvnlMpA==</G>
+<Y>uVrvWkzIbUdL7E80AiD0PJDX3Ck0beY5StXp1wDAA1/ePpemd6rTBNd8YoCzOovNrX016YMcTSiO
+iExM4RWtJA==</Y>
+</DSAKeyValue>
+</KeyValue>
+</KeyInfo>
+</Signature>
+</helden>

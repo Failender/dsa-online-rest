@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="helden.xsl"?><helden Version="5.5.3">
+<held key="1495127347992" name="Arathorn aus Andergast" stand="1529046850072">
+<mods/>
+<basis>
+<geschlecht name="männlich"/>
+<settings name="DSA4.1"/>
+<rasse name="helden.model.rasse.Mittellaender" string="Mittelländer">
+<groesse gewicht="92" value="192"/>
+<aussehen alter="21" augenfarbe="blau" aussehentext0="" aussehentext1="" aussehentext2="" aussehentext3="" familietext0="" familietext1="" familietext2="" familietext3="" familietext4="" familietext5="" gbjahr="1003" gbmonat="2" gbtag="10" gprest="0" gpstart="110" haarfarbe="dunkelblond" kalender="Bosparans Fall" stand="" titel="Hauptmann"/>
+</rasse>
+<kultur name="helden.model.kultur.AndergastNostria" string="Andergast/Nostria, Stadt">
+<variante name="Stadt"/>
+</kultur>
+<ausbildungen>
+<ausbildung art="Hauptprofession" name="helden.model.profession.Krieger" string="Krieger: Rondras Schwertkunst in Winhall" tarnidentitaet="">
+<variante name="Rondras Schwertkunst in Winhall"/>
+</ausbildung>
+</ausbildungen>
+<verify value="1"/>
+<notiz notiz0="Notizen" notiz1="" notiz10="" notiz11="" notiz2="" notiz3="" notiz4="" notiz5="" notiz6="" notiz7="" notiz8="" notiz9=""/>
+<portraet value=""/>
+<abenteuerpunkte value="3130"/>
+<freieabenteuerpunkte value="311"/>
+</basis>
+<eigenschaften>
+<eigenschaft mod="0" name="Mut" startwert="14" value="14"/>
+<eigenschaft mod="0" name="Klugheit" startwert="10" value="10"/>
+<eigenschaft mod="0" name="Intuition" startwert="14" value="14"/>
+<eigenschaft mod="0" name="Charisma" startwert="12" value="12"/>
+<eigenschaft mod="0" name="Fingerfertigkeit" startwert="9" value="9"/>
+<eigenschaft mod="0" name="Gewandtheit" startwert="13" value="13"/>
+<eigenschaft mod="0" name="Konstitution" startwert="14" value="14"/>
+<eigenschaft mod="0" name="Körperkraft" startwert="14" value="15"/>
+<eigenschaft mod="0" name="Sozialstatus" startwert="7" value="7"/>
+<eigenschaft mod="13" name="Lebensenergie" value="0"/>
+<eigenschaft mod="15" name="Ausdauer" value="0"/>
+<eigenschaft grossemeditation="0" mod="0" mrmod="-4" name="Astralenergie" value="0"/>
+<eigenschaft karmalqueste="0" mod="0" name="Karmaenergie" value="0"/>
+<eigenschaft mod="-4" name="Magieresistenz" value="0"/>
+<eigenschaft mod="0" name="ini" value="11"/>
+<eigenschaft mod="0" name="at" value="8"/>
+<eigenschaft mod="0" name="pa" value="8"/>
+<eigenschaft mod="0" name="fk" value="8"/>
+</eigenschaften>
+<vt>
+<vorteil name="Akademische Ausbildung (Krieger)"/>
+<vorteil name="Autoritätsgläubig" value="8"/>
+<vorteil name="Prinzipientreue" value="10"/>
+<vorteil name="Verpflichtungen"/>
+<vorteil name="Vorurteile gegen">
+<auswahl position="0" value="8"/>
+<auswahl position="1" value="Kämpfer die nicht an Rondra glauben"/>
+</vorteil>
+</vt>
+<sf>
+<sonderfertigkeit name="Kampfreflexe"/>
+<sonderfertigkeit name="Kulturkunde">
+<kultur name="Andergast/Nostria"/>
+</sonderfertigkeit>
+<sonderfertigkeit name="Linkhand"/>
+<sonderfertigkeit name="Meister der Improvisation"/>
+<sonderfertigkeit name="Rüstungsgewöhnung I">
+<gegenstand name="Kettenhemd, Lang"/>
+</sonderfertigkeit>
+<sonderfertigkeit name="Schildkampf I"/>
+<sonderfertigkeit name="Schildkampf II"/>
+<sonderfertigkeit name="Talentspezialisierung Schwerter ((Lang-)Schwert)">
+<talent name="Schwerter"/>
+<spezialisierung name="(Lang-)Schwert"/>
+</sonderfertigkeit>
+</sf>
+<ereignisse>
+<ereignis obj="max GP für Helden: 110" text="EINSTELLUNG" time="1495127349119" version="HS 5.5.2"/>
+<ereignis obj="max Eigenschafts-GP für Helden: 100" text="EINSTELLUNG" time="1495127349119" version="HS 5.5.2"/>
+<ereignis obj="max Eigenschafts-Wert für Helden: 14" text="EINSTELLUNG" time="1495127349119" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="0" kommentar="0 GP" obj="Rasse: Mittelländer" text="RKP" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="0" kommentar="6 GP" obj="Kultur: Andergast/Nostria, Stadt" text="RKP" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="0" kommentar="24 GP" obj="Profession: Krieger: Rondras Schwertkunst in Winhall" text="RKP" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="14" kommentar="14 GP" obj="Mut: 14" text="EIGENSCHAFTEN" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="10" kommentar="10 GP" obj="Klugheit: 10" text="EIGENSCHAFTEN" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="14" kommentar="14 GP" obj="Intuition: 14" text="EIGENSCHAFTEN" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="12" kommentar="12 GP" obj="Charisma: 12" text="EIGENSCHAFTEN" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="9" kommentar="9 GP" obj="Fingerfertigkeit: 9" text="EIGENSCHAFTEN" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="13" kommentar="13 GP" obj="Gewandtheit: 13" text="EIGENSCHAFTEN" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="14" kommentar="14 GP" obj="Konstitution: 14" text="EIGENSCHAFTEN" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="14" kommentar="14 GP" obj="Körperkraft: 14" text="EIGENSCHAFTEN" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="7" kommentar="0 GP" obj="Sozialstatus: 7" text="EIGENSCHAFTEN" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="7" kommentar="25 AP" obj="Schwerter: 7" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="8" kommentar="29 AP" obj="Schwerter: 8" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="9" kommentar="34 AP" obj="Schwerter: 9" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="10" kommentar="38 AP" obj="Schwerter: 10" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="5" kommentar="22 AP" obj="Körperbeherrschung: 5" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="6" kommentar="27 AP" obj="Körperbeherrschung: 6" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="3" kommentar="12 AP" obj="Sinnenschärfe: 3" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="4" kommentar="17 AP" obj="Sinnenschärfe: 4" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="5" kommentar="22 AP" obj="Sinnenschärfe: 5" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="6" kommentar="27 AP" obj="Sinnenschärfe: 6" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="7" kommentar="33 AP" obj="Sinnenschärfe: 7" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="8" kommentar="39 AP" obj="Sinnenschärfe: 8" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="4" kommentar="17 AP" obj="Zechen: 4" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="5" kommentar="22 AP" obj="Zechen: 5" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="6" kommentar="27 AP" obj="Zechen: 6" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="2" kommentar="4 AP" obj="Fährtensuchen: 2" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="3" kommentar="6 AP" obj="Orientierung: 3" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="4" kommentar="8 AP" obj="Orientierung: 4" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="5" kommentar="11 AP" obj="Orientierung: 5" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="5" kommentar="11 AP" obj="Sagen und Legenden: 5" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="2" kommentar="4 AP" obj="Grobschmied: 2" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="3" kommentar="6 AP" obj="Grobschmied: 3" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="4" kommentar="8 AP" obj="Grobschmied: 4" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="5" kommentar="11 AP" obj="Grobschmied: 5" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="4" kommentar="8 AP" obj="Heilkunde: Wunden: 4" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="5" kommentar="11 AP" obj="Heilkunde: Wunden: 5" text="TALENT" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="0" kommentar="0 GP" obj="Akademische Ausbildung (Krieger)" text="VORTEILE" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="0" kommentar="-4 GP" obj="Autoritätsgläubig: 8" text="VORTEILE" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="0" kommentar="0 GP" obj="Prinzipientreue: 10" text="VORTEILE" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="0" kommentar="-12 GP" obj="Verpflichtungen" text="VORTEILE" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="0" Neu="0" kommentar="-4 GP" obj="Vorurteile gegen: Kämpfer die nicht an Rondra glauben 8" text="VORTEILE" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Neu="1" obj="Auswahl" text="Grobschmied" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Neu="1" obj="Auswahl" text="Bogen" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Neu="1" obj="Auswahl" text="Sprachen kennen Oloarkh" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Neu="1" obj="Auswahl" text="Sprachen kennen Ologhaijan" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Neu="2" obj="Auswahl" text="Sprachen kennen Thorwalsch" time="1495127349120" version="HS 5.5.2"/>
+<ereignis Alt="D: 0 S: 0 H: 0 K: 0" Info="Geldbörse" Neu="D: 4 S: 9 H: 0 K: 0" obj="Mittelreich" text="Geld" time="1495127817610" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="100" kommentar="Die Namenlosen Tage Gesamt AP: 100 Verfügbare AP: 100" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1495363097405" version="HS 5.5.2"/>
+<ereignis Alt="D: 4 S: 9 H: 0 K: 0" Info="Geldbörse" Neu="D: 6 S: 1 H: 0 K: 0" obj="Mittelreich" text="Geld" time="1495363104422" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-7" Alt="5" Info="SE, Gegenseitiges Lehren" Neu="6" obj="Sagen und Legenden" text="Talent steigern" time="1495363144468" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-6" Alt="1" Info="Selbststudium" Neu="2" obj="Überreden" text="Talent steigern" time="1495363159287" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="100" kommentar="Kapitel: Verhandlungen über die Bedingungen des siedeln Gesamt AP: 100 Verfügbare AP: 100" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1497247054171" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="75" kommentar="Kapitel: Der Goblin Speer Gesamt AP: 75 Verfügbare AP: 75" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1497247107243" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-17" Alt="6" Info="SE, Selbststudium" Neu="7" obj="Sagen und Legenden" text="Talent steigern" time="1497247332354" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-4" Alt="1" Info="SE, Selbststudium" Neu="2" obj="Menschenkenntnis" text="Talent steigern" time="1497247365252" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-9" Alt="2" Info="Selbststudium" Neu="3" obj="Menschenkenntnis" text="Talent steigern" time="1497247367312" version="HS 5.5.2"/>
+<ereignis Alt="D: 6 S: 1 H: 0 K: 0" Info="Geldbörse" Neu="D: 6 S: 0 H: 0 K: 0" obj="Mittelreich" text="Geld" time="1497247777991" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-140" Alt="10;7;3" Info="Selbststudium" Neu="11;7;3" obj="Schwerter" text="Nahkampftalent steigern" time="1497247819194" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-15" Alt="2" Info="Selbststudium" Neu="3" obj="Klettern" text="Talent steigern" time="1497247937052" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-9" Alt="2" Info="Selbststudium" Neu="3" obj="Überreden" text="Talent steigern" time="1497247941812" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="100" kommentar="Der Kampf zwischen Goblins und Elfen Gesamt AP: 100 Verfügbare AP: 100" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1498909636045" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-5" Info="SE" Neu="0" obj="Magiekunde" text="Talent aktivieren" time="1498909718141" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-2" Alt="0" Info="Selbststudium" Neu="1" obj="Magiekunde" text="Talent steigern" time="1498909750711" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-21" Alt="3" Info="Selbststudium" Neu="4" obj="Klettern" text="Talent steigern" time="1498909854734" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-55" Alt="8" Info="Selbststudium" Neu="9" obj="Sinnenschärfe" text="Talent steigern" time="1498909949825" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="75" kommentar="Pawels Tragödie Gesamt AP: 75 Verfügbare AP: 75" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1499081463773" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-14" Alt="5" Info="SE, Selbststudium" Neu="6" obj="Grobschmied" text="Talent steigern" time="1499081485710" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-17" Alt="6" Info="SE, Selbststudium" Neu="7" obj="Grobschmied" text="Talent steigern" time="1499081489041" version="HS 5.5.2"/>
+<ereignis Alt="D: 6 S: 0 H: 0 K: 0" Info="Geldbörse" Neu="D: 13 S: 8 H: 0 K: 0" obj="Mittelreich" text="Geld" time="1499175657570" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="150" kommentar="Die Feuerschlote Gesamt AP: 150 Verfügbare AP: 150" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1499627192030" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-150" obj="Talentspezialisierung Schwerter ((Lang-)Schwert)" text="Sonderfertigkeit hinzugefügt" time="1499627320262" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-7" Alt="1" Info="SE, Selbststudium" Neu="2" obj="Schwimmen" text="Talent steigern" time="1499627358358" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="-6" Alt="2" Info="SE, Selbststudium" Neu="3" obj="Geschichtswissen" text="Talent steigern" time="1499627369690" version="HS 5.5.2"/>
+<ereignis Alt="D: 13 S: 8 H: 0 K: 0" Info="Geldbörse" Neu="D: 17 S: 7 H: 3 K: 0" obj="Mittelreich" text="Geld" time="1499627432597" version="HS 5.5.2"/>
+<ereignis Abenteuerpunkte="300" kommentar="Der alte Feuergott Gesamt AP: 300 Verfügbare AP: 300" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1513538286646" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-410" Alt="14" Neu="15" obj="Körperkraft" text="Eigenschaft steigern" time="1513538304480" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="150" kommentar="Schildkampf 2 Gesamt AP: 150 Verfügbare AP: 150" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1513538347414" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-150" obj="Schildkampf II" text="Sonderfertigkeit hinzugefügt" time="1513538367812" version="HS 5.5.3"/>
+<ereignis Alt="D: 17 S: 7 H: 3 K: 0" Info="Geldbörse" Neu="D: 12 S: 7 H: 3 K: 0" obj="Mittelreich" text="Geld" time="1513538418978" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="300" kommentar="Kapitel das geklaute Holz :D Gesamt AP: 300 Verfügbare AP: 300" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1523695586771" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-17" Alt="4" Info="SE, Gegenseitiges Lehren" Neu="5" obj="Klettern" text="Talent steigern" time="1523695637006" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-25" Alt="6" Info="SE, Gegenseitiges Lehren" Neu="7" obj="Körperbeherrschung" text="Talent steigern" time="1523695658857" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-10" Alt="7" Info="SE, Gegenseitiges Lehren" Neu="8" obj="Sagen und Legenden" text="Talent steigern" time="1523695694938" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-34" Alt="5" Info="Selbststudium" Neu="6" obj="Klettern" text="Talent steigern" time="1523695731943" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="500" kommentar="Erben des Schwarzen Eises Gesamt AP: 500 Verfügbare AP: 500" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1527231061666" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-160" Alt="11;8;3" Info="Selbststudium" Neu="12;8;3" obj="Schwerter" text="Nahkampftalent steigern" time="1527231075706" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-175" Alt="12;8;3" Info="Selbststudium" Neu="13;8;3" obj="Schwerter" text="Nahkampftalent steigern" time="1527231076317" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-3" Alt="2" Info="SE, Gegenseitiges Lehren" Neu="3" obj="Wildnisleben" text="Talent steigern" time="1527231102960" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-4" Alt="3" Info="SE, Gegenseitiges Lehren" Neu="4" obj="Götter und Kulte" text="Talent steigern" time="1527231113916" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-41" Alt="6" Info="Selbststudium" Neu="7" obj="Athletik" text="Talent steigern" time="1527231308139" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-41" Alt="6" Info="Selbststudium" Neu="7" obj="Klettern" text="Talent steigern" time="1527231308821" version="HS 5.5.3"/>
+<ereignis Alt="D: 12 S: 7 H: 3 K: 0" Info="Geldbörse" Neu="D: 8 S: 8 H: 0 K: 0" obj="Mittelreich" text="Geld" time="1527231537092" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-48" Alt="7" Info="Selbststudium" Neu="8" obj="Athletik" text="Talent steigern" time="1527231816305" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-48" Alt="7" Info="Selbststudium" Neu="8" obj="Klettern" text="Talent steigern" time="1527231816854" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="500" kommentar="Schirr'Zachs Gefallen Gesamt AP: 500 Verfügbare AP: 500" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1527779603851" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-2" Alt="1" Info="SE, Gegenseitiges Lehren" Neu="2" obj="Magiekunde" text="Talent steigern" time="1527779624605" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-190" Alt="13;9;4" Info="Selbststudium" Neu="14;9;4" obj="Schwerter" text="Nahkampftalent steigern" time="1527779633496" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-55" Alt="8" Info="Selbststudium" Neu="9" obj="Athletik" text="Talent steigern" time="1527779697755" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-55" Alt="8" Info="Selbststudium" Neu="9" obj="Klettern" text="Talent steigern" time="1527779698726" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-48" Alt="7" Info="Selbststudium" Neu="8" obj="Körperbeherrschung" text="Talent steigern" time="1527779711909" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="300" kommentar="Eroberung von Paavi Gesamt AP: 300 Verfügbare AP: 300" obj="Abenteuerpunkte (Hinzugewinn)" text="Ereignis eingeben" time="1529045799455" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-50" Alt="9" Info="SE, Selbststudium" Neu="10" obj="Klettern" text="Talent steigern" time="1529045824279" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-45" Alt="8" Info="SE, Selbststudium" Neu="9" obj="Körperbeherrschung" text="Talent steigern" time="1529045827966" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-6" Alt="1" Info="SE, Gegenseitiges Lehren" Neu="2" obj="Sich verstecken" text="Talent steigern" time="1529045834605" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-6" Alt="4" Info="SE, Gegenseitiges Lehren" Neu="5" obj="Kriegskunst" text="Talent steigern" time="1529045849714" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-2" Alt="1" Info="SE, Gegenseitiges Lehren" Neu="2" obj="Boote fahren" text="Talent steigern" time="1529045859638" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-65" Alt="9" Info="Selbststudium" Neu="10" obj="Athletik" text="Talent steigern" time="1529046721270" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-65" Alt="9" Info="Selbststudium" Neu="10" obj="Körperbeherrschung" text="Talent steigern" time="1529046725830" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-15" Alt="2" Info="Selbststudium" Neu="3" obj="Schwimmen" text="Talent steigern" time="1529046739227" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-65" Alt="9" Info="Selbststudium" Neu="10" obj="Sinnenschärfe" text="Talent steigern" time="1529046750054" version="HS 5.5.3"/>
+<ereignis Abenteuerpunkte="-21" Alt="5" Info="Selbststudium" Neu="6" obj="Heilkunde: Wunden" text="Talent steigern" time="1529046792324" version="HS 5.5.3"/>
+<ereignis Alt="D: 8 S: 8 H: 0 K: 0" Info="Geldbörse" Neu="D: 58 S: 8 H: 0 K: 0" obj="Mittelreich" text="Geld" time="1529046850072" version="HS 5.5.3"/>
+</ereignisse>
+<talentliste>
+<talent lernmethode="Gegenseitiges Lehren" name="Bogen" probe=" (GE/FF/KK)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Dolche" probe=" (GE/GE/KK)" value="5"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Hiebwaffen" probe=" (GE/GE/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Infanteriewaffen" probe=" (GE/GE/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Raufen" probe=" (GE/GE/KK)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Ringen" probe=" (GE/GE/KK)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Säbel" probe=" (GE/GE/KK)" value="0"/>
+<talent lernmethode="Selbststudium" name="Schwerter" probe=" (GE/GE/KK)" value="14"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Wurfmesser" probe=" (GE/FF/KK)" value="0"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Wurfspeere" probe=" (GE/FF/KK)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Zweihandschwerter/-säbel" probe=" (GE/GE/KK)" value="4"/>
+<talent be="BEx2" lernmethode="Selbststudium" name="Athletik" probe=" (GE/KO/KK)" value="10"/>
+<talent be="BEx2" lernmethode="Selbststudium" name="Klettern" probe=" (MU/GE/KK)" value="10"/>
+<talent be="BEx2" lernmethode="Selbststudium" name="Körperbeherrschung" probe=" (MU/IN/GE)" value="10"/>
+<talent be="BE-2" lernmethode="Gegenseitiges Lehren" name="Reiten" probe=" (CH/GE/KK)" value="5"/>
+<talent be="BE" lernmethode="Gegenseitiges Lehren" name="Schleichen" probe=" (MU/IN/GE)" value="1"/>
+<talent be="BEx2" lernmethode="Selbststudium" name="Schwimmen" probe=" (GE/KO/KK)" value="3"/>
+<talent be="" lernmethode="Gegenseitiges Lehren" name="Selbstbeherrschung" probe=" (MU/KO/KK)" value="6"/>
+<talent be="BE-2" lernmethode="Gegenseitiges Lehren" name="Sich verstecken" probe=" (MU/IN/GE)" value="2"/>
+<talent be="BE-3" lernmethode="Gegenseitiges Lehren" name="Singen" probe=" (IN/CH/CH)" value="0"/>
+<talent be="0-&gt;BE" lernmethode="Selbststudium" name="Sinnenschärfe" probe=" (KL/IN/IN)" value="10"/>
+<talent be="BEx2" lernmethode="Gegenseitiges Lehren" name="Tanzen" probe=" (CH/GE/GE)" value="0"/>
+<talent be="" lernmethode="Gegenseitiges Lehren" name="Zechen" probe=" (IN/KO/KK)" value="6"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Etikette" probe=" (KL/IN/CH)" value="3"/>
+<talent lernmethode="Selbststudium" name="Menschenkenntnis" probe=" (KL/IN/CH)" value="3"/>
+<talent lernmethode="Selbststudium" name="Überreden" probe=" (MU/IN/CH)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Fährtensuchen" probe=" (KL/IN/KO)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Fesseln/Entfesseln" probe=" (FF/GE/KK)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Orientierung" probe=" (KL/IN/IN)" value="5"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Wildnisleben" probe=" (IN/GE/KO)" value="3"/>
+<talent lernmethode="Selbststudium" name="Geschichtswissen" probe=" (KL/KL/IN)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Götter und Kulte" probe=" (KL/KL/IN)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Heraldik" probe=" (KL/KL/FF)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Kriegskunst" probe=" (MU/KL/CH)" value="5"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Magiekunde" probe=" (KL/KL/IN)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Rechnen" probe=" (KL/KL/IN)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Rechtskunde" probe=" (KL/KL/IN)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Sagen und Legenden" probe=" (KL/IN/CH)" value="8"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Tierkunde" probe=" (MU/KL/IN)" value="2"/>
+<talent k="18" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Garethi" probe=" (KL/IN/CH)" value="8"/>
+<talent k="10" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Oloarkh" probe=" (KL/IN/CH)" value="1"/>
+<talent k="15" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Ologhaijan" probe=" (KL/IN/CH)" value="1"/>
+<talent k="18" lernmethode="Gegenseitiges Lehren" name="Sprachen kennen Thorwalsch" probe=" (KL/IN/CH)" value="2"/>
+<talent k="10" lernmethode="Gegenseitiges Lehren" name="Lesen/Schreiben Kusliker Zeichen" probe=" (KL/KL/FF)" value="4"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Ackerbau" probe=" (IN/FF/KO)" value="1"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Boote fahren" probe=" (GE/KO/KK)" value="2"/>
+<talent lernmethode="Selbststudium" name="Grobschmied" probe=" (FF/KO/KK)" value="7"/>
+<talent lernmethode="Selbststudium" name="Heilkunde: Wunden" probe=" (KL/CH/FF)" value="6"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Holzbearbeitung" probe=" (KL/FF/KK)" value="2"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Kochen" probe=" (KL/IN/FF)" value="0"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Lederarbeiten" probe=" (KL/FF/FF)" value="3"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Malen/Zeichnen" probe=" (KL/IN/FF)" value="0"/>
+<talent lernmethode="Gegenseitiges Lehren" name="Schneidern" probe=" (KL/FF/FF)" value="1"/>
+</talentliste>
+<zauberliste/>
+<kampf>
+<kampfwerte name="Dolche">
+<attacke value="13"/>
+<parade value="8"/>
+</kampfwerte>
+<kampfwerte name="Hiebwaffen">
+<attacke value="9"/>
+<parade value="8"/>
+</kampfwerte>
+<kampfwerte name="Infanteriewaffen">
+<attacke value="9"/>
+<parade value="8"/>
+</kampfwerte>
+<kampfwerte name="Raufen">
+<attacke value="9"/>
+<parade value="9"/>
+</kampfwerte>
+<kampfwerte name="Ringen">
+<attacke value="10"/>
+<parade value="10"/>
+</kampfwerte>
+<kampfwerte name="Säbel">
+<attacke value="8"/>
+<parade value="8"/>
+</kampfwerte>
+<kampfwerte name="Schwerter">
+<attacke value="17"/>
+<parade value="13"/>
+</kampfwerte>
+<kampfwerte name="Zweihandschwerter/-säbel">
+<attacke value="11"/>
+<parade value="9"/>
+</kampfwerte>
+</kampf>
+<gegenstände>
+<gegenstand anzahl="1" name="(Lang-)Schwert" slot="0"/>
+<gegenstand anzahl="1" name="Armschienen (Paar), Leder" slot="0"/>
+<gegenstand anzahl="1" name="Basilamine (Schoten)" slot="0">
+<modallgemein>
+<gewicht value="1.0"/>
+<preis value="0"/>
+<name value="Bandagen"/>
+</modallgemein>
+</gegenstand>
+<gegenstand anzahl="1" name="Beinschienen (Paar), Stahl" slot="0"/>
+<gegenstand anzahl="1" name="Großschild" slot="0">
+<Schild>
+<bf akt="0" min="0"/>
+</Schild>
+</gegenstand>
+<gegenstand anzahl="1" name="Hanfseil (1 Schritt)" slot="0">
+<modallgemein>
+<gewicht value="5.0"/>
+<preis value="70"/>
+<name value="Seil (10 Schritt)"/>
+</modallgemein>
+</gegenstand>
+<gegenstand anzahl="1" name="Kettenhemd, Lang" slot="0"/>
+<gegenstand anzahl="1" name="Wolldecke" slot="0"/>
+</gegenstände>
+<BoniWaffenlos/>
+<kommentare>
+<kommentar key="Prinzipientreue" kommentar="Ehrenhafter Kämpfer&#10;Schutz der Schwachen&#10;Keiner wird zurück gelassen&#10;Ruf von Rondra folgen"/>
+</kommentare>
+<ausrüstungen>
+<heldenausruestung bezeichner="" bfakt="1" bfmin="1" hand="rechts" name="nkwaffe1" schild="0" set="0" slot="0" talent="Schwerter" waffenname="(Lang-)Schwert"/>
+<heldenausruestung name="schild1" schildname="Großschild" set="0" slot="0" verwendungsArt="Schild"/>
+<heldenausruestung name="ruestung1" ruestungsname="Kettenhemd, Lang" set="0" slot="0"/>
+<heldenausruestung name="ruestung2" ruestungsname="Beinschienen (Paar), Stahl" set="0" slot="0"/>
+<heldenausruestung name="ruestung3" ruestungsname="Armschienen (Paar), Leder" set="0" slot="0"/>
+<heldenausruestung name="jagtwaffe" nummer="0" set="0"/>
+</ausrüstungen>
+<verbindungen/>
+<extention/>
+<geldboerse>
+<muenze anzahl="58" name="Dukat" waehrung="Mittelreich"/>
+<muenze anzahl="8" name="Silbertaler" waehrung="Mittelreich"/>
+</geldboerse>
+<plugindata/>
+</held>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+<SignedInfo>
+<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/>
+<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#dsa-sha1"/>
+<Reference URI="">
+<Transforms>
+<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+</Transforms>
+<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<DigestValue>1Xri7Y3tiyEIiR5MdLYtEMABUpg=</DigestValue>
+</Reference>
+</SignedInfo>
+<SignatureValue>Bu0nzfwku4miCKg5DN/HCRF/2bZxRAQ5YrNAnAMyvTt4+DeflQtWvQ==</SignatureValue>
+<KeyInfo>
+<KeyValue>
+<DSAKeyValue>
+<P>/KaCzo4Syrom78z3EQ5SbbB4sF7ey80etKII864WF64B81uRpH5t9jQTxeEu0ImbzRMqzVDZkVG9
+xD7nN1kuFw==</P>
+<Q>li7dzDacuo67Jg7mtqEm2TRuOMU=</Q>
+<G>Z4Rxsnqc9E7pGknFFH2xqaryRPBaQ01khpMdLRQnG541Awtx/XPaF5Bpsy4pNWMOHCBiNU0Nogps
+QW5QvnlMpA==</G>
+<Y>uVrvWkzIbUdL7E80AiD0PJDX3Ck0beY5StXp1wDAA1/ePpemd6rTBNd8YoCzOovNrX016YMcTSiO
+iExM4RWtJA==</Y>
+</DSAKeyValue>
+</KeyValue>
+</KeyInfo>
+</Signature>
+</helden>

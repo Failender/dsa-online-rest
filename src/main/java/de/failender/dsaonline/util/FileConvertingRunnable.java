@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.io.*;
@@ -63,10 +64,10 @@ public class FileConvertingRunnable implements Runnable {
 
 				});
 		log.info("Starting to convert helden to daten format");
-		Arrays.stream(dir.listFiles(getFiles())).parallel()
-				.forEach(file -> {
+		Flux.just(dir.listFiles(getFiles()))
+//				.subscribeOn(Schedulers.elastic())
+				.flatMap(file -> {
 					String fileName = FilenameUtils.removeExtension(file.getName()) + ".zip";
-
 					File outFile = new File(outDir, fileName);
 					if (!outFile.exists()) {
 						try {
@@ -74,45 +75,45 @@ public class FileConvertingRunnable implements Runnable {
 							String xml = FileUtils.readFileToString(file, "UTF-8");
 							ConvertingRequest datenRequest = new ConvertingRequest(HeldenApi.Format.datenxml, xml);
 							ConvertingRequest pdfRequest = new ConvertingRequest(HeldenApi.Format.pdfintern, xml);
-							Mono.zip(heldenApi.request(datenRequest, false), heldenApi.requestRaw(pdfRequest, false))
-									.subscribe(tuple -> {
-												System.out.println("INSIDE");
-												InputStream datenStream = tuple.getT1();
-												InputStream pdfStream = tuple.getT2();
+							return Mono.zip(heldenApi.request(datenRequest, false), heldenApi.requestRaw(pdfRequest, false))
+									.doOnNext(tuple -> {
+
+										InputStream datenStream = tuple.getT1();
+										InputStream pdfStream = tuple.getT2();
 
 
-												ZipOutputStream zos = null;
-												try {
-													Daten daten = (Daten) JaxbUtil.getUnmarshaller(Daten.class).unmarshal(datenStream);
-													UserHeldenService.clearEreigniskontrolle(daten.getEreignisse().getEreignis());
-													zos = new ZipOutputStream(new FileOutputStream(outFile));
-													zos.putNextEntry(new ZipEntry("daten.xml"));
-													JaxbUtil.getMarshaller(Daten.class).marshal(daten, zos);
-													zos.closeEntry();
-													zos.putNextEntry(new ZipEntry("held.pdf"));
-													IOUtils.copy(pdfStream, zos);
-													zos.closeEntry();
-													zos.putNextEntry(new ZipEntry("held.xml"));
-													IOUtils.copy(IOUtils.toInputStream(xml, "UTF-8"), zos);
-													zos.closeEntry();
-													zos.close();
-													log.info("Finished converting {}", file.getName());
-												} catch (FileNotFoundException e) {
-													e.printStackTrace();
-												} catch (Exception e) {
-													log.error("Critical error converting file", e);
-													if (zos != null) {
-														IOUtils.closeQuietly(zos);
-														if (outFile.exists()) {
-															outFile.delete();
-														}
-													}
+										ZipOutputStream zos = null;
+										try {
+											Daten daten = (Daten) JaxbUtil.getUnmarshaller(Daten.class).unmarshal(datenStream);
+											UserHeldenService.clearEreigniskontrolle(daten.getEreignisse().getEreignis());
+											zos = new ZipOutputStream(new FileOutputStream(outFile));
+											zos.putNextEntry(new ZipEntry("daten.xml"));
+											JaxbUtil.getMarshaller(Daten.class).marshal(daten, zos);
+											zos.closeEntry();
+											zos.putNextEntry(new ZipEntry("held.pdf"));
+											IOUtils.copy(pdfStream, zos);
+											zos.closeEntry();
+											zos.putNextEntry(new ZipEntry("held.xml"));
+											IOUtils.copy(IOUtils.toInputStream(xml, "UTF-8"), zos);
+											zos.closeEntry();
+											zos.close();
+											log.info("Finished converting {}", file.getName());
+										} catch (FileNotFoundException e) {
+											e.printStackTrace();
+										} catch (Exception e) {
+											log.error("Critical error converting file", e);
+											if (zos != null) {
+												IOUtils.closeQuietly(zos);
+												if (outFile.exists()) {
+													outFile.delete();
 												}
+											}
+										}
 
-											},
-											(error) -> {
-												log.error("GOT AN ERROR WHILE CONVERTING", error);
-											});
+									})
+									.doOnError((error) -> {
+										log.error("GOT AN ERROR WHILE CONVERTING " + fileName, error);
+									});
 
 
 						} catch (IOException e) {
@@ -120,7 +121,8 @@ public class FileConvertingRunnable implements Runnable {
 							throw new RuntimeException(e);
 						}
 					}
-				});
+					return Mono.empty();
+				}).blockLast();
 		log.info("Done converting");
 	}
 

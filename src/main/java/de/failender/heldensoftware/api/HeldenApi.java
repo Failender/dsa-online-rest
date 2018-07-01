@@ -3,20 +3,14 @@ package de.failender.heldensoftware.api;
 import de.failender.heldensoftware.api.requests.ApiRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.springframework.core.io.Resource;
-import org.springframework.http.*;
-import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -71,48 +65,31 @@ public class HeldenApi {
 				});
 	}
 
-	private Mono<InputStream> doRequest(ApiRequest request) {
-
-		HttpPost httpPost = new HttpPost(request.url());
+	private synchronized Mono<InputStream> doRequest(ApiRequest request) {
 		Map<String, String> data = request.writeRequest();
+
 		String body = buildBody(data);
 		try {
-			httpPost.setEntity(new StringEntity(body));
-		} catch (UnsupportedEncodingException e) {
+			URL url = new URL(request.url());
+
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestMethod("POST");
+			connection.setDoInput(true);
+			connection.setDoOutput(true);
+			connection.setUseCaches(false);
+			connection.setRequestProperty("Content-Type",
+					"application/x-www-form-urlencoded; charset=utf-8");
+			connection.setRequestProperty("Content-Length", String.valueOf(body.length()));
+
+			OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+			writer.write(body);
+			writer.close();
+
+			return Mono.just(connection.getInputStream());
+		} catch (Exception e) {
+			logError(request, body);
 			throw new RuntimeException(e);
 		}
-		HttpHeaders header = new HttpHeaders();
-		header.set("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
-		HttpEntity<String> entity = new HttpEntity<>(body, header);
-		Mono<InputStream> mono = Mono.fromCallable(() -> {
-
-			try {
-				ResponseEntity<Resource> response = null;
-				response = restTemplate.exchange(request.url(), HttpMethod.POST, entity, Resource.class);
-
-				if(response.getStatusCode().value() == 503) {
-					logError(request, body);
-					throw new ApiOfflineException();
-
-				} else {
-					return response.getBody().getInputStream();
-				}
-
-			} catch (IOException e) {
-				logError(request, body);
-				e.printStackTrace();
-				throw new ApiOfflineException();
-
-			} catch(HttpServerErrorException e) {
-				logError(request, body);
-				e.printStackTrace();
-				log.error("Error from api {}: {}",e.getStatusCode(), e.getStatusText());
-				throw new ApiOfflineException();
-			}
-		});
-
-		return mono
-				.subscribeOn(Schedulers.elastic());
 
 	}
 
