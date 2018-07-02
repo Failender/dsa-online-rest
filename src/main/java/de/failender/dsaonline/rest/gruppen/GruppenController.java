@@ -13,6 +13,7 @@ import de.failender.heldensoftware.api.authentication.TokenAuthentication;
 import de.failender.heldensoftware.api.requests.GetAllHeldenRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 
@@ -88,10 +89,15 @@ public class GruppenController {
 				.flatMap(user -> heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(user.getToken()))))
 				.flatMap(val -> Flux.fromIterable(val.getHeld()))
 				.subscribe(held -> {
-					HeldWithVersion heldWithVersion = this.heldRepositoryService.findHeldWithLatestVersion(held.getHeldenid());
-					if (heldWithVersion.getHeld().isPublic()) {
-						value.get(heldWithVersion.getHeld().getGruppe().getName()).getHelden().add(heldenService.mapToHeldenInfo(heldWithVersion));
+					try {
+						HeldWithVersion heldWithVersion = this.heldRepositoryService.findHeldWithLatestVersion(held.getHeldenid());
+						if (heldWithVersion.getHeld().isPublic()) {
+							value.get(heldWithVersion.getHeld().getGruppe().getName()).getHelden().add(heldenService.mapToHeldenInfo(heldWithVersion));
+						}
+					} catch(AccessDeniedException e) {
+						;
 					}
+
 				});
 
 
