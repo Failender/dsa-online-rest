@@ -11,6 +11,7 @@ import de.failender.dsaonline.service.EventService;
 import org.assertj.core.api.Assertions;
 import org.flywaydb.test.annotation.FlywayTest;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,7 @@ public class EventTest extends DsaOnlineTest {
 
 	@FlywayTest
 	@Test
+	@Ignore
 	public void testEvents() {
 
 		DsaMonat dsaMonat = new DsaMonat(1003, 12);
