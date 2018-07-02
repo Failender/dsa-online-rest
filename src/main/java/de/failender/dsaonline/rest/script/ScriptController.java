@@ -1,5 +1,6 @@
 package de.failender.dsaonline.rest.script;
 
+import de.failender.dsaonline.data.entity.ScriptEntity;
 import de.failender.dsaonline.scripting.ScriptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +25,12 @@ public class ScriptController {
 	}
 
 	@GetMapping("types")
-	public Map<String, List<String>> getTypesWithValues() {
+	public List<TypeDto> getTypesWithValues() {
 		return scriptService.getTypesWithValues();
+	}
 
+	@GetMapping("all")
+	public Iterable<ScriptEntity> getAllScripts() {
+		return this.scriptService.getAllScripts();
 	}
 }
