@@ -9,15 +9,13 @@ import org.springframework.stereotype.Component;
 import java.math.BigInteger;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
-public class HeldByIdLatestSupplier extends ScriptSupplier<Daten> {
+public class ConstantSupplier extends ScriptSupplier {
 
-	public static final String TYPE = "heldbyidlatest";
+	public static final String TYPE = "constant";
 
-	@Autowired
-	private HeldenService heldenService;
+
 
 	@Override
 	public String type() {
@@ -25,28 +23,22 @@ public class HeldByIdLatestSupplier extends ScriptSupplier<Daten> {
 	}
 
 	@Override
-	public Daten supply(String value) {
-		BigInteger id = new BigInteger(value);
-		Daten daten = heldenService.findHeldWithLatestVersion(id);
-
-		return daten;
+	public String supply(String value) {
+		return value;
 	}
 
 	@Override
 	public String rightNeeded(String value) {
-		return SecurityUtils.VIEW_ALL;
+		return null;
 	}
 
 	@Override
 	public String description() {
-		return "Gibt die neuste Version des Helden mit der gegebenen ID zurück";
+		return "Gibt den angegebenen Wert zurück (als String)";
 	}
 
 	@Override
 	public List<String> getPossibleValues() {
-		return heldenService.getAllHeldenIds()
-				.stream()
-				.map(BigInteger::toString)
-				.collect(Collectors.toList());
+		return Collections.emptyList();
 	}
 }

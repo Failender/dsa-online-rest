@@ -2,6 +2,7 @@ package de.failender.dsaonline.restservice;
 
 import de.failender.dsaonline.data.entity.ScriptEntity;
 import de.failender.dsaonline.data.entity.ScriptVariable;
+import de.failender.dsaonline.scripting.IntConstantSupplier;
 import de.failender.dsaonline.scripting.LatestHeldenForGruppePublicSupplier;
 import de.failender.dsaonline.scripting.ScriptService;
 import de.failender.dsaonline.service.HeldenService;
@@ -28,8 +29,9 @@ public class ScriptTest extends DsaOnlineTest {
 	private ScriptService scriptService;
 
 	private static final String FAKE_GRUPPE_ID = "1";
+	private static final String FAKE_HELD_ID="36222";
+	private static final String FAKE_HELD_RED="500";
 
-	private static final String TEST_SCRIPT = "";
 
 	@Test
 	public void test() throws IOException {
@@ -44,15 +46,24 @@ public class ScriptTest extends DsaOnlineTest {
 		ScriptEntity scriptEntity = new ScriptEntity();
 		scriptEntity.setBody(IOUtils.toString(getResource("scripts/average_ap_public.js"), "UTF-8"));
 		List<ScriptVariable> scriptVariables = new ArrayList<>();
-		ScriptVariable scriptVariable = new ScriptVariable();
-		scriptVariable.setType(LatestHeldenForGruppePublicSupplier.TYPE);
-		scriptVariable.setValue(FAKE_GRUPPE_ID);
-		scriptVariable.setName("helden");
-		scriptVariables.add(scriptVariable);
+
+		ScriptVariable groupVariable = new ScriptVariable();
+		groupVariable.setType(LatestHeldenForGruppePublicSupplier.TYPE);
+		groupVariable.setValue(FAKE_GRUPPE_ID);
+		groupVariable.setName("helden");
+		scriptVariables.add(groupVariable);
+
+
+		ScriptVariable torfAmountVariable = new ScriptVariable();
+		torfAmountVariable.setType(IntConstantSupplier.TYPE);
+		torfAmountVariable.setValue(FAKE_HELD_RED);
+		torfAmountVariable.setName("torfMissingAp");
+		scriptVariables.add(torfAmountVariable);
+
 		scriptEntity.setScriptVariables(scriptVariables);
 		double result = (double) scriptService.execute(scriptEntity);
 		int intResult = (int) result;
-		Assertions.assertThat(intResult).isEqualTo(3335);
+		Assertions.assertThat(intResult).isEqualTo(3085);
 
 
 	}

@@ -8,9 +8,8 @@ import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ScriptService {
@@ -49,7 +48,16 @@ public class ScriptService {
 		} catch (NoSuchMethodException e) {
 			throw new RuntimeException(e);
 		}
+	}
 
+	public List<String> getPossibleValuesForType(String type) {
+		return scriptSuppliers.get(type).getPossibleValues();
+	}
 
+	public Map<String,List<String>> getTypesWithValues() {
+		return scriptSuppliers.entrySet()
+				.stream()
+				.map(entry -> new AbstractMap.SimpleEntry<>(entry.getKey(), entry.getValue().getPossibleValues()))
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 	}
 }

@@ -95,4 +95,8 @@ public class HeldRepositoryService {
 
 		heldRepository.updateHeldenPublic(isPublic, heldid);
 	}
+
+	public List<BigInteger> getAllHeldenIds() {
+		return heldRepository.getAllHeldenIds();
+	}
 }

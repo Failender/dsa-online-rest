@@ -28,4 +28,6 @@ public interface HeldRepository extends JpaRepository<HeldEntity, BigInteger> {
 	List<HeldEntity> findByGruppeId(Integer gruppeId);
 
 
+	@Query("SELECT h.id FROM HeldEntity h")
+	List<BigInteger> getAllHeldenIds();
 }

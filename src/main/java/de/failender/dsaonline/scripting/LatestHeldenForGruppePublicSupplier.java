@@ -1,11 +1,13 @@
 package de.failender.dsaonline.scripting;
 
+import de.failender.dsaonline.data.repository.GruppeRepository;
 import de.failender.dsaonline.service.HeldenService;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class LatestHeldenForGruppePublicSupplier extends ScriptSupplier<List<Daten>> {
@@ -14,6 +16,9 @@ public class LatestHeldenForGruppePublicSupplier extends ScriptSupplier<List<Dat
 
 	@Autowired
 	private HeldenService heldenService;
+
+	@Autowired
+	private GruppeRepository gruppeRepository;
 
 	@Override
 	public String type() {
@@ -38,5 +43,13 @@ public class LatestHeldenForGruppePublicSupplier extends ScriptSupplier<List<Dat
 
 	public void setHeldenService(HeldenService heldenService) {
 		this.heldenService = heldenService;
+	}
+
+	@Override
+	public List<String> getPossibleValues() {
+		return gruppeRepository.getAllGruppenIds()
+				.stream()
+				.map(val -> val.toString())
+				.collect(Collectors.toList());
 	}
 }

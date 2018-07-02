@@ -230,5 +230,11 @@ public class HeldenService {
 				.collect(Collectors.toList());
 	}
 
+	public List<BigInteger> getAllHeldenIds() {
+		return heldRepositoryService.getAllHeldenIds();
+	}
+
+
+
 
 }
