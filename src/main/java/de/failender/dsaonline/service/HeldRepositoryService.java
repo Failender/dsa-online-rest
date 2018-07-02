@@ -6,6 +6,7 @@ import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.VersionRepository;
 import de.failender.dsaonline.exceptions.HeldNotFoundException;
 import de.failender.dsaonline.rest.helden.HeldWithVersion;
+import de.failender.dsaonline.security.SecurityUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,7 +75,12 @@ public class HeldRepositoryService {
 			log.error("Held with id {} could not be found", heldid);
 			throw new HeldNotFoundException(heldid);
 		}
+		SecurityUtils.canCurrentUserViewHeld(heldEntityOptional.get());
 		return heldEntityOptional.get();
+	}
+
+	public List<HeldEntity> findByGruppeId(Integer gruppeId) {
+		return heldRepository.findByGruppeId(gruppeId);
 	}
 
 	public void saveVersion(VersionEntity versionEntity) {

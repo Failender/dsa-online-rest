@@ -1,5 +1,6 @@
 package de.failender.dsaonline.service;
 
+import com.fasterxml.jackson.databind.node.BigIntegerNode;
 import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.entity.VersionEntity;
@@ -15,6 +16,7 @@ import de.failender.heldensoftware.xml.datenxml.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.util.function.Tuple2;
 
 import javax.servlet.http.HttpServletResponse;
@@ -50,6 +52,11 @@ public class HeldenService {
 				.collect(Collectors.toList());
 	}
 
+	public Daten findHeldWithLatestVersion(BigInteger id) {
+		HeldWithVersion heldWithVersion = heldRepositoryService.findHeldWithLatestVersion(id);
+		return getHeldenDaten(id, heldWithVersion.getVersion().getId().getVersion());
+	}
+
 	public HeldenInfo mapToHeldenInfo(HeldWithVersion heldWithVersion) {
 		return new HeldenInfo(heldWithVersion.getHeld().getName(),
 				heldWithVersion.getVersion().getCreatedDate(),
@@ -61,10 +68,9 @@ public class HeldenService {
 
 	public Daten getHeldenDaten(BigInteger id, int version) {
 		HeldEntity held = heldRepositoryService.findHeld(id);
+
 		//Throw error if version not present
 		heldRepositoryService.findVersion(id, version);
-
-		SecurityUtils.canCurrentUserViewHeld(held);
 		UserEntity owningUser = this.userRepository.findById(held.getUserId()).get();
 		return heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(id, new TokenAuthentication(owningUser.getToken()), version), true).block();
 	}
@@ -84,8 +90,6 @@ public class HeldenService {
 	}
 
 	private HeldenUnterschied calculateUnterschied(HeldEntity held, VersionEntity from, VersionEntity to) {
-
-		SecurityUtils.canCurrentUserViewHeld(held);
 		UserEntity userEntity = this.userRepository.findById(held.getUserId()).get();
 		String token = userEntity.getToken();
 		Tuple2<Daten, Daten> datenTuple = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), from.getId().getVersion())).zipWith(
@@ -197,7 +201,6 @@ public class HeldenService {
 
 	public void providePdfDownload(BigInteger id, int version, HttpServletResponse response) {
 		HeldEntity held = heldRepositoryService.findHeld(id);
-		SecurityUtils.canCurrentUserViewHeld(held);
 		heldRepositoryService.findVersion(id, version);
 		heldenApi.provideDownload(new ReturnHeldPdfRequest(id, getAuthentication(), version), response);
 	}
@@ -207,6 +210,24 @@ public class HeldenService {
 		log.info("Updating public status for held {}: {}", held.getName(), isPublic);
 		SecurityUtils.canCurrentUserEditHeld(held);
 		heldRepositoryService.updateHeldenPublic(isPublic, heldid);
+	}
+
+	public List<Daten> findPublicByGruppeId(Integer gruppeId) {
+		return heldRepositoryService.findByGruppeId(gruppeId)
+				.stream()
+				.filter(HeldEntity::isPublic)
+				.map(HeldEntity::getId)
+				.map(this::findHeldWithLatestVersion)
+				.collect(Collectors.toList());
+	}
+
+	public List<Daten> findAllByGruppeId(Integer gruppeId) {
+		SecurityUtils.checkRight(SecurityUtils.VIEW_ALL);
+		return heldRepositoryService.findByGruppeId(gruppeId)
+				.stream()
+				.map(HeldEntity::getId)
+				.map(this::findHeldWithLatestVersion)
+				.collect(Collectors.toList());
 	}
 
 

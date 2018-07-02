@@ -12,12 +12,7 @@ import java.io.File;
 public class ApiConfig {
 
 	@Bean
-	public RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
-
-	@Bean
-	public HeldenApi heldenApi(@Value("${dsa.online.cache.directory}") String cacheDirectoryString, RestTemplate restTemplate) {
-		return new HeldenApi(new File(cacheDirectoryString), restTemplate);
+	public HeldenApi heldenApi(@Value("${dsa.online.cache.directory}") String cacheDirectoryString) {
+		return new HeldenApi(new File(cacheDirectoryString));
 	}
 }

@@ -19,11 +19,9 @@ import java.util.stream.Collectors;
 public class HeldenApi {
 
 	private final CacheHandler cacheHandler;
-	private final RestTemplate restTemplate;
 
-	public HeldenApi(File cacheDirectory, RestTemplate restTemplate) {
+	public HeldenApi(File cacheDirectory) {
 
-		this.restTemplate = restTemplate;
 		cacheHandler = new CacheHandler(cacheDirectory);
 	}
 

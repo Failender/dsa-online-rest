@@ -17,13 +17,17 @@ public class DbConfig {
 
 
 
-	@ConditionalOnProperty("${dsa.online.clean.on.start}")
 	@Bean
-	public Flyway flyway(DataSource theDataSource) {
+	public Flyway flyway(DataSource theDataSource, @Value("${dsa.online.clean.on.start}")boolean cleanOnStart) {
+
 		Flyway flyway = new Flyway();
 		flyway.setDataSource(theDataSource);
 		flyway.setLocations("classpath:db/migration");
-		flyway.clean();
+		if(cleanOnStart) {
+			flyway.clean();
+			System.out.println("CLEAN");
+		}
+
 		flyway.migrate();
 
 		return flyway;

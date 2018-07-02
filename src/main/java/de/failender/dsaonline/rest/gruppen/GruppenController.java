@@ -55,7 +55,6 @@ public class GruppenController {
 	@PostMapping("{heldid}/{gruppeid}")
 	public void editHeldenGruppe(@PathVariable BigInteger heldid, @PathVariable Integer gruppeid) {
 		HeldEntity heldEntity = this.heldRepositoryService.findHeld(heldid);
-		SecurityUtils.canCurrentUserViewHeld(heldEntity);
 		this.heldRepositoryService.updateHeldenGruppe(gruppeid, heldid);
 	}
 

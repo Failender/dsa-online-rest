@@ -1,5 +1,6 @@
 package de.failender.dsaonline.data.repository;
 
+import de.failender.dsaonline.data.entity.GruppeEntity;
 import de.failender.dsaonline.data.entity.HeldEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -23,6 +24,8 @@ public interface HeldRepository extends JpaRepository<HeldEntity, BigInteger> {
 	@Modifying
 	@Query("UPDATE HeldEntity h SET h.isPublic = ?1 WHERE h.id = ?2")
 	void updateHeldenPublic(boolean isPublic, BigInteger heldid);
+
+	List<HeldEntity> findByGruppeId(Integer gruppeId);
 
 
 }
