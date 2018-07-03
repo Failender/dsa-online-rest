@@ -2,9 +2,12 @@ package de.failender.dsaonline.scripting;
 
 import de.failender.dsaonline.data.entity.ScriptEntity;
 import de.failender.dsaonline.data.entity.ScriptVariable;
+import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.ScriptRepository;
 import de.failender.dsaonline.rest.script.TypeDto;
+import de.failender.dsaonline.security.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
 import javax.script.Invocable;
@@ -69,5 +72,16 @@ public class ScriptService {
 
 	public Iterable<ScriptEntity> getAllScripts() {
 		return this.scriptRepository.findAll();
+	}
+
+	public void saveScript(ScriptEntity scriptEntity) {
+		if(scriptEntity.getId() != null && scriptRepository.existsById(scriptEntity.getId())) {
+			ScriptEntity db = scriptRepository.findById(scriptEntity.getId()).get();
+			UserEntity user = SecurityUtils.getCurrentUser();
+			if(user.getId() != db.getOwner()) {
+				throw new AccessDeniedException("Scripts can only be edited by their owner");
+			}
+		}
+		scriptRepository.save(scriptEntity);
 	}
 }

@@ -3,10 +3,7 @@ package de.failender.dsaonline.rest.script;
 import de.failender.dsaonline.data.entity.ScriptEntity;
 import de.failender.dsaonline.scripting.ScriptService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -33,4 +30,11 @@ public class ScriptController {
 	public Iterable<ScriptEntity> getAllScripts() {
 		return this.scriptService.getAllScripts();
 	}
+
+	@PostMapping("save")
+	public void save(ScriptEntity scriptEntity) {
+		scriptService.saveScript(scriptEntity);
+	}
+
+
 }

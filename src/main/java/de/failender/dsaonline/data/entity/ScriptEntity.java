@@ -12,11 +12,14 @@ import java.util.List;
 public class ScriptEntity extends BaseEntity{
 
 
+	@Column(name="NAME")
 	private String name;
 	@JoinColumn(name = "SCRIPT_ID")
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<ScriptVariable> scriptVariables;
-
+	@Column(name="OWNER")
+	private Integer owner;
+	@Column(name="BODY")
 	private String body;
 
 }
