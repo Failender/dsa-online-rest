@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="SCRIPT_VARIABLE")
 @Data
-public class ScriptVariable extends BaseEntity{
+public class ScriptVariableEntity extends BaseEntity{
 
 
 	@Column(name="SCRIPT_ID")

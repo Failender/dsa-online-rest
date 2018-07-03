@@ -1,13 +1,7 @@
-package de.failender.dsaonline.scripting;
+package de.failender.dsaonline.scripting.supplier;
 
-import de.failender.dsaonline.security.SecurityUtils;
-import de.failender.dsaonline.service.HeldenService;
-import de.failender.heldensoftware.xml.datenxml.Daten;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.math.BigInteger;
-import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -39,6 +33,6 @@ public class ConstantSupplier extends ScriptSupplier {
 
 	@Override
 	public List<String> getPossibleValues() {
-		return Collections.emptyList();
+		return null;
 	}
 }

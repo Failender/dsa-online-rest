@@ -1,10 +1,11 @@
 package de.failender.dsaonline.restservice;
 
 import de.failender.dsaonline.data.entity.ScriptEntity;
-import de.failender.dsaonline.data.entity.ScriptVariable;
-import de.failender.dsaonline.scripting.IntConstantSupplier;
-import de.failender.dsaonline.scripting.LatestHeldenForGruppePublicSupplier;
+import de.failender.dsaonline.data.entity.ScriptVariableEntity;
+import de.failender.dsaonline.rest.script.ScriptResult;
 import de.failender.dsaonline.scripting.ScriptService;
+import de.failender.dsaonline.scripting.supplier.IntConstantSupplier;
+import de.failender.dsaonline.scripting.supplier.LatestHeldenForGruppePublicSupplier;
 import de.failender.dsaonline.service.HeldenService;
 import de.failender.dsaonline.util.JaxbUtil;
 import de.failender.heldensoftware.xml.datenxml.Daten;
@@ -13,9 +14,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,25 +44,25 @@ public class ScriptTest extends DsaOnlineTest {
 
 		ScriptEntity scriptEntity = new ScriptEntity();
 		scriptEntity.setBody(IOUtils.toString(getResource("scripts/average_ap_public.js"), "UTF-8"));
-		List<ScriptVariable> scriptVariables = new ArrayList<>();
+		List<ScriptVariableEntity> scriptVariables = new ArrayList<>();
 
-		ScriptVariable groupVariable = new ScriptVariable();
+		ScriptVariableEntity groupVariable = new ScriptVariableEntity();
 		groupVariable.setType(LatestHeldenForGruppePublicSupplier.TYPE);
 		groupVariable.setValue(FAKE_GRUPPE_ID);
 		groupVariable.setName("helden");
 		scriptVariables.add(groupVariable);
 
 
-		ScriptVariable torfAmountVariable = new ScriptVariable();
+		ScriptVariableEntity torfAmountVariable = new ScriptVariableEntity();
 		torfAmountVariable.setType(IntConstantSupplier.TYPE);
 		torfAmountVariable.setValue(FAKE_HELD_RED);
 		torfAmountVariable.setName("torfMissingAp");
 		scriptVariables.add(torfAmountVariable);
-
 		scriptEntity.setScriptVariables(scriptVariables);
-		double result = (double) scriptService.execute(scriptEntity);
-		int intResult = (int) result;
+		ScriptResult scriptResult = scriptService.execute(scriptEntity);
+		int intResult = (int) (double)scriptResult.getResult();
 		Assertions.assertThat(intResult).isEqualTo(3085);
+		Assertions.assertThat(scriptResult.getLogs().length).isEqualTo(1);
 
 
 	}

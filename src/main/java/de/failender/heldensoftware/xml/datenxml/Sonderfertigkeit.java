@@ -8,14 +8,10 @@
 
 package de.failender.heldensoftware.xml.datenxml;
 
+import javax.xml.bind.annotation.*;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -29,23 +25,23 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element ref="{}nameausfuehrlich"/>
- *         &lt;element ref="{}name"/>
+ *         &lt;element ref="{}getName"/>
  *         &lt;element ref="{}bezeichner"/>
  *         &lt;element ref="{}wirkung"/>
  *         &lt;element ref="{}dauer"/>
  *         &lt;element ref="{}kosten"/>
  *         &lt;element ref="{}probe"/>
- *         &lt;element name="auswahlen" minOccurs="0">
+ *         &lt;element getName="auswahlen" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="auswahl" maxOccurs="unbounded" minOccurs="0">
+ *                   &lt;element getName="auswahl" maxOccurs="unbounded" minOccurs="0">
  *                     &lt;complexType>
  *                       &lt;complexContent>
  *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                           &lt;sequence>
- *                             &lt;element ref="{}name"/>
+ *                             &lt;element ref="{}getName"/>
  *                             &lt;element ref="{}feld" maxOccurs="unbounded"/>
  *                           &lt;/sequence>
  *                         &lt;/restriction>
@@ -135,7 +131,7 @@ public class Sonderfertigkeit {
     }
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the getName property.
      * 
      * @return
      *     possible object is
@@ -147,7 +143,7 @@ public class Sonderfertigkeit {
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the getName property.
      * 
      * @param value
      *     allowed object is
@@ -414,12 +410,12 @@ public class Sonderfertigkeit {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="auswahl" maxOccurs="unbounded" minOccurs="0">
+     *         &lt;element getName="auswahl" maxOccurs="unbounded" minOccurs="0">
      *           &lt;complexType>
      *             &lt;complexContent>
      *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *                 &lt;sequence>
-     *                   &lt;element ref="{}name"/>
+     *                   &lt;element ref="{}getName"/>
      *                   &lt;element ref="{}feld" maxOccurs="unbounded"/>
      *                 &lt;/sequence>
      *               &lt;/restriction>
@@ -482,7 +478,7 @@ public class Sonderfertigkeit {
          *   &lt;complexContent>
          *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
          *       &lt;sequence>
-         *         &lt;element ref="{}name"/>
+         *         &lt;element ref="{}getName"/>
          *         &lt;element ref="{}feld" maxOccurs="unbounded"/>
          *       &lt;/sequence>
          *     &lt;/restriction>
@@ -505,7 +501,7 @@ public class Sonderfertigkeit {
             protected List<Feld> feld;
 
             /**
-             * Gets the value of the name property.
+             * Gets the value of the getName property.
              * 
              * @return
              *     possible object is
@@ -517,7 +513,7 @@ public class Sonderfertigkeit {
             }
 
             /**
-             * Sets the value of the name property.
+             * Sets the value of the getName property.
              * 
              * @param value
              *     allowed object is

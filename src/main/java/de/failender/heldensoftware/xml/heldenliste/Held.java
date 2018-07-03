@@ -8,12 +8,8 @@
 
 package de.failender.heldensoftware.xml.heldenliste;
 
+import javax.xml.bind.annotation.*;
 import java.math.BigInteger;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -27,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element ref="{}heldenid"/>
- *         &lt;element ref="{}name"/>
+ *         &lt;element ref="{}getName"/>
  *         &lt;element ref="{}heldenkey"/>
  *         &lt;element ref="{}heldlastchange"/>
  *       &lt;/sequence>
@@ -82,7 +78,7 @@ public class Held {
     }
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the getName property.
      * 
      * @return
      *     possible object is
@@ -94,7 +90,7 @@ public class Held {
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the getName property.
      * 
      * @param value
      *     allowed object is

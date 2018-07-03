@@ -1,4 +1,4 @@
-package de.failender.dsaonline.scripting;
+package de.failender.dsaonline.scripting.supplier;
 
 import de.failender.dsaonline.data.repository.GruppeRepository;
 import de.failender.dsaonline.service.HeldenService;

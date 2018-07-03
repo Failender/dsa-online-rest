@@ -8,6 +8,8 @@
 
 package de.failender.heldensoftware.xml.datenxml;
 
+import lombok.ToString;
+
 import javax.xml.bind.annotation.*;
 
 
@@ -58,6 +60,7 @@ import javax.xml.bind.annotation.*;
         "ereignisse"
 })
 @XmlRootElement(name = "daten")
+@ToString
 public class Daten {
 
     @XmlElement(required = true)

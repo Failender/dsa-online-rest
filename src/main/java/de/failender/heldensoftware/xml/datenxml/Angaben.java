@@ -8,13 +8,11 @@
 
 package de.failender.heldensoftware.xml.datenxml;
 
+import lombok.ToString;
+
+import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -36,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}haarfarbe"/>
  *         &lt;element ref="{}stand"/>
  *         &lt;element ref="{}titel"/>
- *         &lt;element ref="{}name"/>
+ *         &lt;element ref="{}getName"/>
  *         &lt;element ref="{}bildPfad"/>
  *         &lt;element ref="{}aussehen"/>
  *         &lt;element ref="{}familie"/>
@@ -95,6 +93,7 @@ import javax.xml.bind.annotation.XmlType;
     "wundschwelle"
 })
 @XmlRootElement(name = "angaben")
+@ToString
 public class Angaben {
 
     @XmlElement(required = true)
@@ -369,7 +368,7 @@ public class Angaben {
     }
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the getName property.
      * 
      * @return
      *     possible object is
@@ -381,7 +380,7 @@ public class Angaben {
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the getName property.
      * 
      * @param value
      *     allowed object is

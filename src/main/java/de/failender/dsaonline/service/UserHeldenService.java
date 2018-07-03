@@ -54,7 +54,7 @@ public class UserHeldenService {
 		heldRepository.findByUserIdAndDeleted(userEntity.getId(), false).forEach(heldEntity -> {
 			Optional<Held> heldOptional = helden.stream().filter(_held -> _held.getName().equals(heldEntity.getName())).findFirst();
 			if (!heldOptional.isPresent()) {
-				log.info("Held with name {} is no longer online, disabling it", heldEntity.getName());
+				log.info("Held with getName {} is no longer online, disabling it", heldEntity.getName());
 				heldEntity.setDeleted(true);
 
 			} else {
@@ -62,13 +62,13 @@ public class UserHeldenService {
 				helden.remove(xmlHeld);
 				VersionEntity versionEntity = heldRepositoryService.findLatestVersion(heldEntity);
 				if (isOnlineVersionOlder(xmlHeld, versionEntity.getCreatedDate())) {
-					log.info("Got a new version for held with name {}", heldEntity.getName());
+					log.info("Got a new version for held with getName {}", heldEntity.getName());
 					//We got a new version of this xmlHeld
 					this.persistVersion(xmlHeld, userEntity, versionEntity.getId().getVersion() + 1);
 					this.forceCacheBuildFor(userEntity, heldEntity, versionEntity.getId().getVersion() + 1);
 
 				} else {
-					log.info("Held with name {} is already on latest version", heldEntity.getName());
+					log.info("Held with getName {} is already on latest version", heldEntity.getName());
 				}
 			}
 		});
@@ -96,7 +96,7 @@ public class UserHeldenService {
 
 	public void updateHeldenForUser(UserEntity userEntity, boolean cache) {
 		if (userEntity.getToken() == null) {
-			log.error("User with name {} has null token ", userEntity.getName());
+			log.error("User with getName {} has null token ", userEntity.getName());
 			return;
 		}
 		List<Held> helden = heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(userEntity.getToken())), cache).block().getHeld();
@@ -106,7 +106,7 @@ public class UserHeldenService {
 
 	public void fakeHeldenForUser(UserEntity userEntity) {
 		if (userEntity.getToken() == null) {
-			log.error("User with name {} has null token ", userEntity.getName());
+			log.error("User with getName {} has null token ", userEntity.getName());
 			return;
 		}
 		List<Held> helden = heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(userEntity.getToken()))).block().getHeld();
@@ -130,7 +130,7 @@ public class UserHeldenService {
 		versionEntity.setId(new VersionEntity.VersionId(xmlHeld.getHeldenid(), version));
 		versionEntity.setCreatedDate(DateUtil.convert(xmlHeld.getHeldlastchange()));
 		Daten daten = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(xmlHeld.getHeldenid(), new TokenAuthentication(user.getToken()), version)).block();
-		versionEntity.setLastEvent(extractLastEreignis(daten.getEreignisse().getEreignis()));
+		versionEntity.setLastEvent(extractLastEreignisString(daten.getEreignisse().getEreignis()));
 
 		this.heldRepositoryService.saveVersion(versionEntity);
 	}
@@ -156,17 +156,25 @@ public class UserHeldenService {
 
 	}
 
-	public static String extractLastEreignis(List<Ereignis> ereignisse) {
+	public static String extractLastEreignisString(List<Ereignis> ereignisse) {
+		Ereignis ereignis = extractLastEreignis(ereignisse);
+		if(ereignis == null) {
+			return null;
+		}
+		String s = ereignis.getKommentar();
+		int index = s.indexOf("Gesamt AP");
+		if (index == -1) {
+			return s;
+		}
+		s = s.substring(0, index);
+
+		return s;
+	}
+
+	public static Ereignis extractLastEreignis(List<Ereignis> ereignisse) {
 		for (int i = ereignisse.size() - 1; i >= 0; i--) {
 			if (ereignisse.get(i).getAp() > 0) {
-				String s = ereignisse.get(i).getKommentar();
-				int index = s.indexOf("Gesamt AP");
-				if (index == -1) {
-					return s;
-				}
-				s = s.substring(0, index);
-
-				return s;
+				return ereignisse.get(i);
 			}
 		}
 		return null;

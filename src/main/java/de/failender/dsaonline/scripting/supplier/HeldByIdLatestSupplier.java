@@ -1,4 +1,4 @@
-package de.failender.dsaonline.scripting;
+package de.failender.dsaonline.scripting.supplier;
 
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.HeldenService;
@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigInteger;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 

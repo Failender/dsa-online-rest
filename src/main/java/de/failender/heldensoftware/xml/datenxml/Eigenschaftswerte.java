@@ -8,12 +8,8 @@
 
 package de.failender.heldensoftware.xml.datenxml;
 
+import javax.xml.bind.annotation.*;
 import java.math.BigInteger;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -22,14 +18,14 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="eigenschaftswerte">
+ * &lt;complexType getName="eigenschaftswerte">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element ref="{}akt"/>
  *         &lt;element ref="{}start"/>
  *         &lt;element ref="{}modi"/>
- *         &lt;element ref="{}name"/>
+ *         &lt;element ref="{}getName"/>
  *         &lt;element ref="{}bereich"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -136,7 +132,7 @@ public class Eigenschaftswerte {
     }
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the getName property.
      * 
      * @return
      *     possible object is
@@ -148,7 +144,7 @@ public class Eigenschaftswerte {
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the getName property.
      * 
      * @param value
      *     allowed object is

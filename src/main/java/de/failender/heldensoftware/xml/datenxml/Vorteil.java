@@ -28,7 +28,7 @@ import java.util.List;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element ref="{}bezeichner"/>
- *         &lt;element ref="{}name"/>
+ *         &lt;element ref="{}getName"/>
  *         &lt;element ref="{}kommentar"/>
  *         &lt;element ref="{}namemitkommentar"/>
  *         &lt;element ref="{}istvorteil"/>
@@ -37,12 +37,12 @@ import java.util.List;
  *         &lt;element ref="{}wert" minOccurs="0"/>
  *         &lt;element ref="{}istgabe" minOccurs="0"/>
  *         &lt;element ref="{}bereich" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="auswahlen" minOccurs="0">
+ *         &lt;element getName="auswahlen" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="auswahl" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element getName="auswahl" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -115,7 +115,7 @@ public class Vorteil implements Unterscheidbar {
     }
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the getName property.
      * 
      * @return
      *     possible object is
@@ -127,7 +127,7 @@ public class Vorteil implements Unterscheidbar {
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the getName property.
      * 
      * @param value
      *     allowed object is
@@ -354,7 +354,7 @@ public class Vorteil implements Unterscheidbar {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="auswahl" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element getName="auswahl" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>

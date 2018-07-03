@@ -25,7 +25,7 @@ import java.math.BigInteger;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}name"/>
+ *         &lt;element ref="{}getName"/>
  *         &lt;element ref="{}variante"/>
  *         &lt;element ref="{}namemitvariante"/>
  *         &lt;element ref="{}nameausfuehrlich"/>
@@ -133,7 +133,7 @@ public class Zauber implements Unterscheidbar {
     protected String mr;
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the getName property.
      * 
      * @return
      *     possible object is
@@ -145,7 +145,7 @@ public class Zauber implements Unterscheidbar {
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the getName property.
      * 
      * @param value
      *     allowed object is

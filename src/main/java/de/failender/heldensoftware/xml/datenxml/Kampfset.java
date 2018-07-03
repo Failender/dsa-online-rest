@@ -8,13 +8,8 @@
 
 package de.failender.heldensoftware.xml.datenxml;
 
+import javax.xml.bind.annotation.*;
 import java.math.BigInteger;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -44,10 +39,10 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}schilder"/>
  *         &lt;element ref="{}ruestungen"/>
  *       &lt;/sequence>
- *       &lt;attribute name="inbenutzung" use="required" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="nr" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
- *       &lt;attribute name="tzm" use="required" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *       &lt;attribute name="defaultrsmodel" use="required" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+ *       &lt;attribute getName="inbenutzung" use="required" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+ *       &lt;attribute getName="nr" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
+ *       &lt;attribute getName="tzm" use="required" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+ *       &lt;attribute getName="defaultrsmodel" use="required" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>

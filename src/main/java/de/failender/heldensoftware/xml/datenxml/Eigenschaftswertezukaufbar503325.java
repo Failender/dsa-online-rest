@@ -8,11 +8,11 @@
 
 package de.failender.heldensoftware.xml.datenxml;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.math.BigInteger;
 
 
 /**
@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="eigenschaftswertezukaufbar503325">
+ * &lt;complexType getName="eigenschaftswertezukaufbar503325">
  *   &lt;complexContent>
  *     &lt;extension base="{}eigenschaftswertezukaufbar">
  *       &lt;sequence>

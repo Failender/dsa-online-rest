@@ -1,4 +1,4 @@
-package de.failender.dsaonline.scripting;
+package de.failender.dsaonline.scripting.supplier;
 
 import java.util.List;
 

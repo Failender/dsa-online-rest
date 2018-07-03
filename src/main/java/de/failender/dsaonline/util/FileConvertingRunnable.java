@@ -38,6 +38,7 @@ public class FileConvertingRunnable implements Runnable {
 		final File dir = new File(fakesDirectory + "/versionfakes_helden");
 
 		log.info("Starting to convert directories to version id format");
+		if(dir.exists())
 		Arrays.stream(dir.listFiles(getDirectories()))
 				.forEach(diretory -> {
 					log.info("Processing directory {} ", diretory.getName());
@@ -64,6 +65,7 @@ public class FileConvertingRunnable implements Runnable {
 
 				});
 		log.info("Starting to convert helden to daten format");
+		if(dir.exists())
 		Flux.just(dir.listFiles(getFiles()))
 //				.subscribeOn(Schedulers.elastic())
 				.flatMap(file -> {

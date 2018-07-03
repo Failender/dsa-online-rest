@@ -8,18 +8,11 @@
 
 package de.failender.heldensoftware.xml.datenxml;
 
+import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
 
 
 /**
@@ -32,30 +25,30 @@ import javax.xml.bind.annotation.XmlValue;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="eigenschaften">
+ *         &lt;element getName="eigenschaften">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="astralenergie" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="ausdauer" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="charisma" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="fingerfertigkeit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="gefahrenwert" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="geschwindigkeit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="geschwindigkeit2" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="geschwindigkeit3" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="gewandtheit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="intuition" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="klugheit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="konstitution" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="koerperkraft" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="lebensenergie" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="loyalitaet" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="magieresistenz" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="magieresistenz2" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="mut" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
- *                   &lt;element name="ruestungsschutz" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="astralenergie" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="ausdauer" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="charisma" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="fingerfertigkeit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="gefahrenwert" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="geschwindigkeit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="geschwindigkeit2" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="geschwindigkeit3" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="gewandtheit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="intuition" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="klugheit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="konstitution" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="koerperkraft" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="lebensenergie" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="loyalitaet" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="magieresistenz" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="magieresistenz2" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="mut" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *                   &lt;element getName="ruestungsschutz" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -63,34 +56,34 @@ import javax.xml.bind.annotation.XmlValue;
  *         &lt;/element>
  *         &lt;element ref="{}vorteile"/>
  *         &lt;element ref="{}sonderfertigkeiten"/>
- *         &lt;element name="gattung" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="familie" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="groesse" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="ini">
+ *         &lt;element getName="gattung" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element getName="familie" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element getName="groesse" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element getName="ini">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 &lt;attribute name="mul" type="{http://www.w3.org/2001/XMLSchema}integer" />
- *                 &lt;attribute name="sum" type="{http://www.w3.org/2001/XMLSchema}integer" />
- *                 &lt;attribute name="w" type="{http://www.w3.org/2001/XMLSchema}integer" />
+ *                 &lt;attribute getName="mul" type="{http://www.w3.org/2001/XMLSchema}integer" />
+ *                 &lt;attribute getName="sum" type="{http://www.w3.org/2001/XMLSchema}integer" />
+ *                 &lt;attribute getName="w" type="{http://www.w3.org/2001/XMLSchema}integer" />
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *         &lt;element name="angriffe">
+ *         &lt;element getName="angriffe">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="angriff" maxOccurs="unbounded" minOccurs="0">
+ *                   &lt;element getName="angriff" maxOccurs="unbounded" minOccurs="0">
  *                     &lt;complexType>
  *                       &lt;complexContent>
  *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                           &lt;attribute name="at" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
- *                           &lt;attribute name="dk" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                           &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
- *                           &lt;attribute name="pa" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
- *                           &lt;attribute name="tp" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                           &lt;attribute getName="at" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
+ *                           &lt;attribute getName="dk" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                           &lt;attribute getName="getName" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                           &lt;attribute getName="pa" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
+ *                           &lt;attribute getName="tp" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
  *                         &lt;/restriction>
  *                       &lt;/complexContent>
  *                     &lt;/complexType>
@@ -342,15 +335,15 @@ public class Tier {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="angriff" maxOccurs="unbounded" minOccurs="0">
+     *         &lt;element getName="angriff" maxOccurs="unbounded" minOccurs="0">
      *           &lt;complexType>
      *             &lt;complexContent>
      *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *                 &lt;attribute name="at" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
-     *                 &lt;attribute name="dk" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
-     *                 &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
-     *                 &lt;attribute name="pa" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
-     *                 &lt;attribute name="tp" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+     *                 &lt;attribute getName="at" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
+     *                 &lt;attribute getName="dk" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+     *                 &lt;attribute getName="getName" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+     *                 &lt;attribute getName="pa" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
+     *                 &lt;attribute getName="tp" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
      *               &lt;/restriction>
      *             &lt;/complexContent>
      *           &lt;/complexType>
@@ -410,11 +403,11 @@ public class Tier {
          * &lt;complexType>
          *   &lt;complexContent>
          *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-         *       &lt;attribute name="at" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
-         *       &lt;attribute name="dk" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
-         *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
-         *       &lt;attribute name="pa" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
-         *       &lt;attribute name="tp" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+         *       &lt;attribute getName="at" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
+         *       &lt;attribute getName="dk" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+         *       &lt;attribute getName="getName" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+         *       &lt;attribute getName="pa" use="required" type="{http://www.w3.org/2001/XMLSchema}integer" />
+         *       &lt;attribute getName="tp" use="required" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
          *     &lt;/restriction>
          *   &lt;/complexContent>
          * &lt;/complexType>
@@ -489,7 +482,7 @@ public class Tier {
             }
 
             /**
-             * Gets the value of the name property.
+             * Gets the value of the getName property.
              * 
              * @return
              *     possible object is
@@ -501,7 +494,7 @@ public class Tier {
             }
 
             /**
-             * Sets the value of the name property.
+             * Sets the value of the getName property.
              * 
              * @param value
              *     allowed object is
@@ -575,25 +568,25 @@ public class Tier {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="astralenergie" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="ausdauer" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="charisma" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="fingerfertigkeit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="gefahrenwert" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="geschwindigkeit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="geschwindigkeit2" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="geschwindigkeit3" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="gewandtheit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="intuition" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="klugheit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="konstitution" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="koerperkraft" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="lebensenergie" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="loyalitaet" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="magieresistenz" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="magieresistenz2" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="mut" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
-     *         &lt;element name="ruestungsschutz" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="astralenergie" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="ausdauer" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="charisma" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="fingerfertigkeit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="gefahrenwert" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="geschwindigkeit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="geschwindigkeit2" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="geschwindigkeit3" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="gewandtheit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="intuition" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="klugheit" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="konstitution" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="koerperkraft" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="lebensenergie" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="loyalitaet" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="magieresistenz" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="magieresistenz2" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="mut" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+     *         &lt;element getName="ruestungsschutz" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -1114,9 +1107,9 @@ public class Tier {
      * &lt;complexType>
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;attribute name="mul" type="{http://www.w3.org/2001/XMLSchema}integer" />
-     *       &lt;attribute name="sum" type="{http://www.w3.org/2001/XMLSchema}integer" />
-     *       &lt;attribute name="w" type="{http://www.w3.org/2001/XMLSchema}integer" />
+     *       &lt;attribute getName="mul" type="{http://www.w3.org/2001/XMLSchema}integer" />
+     *       &lt;attribute getName="sum" type="{http://www.w3.org/2001/XMLSchema}integer" />
+     *       &lt;attribute getName="w" type="{http://www.w3.org/2001/XMLSchema}integer" />
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>

@@ -25,7 +25,7 @@ import java.math.BigInteger;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}name"/>
+ *         &lt;element ref="{}getName"/>
  *         &lt;element ref="{}meisterhandwerk"/>
  *         &lt;element ref="{}leittalent"/>
  *         &lt;element ref="{}basis"/>
@@ -122,7 +122,7 @@ public class Talent implements Unterscheidbar {
     protected String spezialisierungen;
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the getName property.
      * 
      * @return
      *     possible object is
@@ -134,7 +134,7 @@ public class Talent implements Unterscheidbar {
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the getName property.
      * 
      * @param value
      *     allowed object is
