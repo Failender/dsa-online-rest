@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ScriptTest extends DsaOnlineTest {
@@ -64,6 +63,7 @@ public class ScriptTest extends DsaOnlineTest {
 		torfAmountVariable.setName("torfMissingAp");
 		scriptVariables.add(torfAmountVariable);
 		scriptEntity.setScriptVariables(scriptVariables);
+		scriptEntity.setScriptHelper(new ArrayList<>());
 		ScriptResult scriptResult = scriptService.execute(scriptEntity);
 		int intResult = (int) (double)scriptResult.getResult();
 		Assertions.assertThat(intResult).isEqualTo(3085);
