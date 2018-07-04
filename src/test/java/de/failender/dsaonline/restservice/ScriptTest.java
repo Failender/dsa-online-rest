@@ -2,6 +2,7 @@ package de.failender.dsaonline.restservice;
 
 import de.failender.dsaonline.data.entity.ScriptEntity;
 import de.failender.dsaonline.data.entity.ScriptVariableEntity;
+import de.failender.dsaonline.data.repository.ScriptRepository;
 import de.failender.dsaonline.rest.script.ScriptResult;
 import de.failender.dsaonline.scripting.ScriptService;
 import de.failender.dsaonline.scripting.supplier.IntConstantSupplier;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ScriptTest extends DsaOnlineTest {
@@ -26,6 +28,9 @@ public class ScriptTest extends DsaOnlineTest {
 
 	@Autowired
 	private ScriptService scriptService;
+
+	@Autowired
+	private ScriptRepository scriptRepository;
 
 	private static final String FAKE_GRUPPE_ID = "1";
 	private static final String FAKE_HELD_ID="36222";
@@ -62,8 +67,23 @@ public class ScriptTest extends DsaOnlineTest {
 		ScriptResult scriptResult = scriptService.execute(scriptEntity);
 		int intResult = (int) (double)scriptResult.getResult();
 		Assertions.assertThat(intResult).isEqualTo(3085);
-		Assertions.assertThat(scriptResult.getLogs().length).isEqualTo(1);
 
+	}
+
+	@Test
+	public void testPersistence() {
+		ScriptEntity scriptEntity = new ScriptEntity();
+		scriptEntity.setBody("");
+		scriptEntity.setName("test");
+		scriptEntity.setOwner(1);
+		ArrayList<String> helper = new ArrayList<>();
+		helper.add("Helper");
+		scriptEntity.setScriptHelper(helper);
+		Integer id = scriptRepository.save(scriptEntity).getId();
+
+		scriptEntity = scriptRepository.findById(id).get();
+		Assertions.assertThat(scriptEntity.getName()).isEqualTo("test");
+		Assertions.assertThat(scriptEntity.getScriptHelper().size()).isEqualTo(1);
 
 	}
 }

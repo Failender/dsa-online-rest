@@ -1,5 +1,6 @@
 package de.failender.dsaonline.scripting.supplier;
 
+import de.failender.dsaonline.util.SelectData;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class IntConstantSupplier extends ScriptSupplier {
 	}
 
 	@Override
-	public List<String> getPossibleValues() {
+	public List<SelectData> getPossibleValues() {
 		return null;
 	}
 }

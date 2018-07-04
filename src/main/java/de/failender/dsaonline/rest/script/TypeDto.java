@@ -1,5 +1,6 @@
 package de.failender.dsaonline.rest.script;
 
+import de.failender.dsaonline.util.SelectData;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -10,5 +11,5 @@ import java.util.List;
 public class TypeDto {
 	private String name;
 	private String description;
-	private List<String> values;
+	private List<SelectData> values;
 }

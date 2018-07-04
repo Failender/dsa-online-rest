@@ -1,7 +1,9 @@
 package de.failender.dsaonline.scripting.supplier;
 
+import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.HeldenService;
+import de.failender.dsaonline.util.SelectData;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,6 +19,9 @@ public class HeldByIdLatestSupplier extends ScriptSupplier<Daten> {
 
 	@Autowired
 	private HeldenService heldenService;
+
+	@Autowired
+	private HeldRepository heldRepository;
 
 	@Override
 	public String type() {
@@ -42,10 +47,10 @@ public class HeldByIdLatestSupplier extends ScriptSupplier<Daten> {
 	}
 
 	@Override
-	public List<String> getPossibleValues() {
-		return heldenService.getAllHeldenIds()
+	public List<SelectData> getPossibleValues() {
+		return heldRepository.findAll()
 				.stream()
-				.map(BigInteger::toString)
+				.map(value -> new SelectData(value.getName(), value.getId()))
 				.collect(Collectors.toList());
 	}
 }

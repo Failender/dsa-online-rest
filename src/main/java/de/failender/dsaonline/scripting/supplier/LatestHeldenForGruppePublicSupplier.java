@@ -2,6 +2,7 @@ package de.failender.dsaonline.scripting.supplier;
 
 import de.failender.dsaonline.data.repository.GruppeRepository;
 import de.failender.dsaonline.service.HeldenService;
+import de.failender.dsaonline.util.SelectData;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -46,10 +47,10 @@ public class LatestHeldenForGruppePublicSupplier extends ScriptSupplier<List<Dat
 	}
 
 	@Override
-	public List<String> getPossibleValues() {
-		return gruppeRepository.getAllGruppenIds()
+	public List<SelectData> getPossibleValues() {
+		return gruppeRepository.findAll()
 				.stream()
-				.map(val -> val.toString())
+				.map(val -> new SelectData(val.getName(), val.getId()))
 				.collect(Collectors.toList());
 	}
 }
