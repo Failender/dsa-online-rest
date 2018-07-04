@@ -18,10 +18,7 @@ import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -113,6 +110,15 @@ public class ScriptService {
 			scriptEntity.setOwner(user.getId());
 		}
 
+		if(scriptEntity.getId() == null) {
+			List<ScriptVariableEntity> scriptVariables = scriptEntity.getScriptVariables();
+			scriptEntity.setScriptVariables(Collections.EMPTY_LIST);
+			scriptRepository.save(scriptEntity);
+			scriptEntity.setScriptVariables(scriptVariables);
+		}
+		for (ScriptVariableEntity scriptVariableEntity : scriptEntity.getScriptVariables()) {
+			scriptVariableEntity.setScriptId(scriptEntity.getId());
+		}
 		scriptRepository.save(scriptEntity);
 	}
 
