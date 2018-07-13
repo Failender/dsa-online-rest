@@ -16,7 +16,6 @@ import de.failender.heldensoftware.api.requests.ReturnHeldPdfRequest;
 import de.failender.heldensoftware.api.requests.ReturnHeldXmlRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
@@ -35,9 +34,6 @@ public class VersionFakeService {
 
 	@Autowired
 	private HeldRepositoryService heldRepositoryService;
-
-	@Value("${dsa.online.fakes.enabled}")
-	private boolean useFakes;
 
 	@Autowired
 	private HeldenApi heldenApi;
