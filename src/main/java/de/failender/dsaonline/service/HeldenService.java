@@ -52,13 +52,13 @@ public class HeldenService {
 
 	public Daten findHeldWithLatestVersion(BigInteger id) {
 		HeldWithVersion heldWithVersion = heldRepositoryService.findHeldWithLatestVersion(id);
-		return getHeldenDaten(id, heldWithVersion.getVersion().getId().getVersion());
+		return getHeldenDaten(id, heldWithVersion.getVersion().getVersion());
 	}
 
 	public HeldenInfo mapToHeldenInfo(HeldWithVersion heldWithVersion) {
 		return new HeldenInfo(heldWithVersion.getHeld().getName(),
 				heldWithVersion.getVersion().getCreatedDate(),
-				heldWithVersion.getVersion().getId().getVersion(),
+				heldWithVersion.getVersion().getVersion(),
 				heldWithVersion.getHeld().getGruppe().getName(),
 				heldWithVersion.getHeld().getId(),
 				heldWithVersion.getHeld().isPublic());
@@ -90,8 +90,8 @@ public class HeldenService {
 	private HeldenUnterschied calculateUnterschied(HeldEntity held, VersionEntity from, VersionEntity to) {
 		UserEntity userEntity = this.userRepository.findById(held.getUserId()).get();
 		String token = userEntity.getToken();
-		Tuple2<Daten, Daten> datenTuple = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), from.getId().getVersion())).zipWith(
-				heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), to.getId().getVersion()))).block();
+		Tuple2<Daten, Daten> datenTuple = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), from.getVersion())).zipWith(
+				heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(held.getId(), new TokenAuthentication(token), to.getVersion()))).block();
 		return calculateUnterschied(datenTuple.getT1(), datenTuple.getT2());
 	}
 
@@ -190,10 +190,10 @@ public class HeldenService {
 	}
 
 	public List<HeldVersion> loadHeldenVersionen(BigInteger heldenid) {
-		List<VersionEntity> versionen = versionRepository.findByIdHeldid(heldenid);
+		List<VersionEntity> versionen = versionRepository.findByHeldidOrderByVersionDesc(heldenid);
 		return versionen
 				.stream()
-				.map(version -> new HeldVersion(version.getLastEvent(), version.getCreatedDate(), version.getId().getVersion()))
+				.map(version -> new HeldVersion(version.getLastEvent(), version.getCreatedDate(), version.getVersion()))
 				.collect(Collectors.toList());
 	}
 

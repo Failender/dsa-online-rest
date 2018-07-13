@@ -1,6 +1,9 @@
 package de.failender.heldensoftware.api.requests;
 
+import de.failender.dsaonline.util.XmlUtil;
 import de.failender.heldensoftware.api.HeldenApi;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import java.io.File;
 import java.io.InputStream;
@@ -11,10 +14,21 @@ public class ConvertingRequest extends ApiRequest<InputStream> {
 
 	private final HeldenApi.Format format;
 	private final String xml;
+	private final long stand;
+	private final long key;
 
 	public ConvertingRequest(HeldenApi.Format format, String xml) {
 		this.format = format;
 		this.xml = xml;
+		try {
+			Document document = XmlUtil.documentFromString(xml);
+			Element element = (Element) document.getDocumentElement().getFirstChild();
+			String stand =element.getAttribute("stand");
+			this.stand = Long.valueOf(stand);
+			this.key = Long.valueOf(element.getAttribute("key"));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 
 	}
 
@@ -38,6 +52,6 @@ public class ConvertingRequest extends ApiRequest<InputStream> {
 
 	@Override
 	public File getCacheFile(File root) {
-		return null;
+		return new File(root, "converting/" + key + "/" + stand + "." + format);
 	}
 }

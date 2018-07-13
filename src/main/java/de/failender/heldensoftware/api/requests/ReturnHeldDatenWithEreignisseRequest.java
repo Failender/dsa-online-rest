@@ -5,6 +5,7 @@ import de.failender.dsaonline.util.JaxbUtil;
 import de.failender.heldensoftware.api.HeldenApi;
 import de.failender.heldensoftware.api.authentication.Authentication;
 import de.failender.heldensoftware.xml.datenxml.Daten;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -16,6 +17,7 @@ import java.util.Map;
 
 import static de.failender.dsaonline.service.UserHeldenService.clearEreigniskontrolle;
 
+@Slf4j
 public class ReturnHeldDatenWithEreignisseRequest extends ApiRequest<Daten> {
 
 	private final BigInteger heldid;
@@ -50,6 +52,7 @@ public class ReturnHeldDatenWithEreignisseRequest extends ApiRequest<Daten> {
 			clearEreigniskontrolle(daten.getEreignisse().getEreignis());
 			return daten;
 		} catch (JAXBException e) {
+			log.error("Critical error getting held-daten {}:{}", heldid, version);
 			throw new CorruptXmlException(e);
 		}
 

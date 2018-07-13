@@ -9,7 +9,6 @@ import de.failender.dsaonline.service.UserService;
 import de.failender.heldensoftware.api.HeldenApi;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.flywaydb.core.Flyway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -21,7 +20,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,20 +42,11 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 	@Autowired
 	private HeldenApi heldenApi;
 
-
-//	@Autowired
-//	private EventService eventService;
-
 	@Value("${dsa.online.cache.droponstart}")
 	private boolean dropCacheOnStart;
 
-	@Value("${dsa.online.fakes.directory}")
-	private String fakesDirectory;
-
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-		Thread converterThread = new Thread(new FileConvertingRunnable(heldenApi, fakesDirectory));
-		converterThread.run();
 		log.info("Starting to insert dev data");
 		List<GrantedAuthority> fakeRights = new ArrayList<>();
 		fakeRights.add(new SimpleGrantedAuthority(SecurityUtils.CREATE_USER));
@@ -73,11 +62,7 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 			log.error("Error while inserting user data", e);
 		}
 		SecurityContextHolder.getContext().setAuthentication(null);
-		try {
-			converterThread.join();
-		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
-		}
+
 		userRepository.findAll().forEach(user -> userHeldenService.updateHeldenForUser(user, true));
 		log.info("Done inserting dev data");
 	}

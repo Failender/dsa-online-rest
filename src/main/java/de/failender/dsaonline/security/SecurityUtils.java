@@ -4,6 +4,7 @@ import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.exceptions.NotAuthenticatedException;
 import de.failender.heldensoftware.api.authentication.TokenAuthentication;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,6 +14,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 public class SecurityUtils {
 
 
@@ -30,6 +32,11 @@ public class SecurityUtils {
 				return;
 			}
 		}
+		log.error("Access right not found " + right);
+		for (StackTraceElement stackTraceElement : Thread.currentThread().getStackTrace()) {
+			log.error(stackTraceElement.toString());
+		}
+
 		throw new AccessDeniedException(right);
 	}
 

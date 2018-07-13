@@ -2,9 +2,7 @@ package de.failender.dsaonline.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.flywaydb.core.Flyway;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,7 +23,7 @@ public class DbConfig {
 		flyway.setLocations("classpath:db/migration");
 		if(cleanOnStart) {
 			flyway.clean();
-			System.out.println("CLEAN");
+			log.error("CLEAN");
 		}
 
 		flyway.migrate();

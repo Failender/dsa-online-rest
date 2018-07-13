@@ -5,10 +5,12 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Optional;
 
-public interface VersionRepository extends CrudRepository<VersionEntity, VersionEntity.VersionId> {
+public interface VersionRepository extends CrudRepository<VersionEntity, Integer> {
 
-	List<VersionEntity> findByIdHeldid(BigInteger id);
+	List<VersionEntity> findByHeldidOrderByVersionDesc(BigInteger id);
+	Optional<VersionEntity> findByVersionAndHeldid(int version, BigInteger heldid);
 
-	VersionEntity findFirstByIdHeldidOrderByIdVersionDesc(BigInteger id);
+	VersionEntity findFirstByHeldidOrderByVersionDesc(BigInteger id);
 }

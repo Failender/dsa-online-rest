@@ -41,7 +41,7 @@ public class HeldRepositoryService {
 	}
 
 	public VersionEntity findLatestVersion(BigInteger heldid) {
-		return versionRepository.findFirstByIdHeldidOrderByIdVersionDesc(heldid);
+		return versionRepository.findFirstByHeldidOrderByVersionDesc(heldid);
 	}
 
 	public VersionEntity findLatestVersion(HeldEntity held) {
@@ -55,8 +55,7 @@ public class HeldRepositoryService {
 	}
 
 	public VersionEntity findVersion(BigInteger heldid, int version) {
-		VersionEntity.VersionId id = new VersionEntity.VersionId(heldid, version);
-		Optional<VersionEntity> versionEntityOptional = versionRepository.findById(id);
+		Optional<VersionEntity> versionEntityOptional = versionRepository.findByVersionAndHeldid(version, heldid);
 		if (!versionEntityOptional.isPresent()) {
 			log.error("Held with id {} and version {}could not be found", heldid, version);
 			throw new HeldNotFoundException(heldid, version);

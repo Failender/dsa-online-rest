@@ -3,13 +3,17 @@ package de.failender.dsaonline.rest.helden;
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.HeldenService;
 import de.failender.dsaonline.service.UserHeldenService;
+import de.failender.dsaonline.util.VersionFakeService;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -22,6 +26,9 @@ public class HeldenController {
 	private HeldenService heldenService;
 	@Autowired
 	private UserHeldenService userHeldenService;
+
+	@Autowired
+	private VersionFakeService versionFakeService;
 
 	@GetMapping
 	public List<HeldenInfo> getAllHeldenForCurrentUser() {
@@ -52,6 +59,15 @@ public class HeldenController {
 	public List<HeldenInfo> reloadHelden() {
 		userHeldenService.forceUpdateHeldenForUser(SecurityUtils.getCurrentUser());
 		return heldenService.getAllHeldenForCurrentUser();
+	}
+
+	@PostMapping("{heldid}/upload")
+	public void uploadVersion(@RequestParam("file") MultipartFile[] file, @PathVariable BigInteger heldid) throws IOException {
+		for (MultipartFile multipartFile : file) {
+			String xml = IOUtils.toString(multipartFile.getInputStream(), "UTF-8");
+			versionFakeService.fakeHeld(heldid, xml);
+		}
+
 	}
 
 	@PostMapping("public/{heldid}/{isPublic}")

@@ -7,6 +7,7 @@ import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.util.DateUtil;
 import de.failender.dsaonline.util.VersionFakeService;
+import de.failender.dsaonline.util.XmlUtil;
 import de.failender.heldensoftware.api.HeldenApi;
 import de.failender.heldensoftware.api.authentication.TokenAuthentication;
 import de.failender.heldensoftware.api.requests.GetAllHeldenRequest;
@@ -22,10 +23,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -37,13 +38,14 @@ public class UserHeldenService {
 	private final HeldRepository heldRepository;
 	private final UserRepository userRepository;
 	private final HeldenApi heldenApi;
-	private final VersionFakeService versionFakeService;
 
-	public UserHeldenService(HeldRepository heldRepository, UserRepository userRepository, HeldenApi heldenApi, VersionFakeService versionFakeService) {
+	@Autowired
+	private VersionFakeService versionFakeService;
+
+	public UserHeldenService(HeldRepository heldRepository, UserRepository userRepository, HeldenApi heldenApi) {
 		this.heldRepository = heldRepository;
 		this.userRepository = userRepository;
 		this.heldenApi = heldenApi;
-		this.versionFakeService = versionFakeService;
 
 	}
 
@@ -64,8 +66,9 @@ public class UserHeldenService {
 				if (isOnlineVersionOlder(xmlHeld, versionEntity.getCreatedDate())) {
 					log.info("Got a new version for held with getName {}", heldEntity.getName());
 					//We got a new version of this xmlHeld
-					this.persistVersion(xmlHeld, userEntity, versionEntity.getId().getVersion() + 1);
-					this.forceCacheBuildFor(userEntity, heldEntity, versionEntity.getId().getVersion() + 1);
+					String xml = heldenApi.request(new ReturnHeldXmlRequest(xmlHeld.getHeldenid(), new TokenAuthentication(userEntity.getToken()), versionEntity.getVersion() +1)).block();
+					this.persistVersion(xmlHeld.getHeldenid(), userEntity, versionEntity.getVersion() +1, xml);
+					this.forceCacheBuildFor(userEntity, heldEntity, versionEntity.getVersion() + 1);
 
 				} else {
 					log.info("Held with getName {} is already on latest version", heldEntity.getName());
@@ -82,10 +85,13 @@ public class UserHeldenService {
 			heldRepositoryService.saveHeld(heldEntity);
 
 			VersionEntity versionEntity = new VersionEntity();
-			versionEntity.setId(new VersionEntity.VersionId(held.getHeldenid(), 1));
+			versionEntity.setHeldid(held.getHeldenid());
+			versionEntity.setVersion(1);
 			versionEntity.setCreatedDate(DateUtil.convert(held.getHeldlastchange()));
+			Daten daten = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), 1)).block();
+			versionEntity.setAp(daten.getAngaben().getAp().getGesamt().intValue());
 			heldRepositoryService.saveVersion(versionEntity);
-			log.info("Saving new held {} for user {} with version {}", heldEntity.getName(), userEntity.getName(), versionEntity.getId().getVersion());
+			log.info("Saving new held {} for user {} with version {}", heldEntity.getName(), userEntity.getName(), versionEntity.getVersion());
 			forceCacheBuildFor(userEntity, heldEntity, 1);
 		});
 	}
@@ -104,16 +110,6 @@ public class UserHeldenService {
 
 	}
 
-	public void fakeHeldenForUser(UserEntity userEntity) {
-		if (userEntity.getToken() == null) {
-			log.error("User with getName {} has null token ", userEntity.getName());
-			return;
-		}
-		List<Held> helden = heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(userEntity.getToken()))).block().getHeld();
-		log.info("Faking versions for user " + userEntity.getName());
-		this.versionFakeService.fakeVersions(helden.stream().map(held -> held.getHeldenid()).collect(Collectors.toList()));
-	}
-
 	private boolean isOnlineVersionOlder(Held xmlHeld, Date heldCreatedDate) {
 
 
@@ -124,23 +120,22 @@ public class UserHeldenService {
 		return lastEditedDate.after(heldCreatedDate);
 	}
 
-	private void persistVersion(Held xmlHeld, UserEntity user, int version) {
-
+	public void persistVersion(BigInteger heldid, UserEntity user, int version, String xml) {
+		Date date = XmlUtil.getStandFromString(xml);
 		VersionEntity versionEntity = new VersionEntity();
-		versionEntity.setId(new VersionEntity.VersionId(xmlHeld.getHeldenid(), version));
-		versionEntity.setCreatedDate(DateUtil.convert(xmlHeld.getHeldlastchange()));
-		Daten daten = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(xmlHeld.getHeldenid(), new TokenAuthentication(user.getToken()), version)).block();
+		versionEntity.setVersion(version);
+		versionEntity.setHeldid(heldid);
+		Daten daten = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(heldid, new TokenAuthentication(user.getToken()), version)).block();
+		versionEntity.setCreatedDate(date);
 		versionEntity.setLastEvent(extractLastEreignisString(daten.getEreignisse().getEreignis()));
-
+		versionEntity.setAp(daten.getAngaben().getAp().getGesamt().intValue());
 		this.heldRepositoryService.saveVersion(versionEntity);
 	}
 
-	//Force to fetch the held once, so its cache gets build. this can run in a separate thread to dont block the main flow
 	private void forceCacheBuildFor(UserEntity userEntity, HeldEntity heldEntity, int version) {
 		Mono.zip(heldenApi.request(new ReturnHeldXmlRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false),
-				heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false),
 				heldenApi.request(new ReturnHeldPdfRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false))
-				.subscribe(data -> IOUtils.closeQuietly(data.getT3()));
+				.subscribe(data -> IOUtils.closeQuietly(data.getT2()));
 
 
 
