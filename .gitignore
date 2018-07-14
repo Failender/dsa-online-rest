@@ -10,6 +10,7 @@
 .springBeans
 .sts4-cache
 src/main/resources/user.json
+scripts/
 
 ### IntelliJ IDEA ###
 .idea
