@@ -50,7 +50,6 @@ public class UserService {
 		}
 		userEntity = this.userRepository.save(userEntity);
 		userHeldenService.forceUpdateHeldenForUser(userEntity);
-		userHeldenService.fakeHeldenForUser(userEntity);
 		userHeldenService.updateHeldenForUser(userEntity, true);
 		return userEntity;
 

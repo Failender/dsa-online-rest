@@ -10,6 +10,7 @@ import de.failender.dsaonline.scripting.helper.ScriptHelper;
 import de.failender.dsaonline.scripting.supplier.ScriptSupplier;
 import de.failender.dsaonline.security.SecurityUtils;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,8 @@ import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -29,6 +32,8 @@ public class ScriptService {
 	private static final String SCRIPT_HEADER =
 			"var logs = [];\r\nvar execute = function(params) {\r\nvar result = fun(params);\r\nreturn {result: result, logs: logs}\r\n}\r\nvar log = function(param) {\r\nlogs.push(param)\r\n}\r\n\r\nvar fun = function(params) {";
 	private static final String SCRIPT_FOOTER = "};";
+
+	private static final String DIRECTORY = "scripts";
 
 
 	@Autowired
@@ -94,8 +99,19 @@ public class ScriptService {
 		return scriptHelpers.get(name);
 	}
 
-	public Iterable<ScriptEntity> getAllScripts() {
-		return this.scriptRepository.findAll();
+	public List<ScriptEntity> getAllScripts() {
+		return this.scriptRepository.findAll()
+				.stream()
+				.map(entity -> {
+					File file = new File(DIRECTORY, entity.getId().toString() + ".js");
+					try {
+						String body = FileUtils.readFileToString(file, "UTF-8");
+						entity.setBody(body);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					return entity;
+				}).collect(Collectors.toList());
 	}
 
 	public void saveScript(ScriptEntity scriptEntity) {
@@ -119,7 +135,16 @@ public class ScriptService {
 		for (ScriptVariableEntity scriptVariableEntity : scriptEntity.getScriptVariables()) {
 			scriptVariableEntity.setScriptId(scriptEntity.getId());
 		}
-		scriptRepository.save(scriptEntity);
+		scriptEntity = scriptRepository.save(scriptEntity);
+		try {
+			FileUtils.writeStringToFile(getFileForEntity(scriptEntity), scriptEntity.getBody(), "UTF-8");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private File getFileForEntity(ScriptEntity entity) {
+		return new File(DIRECTORY, entity.getId() + ".js");
 	}
 
 	public Collection<ScriptHelper> getScriptHelpers() {
