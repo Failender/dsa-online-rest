@@ -95,6 +95,10 @@ public class HeldRepositoryService {
 		heldRepository.updateHeldenPublic(isPublic, heldid);
 	}
 
+	public List<HeldEntity> getHeldenForGruppe(int gruppeid) {
+		return heldRepository.findByGruppeId(gruppeid);
+	}
+
 	public List<BigInteger> getAllHeldenIds() {
 		return heldRepository.getAllHeldenIds();
 	}

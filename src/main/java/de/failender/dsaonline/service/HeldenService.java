@@ -11,17 +11,23 @@ import de.failender.heldensoftware.api.HeldenApi;
 import de.failender.heldensoftware.api.authentication.TokenAuthentication;
 import de.failender.heldensoftware.api.requests.ReturnHeldDatenWithEreignisseRequest;
 import de.failender.heldensoftware.api.requests.ReturnHeldPdfRequest;
+import de.failender.heldensoftware.api.requests.ReturnHeldXmlRequest;
 import de.failender.heldensoftware.xml.datenxml.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.util.function.Tuple2;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import static de.failender.dsaonline.security.SecurityUtils.getAuthentication;
 
@@ -233,6 +239,31 @@ public class HeldenService {
 	}
 
 
+	public void provideXmlDownload(BigInteger heldid, HttpServletResponse response) {
+		response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
+		response.setHeader("Content-disposition", "attachment; filename=versionen.zip");
+		ZipOutputStream zos;
+		try {
+			zos = new ZipOutputStream(response.getOutputStream());
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		List<VersionEntity> versions = versionRepository.findByHeldid(heldid);
+		Flux.fromIterable(versions)
+				.flatMap(version ->heldenApi.requestRaw(new ReturnHeldXmlRequest(heldid, null, version.getVersion()), true))
+				.zipWith(Flux.range(1, versions.size()))
+				.doOnNext(tuple -> {
+					try {
+						zos.putNextEntry(new ZipEntry(tuple.getT2() + ".xml"));
+						org.apache.commons.io.IOUtils.copy(tuple.getT1(), zos);
+						tuple.getT1().close();
+						zos.closeEntry();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				})
+				.blockLast();
+		org.apache.commons.io.IOUtils.closeQuietly(zos);
 
-
+	}
 }

@@ -75,5 +75,10 @@ public class HeldenController {
 		heldenService.updateHeldenPublic(isPublic, heldid);
 	}
 
+	@GetMapping("download/{heldid}/xml")
+	public void downloadXml(@PathVariable BigInteger heldid, HttpServletResponse response) {
+		heldenService.provideXmlDownload(heldid, response);
+	}
+
 
 }

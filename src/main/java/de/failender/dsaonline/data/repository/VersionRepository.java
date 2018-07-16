@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface VersionRepository extends CrudRepository<VersionEntity, Integer> {
 
 	List<VersionEntity> findByHeldidOrderByVersionDesc(BigInteger id);
+	List<VersionEntity> findByHeldid(BigInteger id);
 	Optional<VersionEntity> findByVersionAndHeldid(int version, BigInteger heldid);
 
 	VersionEntity findFirstByHeldidOrderByVersionDesc(BigInteger id);

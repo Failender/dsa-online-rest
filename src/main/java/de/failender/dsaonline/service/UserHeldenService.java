@@ -5,7 +5,6 @@ import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.entity.VersionEntity;
 import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
-import de.failender.dsaonline.util.DateUtil;
 import de.failender.dsaonline.util.VersionFakeService;
 import de.failender.dsaonline.util.XmlUtil;
 import de.failender.heldensoftware.api.HeldenApi;
@@ -56,7 +55,7 @@ public class UserHeldenService {
 		heldRepository.findByUserIdAndDeleted(userEntity.getId(), false).forEach(heldEntity -> {
 			Optional<Held> heldOptional = helden.stream().filter(_held -> _held.getName().equals(heldEntity.getName())).findFirst();
 			if (!heldOptional.isPresent()) {
-				log.info("Held with getName {} is no longer online, disabling it", heldEntity.getName());
+				log.info("Held with Name {} is no longer online, disabling it", heldEntity.getName());
 				heldEntity.setDeleted(true);
 
 			} else {
@@ -71,11 +70,13 @@ public class UserHeldenService {
 					this.forceCacheBuildFor(userEntity, heldEntity, versionEntity.getVersion() + 1);
 
 				} else {
-					log.info("Held with getName {} is already on latest version", heldEntity.getName());
+					log.info("Held with Name {} is already on latest version", heldEntity.getName());
 				}
 			}
 		});
 		helden.forEach(held -> {
+			ReturnHeldXmlRequest returnHeldXmlRequest = new ReturnHeldXmlRequest(held.getHeldenid(), new TokenAuthentication(userEntity.getToken()), 1);
+			String xml = heldenApi.request(returnHeldXmlRequest).block();
 			HeldEntity heldEntity = new HeldEntity();
 			heldEntity.setGruppe(userEntity.getGruppe());
 			heldEntity.setName(held.getName());
@@ -83,15 +84,8 @@ public class UserHeldenService {
 			heldEntity.setId(held.getHeldenid());
 			heldEntity.setUserId(userEntity.getId());
 			heldRepositoryService.saveHeld(heldEntity);
-
-			VersionEntity versionEntity = new VersionEntity();
-			versionEntity.setHeldid(held.getHeldenid());
-			versionEntity.setVersion(1);
-			versionEntity.setCreatedDate(DateUtil.convert(held.getHeldlastchange()));
-			Daten daten = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), 1)).block();
-			versionEntity.setAp(daten.getAngaben().getAp().getGesamt().intValue());
-			heldRepositoryService.saveVersion(versionEntity);
-			log.info("Saving new held {} for user {} with version {}", heldEntity.getName(), userEntity.getName(), versionEntity.getVersion());
+			persistVersion(held.getHeldenid(), userEntity, 1, xml);
+			log.info("Saving new held {} for user {} with version {}", heldEntity.getName(), userEntity.getName(), 1);
 			forceCacheBuildFor(userEntity, heldEntity, 1);
 		});
 	}
@@ -136,11 +130,6 @@ public class UserHeldenService {
 		Mono.zip(heldenApi.request(new ReturnHeldXmlRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false),
 				heldenApi.request(new ReturnHeldPdfRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), version), false))
 				.subscribe(data -> IOUtils.closeQuietly(data.getT2()));
-
-
-
-
-
 	}
 
 	public void forceUpdateHeldenForUser(UserEntity userEntity) {

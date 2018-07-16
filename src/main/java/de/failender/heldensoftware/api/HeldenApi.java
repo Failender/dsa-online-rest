@@ -4,7 +4,6 @@ import de.failender.heldensoftware.api.requests.ApiRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.springframework.http.MediaType;
-import org.springframework.web.client.RestTemplate;
 import reactor.core.publisher.Mono;
 
 import javax.servlet.http.HttpServletResponse;
@@ -67,6 +66,8 @@ public class HeldenApi {
 		Map<String, String> data = request.writeRequest();
 
 		String body = buildBody(data);
+		System.out.println(request.url());
+		System.out.println(body);
 		try {
 			URL url = new URL(request.url());
 

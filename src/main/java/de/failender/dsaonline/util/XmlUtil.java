@@ -2,6 +2,7 @@ package de.failender.dsaonline.util;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,7 +20,12 @@ public class XmlUtil {
 	}
 
 	public static Date getStandFromString(String xml) {
-		String stand = ((Element)(XmlUtil.documentFromString(xml).getDocumentElement().getFirstChild())).getAttribute("stand");
+		Node node = XmlUtil.documentFromString(xml).getDocumentElement().getFirstChild();
+		while(!(node instanceof Element)) {
+			node = node.getNextSibling();
+		}
+		String stand = ((Element) node).getAttribute("stand");
+
 		Date date = new Date(Long.valueOf(stand));
 		return date;
 	}

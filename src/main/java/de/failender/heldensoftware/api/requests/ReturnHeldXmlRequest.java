@@ -1,10 +1,11 @@
 package de.failender.heldensoftware.api.requests;
 
-import de.failender.dsaonline.exceptions.ExchangeException;
 import de.failender.heldensoftware.api.HeldenApi;
 import de.failender.heldensoftware.api.authentication.Authentication;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +26,7 @@ public class ReturnHeldXmlRequest extends ApiRequest<String> {
 	public Map<String, String> writeRequest() {
 		Map<String, String> data = new HashMap<>();
 		data.put("action", "returnheld");
-		data.put("format", HeldenApi.Format.pdfintern.toString());
+		data.put("format", HeldenApi.Format.heldenxml.toString());
 		data.put("heldenid", heldid.toString());
 		if(authentication != null) {
 			authentication.writeToRequest(data);
@@ -35,22 +36,13 @@ public class ReturnHeldXmlRequest extends ApiRequest<String> {
 
 	@Override
 	public String mapResponse(InputStream is) {
-		Writer swriter = new StringWriter();
-		char[] buffer = new char[1024];
-		Reader reader =
-				new BufferedReader(new InputStreamReader(is));
-		int count;
 		try {
-			while ((count = reader.read(buffer)) != -1) {
-
-				swriter.write(buffer, 0, count);
-
-			}
-			reader.close();
+			return org.apache.commons.io.IOUtils.toString(is, "UTF-8");
 		} catch (IOException e) {
-			throw new ExchangeException(e);
+			throw new RuntimeException(e);
+		} finally {
+			org.apache.commons.io.IOUtils.closeQuietly(is);
 		}
-		return swriter.toString();
 
 	}
 

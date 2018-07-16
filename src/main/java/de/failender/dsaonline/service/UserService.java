@@ -64,7 +64,7 @@ public class UserService {
 		data.forEach(
 				userData -> {
 					if (userRepository.existsByName(userData.getName())) {
-						log.info("User with getName {} already exists in database", userData.getName());
+						log.info("User with Name {} already exists in database", userData.getName());
 						return;
 					}
 					String gruppe;

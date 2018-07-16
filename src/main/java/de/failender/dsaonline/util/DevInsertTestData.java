@@ -62,8 +62,6 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 			log.error("Error while inserting user data", e);
 		}
 		SecurityContextHolder.getContext().setAuthentication(null);
-
-		userRepository.findAll().forEach(user -> userHeldenService.updateHeldenForUser(user, true));
 		log.info("Done inserting dev data");
 	}
 

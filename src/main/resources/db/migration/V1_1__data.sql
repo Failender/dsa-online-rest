@@ -75,7 +75,8 @@ INSERT INTO RIGHTS VALUES
 	(1, 'CREATE_USER'),
 	(2, 'VIEW_ALL'),
 	(3, 'EDIT_RIGHTS'),
-	(4, 'EDIT_ALL');
+	(4, 'EDIT_ALL'),
+	(5, 'MEISTER');
 
 INSERT INTO ROLES_TO_USER VALUES
   (1, 1);
@@ -84,4 +85,5 @@ INSERT INTO ROLES_TO_RIGHTS VALUES
 	(1, 1),
 	(1, 2),
 	(1, 3),
-	(1, 4);
+	(1, 4),
+	(1, 5);

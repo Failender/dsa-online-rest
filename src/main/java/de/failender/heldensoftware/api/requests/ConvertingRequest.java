@@ -4,6 +4,7 @@ import de.failender.dsaonline.util.XmlUtil;
 import de.failender.heldensoftware.api.HeldenApi;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 import java.io.File;
 import java.io.InputStream;
@@ -22,7 +23,13 @@ public class ConvertingRequest extends ApiRequest<InputStream> {
 		this.xml = xml;
 		try {
 			Document document = XmlUtil.documentFromString(xml);
-			Element element = (Element) document.getDocumentElement().getFirstChild();
+
+			Node node = document.getDocumentElement().getFirstChild();
+			while(!(node instanceof Element)) {
+				node = node.getNextSibling();
+			}
+			Element element = (Element) node;
+
 			String stand =element.getAttribute("stand");
 			this.stand = Long.valueOf(stand);
 			this.key = Long.valueOf(element.getAttribute("key"));

@@ -99,9 +99,14 @@ public class GruppenController {
 					}
 
 				});
-
-
 		return value.values();
+	}
+
+	@GetMapping("helden/{gruppeid}")
+	public List<HeldEntity> getHeldenForGruppe(@PathVariable int gruppeid) {
+		return heldRepositoryService.findByGruppeId(gruppeid)
+				.stream()
+				.collect(Collectors.toList());
 	}
 
 
