@@ -25,6 +25,9 @@ public class HeldRepositoryService {
 	@Autowired
 	private HeldRepository heldRepository;
 
+	@Autowired
+	private SecurityUtils securityUtils;
+
 
 	public void updateHeldenGruppe(Integer gruppeid, BigInteger heldid) {
 		heldRepository.updateHeldenGruppe(gruppeid, heldid);
@@ -74,7 +77,7 @@ public class HeldRepositoryService {
 			log.error("Held with id {} could not be found", heldid);
 			throw new HeldNotFoundException(heldid);
 		}
-		SecurityUtils.canCurrentUserViewHeld(heldEntityOptional.get());
+		securityUtils.canCurrentUserViewHeld(heldEntityOptional.get());
 		return heldEntityOptional.get();
 	}
 

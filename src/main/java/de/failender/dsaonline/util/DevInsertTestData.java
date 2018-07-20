@@ -71,6 +71,7 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 		public String name;
 		public String token;
 		public List<String> roles;
+		public List<String> meister;
 		public String gruppe;
 		public String password;
 	}

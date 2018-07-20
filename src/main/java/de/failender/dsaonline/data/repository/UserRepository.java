@@ -26,6 +26,14 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 	@Query(nativeQuery = true, value="SELECT R.ID FROM ROLES R WHERE R.NAME = ?1")
 	Integer getRoleId(String role);
 
+	@Query(nativeQuery = true, value="SELECT GRUPPE_ID FROM USER_TO_MEISTER WHERE USER_ID = ?1")
+	List<Integer> getMeisterGruppen(int userid);
+
+	@Transactional
+	@Modifying
+	@Query(nativeQuery = true, value="INSERT INTO USER_TO_MEISTER VALUES (?1, ?2)")
+	void addMeisterForGruppe(int userid, int gruppeid);
+
 
 
 }

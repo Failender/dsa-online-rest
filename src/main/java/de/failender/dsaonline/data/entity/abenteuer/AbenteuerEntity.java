@@ -4,6 +4,7 @@ import de.failender.dsaonline.data.entity.AuditingEntity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,12 +18,12 @@ public class AbenteuerEntity extends AuditingEntity {
 	private Integer gruppeId;
 
 	@JoinColumn(name = "ABENTEUER_ID")
-	@OneToMany
-	private List<BonusApEntity> bonusAp;
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<BonusApEntity> bonusAp = new ArrayList<>();
 
 	@JoinColumn(name = "ABENTEUER_ID")
-	@OneToMany
-	private List<SeEntity> ses;
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<SeEntity> ses = new ArrayList<>();
 
 
 }

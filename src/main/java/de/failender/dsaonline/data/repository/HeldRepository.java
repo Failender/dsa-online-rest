@@ -1,6 +1,5 @@
 package de.failender.dsaonline.data.repository;
 
-import de.failender.dsaonline.data.entity.GruppeEntity;
 import de.failender.dsaonline.data.entity.HeldEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -14,6 +13,7 @@ public interface HeldRepository extends JpaRepository<HeldEntity, BigInteger> {
 	List<HeldEntity> findByUserIdAndDeleted(Integer userId, boolean deleted);
 
 	List<HeldEntity> findByGruppeId(int id);
+	HeldEntity findByName(String name);
 
 	@Transactional
 	@Modifying

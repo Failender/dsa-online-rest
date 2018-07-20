@@ -63,7 +63,7 @@ public class UserHeldenService {
 				helden.remove(xmlHeld);
 				VersionEntity versionEntity = heldRepositoryService.findLatestVersion(heldEntity);
 				if (isOnlineVersionOlder(xmlHeld, versionEntity.getCreatedDate())) {
-					log.info("Got a new version for held with getName {}", heldEntity.getName());
+					log.info("Got a new version for held with name {}", heldEntity.getName());
 					//We got a new version of this xmlHeld
 					String xml = heldenApi.request(new ReturnHeldXmlRequest(xmlHeld.getHeldenid(), new TokenAuthentication(userEntity.getToken()), versionEntity.getVersion() +1)).block();
 					this.persistVersion(xmlHeld.getHeldenid(), userEntity, versionEntity.getVersion() +1, xml);
@@ -105,8 +105,6 @@ public class UserHeldenService {
 	}
 
 	private boolean isOnlineVersionOlder(Held xmlHeld, Date heldCreatedDate) {
-
-
 		Date lastEditedDate = new Date((xmlHeld.getHeldlastchange().longValue() / 1000L) * 1000L);
 		if (lastEditedDate.getTime() == heldCreatedDate.getTime()) {
 			return false;
