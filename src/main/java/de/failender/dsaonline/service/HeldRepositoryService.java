@@ -94,9 +94,14 @@ public class HeldRepositoryService {
 	}
 
 	public void updateHeldenPublic(boolean isPublic, BigInteger heldid) {
+		HeldEntity held = findHeld(heldid);
+		SecurityUtils.canCurrentUserEditHeld(held);
+
 		heldRepository.updateHeldenPublic(isPublic, heldid);
 	}
 	public void updateHeldenActive(boolean isActive, BigInteger heldid) {
+		HeldEntity held = findHeld(heldid);
+		SecurityUtils.canCurrentUserEditHeld(held);
 		heldRepository.updateHeldenActive(isActive, heldid);
 	}
 

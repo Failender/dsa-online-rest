@@ -211,16 +211,12 @@ public class HeldenService {
 	}
 
 	public void updateHeldenPublic(boolean isPublic, BigInteger heldid) {
-		HeldEntity held = heldRepositoryService.findHeld(heldid);
-		SecurityUtils.canCurrentUserEditHeld(held);
-		log.info("Updating public status for held {}: {}", held.getName(), isPublic);
+		log.info("Updating public status for held {}: {}", heldid, isPublic);
 		heldRepositoryService.updateHeldenPublic(isPublic, heldid);
 	}
 
 	public void updateHeldenActive(boolean isActive, BigInteger heldid) {
-		HeldEntity held = heldRepositoryService.findHeld(heldid);
-		SecurityUtils.canCurrentUserEditHeld(held);
-		log.info("Updating active status for held {}: {}", held.getName(), isActive);
+		log.info("Updating active status for held {}: {}", heldid, isActive);
 		heldRepositoryService.updateHeldenActive(isActive, heldid);
 	}
 
