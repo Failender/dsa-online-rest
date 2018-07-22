@@ -67,7 +67,8 @@ public class HeldenService {
 				heldWithVersion.getVersion().getVersion(),
 				heldWithVersion.getHeld().getGruppe().getName(),
 				heldWithVersion.getHeld().getId(),
-				heldWithVersion.getHeld().isPublic());
+				heldWithVersion.getHeld().isPublic(),
+				heldWithVersion.getHeld().isActive());
 	}
 
 	public Daten getHeldenDaten(BigInteger id, int version) {
@@ -211,9 +212,16 @@ public class HeldenService {
 
 	public void updateHeldenPublic(boolean isPublic, BigInteger heldid) {
 		HeldEntity held = heldRepositoryService.findHeld(heldid);
-		log.info("Updating public status for held {}: {}", held.getName(), isPublic);
 		SecurityUtils.canCurrentUserEditHeld(held);
+		log.info("Updating public status for held {}: {}", held.getName(), isPublic);
 		heldRepositoryService.updateHeldenPublic(isPublic, heldid);
+	}
+
+	public void updateHeldenActive(boolean isActive, BigInteger heldid) {
+		HeldEntity held = heldRepositoryService.findHeld(heldid);
+		SecurityUtils.canCurrentUserEditHeld(held);
+		log.info("Updating active status for held {}: {}", held.getName(), isActive);
+		heldRepositoryService.updateHeldenActive(isActive, heldid);
 	}
 
 	public List<Daten> findPublicByGruppeId(Integer gruppeId) {

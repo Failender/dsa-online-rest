@@ -82,6 +82,7 @@ public class UserHeldenService {
 			heldEntity.setName(held.getName());
 			heldEntity.setCreatedDate(new Date());
 			heldEntity.setId(held.getHeldenid());
+
 			heldEntity.setUserId(userEntity.getId());
 			heldRepositoryService.saveHeld(heldEntity);
 			persistVersion(held.getHeldenid(), userEntity, 1, xml);

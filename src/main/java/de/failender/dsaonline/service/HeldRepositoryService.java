@@ -94,8 +94,10 @@ public class HeldRepositoryService {
 	}
 
 	public void updateHeldenPublic(boolean isPublic, BigInteger heldid) {
-
 		heldRepository.updateHeldenPublic(isPublic, heldid);
+	}
+	public void updateHeldenActive(boolean isActive, BigInteger heldid) {
+		heldRepository.updateHeldenActive(isActive, heldid);
 	}
 
 	public List<HeldEntity> getHeldenForGruppe(int gruppeid) {

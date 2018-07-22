@@ -22,6 +22,8 @@ public class HeldEntity {
 
 	@Column(name = "PUBLIC")
 	private boolean isPublic;
+	@Column(name = "ACTIVE")
+	private boolean isActive = true;
 	@Column(name = "DELETED")
 	private boolean deleted;
 

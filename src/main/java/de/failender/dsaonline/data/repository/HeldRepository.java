@@ -25,6 +25,11 @@ public interface HeldRepository extends JpaRepository<HeldEntity, BigInteger> {
 	@Query("UPDATE HeldEntity h SET h.isPublic = ?1 WHERE h.id = ?2")
 	void updateHeldenPublic(boolean isPublic, BigInteger heldid);
 
+	@Transactional
+	@Modifying
+	@Query("UPDATE HeldEntity h SET h.isActive = ?1 WHERE h.id = ?2")
+	void updateHeldenActive(boolean isActive, BigInteger heldid);
+
 	List<HeldEntity> findByGruppeId(Integer gruppeId);
 
 

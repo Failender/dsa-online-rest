@@ -75,6 +75,11 @@ public class HeldenController {
 		heldenService.updateHeldenPublic(isPublic, heldid);
 	}
 
+	@PostMapping("active/{heldid}/{isActive}")
+	public void editActive(@PathVariable BigInteger heldid, @PathVariable boolean isActive) {
+		heldenService.updateHeldenActive(isActive, heldid);
+	}
+
 	@GetMapping("download/{heldid}/xml")
 	public void downloadXml(@PathVariable BigInteger heldid, HttpServletResponse response) {
 		heldenService.provideXmlDownload(heldid, response);

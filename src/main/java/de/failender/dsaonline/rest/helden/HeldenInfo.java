@@ -15,4 +15,5 @@ public class HeldenInfo {
 	private String gruppe;
 	private BigInteger id;
 	private boolean oeffentlich;
+	private boolean active;
 }
