@@ -76,10 +76,12 @@ public class UserService {
 					UserRegistration userRegistration = new UserRegistration(userData.getName(), userData.getPassword(), userData.getToken(), gruppe);
 					UserEntity userEntity = registerUser(userRegistration);
 					userData.roles.forEach(role -> addUserRole(userEntity, role));
-					userData.meister.forEach(gruppeName ->{
-						GruppeEntity gruppeEntity = gruppeRepository.findByName(gruppeName);
-						userRepository.addMeisterForGruppe(userEntity.getId(), gruppeEntity.getId());
-					} );
+					if(userData.meister != null) {
+						userData.meister.forEach(gruppeName ->{
+							GruppeEntity gruppeEntity = gruppeRepository.findByName(gruppeName);
+							userRepository.addMeisterForGruppe(userEntity.getId(), gruppeEntity.getId());
+						} );
+					}
 				}
 		);
 	}

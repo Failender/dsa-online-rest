@@ -4,6 +4,8 @@ import de.failender.dsaonline.data.entity.GruppeEntity;
 import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.repository.GruppeRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
+import de.failender.dsaonline.exceptions.NotAuthenticatedException;
+import de.failender.dsaonline.rest.helden.HeldWithVersion;
 import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.HeldRepositoryService;
 import de.failender.dsaonline.service.HeldenService;
@@ -70,8 +72,16 @@ public class GruppenController {
 				.filter(user -> user.getToken() != null)
 				.flatMap(user -> heldenApi.request(new GetAllHeldenRequest(new TokenAuthentication(user.getToken()))))
 				.flatMapIterable(val -> val.getHeld())
-				.map(held -> this.heldRepositoryService.findHeldWithLatestVersion(held.getHeldenid()))
+				.map(held -> {try {
+					return this.heldRepositoryService.findHeldWithLatestVersion(held.getHeldenid());
+					} catch(NotAuthenticatedException | org.springframework.security.access.AccessDeniedException e) {
+						return new HeldWithVersion(null, null);
+					}
+				})
 				.filter(heldWithVersion -> {
+					if(heldWithVersion.getHeld() == null) {
+						return false;
+					}
 					if(publicOnly && !heldWithVersion.getHeld().isPublic()) {
 						return false;
 					}
