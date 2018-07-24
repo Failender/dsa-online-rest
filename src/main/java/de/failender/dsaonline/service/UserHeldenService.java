@@ -52,7 +52,8 @@ public class UserHeldenService {
 	public void updateHeldenForUser(UserEntity userEntity, List<Held> helden) {
 		log.info("Updating helden for user {}, online found {}", userEntity.getName(), helden.size());
 
-		heldRepository.findByUserIdAndDeleted(userEntity.getId(), false).forEach(heldEntity -> {
+
+		heldRepositoryService.findByUserId(userEntity.getId()).forEach(heldEntity -> {
 			Optional<Held> heldOptional = helden.stream().filter(_held -> _held.getName().equals(heldEntity.getName())).findFirst();
 			if (!heldOptional.isPresent()) {
 				log.info("Held with Name {} is no longer online, disabling it", heldEntity.getName());
