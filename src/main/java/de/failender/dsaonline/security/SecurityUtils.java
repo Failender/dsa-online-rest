@@ -67,6 +67,14 @@ public class SecurityUtils {
 		}
 	}
 
+	public static boolean isLoggedIn() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof String) {
+			return false;
+		}
+		return true;
+	}
+
 	public static UserEntity getCurrentUser() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (principal instanceof String) {
@@ -112,7 +120,9 @@ public class SecurityUtils {
 	}
 
 	public static TokenAuthentication getAuthentication() {
-		checkLogin();
+		if(!isLoggedIn()) {
+			return null;
+		}
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserEntity user = (UserEntity) principal;
 		return new TokenAuthentication(user.getToken());
