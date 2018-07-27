@@ -125,6 +125,9 @@ public class SecurityUtils {
 		}
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserEntity user = (UserEntity) principal;
+		if(user.getToken() == null) {
+			return null;
+		}
 		return new TokenAuthentication(user.getToken());
 	}
 }
