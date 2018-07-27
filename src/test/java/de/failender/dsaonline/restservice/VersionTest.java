@@ -11,8 +11,6 @@ import org.flywaydb.test.annotation.FlywayTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.math.BigInteger;
-
 public class VersionTest extends DsaOnlineTest {
 
 
@@ -39,9 +37,7 @@ public class VersionTest extends DsaOnlineTest {
 	private HeldenApi heldenApi;
 
 
-	private static final String FAKE_TOKEN = "token";
-	private static final String TEST_GRUPPE = "Der Runde Tisch";
-	private static final BigInteger TORI_ID = BigInteger.valueOf(36222L);
+
 
 	@FlywayTest
 	@Test

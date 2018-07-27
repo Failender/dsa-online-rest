@@ -61,4 +61,8 @@ public class ConvertingRequest extends ApiRequest<InputStream> {
 	public File getCacheFile(File root) {
 		return new File(root, "converting/" + key + "/" + stand + "." + format);
 	}
+
+	public HeldenApi.Format getFormat() {
+		return format;
+	}
 }

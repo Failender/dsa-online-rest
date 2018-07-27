@@ -31,21 +31,20 @@ import java.util.Optional;
 @Slf4j
 public class UserHeldenService {
 
-	@Autowired
-	private HeldRepositoryService heldRepositoryService;
-
 	private final HeldRepository heldRepository;
 	private final UserRepository userRepository;
 	private final HeldenApi heldenApi;
+	private final HeldRepositoryService heldRepositoryService;
 
 	@Autowired
 	private VersionFakeService versionFakeService;
 
-	public UserHeldenService(HeldRepository heldRepository, UserRepository userRepository, HeldenApi heldenApi) {
+	public UserHeldenService(HeldRepository heldRepository, UserRepository userRepository, HeldenApi heldenApi, HeldRepositoryService heldRepositoryService) {
 		this.heldRepository = heldRepository;
 		this.userRepository = userRepository;
 		this.heldenApi = heldenApi;
 
+		this.heldRepositoryService = heldRepositoryService;
 	}
 
 

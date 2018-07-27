@@ -7,7 +7,9 @@ import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.dsaonline.service.UserService;
 import de.failender.heldensoftware.api.HeldenApi;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -67,6 +69,8 @@ public class DevInsertTestData implements ApplicationListener<ApplicationReadyEv
 
 
 	@Data
+	@NoArgsConstructor
+	@AllArgsConstructor
 	public static class UserData {
 		public String name;
 		public String token;

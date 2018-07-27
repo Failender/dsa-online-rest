@@ -17,12 +17,13 @@ import java.util.stream.Collectors;
 @Slf4j
 public class HeldenApi {
 
-	private final CacheHandler cacheHandler;
+	private CacheHandler cacheHandler;
 
 	public HeldenApi(File cacheDirectory) {
 
 		cacheHandler = new CacheHandler(cacheDirectory);
 	}
+
 
 	public <T> Mono<T> request(ApiRequest<T> request) {
 		return request(request, true);
@@ -62,7 +63,7 @@ public class HeldenApi {
 				});
 	}
 
-	private synchronized Mono<InputStream> doRequest(ApiRequest request) {
+	public synchronized Mono<InputStream> doRequest(ApiRequest request) {
 		Map<String, String> data = request.writeRequest();
 
 		String body = buildBody(data);
@@ -100,7 +101,7 @@ public class HeldenApi {
 		log.info("############");
 	}
 
-	private String buildBody(Map<String, String> data) {
+	public String buildBody(Map<String, String> data) {
 		return data.entrySet()
 				.stream()
 				.map(this::mapEntry)
@@ -124,5 +125,7 @@ public class HeldenApi {
 		return cacheHandler;
 	}
 
-
+	public void setCacheHandler(CacheHandler cacheHandler) {
+		this.cacheHandler = cacheHandler;
+	}
 }
