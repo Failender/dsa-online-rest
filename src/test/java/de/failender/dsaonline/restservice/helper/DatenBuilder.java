@@ -1,8 +1,8 @@
-package de.failender.dsaonline.restservice;
+package de.failender.dsaonline.restservice.helper;
 
-import de.failender.heldensoftware.xml.datenxml.Daten;
-import de.failender.heldensoftware.xml.datenxml.Ereignis;
-import de.failender.heldensoftware.xml.datenxml.Ereignisse;
+import de.failender.heldensoftware.xml.datenxml.*;
+
+import java.math.BigInteger;
 
 public class DatenBuilder {
 
@@ -11,6 +11,7 @@ public class DatenBuilder {
 	{
 		Ereignisse ereignisse = new Ereignisse();
 		daten.setEreignisse(ereignisse);
+		daten.setAngaben(new Angaben());
 	}
 
 	public static DatenBuilder builder() {
@@ -19,6 +20,14 @@ public class DatenBuilder {
 
 	public DatenBuilder addEreignis(Ereignis ereignis) {
 		daten.getEreignisse().getEreignis().add(ereignis);
+		return this;
+	}
+
+	public DatenBuilder apGesamt(Long ap) {
+		if(daten.getAngaben().getAp() == null) {
+			daten.getAngaben().setAp(new Ap());
+		}
+		daten.getAngaben().getAp().setGesamt(BigInteger.valueOf(ap));
 		return this;
 	}
 

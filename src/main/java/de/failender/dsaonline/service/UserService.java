@@ -75,7 +75,10 @@ public class UserService {
 					}
 					UserRegistration userRegistration = new UserRegistration(userData.getName(), userData.getPassword(), userData.getToken(), gruppe);
 					UserEntity userEntity = registerUser(userRegistration);
-					userData.roles.forEach(role -> addUserRole(userEntity, role));
+					if(userData.roles != null) {
+						userData.roles.forEach(role -> addUserRole(userEntity, role));
+					}
+
 					if(userData.meister != null) {
 						userData.meister.forEach(gruppeName ->{
 							GruppeEntity gruppeEntity = gruppeRepository.findByName(gruppeName);
