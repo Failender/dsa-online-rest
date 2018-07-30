@@ -12,5 +12,5 @@ before_install:
 after_success:
   - docker login -u Failender -p $DOCKER_PASS
   - docker build -f Dockerfile -t $REPO:$TRAVIS_BRANCH .
-  - docker push $REPO
+  - docker push failender/dsa-online-rest
 
