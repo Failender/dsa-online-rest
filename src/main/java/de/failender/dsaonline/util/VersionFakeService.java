@@ -84,7 +84,10 @@ public class VersionFakeService {
 				.findFirst()
 				.orElse(null);
 		int firstVersionToMoveInt = firstVersionToMove == null? 1: firstVersionToMove.getVersion();
-		if(firstVersionToMove.getDatum().getTime() == stand.getTime()){
+		if(firstVersionToMove == null) {
+			log.warn("Held that should get faked is older then the oldest one currently uploaded");
+		}
+		else if(firstVersionToMove.getDatum().getTime() == stand.getTime()){
 			log.warn("Skipping version fake for held {} since it already exists", id);
 			return;
 		}
