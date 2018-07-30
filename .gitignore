@@ -1,3 +1,5 @@
+.gradle
+
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
@@ -25,3 +27,4 @@ scripts/
 /dist/
 /nbdist/
 /.nb-gradle/
+
