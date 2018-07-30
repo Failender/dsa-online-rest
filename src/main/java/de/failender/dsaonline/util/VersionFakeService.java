@@ -15,7 +15,6 @@ import de.failender.heldensoftware.api.requests.ReturnHeldDatenWithEreignisseReq
 import de.failender.heldensoftware.api.requests.ReturnHeldPdfRequest;
 import de.failender.heldensoftware.api.requests.ReturnHeldXmlRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
@@ -31,22 +30,23 @@ import java.util.List;
 @Slf4j
 public class VersionFakeService {
 
+	private final HeldRepositoryService heldRepositoryService;
 
-	@Autowired
-	private HeldRepositoryService heldRepositoryService;
+	private final HeldenApi heldenApi;
 
-	@Autowired
-	private HeldenApi heldenApi;
+	private final UserHeldenService userHeldenService;
 
-	@Autowired
-	private UserHeldenService userHeldenService;
-
-	@Autowired
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
 
 	private final HeldenService heldenService;
 
-	public VersionFakeService(HeldenService heldenService) {
+	private boolean testing = false;
+
+	public VersionFakeService(HeldRepositoryService heldRepositoryService, HeldenApi heldenApi, UserHeldenService userHeldenService, UserRepository userRepository, HeldenService heldenService) {
+		this.heldRepositoryService = heldRepositoryService;
+		this.heldenApi = heldenApi;
+		this.userHeldenService = userHeldenService;
+		this.userRepository = userRepository;
 		this.heldenService = heldenService;
 	}
 
@@ -92,7 +92,10 @@ public class VersionFakeService {
 			VersionEntity versionEntity = heldRepositoryService.findVersion(id, i);
 			versionEntity.setVersion(i + 1);
 			heldRepositoryService.saveVersion(versionEntity);
-			Helper.copyFilesToHigherVersion(id, i, heldenApi.getCacheHandler());
+			if(!testing) {
+				Helper.copyFilesToHigherVersion(id, i, heldenApi.getCacheHandler());
+			}
+
 		}
 
 
@@ -101,5 +104,9 @@ public class VersionFakeService {
 		fakePdf(converted.getT2(), id, firstVersionToMoveInt);
 		userHeldenService.persistVersion(id, userEntity, firstVersionToMoveInt, xml);
 
+	}
+
+	public void setTesting(boolean testing) {
+		this.testing = testing;
 	}
 }

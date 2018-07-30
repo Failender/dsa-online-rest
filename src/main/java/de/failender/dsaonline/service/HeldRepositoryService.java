@@ -86,9 +86,6 @@ public class HeldRepositoryService {
 	}
 
 	public void saveVersion(VersionEntity versionEntity) {
-		for (StackTraceElement stackTraceElement : Thread.currentThread().getStackTrace()) {
-			System.out.println(stackTraceElement);
-		}
 		log.info("Saving version");
 		versionRepository.save(versionEntity);
 	}

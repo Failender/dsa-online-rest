@@ -14,7 +14,7 @@ public class DatenBuilder {
 		daten.setAngaben(new Angaben());
 	}
 
-	public static DatenBuilder builder() {
+	public static DatenBuilder daten() {
 		return new DatenBuilder();
 	}
 

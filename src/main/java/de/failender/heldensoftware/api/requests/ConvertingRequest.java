@@ -23,13 +23,12 @@ public class ConvertingRequest extends ApiRequest<InputStream> {
 		this.xml = xml;
 		try {
 			Document document = XmlUtil.documentFromString(xml);
-
+			System.out.println(xml);
 			Node node = document.getDocumentElement().getFirstChild();
 			while(!(node instanceof Element)) {
 				node = node.getNextSibling();
 			}
 			Element element = (Element) node;
-
 			String stand =element.getAttribute("stand");
 			this.stand = Long.valueOf(stand);
 			this.key = Long.valueOf(element.getAttribute("key"));

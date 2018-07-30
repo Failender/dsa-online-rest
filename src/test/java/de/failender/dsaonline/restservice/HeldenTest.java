@@ -5,7 +5,6 @@ import de.failender.dsaonline.data.repository.GruppeRepository;
 import de.failender.dsaonline.data.repository.HeldRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.data.repository.VersionRepository;
-import de.failender.dsaonline.restservice.helper.DatenBuilder;
 import de.failender.dsaonline.restservice.helper.HeldenContext;
 import de.failender.dsaonline.restservice.helper.JaxbHelper;
 import de.failender.dsaonline.service.HeldRepositoryService;
@@ -33,7 +32,8 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-import static de.failender.dsaonline.restservice.helper.HeldXmlHelper.heldxml;
+import static de.failender.dsaonline.restservice.helper.DatenBuilder.daten;
+import static de.failender.dsaonline.restservice.helper.HeldXmlBuilder.heldxml;
 import static de.failender.dsaonline.restservice.helper.HeldenListenBuilder.heldenliste;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -64,7 +64,7 @@ public class HeldenTest extends DsaOnlineTest {
 		heldenContext.setHeldid(TEST_HELD_ID);
 		heldenContext.setName(TEST_HELD_NAME);
 		heldenContext.setGesamtAp(500L);
-		heldenContext.setStand(1000L);
+		heldenContext.setStand(10000L);
 		heldenContext.setLastEreignis("Test");
 		heldenContext.setLastEreignisAp(50);
 		heldenApi = Mockito.spy(heldenApi);
@@ -75,13 +75,8 @@ public class HeldenTest extends DsaOnlineTest {
 			System.out.println(_request.url());
 			System.out.println(body);
 			if(_request instanceof ConvertingRequest) {
-				System.err.println("IMPLEMENT CONVERTING");
-				ConvertingRequest request = (ConvertingRequest) _request;
-//				if(request.getFormat() == HeldenApi.Format.datenxml) {
-//					return handlePdfConvertingRequest(request);
-//				} else {
-//					return Mono.just(new NearlyEmptyInputStream());
-//				}
+
+				return Mono.just(handleRequest((ConvertingRequest)_request));
 			} else if(_request instanceof ReturnHeldXmlRequest) {
 				return Mono.just(handleRequest((ReturnHeldXmlRequest) _request));
 			} else if(_request instanceof ReturnHeldDatenWithEreignisseRequest) {
@@ -109,17 +104,29 @@ public class HeldenTest extends DsaOnlineTest {
 		return new NearlyEmptyInputStream();
 	}
 
-	private InputStream handleRequest(ReturnHeldDatenWithEreignisseRequest request) throws JAXBException {
+	private InputStream handleRequest(ConvertingRequest request) throws JAXBException {
+		if(request.getFormat() == HeldenApi.Format.datenxml) {
+			return handleDatenRequest();
+		} else {
+			return new NearlyEmptyInputStream();
+		}
+	}
+
+	private InputStream handleDatenRequest() throws JAXBException{
 		Ereignis ereignis = new Ereignis();
 		ereignis.setAp(heldenContext.getLastEreignisAp());
 		ereignis.setKommentar(heldenContext.getLastEreignis());
 		ereignis.setAktion("Abenteuer");
-		Daten daten = DatenBuilder.builder()
+		Daten daten = daten()
 				.addEreignis(ereignis)
 				.apGesamt(heldenContext.getGesamtAp())
 				.build();
 		InputStream stream = JaxbHelper.marshall(daten);
 		return stream;
+	}
+
+	private InputStream handleRequest(ReturnHeldDatenWithEreignisseRequest request) throws JAXBException {
+		return handleDatenRequest();
 	}
 
 	private InputStream handleRequest(GetAllHeldenRequest request) throws JAXBException {
