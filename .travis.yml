@@ -10,7 +10,7 @@ before_install:
   - chmod +x gradlew
 
 after_success:
-  - docker login -u Failender -p $DOCKER_PASS
+  - docker login -u failender -p $DOCKER_PASS
   - docker build -f Dockerfile -t $REPO:$TRAVIS_BRANCH .
   - docker push failender/dsa-online-rest
 
