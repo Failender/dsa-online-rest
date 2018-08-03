@@ -8,8 +8,13 @@ services:
 
 before_install:
   - chmod +x gradlew
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
 script:
   - docker login -u failender -p $DOCKER_PASS
   - docker build -f Dockerfile -t failender/dsa-online-rest:$TRAVIS_BRANCH .
   - docker push failender/dsa-online-rest
+
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

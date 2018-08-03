@@ -15,12 +15,12 @@ buildscript {
 plugins {
     id 'java'
     id 'io.spring.dependency-management' version '1.0.5.RELEASE'
-    id "com.bmuschko.docker-spring-boot-application" version "3.5.0"
     id 'io.franzbecker.gradle-lombok' version '1.14'
 }
 
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: "jacoco"
 
 group = 'de.failender.dsa-online'
 version = '0.0.1-SNAPSHOT'
@@ -55,8 +55,4 @@ dependencies {
 
 }
 
-docker {
-    springBootApplication {
-        baseImage = 'openjdk:8-alpine'
-    }
-}
+build.dependsOn jacocoTestReport
