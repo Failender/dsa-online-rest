@@ -1,0 +1,62 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+
+    }
+}
+
+plugins {
+    id 'java'
+    id 'io.spring.dependency-management' version '1.0.5.RELEASE'
+    id "com.bmuschko.docker-spring-boot-application" version "3.5.0"
+    id 'io.franzbecker.gradle-lombok' version '1.14'
+}
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'de.failender.dsa-online'
+version = '0.0.1-SNAPSHOT'
+
+description = """rest-service"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+
+
+repositories {
+        
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile group: 'io.projectreactor', name: 'reactor-core', version:'3.1.8.RELEASE'
+    compile group: 'commons-io', name: 'commons-io', version:'2.5'
+    compile group: 'org.flywaydb.flyway-test-extensions', name: 'flyway-spring-test', version:'5.0.0'
+    compile group: 'org.flywaydb', name: 'flyway-core', version:'5.0.7'
+    compile('org.springframework.boot:spring-boot-starter-data-rest')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile group: 'org.apache.pdfbox', name: 'pdfbox', version:'2.0.9'
+    runtime group: 'com.h2database', name: 'h2', version:'1.4.197'
+    runtime group: 'mysql', name: 'mysql-connector-java', version:'5.1.46'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.0.1.RELEASE'
+    testCompile group: 'org.springframework.security', name: 'spring-security-test', version:'5.0.4.RELEASE'
+
+}
+
+docker {
+    springBootApplication {
+        baseImage = 'openjdk:8-alpine'
+    }
+}
