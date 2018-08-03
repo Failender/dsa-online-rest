@@ -9,7 +9,7 @@ services:
 before_install:
   - chmod +x gradlew
 
-after_success:
+script:
   - docker login -u failender -p $DOCKER_PASS
   - docker build -f Dockerfile -t failender/dsa-online-rest:$TRAVIS_BRANCH .
   - docker push failender/dsa-online-rest
