@@ -11,6 +11,7 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -31,6 +32,13 @@ public class SecurityUtils {
 	public static final String EDIT_KAMPAGNE = "EDIT_KAMPAGNE";
 	@Autowired
 	private UserRepository userRepository;
+
+	public void checkRight(String right, int gruppeId) {
+		if(checkIsUserMeisterForGruppeBool(gruppeId)) {
+			return;
+		}
+		checkRight(right);
+	}
 
 	public static void checkRight(String right) {
 		if (hasRight(right)) {

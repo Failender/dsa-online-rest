@@ -14,10 +14,12 @@ public class KampagnenService {
 
 	private final KampagneRepositoryService kampagneRepositoryService;
 	private final GruppeRepositoryService gruppeRepositoryService;
+	private final SecurityUtils securityUtils;
 
-	public KampagnenService(KampagneRepositoryService kampagneRepositoryService, GruppeRepositoryService gruppeRepositoryService) {
+	public KampagnenService(KampagneRepositoryService kampagneRepositoryService, GruppeRepositoryService gruppeRepositoryService, SecurityUtils securityUtils) {
 		this.kampagneRepositoryService = kampagneRepositoryService;
 		this.gruppeRepositoryService = gruppeRepositoryService;
+		this.securityUtils = securityUtils;
 	}
 
 	public List<KampagneEntity> findKampagneByGruppe(int gruppe) {
@@ -25,7 +27,7 @@ public class KampagnenService {
 	}
 
 	public void createKampagne(String name, int gruppeId) {
-		SecurityUtils.checkRight(SecurityUtils.EDIT_KAMPAGNE);
+		securityUtils.checkRight(SecurityUtils.EDIT_KAMPAGNE, gruppeId);
 		KampagneEntity entity = new KampagneEntity();
 		entity.setGruppeId(gruppeId);
 		entity.setName(name);
@@ -34,7 +36,10 @@ public class KampagnenService {
 	}
 
 	public void deleteKampagne(int kampagneid) {
-		SecurityUtils.checkRight(SecurityUtils.EDIT_KAMPAGNE);
+		if(!SecurityUtils.hasRight(SecurityUtils.EDIT_KAMPAGNE)) {
+			KampagneEntity kampagneEntity = kampagneRepositoryService.findKampagneById(kampagneid);
+			securityUtils.checkIsUserMeisterForGruppe(kampagneEntity.getGruppeId());
+		}
 		kampagneRepositoryService.deleteKampagne(kampagneid);
 	}
 
