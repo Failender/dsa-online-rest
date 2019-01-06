@@ -15,6 +15,7 @@ import de.failender.dsaonline.security.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
+
 import java.math.BigInteger;
 import java.util.Iterator;
 import java.util.List;
@@ -178,7 +179,7 @@ public class AbenteuerService {
 
 	public void createApBonus(int abenteuer, BigInteger held, int ap) {
 		AbenteuerEntity abenteuerEntity = validateExistence(abenteuer, held);
-		securityUtils.checkIsUserMeisterForGruppeBool(abenteuerEntity.getGruppeId());
+		securityUtils.checkRight(SecurityUtils.EDIT_KAMPAGNE,abenteuerEntity.getGruppeId());
 		if (held.equals(NEGATIVE)) {
 			abenteuerEntity.setAp(ap);
 			abenteuerRepository.save(abenteuerEntity);
@@ -205,7 +206,7 @@ public class AbenteuerService {
 
 	public void createSeBonus(int abenteuer, BigInteger held, String se) {
 		AbenteuerEntity entity = validateExistence(abenteuer, held);
-		securityUtils.checkIsUserMeisterForGruppeBool(entity.getGruppeId());
+		securityUtils.checkRight(SecurityUtils.EDIT_KAMPAGNE,entity.getGruppeId());
 		SeEntity seEntity = new SeEntity();
 		seEntity.setHeld(held);
 		seEntity.setAbenteuerId(abenteuer);
@@ -223,7 +224,7 @@ public class AbenteuerService {
 
 	public void deleteBonus(int abenteuer, BigInteger heldid) {
 		AbenteuerEntity abenteuerEntity = abenteuerRepository.findById(abenteuer).get();
-		securityUtils.checkIsUserMeisterForGruppeBool(abenteuerEntity.getGruppeId());
+		securityUtils.checkRight(SecurityUtils.EDIT_KAMPAGNE,abenteuerEntity.getGruppeId());
 		if (heldid.equals(NEGATIVE)) {
 			abenteuerEntity.setAp(0);
 			Iterator<SeEntity> seEntityIterator = abenteuerEntity.getSes().iterator();
@@ -255,7 +256,7 @@ public class AbenteuerService {
 
 	public void deleteSeBonus(int abenteuer, BigInteger heldid, String name) {
 		AbenteuerEntity abenteuerEntity = abenteuerRepository.findById(abenteuer).get();
-		securityUtils.checkIsUserMeisterForGruppeBool(abenteuerEntity.getGruppeId());
+		securityUtils.checkRight(SecurityUtils.EDIT_KAMPAGNE,abenteuerEntity.getGruppeId());
 		if (heldid.equals(NEGATIVE)) {
 			Iterator<SeEntity> seEntityIterator = abenteuerEntity.getSes().iterator();
 			while (seEntityIterator.hasNext()) {
@@ -281,7 +282,7 @@ public class AbenteuerService {
 
 	public void deleteLmBonus(int abenteuer, BigInteger heldid, String name) {
 		AbenteuerEntity abenteuerEntity = abenteuerRepository.findById(abenteuer).get();
-		securityUtils.checkIsUserMeisterForGruppeBool(abenteuerEntity.getGruppeId());
+		securityUtils.checkRight(SecurityUtils.EDIT_KAMPAGNE,abenteuerEntity.getGruppeId());
 		if (heldid.equals(NEGATIVE)) {
 			Iterator<LmEntity> lmEntityIterator = abenteuerEntity.getLms().iterator();
 			while (lmEntityIterator.hasNext()) {
@@ -307,7 +308,7 @@ public class AbenteuerService {
 
 	public void deleteApBonus(int abenteuer, BigInteger heldid) {
 		AbenteuerEntity abenteuerEntity = abenteuerRepository.findById(abenteuer).get();
-		securityUtils.checkIsUserMeisterForGruppeBool(abenteuerEntity.getGruppeId());
+		securityUtils.checkRight(SecurityUtils.EDIT_KAMPAGNE,abenteuerEntity.getGruppeId());
 		if (heldid.equals(NEGATIVE)) {
 			abenteuerEntity.setAp(0);
 			abenteuerRepository.save(abenteuerEntity);
@@ -325,7 +326,7 @@ public class AbenteuerService {
 
 	public void createLmBonus(int abenteuer, BigInteger held, String lm) {
 		AbenteuerEntity entity = validateExistence(abenteuer, held);
-		securityUtils.checkIsUserMeisterForGruppeBool(entity.getGruppeId());
+		securityUtils.checkRight(SecurityUtils.EDIT_KAMPAGNE,entity.getGruppeId());
 		LmEntity lmEntity = new LmEntity();
 		lmEntity.setHeld(held);
 		lmEntity.setAbenteuerId(abenteuer);
@@ -336,7 +337,7 @@ public class AbenteuerService {
 
 	public void createNoteBonus(int abenteuer, String note) {
 		AbenteuerEntity entity = validateExistence(abenteuer, NEGATIVE);
-		securityUtils.checkIsUserMeisterForGruppeBool(entity.getGruppeId());
+		securityUtils.checkRight(SecurityUtils.EDIT_KAMPAGNE,entity.getGruppeId());
 		NoteEntity noteEntity = new NoteEntity();
 		noteEntity.setHeld(NEGATIVE);
 		noteEntity.setAbenteuerId(abenteuer);
@@ -347,7 +348,7 @@ public class AbenteuerService {
 
 	public void deleteNoteBonus(int abenteuerid, int id) {
 		AbenteuerEntity entity = abenteuerRepository.findById(abenteuerid).get();
-		securityUtils.checkIsUserMeisterForGruppeBool(entity.getGruppeId());
+		securityUtils.checkRight(SecurityUtils.EDIT_KAMPAGNE,entity.getGruppeId());
 		entity.getNotes().remove(entity.getNotes().stream().filter(note -> note.getId() == id).findFirst().get());
 		abenteuerRepository.save(entity);
 	}
@@ -361,7 +362,7 @@ public class AbenteuerService {
 
 	public void editDate(int abenteuerid, int date) {
 		AbenteuerEntity entity = abenteuerRepository.findById(abenteuerid).get();
-		securityUtils.checkIsUserMeisterForGruppeBool(entity.getGruppeId());
+		securityUtils.checkRight(SecurityUtils.EDIT_KAMPAGNE,entity.getGruppeId());
 		entity.setDatum(date);
 		abenteuerRepository.save(entity);
 	}
