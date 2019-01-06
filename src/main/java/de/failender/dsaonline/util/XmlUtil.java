@@ -15,7 +15,11 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class XmlUtil {
@@ -87,5 +91,51 @@ public class XmlUtil {
 			}
 		}
 		return null;
+	}
+
+	public static<T> List<T> convert(NodeList nodeList, Function<Element, T> converter) {
+		if(nodeList.getLength() == 0) {
+			return Collections.emptyList();
+		}
+		List<T> list = new ArrayList<>();
+		for(int i=0; i<nodeList.getLength(); i++) {
+			Node node = nodeList.item(i);
+			if(!(node instanceof Element)) {
+				continue;
+			}
+			list.add(converter.apply((Element) node));
+		}
+		return list;
+	}
+
+	public static Element nullSafeFindFirst(Element element, String tagName) {
+		NodeList nodeList = element.getElementsByTagName(tagName);
+		if(nodeList.getLength() == 0 ){
+			return null;
+		}
+		return (Element) nodeList.item(0);
+	}
+
+	public static Element traverseChilds(Element element, String ... tagNames) {
+		for (String tagName : tagNames) {
+			element = nullSafeFindFirst(element, tagName);
+			if(element == null) {
+				return null;
+			}
+		}
+		return element;
+	}
+
+	public static Element traverseChildsCreateNonExistant(Element element, String... tagNames) {
+
+		for (String tagName : tagNames) {
+			Element parent = element;
+			element = nullSafeFindFirst(element, tagName);
+			if(element == null) {
+				element = parent.getOwnerDocument().createElement(tagName);
+				parent.appendChild(element);
+			}
+		}
+		return element;
 	}
 }

@@ -383,4 +383,42 @@ public class HeldenService {
 	}
 
 
+	public List<Lagerort> getLagerorte(BigInteger heldid) {
+		HeldWithVersion heldWithLatestVersiond= heldRepositoryService.findHeldWithLatestVersion(heldid);
+		String xml = heldenApi.request(new ReturnHeldXmlRequest(heldWithLatestVersiond.getHeld().getId(),null, heldWithLatestVersiond.getVersion().getCacheId()))
+				.block();
+		Element element = XmlUtil.getHeldFromXml(xml);
+		Element lagerorte = XmlUtil.traverseChilds(element, "plugindata", "dgo", "lagerorte");
+		return parseLagerorte(lagerorte);
+	}
+
+	private List<Lagerort> parseLagerorte(Element lagerorte) {
+		if(lagerorte == null) {
+			return Collections.emptyList();
+		}
+		return XmlUtil.convert(lagerorte.getChildNodes(), e -> {
+			Lagerort lagerort = new Lagerort();
+			lagerort.setName(e.getAttribute("name"));
+			lagerort.setNotizen(e.getAttribute("notizen"));
+			return lagerort;
+		});
+	}
+
+	public List<Lagerort> addLagerort(BigInteger heldid, String name, String notiz) {
+		HeldWithVersion heldWithLatestVersion = heldRepositoryService.findHeldWithLatestVersion(heldid);
+		UserEntity userEntity = userRepository.findById(heldWithLatestVersion.getHeld().getUserId()).get();
+		if(!userEntity.isCanWrite()) {
+			throw new NoWritePermissionException();
+		}
+		String xml = heldenApi.request(new ReturnHeldXmlRequest(heldid,null, heldWithLatestVersion.getVersion().getCacheId()))
+				.block();
+		Element element = XmlUtil.getHeldFromXml(xml);
+		Element lagerorte = XmlUtil.traverseChildsCreateNonExistant(element, "plugindata", "dgo", "lagerorte");
+		Element lagerort = lagerorte.getOwnerDocument().createElement("lagerort");
+		lagerort.setAttribute("name", name);
+		lagerort.setAttribute("notiz", notiz);
+		lagerorte.appendChild(lagerort);
+		return parseLagerorte(lagerorte);
+
+	}
 }

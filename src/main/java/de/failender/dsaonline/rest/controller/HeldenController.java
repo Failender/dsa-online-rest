@@ -8,9 +8,6 @@ import de.failender.dsaonline.security.SecurityUtils;
 import de.failender.dsaonline.service.HeldenService;
 import de.failender.dsaonline.service.UserHeldenService;
 import de.failender.dsaonline.util.VersionService;
-import de.failender.heldensoftware.xml.datenxml.Ap;
-import de.failender.heldensoftware.xml.datenxml.Daten;
-import de.failender.heldensoftware.xml.listtalente.SteigerungsTalent;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -119,6 +116,16 @@ public class HeldenController {
 	@PostMapping("held/{heldid}/inventar/add/{name}/{amount}")
 	public List<Gegenstand> addItem(@PathVariable BigInteger heldid, @PathVariable String name, @PathVariable int amount) {
 		return heldenService.addItem(heldid, name, amount);
+	}
+
+	@GetMapping("held/{heldid}/lagerorte")
+	public List<Lagerort> getLagerorte(@PathVariable BigInteger heldid) {
+		return heldenService.getLagerorte(heldid);
+	}
+
+	@PostMapping("held/{heldid}/lagerort")
+	public List<Lagerort> addLagerort(@PathVariable BigInteger heldid, @RequestBody Lagerort lagerort) {
+		return heldenService.addLagerort(heldid, lagerort.getName(), lagerort.getNotizen());
 	}
 
 
