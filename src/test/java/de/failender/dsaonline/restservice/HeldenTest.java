@@ -19,6 +19,8 @@ import de.failender.heldensoftware.api.CacheHandler;
 import de.failender.heldensoftware.api.HeldenApi;
 import de.failender.heldensoftware.api.authentication.TokenAuthentication;
 import de.failender.heldensoftware.api.requests.*;
+import de.failender.heldensoftware.xml.currentrights.Recht;
+import de.failender.heldensoftware.xml.currentrights.Rechte;
 import de.failender.heldensoftware.xml.datenxml.Daten;
 import de.failender.heldensoftware.xml.datenxml.Ereignis;
 import org.junit.Before;
@@ -91,6 +93,8 @@ public abstract class HeldenTest extends DsaOnlineTest {
 				return Mono.just(handleRequest((ReturnHeldPdfRequest)_request));
 			} else if(_request instanceof UpdateXmlRequest) {
 				return Mono.just(handleRequest((UpdateXmlRequest) _request));
+			} else if(_request instanceof PermissionRequest) {
+				return Mono.just(handleRequest((PermissionRequest) _request));
 			}
 
 			else if(_request instanceof GetAllHeldenRequest) {
@@ -119,6 +123,15 @@ public abstract class HeldenTest extends DsaOnlineTest {
 		} else {
 			return new NearlyEmptyInputStream();
 		}
+	}
+
+	private InputStream handleRequest(PermissionRequest request) throws JAXBException {
+		Rechte rechte = new Rechte();
+		Recht recht = new Recht();
+		recht.setName("HeldenWrite");
+		recht.setGranted(false);
+		rechte.setRecht(Arrays.asList(recht));
+		return JaxbHelper.marshall(rechte);
 	}
 
 	protected InputStream handleDatenRequest() throws JAXBException{
