@@ -128,5 +128,15 @@ public class HeldenController {
 		return heldenService.addLagerort(heldid, lagerort.getName(), lagerort.getNotizen());
 	}
 
+	@PostMapping("held/lagerort/{lagerort}/notiz")
+	public void updateLagerortNotiz(@PathVariable int lagerort, @RequestBody String notiz) {
+		heldenService.updateLagerortNotiz(lagerort, notiz);
+	}
+
+	@PostMapping("held/{heldid}/lagerort/{to}/{gegenstand}/{amount}")
+	public void setLagerort(@PathVariable BigInteger heldid, @RequestParam(required = false) String from, @PathVariable String to, @PathVariable String gegenstand, @PathVariable int amount) {
+		heldenService.setLagerort(heldid, from, to, gegenstand, amount);
+	}
+
 
 }

@@ -4,6 +4,7 @@ public class Gegenstand {
     private String gegenstand;
     private int anzahl;
     private boolean deletable;
+    private String lagerort;
 
     public Gegenstand(String gegenstand, int anzahl, boolean deletable) {
         this.gegenstand = gegenstand;
@@ -33,5 +34,13 @@ public class Gegenstand {
 
     public void setDeletable(boolean deletable) {
         this.deletable = deletable;
+    }
+
+    public void setLagerort(String lagerort) {
+        this.lagerort = lagerort;
+    }
+
+    public String getLagerort() {
+        return lagerort;
     }
 }

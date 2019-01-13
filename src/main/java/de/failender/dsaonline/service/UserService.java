@@ -5,11 +5,14 @@ import de.failender.dsaonline.data.entity.GruppeEntity;
 import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.GruppeRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
-import de.failender.dsaonline.exceptions.GroupNotFoundException;
 import de.failender.dsaonline.exceptions.UserAlreadyExistsException;
 import de.failender.dsaonline.rest.dto.UserData;
 import de.failender.dsaonline.rest.dto.UserRegistration;
 import de.failender.dsaonline.security.SecurityUtils;
+import de.failender.heldensoftware.api.HeldenApi;
+import de.failender.heldensoftware.api.requests.PermissionRequest;
+import de.failender.heldensoftware.xml.currentrights.Recht;
+import de.failender.heldensoftware.xml.currentrights.Rechte;
 import org.springframework.stereotype.Service;
 import javax.validation.ValidationException;
 import java.util.List;
@@ -22,11 +25,13 @@ public class UserService {
 	private final UserRepository userRepository;
 	private final GruppeRepository gruppeRepository;
 	private final UserHeldenService userHeldenService;
+	private final HeldenApi heldenApi;
 
-	public UserService(UserRepository userRepository, GruppeRepository gruppeRepository, UserHeldenService userHeldenService) {
+	public UserService(UserRepository userRepository, GruppeRepository gruppeRepository, UserHeldenService userHeldenService, HeldenApi heldenApi) {
 		this.userRepository = userRepository;
 		this.gruppeRepository = gruppeRepository;
 		this.userHeldenService = userHeldenService;
+		this.heldenApi = heldenApi;
 	}
 
 	public UserEntity registerUser(UserRegistration userRegistration) {
@@ -49,6 +54,18 @@ public class UserService {
 		userEntity.setToken(userRegistration.getToken());
 		if (userRegistration.getPassword() != null && !userRegistration.getPassword().isEmpty()) {
 			userEntity.setPassword(userRegistration.getPassword());
+		}
+		if(userEntity.getToken() != null) {
+			Rechte rechte = heldenApi.request(new PermissionRequest(userEntity.getToken()))
+					.block();
+			Recht recht = rechte.getRecht()
+					.stream()
+					.filter(r -> r.getName().equals("HeldenWrite"))
+					.findFirst()
+					.get();
+			userEntity.setCanWrite(recht.getGranted());
+		} else {
+			userEntity.setCanWrite(false);
 		}
 		userEntity = this.userRepository.save(userEntity);
 		userHeldenService.forceUpdateHeldenForUser(userEntity);

@@ -35,7 +35,7 @@ public class HeldenServiceTest extends HeldenTest {
 		VersionRepositoryService versionRepositoryService = Mockito.mock(VersionRepositoryService.class);
 		Mockito.when(versionRepositoryService.findVersion(Mockito.any(HeldEntity.class), Mockito.any(Integer.class)))
 				.thenReturn(ve);
-		heldenService = new HeldenService(heldRepositoryService, heldenApi, userRepository, versionRepositoryService, securityUtils);
+		heldenService = new HeldenService(heldRepositoryService, heldenApi, userRepository, versionRepositoryService, securityUtils, lagerortRepository);
 	}
 
 	@Test

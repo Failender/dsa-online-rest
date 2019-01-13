@@ -3,6 +3,7 @@ package de.failender.dsaonline.restservice;
 import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.repository.GruppeRepository;
 import de.failender.dsaonline.data.repository.HeldRepository;
+import de.failender.dsaonline.data.repository.LagerortRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.data.service.HeldRepositoryService;
 import de.failender.dsaonline.data.service.VersionRepositoryService;
@@ -47,6 +48,7 @@ public abstract class HeldenTest extends DsaOnlineTest {
 	@Autowired protected VersionRepositoryService versionRepositoryService;
 	@Autowired protected VersionService versionService;
 	@Autowired protected SecurityUtils securityUtils;
+	@Autowired protected LagerortRepository lagerortRepository;
 
 	protected final HeldenContext heldenContext = new HeldenContext();
 
@@ -100,8 +102,8 @@ public abstract class HeldenTest extends DsaOnlineTest {
 		};
 		Mockito.doAnswer(answer).when(heldenApi).doRequest(Mockito.any());
 		userHeldenService = new UserHeldenService(userRepository, heldenApi, heldRepositoryService, versionService, versionRepositoryService);
-		userService = new UserService(userRepository, gruppeRepository, userHeldenService);
-		heldenService = new HeldenService(heldRepositoryService, heldenApi, userRepository, versionRepositoryService, securityUtils);
+		userService = new UserService(userRepository, gruppeRepository, userHeldenService, heldenApi);
+		heldenService = new HeldenService(heldRepositoryService, heldenApi, userRepository, versionRepositoryService, securityUtils, lagerortRepository);
 		userService.createUsers(Arrays.asList(new UserData(TEST_USER_NAME, TEST_TOKEN, null, null, TEST_GRUPPE, null)));
 		testHeld = heldRepositoryService.findHeld(TEST_HELD_ID);
 
