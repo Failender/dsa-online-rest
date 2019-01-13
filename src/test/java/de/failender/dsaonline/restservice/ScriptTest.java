@@ -48,7 +48,7 @@ public class ScriptTest extends DsaOnlineTest {
 		latestHeldenForGruppePublicSupplier.setHeldenService(heldenService);
 
 		ScriptEntity scriptEntity = new ScriptEntity();
-		scriptEntity.setBody(IOUtils.toString(getResource("scripts/average_ap_public.js"), "UTF-8"));
+		scriptEntity.setBody(IOUtils.toString(getResource("testscripts/average_ap_public.js"), "UTF-8"));
 		List<ScriptVariableEntity> scriptVariables = new ArrayList<>();
 
 		ScriptVariableEntity groupVariable = new ScriptVariableEntity();
