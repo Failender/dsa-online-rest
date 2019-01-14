@@ -80,7 +80,7 @@ public class HeldenService {
 		VersionEntity versionEntity = versionRepositoryService.findVersion(held, version);
 		UserEntity owningUser = this.userRepository.findById(held.getUserId()).get();
 		Daten daten = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(id, new TokenAuthentication(owningUser.getToken()), versionEntity.getCacheId()), true).block();
-		return new DatenAndEditable(daten, owningUser.isCanWrite());
+		return new DatenAndEditable(daten, securityUtils.canCurrentUserEditHeldBool(held), owningUser.isCanWrite());
 	}
 
 	public Differences calculateDifferences(BigInteger heldenid, int from, int to) {

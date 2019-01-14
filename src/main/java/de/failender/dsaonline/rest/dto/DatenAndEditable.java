@@ -6,10 +6,12 @@ public class DatenAndEditable {
 
     private Daten daten;
     private boolean editable;
+    private boolean xmlEditable;
 
-    public DatenAndEditable(Daten daten, boolean editable) {
+    public DatenAndEditable(Daten daten, boolean editable, boolean xmlEditable) {
         this.daten = daten;
         this.editable = editable;
+        this.xmlEditable = xmlEditable;
     }
 
     public Daten getDaten() {
@@ -18,5 +20,9 @@ public class DatenAndEditable {
 
     public boolean isEditable() {
         return editable;
+    }
+
+    public boolean isXmlEditable() {
+        return xmlEditable;
     }
 }

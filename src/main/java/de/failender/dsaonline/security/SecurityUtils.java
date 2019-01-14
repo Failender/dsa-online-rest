@@ -137,12 +137,19 @@ public class SecurityUtils {
 	}
 
 	public void canCurrentUserEditHeld(HeldEntity held) {
+		if(!canCurrentUserEditHeldBool(held)) {
+			throw new AccessDeniedException("");
+		}
+	}
+
+	public boolean canCurrentUserEditHeldBool(HeldEntity held) {
 		UserEntity user = getCurrentUser();
 		if (user.getId() != held.getUserId()) {
 			if (!checkIsUserMeisterForGruppeBool(held.getGruppe().getId())) {
-				checkRight(SecurityUtils.EDIT_ALL);
+				return hasRight(SecurityUtils.EDIT_ALL);
 			}
 		}
+		return true;
 	}
 
 	public boolean canCurrentUserViewHeldBool(HeldEntity held) {
