@@ -143,6 +143,9 @@ public class SecurityUtils {
 	}
 
 	public boolean canCurrentUserEditHeldBool(HeldEntity held) {
+		if(!isLoggedIn()) {
+			return false;
+		}
 		UserEntity user = getCurrentUser();
 		if (user.getId() != held.getUserId()) {
 			if (!checkIsUserMeisterForGruppeBool(held.getGruppe().getId())) {
