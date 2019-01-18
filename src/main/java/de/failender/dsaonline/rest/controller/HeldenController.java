@@ -41,7 +41,7 @@ public class HeldenController {
 		return heldenService.getAllHeldenForCurrentUser();
 	}
 
-	@GetMapping("held/{id}/{version}")
+	@GetMapping("held/{id}/version/{version}")
 	public DatenAndEditable getHeldenDaten(@PathVariable BigInteger id, @PathVariable int version) {
 		return heldenService.getHeldenDaten(id, version);
 	}
@@ -99,7 +99,7 @@ public class HeldenController {
 		heldenService.provideXmlFullDownload(heldid, response);
 	}
 
-	@DeleteMapping("held/{heldid}/{version}")
+	@DeleteMapping("held/{heldid}/version/{version}")
 	public void deleteVersion(@PathVariable BigInteger heldid, @PathVariable int version) {
 		heldenService.deleteVersion(heldid, version);
 	}
@@ -152,6 +152,11 @@ public class HeldenController {
 	@GetMapping("held/{heldid}/favoriten")
 	public List<String> getFavorisierteTalente(@PathVariable BigInteger heldid) {
 		return heldenService.getFavorisierteTalente(heldid);
+	}
+
+	@GetMapping("held/{heldid}/favoriten/list")
+	public List<Object> getFavoriten(@PathVariable BigInteger heldid) {
+		return heldenService.getFavoriten(heldid);
 	}
 
 

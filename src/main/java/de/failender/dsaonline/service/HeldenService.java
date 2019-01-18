@@ -510,11 +510,44 @@ public class HeldenService {
 	}
 
 	public List<String> getFavorisierteTalente(BigInteger heldid) {
-		HeldEntity heldEntity = heldRepositoryService.findHeld(heldid);
-		SecurityUtils.checkIsHeldOfCurrentUser(heldEntity);
+		heldRepositoryService.findHeld(heldid);
 		return favTalentRepository.findByHeldid(heldid)
 				.stream()
 				.map(FavTalentEntity::getName)
 				.collect(Collectors.toList());
+	}
+
+	public List<Object> getFavoriten(BigInteger heldid) {
+		List<Object> list = new ArrayList<>();
+		List<String> favorisierte = getFavorisierteTalente(heldid);
+		HeldWithVersion heldWithVersion = heldRepositoryService.findHeldWithLatestVersion(heldid);
+
+		Daten daten = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(heldid, null, heldWithVersion.getVersion().getCacheId()))
+				.block();
+		daten.getTalentliste()
+				.getTalent()
+				.stream()
+				.filter(talent -> favorisierte.contains(talent.getName()))
+				.forEach(talent -> {
+					list.add(talent);
+				});
+		if(list.size() != 0 ) {
+		    list.add(0, new RowGrouper("Talente"));
+        }
+
+		//TODO this can be a lot faster if implemented with more care. Do that if needed
+        int preSize = list.size();
+		daten.getZauberliste()
+				.getZauber()
+				.stream()
+				.filter(zauber -> favorisierte.contains(zauber.getName()))
+				.forEach(zauber -> {
+					list.add(zauber);
+				});
+		if(preSize != list.size()) {
+		    list.add(preSize, new RowGrouper("Zauber"));
+        }
+
+		return list;
 	}
 }
