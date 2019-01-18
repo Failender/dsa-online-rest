@@ -7,11 +7,13 @@ public class DatenAndEditable {
     private Daten daten;
     private boolean editable;
     private boolean xmlEditable;
+    private boolean ownHeld;
 
-    public DatenAndEditable(Daten daten, boolean editable, boolean xmlEditable) {
+    public DatenAndEditable(Daten daten, boolean editable, boolean xmlEditable, boolean ownHeld) {
         this.daten = daten;
         this.editable = editable;
         this.xmlEditable = xmlEditable;
+        this.ownHeld = ownHeld;
     }
 
     public Daten getDaten() {
@@ -24,5 +26,9 @@ public class DatenAndEditable {
 
     public boolean isXmlEditable() {
         return xmlEditable;
+    }
+
+    public boolean isOwnHeld() {
+        return ownHeld;
     }
 }

@@ -2,6 +2,7 @@
 package de.failender.dsaonline.service;
 
 import de.failender.dsaonline.data.entity.*;
+import de.failender.dsaonline.data.repository.FavTalentRepository;
 import de.failender.dsaonline.data.repository.LagerortRepository;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.data.service.HeldRepositoryService;
@@ -22,6 +23,7 @@ import de.failender.heldensoftware.xml.datenxml.Eigenschaftswerte;
 import de.failender.heldensoftware.xml.datenxml.Ereignis;
 import one.util.streamex.EntryStream;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -51,14 +53,16 @@ public class HeldenService {
 	private final VersionRepositoryService versionRepositoryService;
 	private final SecurityUtils securityUtils;
 	private final LagerortRepository lagerortRepository;
+	private final FavTalentRepository favTalentRepository;
 
-	public HeldenService(HeldRepositoryService heldRepositoryService, HeldenApi heldenApi, UserRepository userRepository, VersionRepositoryService versionRepositoryService, SecurityUtils securityUtils, LagerortRepository lagerortRepository) {
+	public HeldenService(HeldRepositoryService heldRepositoryService, HeldenApi heldenApi, UserRepository userRepository, VersionRepositoryService versionRepositoryService, SecurityUtils securityUtils, LagerortRepository lagerortRepository, FavTalentRepository favTalentRepository) {
 		this.heldRepositoryService = heldRepositoryService;
 		this.heldenApi = heldenApi;
 		this.userRepository = userRepository;
 		this.versionRepositoryService = versionRepositoryService;
 		this.securityUtils = securityUtils;
 		this.lagerortRepository = lagerortRepository;
+		this.favTalentRepository = favTalentRepository;
 	}
 
 	public List<HeldenInfo> getAllHeldenForCurrentUser() {
@@ -79,8 +83,12 @@ public class HeldenService {
 		HeldEntity held = heldRepositoryService.findHeld(id);
 		VersionEntity versionEntity = versionRepositoryService.findVersion(held, version);
 		UserEntity owningUser = this.userRepository.findById(held.getUserId()).get();
+		boolean isOwnHeld = false;
+		if(SecurityUtils.isLoggedIn()) {
+			isOwnHeld = SecurityUtils.getCurrentUser().getId() == owningUser.getId();
+		}
 		Daten daten = heldenApi.request(new ReturnHeldDatenWithEreignisseRequest(id, new TokenAuthentication(owningUser.getToken()), versionEntity.getCacheId()), true).block();
-		return new DatenAndEditable(daten, securityUtils.canCurrentUserEditHeldBool(held), owningUser.isCanWrite());
+		return new DatenAndEditable(daten, securityUtils.canCurrentUserEditHeldBool(held), owningUser.isCanWrite(), isOwnHeld);
 	}
 
 	public Differences calculateDifferences(BigInteger heldenid, int from, int to) {
@@ -486,5 +494,27 @@ public class HeldenService {
 		lagerortEntity.setNotiz(notiz);
 		lagerortRepository.save(lagerortEntity);
 
+	}
+
+	public void addFavorisiertesTalent(String name, BigInteger heldid) {
+		HeldEntity heldEntity = heldRepositoryService.findHeld(heldid);
+		SecurityUtils.checkIsHeldOfCurrentUser(heldEntity);
+		FavTalentEntity favTalentEntity = new FavTalentEntity();
+		favTalentEntity.setName(name);
+		favTalentEntity.setHeldid(heldid);
+		favTalentRepository.save(favTalentEntity);
+	}
+
+	public void removeFavorisiertesTalent(String name, BigInteger heldid) {
+		favTalentRepository.deleteByHeldidAndName(heldid, name);
+	}
+
+	public List<String> getFavorisierteTalente(BigInteger heldid) {
+		HeldEntity heldEntity = heldRepositoryService.findHeld(heldid);
+		SecurityUtils.checkIsHeldOfCurrentUser(heldEntity);
+		return favTalentRepository.findByHeldid(heldid)
+				.stream()
+				.map(FavTalentEntity::getName)
+				.collect(Collectors.toList());
 	}
 }

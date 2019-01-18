@@ -12,6 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Access;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -98,6 +99,13 @@ public class SecurityUtils {
 			return Optional.empty();
 		} else {
 			return Optional.of((UserEntity) principal);
+		}
+	}
+
+	public static void checkIsHeldOfCurrentUser(HeldEntity heldEntity) {
+		UserEntity userEntity = getCurrentUser();
+		if(heldEntity.getUserId() != userEntity.getId()) {
+			throw new AccessDeniedException("");
 		}
 	}
 

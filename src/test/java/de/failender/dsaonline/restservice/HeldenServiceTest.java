@@ -1,5 +1,6 @@
 package de.failender.dsaonline.restservice;
 
+import de.failender.dsaonline.data.entity.FavTalentEntity;
 import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.entity.VersionEntity;
 import de.failender.dsaonline.data.service.VersionRepositoryService;
@@ -35,7 +36,7 @@ public class HeldenServiceTest extends HeldenTest {
 		VersionRepositoryService versionRepositoryService = Mockito.mock(VersionRepositoryService.class);
 		Mockito.when(versionRepositoryService.findVersion(Mockito.any(HeldEntity.class), Mockito.any(Integer.class)))
 				.thenReturn(ve);
-		heldenService = new HeldenService(heldRepositoryService, heldenApi, userRepository, versionRepositoryService, securityUtils, lagerortRepository);
+		heldenService = new HeldenService(heldRepositoryService, heldenApi, userRepository, versionRepositoryService, securityUtils, lagerortRepository, favTalentRepository);
 	}
 
 	@Test
@@ -74,9 +75,23 @@ public class HeldenServiceTest extends HeldenTest {
 		}
 		i++;
 
-
 		Daten daten =  builder.build();
 		return JaxbHelper.marshall(daten);
 
+	}
+
+	@Test
+	@FlywayTest
+	public void testFavTalente() {
+
+		Assertions.assertThat(favTalentRepository.findByHeldid(TEST_HELD_ID).size()).isEqualTo(0);
+		FavTalentEntity favTalentEntity = new FavTalentEntity();
+		favTalentEntity.setHeldid(TEST_HELD_ID);
+		favTalentEntity.setName("TEST0");
+		favTalentRepository.save(favTalentEntity);
+		Assertions.assertThat(favTalentRepository.findByHeldid(TEST_HELD_ID).size()).isEqualTo(1);
+		Assertions.assertThat(favTalentRepository.findByHeldid(TEST_HELD_ID).get(0).getName()).isEqualTo("TEST0");
+		favTalentRepository.deleteByHeldidAndName(TEST_HELD_ID, "TEST0");
+		Assertions.assertThat(favTalentRepository.findByHeldid(TEST_HELD_ID).size()).isEqualTo(0);
 	}
 }
