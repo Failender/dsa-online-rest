@@ -144,7 +144,7 @@ public class HeldenController {
 		heldenService.addFavorisiertesTalent(name, heldid);
 	}
 
-	@DeleteMapping("held/{heldid}/favoriten/")
+	@DeleteMapping("held/{heldid}/favoriten")
 	public void deleteFavorit(@PathVariable BigInteger heldid, @RequestParam String name) {
 		heldenService.removeFavorisiertesTalent(name, heldid);
 	}
