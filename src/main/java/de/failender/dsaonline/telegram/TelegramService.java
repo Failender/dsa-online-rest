@@ -83,7 +83,12 @@ public class TelegramService implements HeldenHooks {
 
 	private void saveConfig() {
 		try {
+			File file = new File(FILE_NAME);
+			if(!file.getParentFile().exists()) {
+				file.getParentFile().mkdirs();
+			}
 			objectMapper.writeValue(new File(FILE_NAME), this.telegramConfig);
+
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
