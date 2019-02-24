@@ -12,6 +12,7 @@ import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.entity.VersionEntity;
 import de.failender.dsaonline.hooks.HeldenHooks;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -20,6 +21,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Component
+@ConditionalOnProperty("dsa.online.telegram.enabled")
 public class TelegramService implements HeldenHooks {
 
 
@@ -31,7 +33,8 @@ public class TelegramService implements HeldenHooks {
 	private TelegramConfig telegramConfig;
 	private final TelegramBot telegramBot;
 
-	public TelegramService(@Value("${dsa.online.telegram}") String apiKey, ObjectMapper objectMapper, @Value("${dsa.online.external.adress}") String externalUri) {
+	public TelegramService(@Value("${dsa.online.telegram:}") String apiKey, ObjectMapper objectMapper, @Value("${dsa.online.external.adress}") String externalUri) {
+
 		this.objectMapper = objectMapper;
 		this.externalUri = externalUri;
 		telegramBot = new TelegramBot(apiKey);
