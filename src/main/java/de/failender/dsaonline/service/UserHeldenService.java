@@ -7,6 +7,7 @@ import de.failender.dsaonline.data.entity.VersionEntity;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.data.service.HeldRepositoryService;
 import de.failender.dsaonline.data.service.VersionRepositoryService;
+import de.failender.dsaonline.hooks.HeldenHooks;
 import de.failender.dsaonline.util.VersionService;
 import de.failender.dsaonline.util.XmlUtil;
 import de.failender.heldensoftware.api.HeldenApi;
@@ -39,12 +40,15 @@ public class UserHeldenService {
 	private final VersionService versionService;
 	private final VersionRepositoryService versionRepositoryService;
 
-	public UserHeldenService(UserRepository userRepository, HeldenApi heldenApi, HeldRepositoryService heldRepositoryService, VersionService versionService, VersionRepositoryService versionRepositoryService) {
+	private final List<HeldenHooks> heldenHooks;
+
+	public UserHeldenService(UserRepository userRepository, HeldenApi heldenApi, HeldRepositoryService heldRepositoryService, VersionService versionService, VersionRepositoryService versionRepositoryService, List<HeldenHooks> heldenHooks) {
 		this.versionService = versionService;
 		this.versionRepositoryService = versionRepositoryService;
 		this.userRepository = userRepository;
 		this.heldenApi = heldenApi;
 		this.heldRepositoryService = heldRepositoryService;
+		this.heldenHooks = heldenHooks;
 	}
 
 	public void updateHeldenForUser(UserEntity userEntity, List<Held> helden, boolean ignoreLocks) {
@@ -59,6 +63,7 @@ public class UserHeldenService {
 			} else {
 				if (heldEntity.isDeleted()) {
 					heldEntity.setDeleted(false);
+					log.debug("Held with Name {} is no online again, enabling it", heldEntity.getName());
 					heldRepositoryService.saveHeld(heldEntity);
 				}
 				Held xmlHeld = heldOptional.get();
@@ -79,7 +84,11 @@ public class UserHeldenService {
 							heldenApi.request(new ReturnHeldPdfRequest(heldEntity.getId(), new TokenAuthentication(userEntity.getToken()), uuid), false)).block();
 					IOUtils.closeQuietly(data.getT3());
 					String xml = data.getT1();
-					this.versionService.persistVersion(heldEntity, userEntity, versionEntity.getVersion() + 1, xml, uuid, data.getT2());
+					versionEntity = this.versionService.persistVersion(heldEntity, userEntity, versionEntity.getVersion() + 1, xml, uuid, data.getT2());
+					for (HeldenHooks heldenHook : this.heldenHooks) {
+						heldenHook.versionCreated(userEntity, heldEntity, versionEntity);
+					}
+
 				} else {
 					log.debug("Held with Name {} is already on latest version", heldEntity.getName());
 				}
@@ -101,7 +110,10 @@ public class UserHeldenService {
 			heldEntity.setUserId(userEntity.getId());
 			heldEntity.setKey(XmlUtil.getKeyFromString(xml));
 			heldEntity = heldRepositoryService.saveHeld(heldEntity);
-			versionService.persistVersion(heldEntity, userEntity, 1, xml, uuid, data.getT2());
+			VersionEntity versionEntity = versionService.persistVersion(heldEntity, userEntity, 1, xml, uuid, data.getT2());
+			for (HeldenHooks heldenHook : heldenHooks) {
+				heldenHook.heldCreated(userEntity, versionEntity, heldEntity);
+			}
 			log.info("Saving new held {} for user {} with version {}", heldEntity.getName(), userEntity.getName(), 1);
 		});
 	}

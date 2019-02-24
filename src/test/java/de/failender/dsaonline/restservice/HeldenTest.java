@@ -31,6 +31,7 @@ import javax.xml.transform.TransformerException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static de.failender.dsaonline.restservice.helper.DatenBuilder.daten;
@@ -103,7 +104,7 @@ public abstract class HeldenTest extends DsaOnlineTest {
 			return null;
 		};
 		Mockito.doAnswer(answer).when(heldenApi).doRequest(Mockito.any());
-		userHeldenService = new UserHeldenService(userRepository, heldenApi, heldRepositoryService, versionService, versionRepositoryService);
+		userHeldenService = new UserHeldenService(userRepository, heldenApi, heldRepositoryService, versionService, versionRepositoryService, new ArrayList<>());
 		userService = new UserService(userRepository, gruppeRepository, userHeldenService, heldenApi);
 		heldenService = new HeldenService(heldRepositoryService, heldenApi, userRepository, versionRepositoryService, securityUtils, lagerortRepository, favTalentRepository);
 		userService.createUsers(Arrays.asList(new UserData(TEST_USER_NAME, TEST_TOKEN, null, null, TEST_GRUPPE, null)));
