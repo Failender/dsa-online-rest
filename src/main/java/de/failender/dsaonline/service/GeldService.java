@@ -90,7 +90,13 @@ public class GeldService {
 		Währung dtoWährung = Währung.valueOf(dto.getWaehrung());
 		Währung base = dtoWährung.getBaseWährung();
 		for (Münze münze : münzen) {
-			Währung währung = Währung.valueOf(münze.getName());
+			Währung währung;
+			try {
+				währung = Währung.valueOf(münze.getName());
+
+			} catch(IllegalArgumentException e) {
+				continue;
+			}
 			if(währung.getBaseWährung() == base) {
 				totalMoney += währung.getValue() * münze.getAnzahl().intValue();
 			}
@@ -141,7 +147,7 @@ public class GeldService {
 		Element ereignis = ereignisse.getOwnerDocument().createElement("ereignis");
 		ereignis.setAttribute("text", "Geld");
 		ereignis.setAttribute("obj", dto.getName());
-		ereignis.setAttribute("datum", String.valueOf(System.currentTimeMillis()));
+		ereignis.setAttribute("time", String.valueOf(System.currentTimeMillis()));
 		ereignis.setAttribute("Alt", "");
 		ereignis.setAttribute("Info", "Geldbörse");
 		String neu = dto.isAdd() ? "+": "-";
