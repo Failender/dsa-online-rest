@@ -28,7 +28,7 @@ public class EventController {
 	}
 
 	@PostMapping
-	public void postEvent(CreateEventDto createEventDto) {
+	public void postEvent(@RequestBody CreateEventDto createEventDto) {
 		eventService.createEvent(createEventDto);
 	}
 

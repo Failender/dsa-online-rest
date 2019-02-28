@@ -43,7 +43,7 @@ public class GruppenController {
         if (appendMeisterInfo) {
             Optional<Integer> groupIdOpt = SecurityUtils.getCurrentUserOptional().map(user -> user.getGruppe().getId());
             return this.gruppeRepository.findAll().stream().map(
-                    gruppe -> new DropdownData(gruppe.getName(), new GruppeInfo(gruppe.getName(), gruppe.getId(), securityUtils.checkIsUserMeisterForGruppeBool(gruppe.getId()), groupIdOpt.map(id -> id == gruppe.getId()).orElse(false), gruppe.getImage()))).collect(Collectors.toList());
+                    gruppe -> new DropdownData(gruppe.getName(), new GruppeInfo(gruppe.getName(), gruppe.getId(), securityUtils.checkIsUserMeisterForGruppeBool(gruppe.getId()), gruppe.getDatum(), groupIdOpt.map(id -> id == gruppe.getId()).orElse(false), gruppe.getImage()))).collect(Collectors.toList());
         } else {
             return this.gruppeRepository.findAll().stream().map(gruppe -> new DropdownData(gruppe.getName(), gruppe.getId())).collect(Collectors.toList());
         }

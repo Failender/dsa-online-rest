@@ -6,6 +6,7 @@ public class GruppeInfo {
 	private String name;
 	private int id;
 	private boolean isMeister;
+	private Integer datum;
 	private boolean isUserGroup;
 	private String image;
 
@@ -90,15 +91,20 @@ public class GruppeInfo {
 	}
 
 
-	public GruppeInfo(final String name, final int id, final boolean isMeister, final boolean isUserGroup, String image) {
+	public GruppeInfo(final String name, final int id, final boolean isMeister, Integer datum, final boolean isUserGroup, String image) {
 		this.name = name;
 		this.id = id;
 		this.isMeister = isMeister;
+		this.datum = datum;
 		this.isUserGroup = isUserGroup;
 		this.image = image;
 	}
 
 	public String getImage() {
 		return image;
+	}
+
+	public Integer getDatum() {
+		return datum;
 	}
 }
