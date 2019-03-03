@@ -1,0 +1,46 @@
+buildscript {
+    ext { springBootVersion = '2.1.0.RELEASE' }
+    repositories { mavenCentral() }
+    dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") }
+}
+
+plugins {
+    id "io.spring.dependency-management" version "1.0.5.RELEASE"
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    baseName = 'gs-multi-module-application'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+
+repositories { mavenCentral() }
+
+dependencies {
+
+    compile project(':persistance')
+    
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    implementation 'com.github.pengrad:java-telegram-bot-api:4.1.1'
+    compile group: 'one.util', name: 'streamex', version:'0.6.5'
+    compile group: 'org.flywaydb.flyway-test-extensions', name: 'flyway-spring-test', version:'5.1.0'
+    compile "org.flywaydb:flyway-core:5.2.1"
+    compile group: 'org.apache.pdfbox', name: 'pdfbox', version:'2.0.9'
+    runtime group: 'com.h2database', name: 'h2', version:'1.4.197'
+    compile 'mysql:mysql-connector-java'
+    compile group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.2.10-b140310.1920'
+    compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.2.11'
+    compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.2.11'
+
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.1.0.RELEASE'
+    testCompile group: 'org.springframework.security', name: 'spring-security-test', version:'5.0.4.RELEASE'
+
+}

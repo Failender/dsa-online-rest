@@ -1,1 +1,6 @@
 rootProject.name = 'rest-service'
+
+
+include 'persistance'
+include 'rest'
+include 'helden-online'

@@ -1,0 +1,9 @@
+repositories { mavenCentral() }
+
+apply plugin: 'java'
+
+dependencies {
+    compile group: 'commons-io', name: 'commons-io', version:'2.5'
+    compile group: 'io.projectreactor', name: 'reactor-core', version:'3.1.8.RELEASE'
+
+}
