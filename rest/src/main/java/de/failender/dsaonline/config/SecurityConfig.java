@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.
 				csrf().disable().
 				authorizeRequests()
-				.antMatchers(HttpMethod.GET, LOGIN_URL).permitAll()
+				.antMatchers(HttpMethod.GET, LOGIN_URL, "/chat").permitAll()
 				.anyRequest().permitAll()
 				.and()
 				.addFilterBefore(new AuthorizationFilter(authenticationManager(), authorizationService), UsernamePasswordAuthenticationFilter.class)

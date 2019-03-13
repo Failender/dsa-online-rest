@@ -29,7 +29,7 @@ public class MeisterService {
 	public void addMeisterForGruppe( int gruppeId,  int userId) {
 		SecurityUtils.checkRight(SecurityUtils.CREATE_USER);
 		if(!userRepository.getUserRights(userId).contains(SecurityUtils.MEISTER)) {
-			userService.addUserRole(userRepository.findById(userId).get(), SecurityUtils.MEISTER);
+			userService.addUserRole(userRepository.findById(userId).get(), SecurityUtils.ROLE_MEISTER);
 		}
 		userRepository.addMeisterForGruppe(userId, gruppeId);
 	}

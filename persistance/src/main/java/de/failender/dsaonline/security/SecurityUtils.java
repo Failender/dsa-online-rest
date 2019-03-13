@@ -5,13 +5,11 @@ import de.failender.dsaonline.data.entity.HeldEntity;
 import de.failender.dsaonline.data.entity.UserEntity;
 import de.failender.dsaonline.data.repository.UserRepository;
 import de.failender.dsaonline.exceptions.NotAuthenticatedException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Access;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -30,8 +28,18 @@ public class SecurityUtils {
 	public static final String FULL_EXPORT = "FULL_EXPORT";
 	public static final String FULL_IMPORT = "FULL_IMPORT";
 	public static final String EDIT_KAMPAGNE = "EDIT_KAMPAGNE";
-	@Autowired
-	private UserRepository userRepository;
+
+	public static final String ROLE_MEISTER = "Meister";
+
+	private final UserRepository userRepository;
+
+
+	public static SecurityUtils INSTANCE;
+
+	public SecurityUtils(UserRepository userRepository) {
+		this.userRepository = userRepository;
+		INSTANCE = this;
+	}
 
 	public void checkRight(String right, int gruppeId) {
 		if(checkIsUserMeisterForGruppeBool(gruppeId)) {
