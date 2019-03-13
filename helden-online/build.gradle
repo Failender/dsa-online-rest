@@ -7,5 +7,6 @@ dependencies {
     compile group: 'io.projectreactor', name: 'reactor-core', version:'3.1.8.RELEASE'
     compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.2.11'
     compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.2.11'
+    compile group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.2.10-b140310.1920'
 
 }

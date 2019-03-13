@@ -36,7 +36,7 @@ dependencies {
     compile group: 'org.apache.pdfbox', name: 'pdfbox', version:'2.0.9'
     runtime group: 'com.h2database', name: 'h2', version:'1.4.197'
     compile 'mysql:mysql-connector-java'
-    compile group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.2.10-b140310.1920'
+
 
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.1.0.RELEASE'
     testCompile group: 'org.springframework.security', name: 'spring-security-test', version:'5.0.4.RELEASE'
