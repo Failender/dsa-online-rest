@@ -29,7 +29,7 @@ public class KampfService {
 	public Kampf startKampf(int gruppe) {
 		SecurityUtils.INSTANCE.checkIsUserMeisterForGruppe(gruppe);
 		int id = nextId ++;
-		Kampf kampf = new Kampf(gruppe, id);
+		Kampf kampf = new Kampf(gruppe, id, "1-Stock-2.png");
 
 		kampf.addGegner(new Gegner(Gegner.ICON_AXE, 50, 50, 30, 30, true));
 		kampf.addGegner(new Gegner(Gegner.ICON_BOW, 100, 50, 23, 30, true));

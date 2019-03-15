@@ -15,12 +15,14 @@ public class Kampf {
 
 	private final int gruppe;
 	private final int id;
+	private String image;
 
 	private final Map<Integer, Gegner> gegner = new ConcurrentHashMap<>();
 
-	public Kampf(int gruppe, int id) {
+	public Kampf(int gruppe, int id, String image) {
 		this.gruppe = gruppe;
 		this.id = id;
+		this.image = image;
 	}
 
 	public void addGegner(Gegner gegner) {
@@ -47,5 +49,9 @@ public class Kampf {
 
 	public int getId() {
 		return id;
+	}
+
+	public String getImage() {
+		return image;
 	}
 }

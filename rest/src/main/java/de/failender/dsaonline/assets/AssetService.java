@@ -55,7 +55,9 @@ public class AssetService {
 
 		File cacheFile = new File(assetRoot, assetEntity.getFilename());
 		try {
-			IOUtils.copy(file.getInputStream(), new FileOutputStream(cacheFile));
+			FileOutputStream fos = new FileOutputStream(cacheFile);
+			IOUtils.copy(file.getInputStream(), fos);
+			IOUtils.closeQuietly(fos);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
