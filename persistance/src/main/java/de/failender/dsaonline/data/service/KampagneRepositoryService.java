@@ -4,6 +4,7 @@ import de.failender.dsaonline.data.entity.GruppeEntity;
 import de.failender.dsaonline.data.entity.KampagneEntity;
 import de.failender.dsaonline.data.repository.KampagneRepository;
 import de.failender.dsaonline.exceptions.KampagneNotFoundException;
+import de.failender.dsaonline.security.SecurityUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,5 +32,11 @@ public class KampagneRepositoryService {
 
 	public KampagneEntity findKampagneById(int kampagneid) {
 		return kampagneRepository.findById(kampagneid).orElseThrow(() -> new KampagneNotFoundException());
+	}
+
+	public boolean isMeisterForKampagne(int kampagneid) {
+
+		KampagneEntity kampagneEntity = findKampagneById(kampagneid);
+		return  SecurityUtils.INSTANCE.checkIsUserMeisterForGruppeBool(kampagneEntity.getGruppeId());
 	}
 }
