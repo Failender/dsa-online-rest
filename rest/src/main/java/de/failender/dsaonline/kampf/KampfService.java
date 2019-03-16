@@ -18,7 +18,7 @@ public class KampfService {
 	private int nextId;
 
 	private final Cache<Integer, Kampf> kampfCache = Caffeine.newBuilder()
-			.expireAfterAccess(1, TimeUnit.HOURS)
+			.expireAfterAccess(1, TimeUnit.DAYS)
 			.build();
 
 	public KampfService(SimpMessagingTemplate template) {
