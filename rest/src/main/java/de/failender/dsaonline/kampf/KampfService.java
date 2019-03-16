@@ -26,17 +26,19 @@ public class KampfService {
 	}
 
 
-	public Kampf startKampf(int gruppe) {
+	public Kampf startKampf(int gruppe, Kampf kampf) {
 		SecurityUtils.INSTANCE.checkIsUserMeisterForGruppe(gruppe);
 		int id = nextId ++;
-		Kampf kampf = new Kampf(gruppe, id, "1-Stock-2.png");
+		kampf.setId(id);
+		kampf.setGruppe(gruppe);
+//
+//		kampf.addGegner(new Gegner(Gegner.ICON_AXE, 50, 50, 30, 30, true));
+//		kampf.addGegner(new Gegner(Gegner.ICON_BOW, 100, 50, 23, 30, true));
+//		kampf.addGegner(new Gegner(Gegner.ICON_MAGE, 150, 50, 15, 30, false));
+//		kampf.addGegner(new Gegner(Gegner.ICON_MAGE, 150, 100, 8, 30, false));
+//		kampf.addGegner(new Gegner(Gegner.ICON_DUALSWORD, 200, 50, 7, 30, false));
 
-		kampf.addGegner(new Gegner(Gegner.ICON_AXE, 50, 50, 30, 30, true));
-		kampf.addGegner(new Gegner(Gegner.ICON_BOW, 100, 50, 23, 30, true));
-		kampf.addGegner(new Gegner(Gegner.ICON_MAGE, 150, 50, 15, 30, false));
-		kampf.addGegner(new Gegner(Gegner.ICON_MAGE, 150, 100, 8, 30, false));
-		kampf.addGegner(new Gegner(Gegner.ICON_DUALSWORD, 200, 50, 7, 30, false));
-
+		this.template.convertAndSend("/kampf/gruppe/" + gruppe, kampf );
 		kampfCache.put(id, kampf);
 
 		return kampf;
@@ -65,13 +67,6 @@ public class KampfService {
 		kampfGegner.setY(gegner.getY());
 
 		this.template.convertAndSend("/kampf/" + kampfid + "/teilnehmer/position", new UpdateGegnerPosition(gegner.getId(), gegner.getX(), gegner.getY()));
-
-	}
-
-	public void updateScale(int kampfid, float scale) {
-		Kampf kampf = getKampf(kampfid);
-		kampf.setScale(scale);
-		this.template.convertAndSend("/kampf/" + kampfid + "/scale", scale);
 
 	}
 

@@ -2,8 +2,10 @@ package de.failender.dsaonline.kampf;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.failender.dsaonline.security.SecurityUtils;
+import one.util.streamex.EntryStream;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -14,11 +16,15 @@ public class Kampf {
 	private int gegnerId = 0;
 
 	private float scale = 1;
-	private final int gruppe;
-	private final int id;
+	private int gruppe;
+	private int id;
 	private String image;
 
 	private final Map<Integer, Gegner> gegner = new ConcurrentHashMap<>();
+
+	public Kampf() {
+
+	}
 
 	public Kampf(int gruppe, int id, String image) {
 		this.gruppe = gruppe;
@@ -38,6 +44,10 @@ public class Kampf {
 	@JsonIgnore
 	public Gegner getGegnerById(int id) {
 		return gegner.get(id);
+	}
+
+	public void setGegner(List<Gegner> gegner) {
+		gegner.forEach(this::addGegner);
 	}
 
 	public Collection<Gegner> getGegner() {
@@ -66,5 +76,13 @@ public class Kampf {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setGruppe(int gruppe) {
+		this.gruppe = gruppe;
 	}
 }

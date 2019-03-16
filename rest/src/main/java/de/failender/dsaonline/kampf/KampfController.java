@@ -14,8 +14,8 @@ public class KampfController {
 	}
 
 	@PostMapping("start/{gruppe}")
-	public Kampf startKampf(@PathVariable int gruppe) {
-		return kampfService.startKampf(gruppe);
+	public Kampf startKampf(@PathVariable int gruppe, @RequestBody Kampf kampf) {
+		return kampfService.startKampf(gruppe, kampf);
 	}
 
 	@GetMapping("gruppe/{gruppe}")
@@ -26,11 +26,6 @@ public class KampfController {
 	@PutMapping("{kampfid}/gegner")
 	public void updateGegner(@PathVariable int kampfid, @RequestBody Gegner gegner) {
 		this.kampfService.updateGegner(kampfid, gegner);
-	}
-
-	@PutMapping("{kampfid}/scale")
-	public void updateScale(@PathVariable int kampfid, @RequestBody float scale) {
-		this.kampfService.updateScale(kampfid, scale);
 	}
 
 	@PutMapping("{kampfid}/image")
