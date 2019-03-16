@@ -13,6 +13,7 @@ public class Kampf {
 
 	private int gegnerId = 0;
 
+	private float scale = 1;
 	private final int gruppe;
 	private final int id;
 	private String image;
@@ -53,5 +54,17 @@ public class Kampf {
 
 	public String getImage() {
 		return image;
+	}
+
+	public float getScale() {
+		return scale;
+	}
+
+	public void setScale(float scale) {
+		this.scale = scale;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 }

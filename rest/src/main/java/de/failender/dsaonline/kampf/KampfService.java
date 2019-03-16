@@ -51,17 +51,34 @@ public class KampfService {
 		return null;
 	}
 
-	public void updateGegner(int kampfid, Gegner gegner) {
-
+	private Kampf getKampf(int kampfid) {
 		Kampf kampf = kampfCache.getIfPresent(kampfid);
 		SecurityUtils.INSTANCE.checkIsUserMeisterForGruppe(kampf.getGruppe());
+		return kampf;
+	}
+
+	public void updateGegner(int kampfid, Gegner gegner) {
+
+		Kampf kampf = getKampf(kampfid);
 		Gegner kampfGegner = kampf.getGegnerById(gegner.getId());
 		kampfGegner.setX(gegner.getX());
 		kampfGegner.setY(gegner.getY());
 
 		this.template.convertAndSend("/kampf/" + kampfid + "/teilnehmer/position", new UpdateGegnerPosition(gegner.getId(), gegner.getX(), gegner.getY()));
 
+	}
 
+	public void updateScale(int kampfid, float scale) {
+		Kampf kampf = getKampf(kampfid);
+		kampf.setScale(scale);
+		this.template.convertAndSend("/kampf/" + kampfid + "/scale", scale);
+
+	}
+
+	public void updateImage(int kampfid, String image) {
+		Kampf kampf = getKampf(kampfid);
+		kampf.setImage(image);
+		this.template.convertAndSend("/kampf/" + kampfid + "/image", image);
 
 	}
 }

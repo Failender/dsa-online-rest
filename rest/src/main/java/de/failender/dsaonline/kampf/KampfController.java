@@ -27,4 +27,15 @@ public class KampfController {
 	public void updateGegner(@PathVariable int kampfid, @RequestBody Gegner gegner) {
 		this.kampfService.updateGegner(kampfid, gegner);
 	}
+
+	@PutMapping("{kampfid}/scale")
+	public void updateScale(@PathVariable int kampfid, @RequestBody float scale) {
+		this.kampfService.updateScale(kampfid, scale);
+	}
+
+	@PutMapping("{kampfid}/image")
+	public void updateImage(@PathVariable int kampfid, @RequestBody String image) {
+		this.kampfService.updateImage(kampfid, image);
+	}
+
 }
