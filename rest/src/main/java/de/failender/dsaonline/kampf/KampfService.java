@@ -29,8 +29,14 @@ public class KampfService {
 	public Kampf startKampf(int gruppe, Kampf kampf) {
 		SecurityUtils.INSTANCE.checkIsUserMeisterForGruppe(gruppe);
 		int id = nextId ++;
+
+		Kampf old = getKampf(gruppe);
+		if(old != null) {
+			this.kampfCache.invalidate(old.getId());
+		}
 		kampf.setId(id);
 		kampf.setGruppe(gruppe);
+
 //
 //		kampf.addGegner(new Gegner(Gegner.ICON_AXE, 50, 50, 30, 30, true));
 //		kampf.addGegner(new Gegner(Gegner.ICON_BOW, 100, 50, 23, 30, true));
@@ -55,6 +61,9 @@ public class KampfService {
 
 	private Kampf getKampf(int kampfid) {
 		Kampf kampf = kampfCache.getIfPresent(kampfid);
+		if(kampf == null) {
+			return null;
+		}
 		SecurityUtils.INSTANCE.checkIsUserMeisterForGruppe(kampf.getGruppe());
 		return kampf;
 	}
@@ -74,6 +83,22 @@ public class KampfService {
 		Kampf kampf = getKampf(kampfid);
 		kampf.setImage(image);
 		this.template.convertAndSend("/kampf/" + kampfid + "/image", image);
+
+	}
+
+	public void addComponent(int kampfid, KampfComponent component) {
+		Kampf kampf = getKampf(kampfid);
+		kampf.addComponent(component);
+		this.template.convertAndSend("/kampf/" + kampfid + "/component/add", component);
+
+	}
+
+	public void updateComponent(int kampfid, KampfComponent component) {
+		Kampf kampf = getKampf(kampfid);
+		KampfComponent our = kampf.getComponent(component.getId());
+		our.setX(component.getX());
+		our.setY(component.getY());
+		this.template.convertAndSend("/kampf/" + kampfid + "/component/update", our);
 
 	}
 }

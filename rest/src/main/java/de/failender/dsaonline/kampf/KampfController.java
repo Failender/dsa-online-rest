@@ -11,6 +11,7 @@ public class KampfController {
 
 	public KampfController(KampfService kampfService) {
 		this.kampfService = kampfService;
+
 	}
 
 	@PostMapping("start/{gruppe}")
@@ -32,5 +33,18 @@ public class KampfController {
 	public void updateImage(@PathVariable int kampfid, @RequestBody String image) {
 		this.kampfService.updateImage(kampfid, image);
 	}
+
+	@PostMapping("{kampfid}/component")
+	public void addComponent(@PathVariable int kampfid, @RequestBody KampfComponent component) {
+		this.kampfService.addComponent(kampfid, component);
+	}
+
+	@PutMapping("{kampfid}/component")
+	public void updateComponent(@PathVariable int kampfid, @RequestBody KampfComponent component) {
+		this.kampfService.updateComponent(kampfid, component);
+	}
+
+
+
 
 }

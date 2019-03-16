@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.failender.dsaonline.security.SecurityUtils;
 import one.util.streamex.EntryStream;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ public class Kampf {
 	private int gruppe;
 	private int id;
 	private String image;
+	private List<KampfComponent> components = new ArrayList<>();
 
 	private final Map<Integer, Gegner> gegner = new ConcurrentHashMap<>();
 
@@ -84,5 +86,22 @@ public class Kampf {
 
 	public void setGruppe(int gruppe) {
 		this.gruppe = gruppe;
+	}
+
+	public List<KampfComponent> getComponents() {
+		return components;
+	}
+
+	public void setComponents(List<KampfComponent> components) {
+		this.components = components;
+	}
+
+	public void addComponent(KampfComponent kampfComponent) {
+		this.components.add(kampfComponent);
+	}
+
+	@JsonIgnore
+	public KampfComponent getComponent(int id) {
+		return this.components.stream().filter(entry -> entry.getId() == id).findFirst().get();
 	}
 }
