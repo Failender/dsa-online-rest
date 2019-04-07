@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Profile("dev")
+@Profile({"dev", "local"})
 public class DevInsertTestData implements ApplicationListener<ApplicationReadyEvent> {
 
 	private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(DevInsertTestData.class);
